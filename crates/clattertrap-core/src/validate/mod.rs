@@ -1,10 +1,12 @@
 //! `Level` and `Scene` to `ValidScene`, or a list of `Problem`s. The only place raw input is accepted.
 
+mod checks;
+
 use crate::events::PartId;
 use crate::level::Level;
-use crate::parts;
 use crate::rules::Rules;
 use crate::scene::{Placed, Scene};
+use crate::world::{Overlap, World};
 use std::fmt;
 
 /// Name reserved for the floor body.
@@ -17,6 +19,15 @@ pub struct Problem {
     pub path: String,
     /// What is wrong and one concrete fix.
     pub message: String,
+}
+
+impl Problem {
+    fn new(path: impl Into<String>, message: String) -> Self {
+        Self {
+            path: path.into(),
+            message,
+        }
+    }
 }
 
 impl fmt::Display for Problem {
@@ -69,10 +80,22 @@ impl ValidScene {
     pub fn scene_part_count(&self) -> u32 {
         (self.placed.len() - self.fixed_count) as u32
     }
-}
 
-fn path_of(prefix: &str, index: usize, p: &Placed) -> String {
-    format!("{prefix}[{index}] ({} {})", p.spec.kind(), p.id)
+    /// JSON path of a placed part: `fixed[i] (kind id)` or `parts[i] (kind id)`.
+    #[must_use]
+    pub fn path(&self, part: PartId) -> String {
+        let i = usize::from(part.0);
+        match self.placed.get(i) {
+            Some(p) if i < self.fixed_count => format!("fixed[{i}] ({} {})", p.spec.kind(), p.id),
+            Some(p) => format!(
+                "parts[{}] ({} {})",
+                i - self.fixed_count,
+                p.spec.kind(),
+                p.id
+            ),
+            None => FLOOR_NAME.to_owned(),
+        }
+    }
 }
 
 /// Checks a scene against its level and the rules.
@@ -80,65 +103,56 @@ fn path_of(prefix: &str, index: usize, p: &Placed) -> String {
 /// # Errors
 /// Returns every problem found, so a contestant can fix them all at once.
 pub fn validate(level: &Level, scene: &Scene, rules: &Rules) -> Result<ValidScene, Vec<Problem>> {
-    let _ = rules;
     let mut problems = Vec::new();
-    if scene.level != level.id {
-        problems.push(Problem {
-            path: "level".to_owned(),
-            message: format!(
-                "is {:?} but this level is {:?}; set level to {:?}",
-                scene.level, level.id, level.id
-            ),
-        });
-    }
-    let mut names: Vec<String> = Vec::with_capacity(level.fixed.len() + scene.parts.len() + 1);
-    for (prefix, list) in [("fixed", &level.fixed), ("parts", &scene.parts)] {
-        for (i, p) in list.iter().enumerate() {
-            let path = path_of(prefix, i, p);
-            if p.id == FLOOR_NAME {
-                problems.push(Problem {
-                    path: path.clone(),
-                    message: format!("id {FLOOR_NAME:?} is reserved; rename the part"),
-                });
-            }
-            if names.contains(&p.id) {
-                problems.push(Problem {
-                    path: path.clone(),
-                    message: format!("id {:?} is already used; give this part a new id", p.id),
-                });
-            }
-            if prefix == "parts" && p.spec.is_goal_object() {
-                problems.push(Problem {
-                    path: path.clone(),
-                    message: format!(
-                        "{} is a goal object only the level may place; remove it",
-                        p.spec.kind()
-                    ),
-                });
-            }
-            if !parts::SUPPORTED.contains(&p.spec.kind()) {
-                problems.push(Problem {
-                    path,
-                    message: format!("{} is not simulated yet; use another kind", p.spec.kind()),
-                });
-            }
-            names.push(p.id.clone());
-        }
-    }
-    if u16::try_from(names.len() + 1).is_err() {
-        problems.push(Problem {
-            path: "parts".to_owned(),
-            message: "too many parts; use fewer than 65535".to_owned(),
-        });
-    }
+    checks::level_id(level, scene, &mut problems);
+    let names = checks::names(level, scene, &mut problems);
+    checks::inventory(level, scene, &mut problems);
+    checks::zones(level, scene, &mut problems);
+    checks::ranges(level, scene, rules, &mut problems);
+    checks::links(level, scene, &names, &mut problems);
     if !problems.is_empty() {
         return Err(problems);
     }
+    let mut names = names;
     names.push(FLOOR_NAME.to_owned());
     let placed = level.fixed.iter().chain(&scene.parts).cloned().collect();
-    Ok(ValidScene {
+    let valid = ValidScene {
         names,
         placed,
         fixed_count: level.fixed.len(),
-    })
+    };
+    let overlaps = World::build(level, &valid, rules).initial_overlaps();
+    problems.extend(overlaps.into_iter().map(|o| overlap_problem(&valid, o)));
+    if problems.is_empty() {
+        Ok(valid)
+    } else {
+        Err(problems)
+    }
+}
+
+/// Blames the later-placed part, or the non-floor part, and suggests lifting it clear.
+fn overlap_problem(valid: &ValidScene, o: Overlap) -> Problem {
+    let floor = valid.floor_id();
+    let (blamed, other) = if o.b == floor || (o.a != floor && o.a > o.b) {
+        (o.a, o.b)
+    } else {
+        (o.b, o.a)
+    };
+    let depth_cm = o.depth_m * 100.0;
+    let y_cm = valid
+        .placed
+        .get(usize::from(blamed.0))
+        .and_then(|p| p.spec.centre_cm())
+        .map_or(0.0, |c| c[1]);
+    let other_name = valid
+        .names
+        .get(usize::from(other.0))
+        .map_or(FLOOR_NAME, String::as_str);
+    Problem::new(
+        valid.path(blamed),
+        format!(
+            "overlaps {other_name} by {depth_cm:.1} cm at the start; move it up to y_cm = {:.1}",
+            y_cm + depth_cm
+        ),
+    )
 }

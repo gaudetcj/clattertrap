@@ -91,8 +91,14 @@ pub struct Rules {
     pub bell_density: f32,
     /// Smallest contact impulse that rings the bell.
     pub bell_min_impulse_ns: f32,
+    /// Allowed bell rope lengths.
+    pub bell_rope: Range,
     /// Button cap width and height.
     pub button_cap_size_m: [f32; 2],
+    /// Allowed button travel.
+    pub button_travel: Range,
+    /// Narrowest funnel throat; two balls must still pass.
+    pub funnel_throat_min_m: f32,
     /// Basket wall thickness.
     pub basket_wall_m: f32,
     /// Speed below which a body counts as resting for goals.
@@ -172,7 +178,16 @@ impl Rules {
         bell_radius_m: 0.10,
         bell_density: 40.0,
         bell_min_impulse_ns: 0.1,
+        bell_rope: Range {
+            min_m: 0.10,
+            max_m: 1.00,
+        },
         button_cap_size_m: [0.12, 0.03],
+        button_travel: Range {
+            min_m: 0.01,
+            max_m: 0.10,
+        },
+        funnel_throat_min_m: 0.14,
         basket_wall_m: 0.02,
         rest_speed_m_s: 0.02,
         chain_move_speed_m_s: 0.05,

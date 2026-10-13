@@ -31,6 +31,17 @@ pub struct BodyPose {
     pub asleep: bool,
 }
 
+/// Penetration deeper than this at the start is an overlap; shallower is a resting contact.
+const OVERLAP_TOLERANCE_M: f32 = 0.002;
+
+/// Two parts that penetrate at the start, by part id with `a < b`, and how deep.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub(crate) struct Overlap {
+    pub a: PartId,
+    pub b: PartId,
+    pub depth_m: f32,
+}
+
 /// The physics world for one run.
 pub(crate) struct World {
     pw: PhysicsWorld,
@@ -71,6 +82,36 @@ impl World {
             collector: Collector::default(),
             raw: RawEvents::default(),
         }
+    }
+
+    /// Runs collision detection without stepping and reports every pair that already penetrates.
+    pub(crate) fn initial_overlaps(&mut self) -> Vec<Overlap> {
+        self.pw.detect_collisions(&(), &());
+        let part_of = |h| {
+            self.pw
+                .colliders
+                .get(h)
+                .and_then(|c| u16::try_from(c.user_data).ok())
+                .map(PartId)
+        };
+        let mut found = Vec::new();
+        for pair in self.pw.contact_pairs() {
+            let Some((_, contact)) = pair.find_deepest_contact() else {
+                continue;
+            };
+            if contact.dist >= -OVERLAP_TOLERANCE_M {
+                continue;
+            }
+            if let (Some(a), Some(b)) = (part_of(pair.collider1), part_of(pair.collider2)) {
+                found.push(Overlap {
+                    a,
+                    b,
+                    depth_m: -contact.dist,
+                });
+            }
+        }
+        found.sort_by_key(|o| (o.a, o.b));
+        found
     }
 
     /// Advances one fixed step and returns the raw events it produced.
