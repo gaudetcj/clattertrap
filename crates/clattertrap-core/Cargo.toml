@@ -1,0 +1,12 @@
+[package]
+name = "clattertrap-core"
+description = "Levels, scenes, validation, parts, the physics world, and scoring for Clattertrap"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+
+[lints]
+workspace = true
