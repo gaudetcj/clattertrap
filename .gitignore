@@ -1,0 +1,9 @@
+/target/
+/web/node_modules/
+/web/pkg/
+/web/dist/
+/fuzz/artifacts/
+/fuzz/corpus/
+/pilot/scratch/
+/pilot/runs/
+/levels-private/
