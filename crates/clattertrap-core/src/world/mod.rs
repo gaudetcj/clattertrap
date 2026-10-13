@@ -3,7 +3,7 @@
 mod builder;
 mod collector;
 
-pub(crate) use builder::{Builder, Surface};
+pub(crate) use builder::{Builder, Lift, Surface, Trough};
 pub(crate) use collector::RawEvents;
 
 use crate::events::PartId;
@@ -183,6 +183,29 @@ impl World {
     /// Angular velocity of a part's first body.
     pub(crate) fn angular_velocity(&self, part: PartId) -> Option<f32> {
         self.body(part).map(RigidBody::angvel)
+    }
+
+    /// Whether a part has a dynamic body.
+    pub(crate) fn is_dynamic(&self, part: PartId) -> bool {
+        self.metas.iter().any(|m| m.part == part && m.dynamic)
+    }
+
+    /// Applies an impulse in newton seconds to a part's first body.
+    pub(crate) fn apply_impulse(&mut self, part: PartId, impulse_ns: [f32; 2]) {
+        let handle = self.metas.iter().find(|m| m.part == part).map(|m| m.handle);
+        if let Some(body) = handle.and_then(|h| self.pw.bodies.get_mut(h)) {
+            body.apply_impulse(Vector::new(impulse_ns[0], impulse_ns[1]), true);
+        }
+    }
+
+    /// Removes every body of a part, with its colliders and joints. Its metas stay so ids keep their order.
+    pub(crate) fn remove_part(&mut self, part: PartId) {
+        for i in 0..self.metas.len() {
+            if self.metas[i].part == part {
+                self.pw
+                    .remove_body_with_colliders(self.metas[i].handle, true);
+            }
+        }
     }
 
     /// Whether no dynamic body is awake.

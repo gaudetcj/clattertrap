@@ -3,8 +3,9 @@
 
 use crate::events::{Event, EventKind, PartId, StepEvents};
 use crate::level::Level;
-use crate::parts::Visual;
+use crate::parts::{Visual, spring_pad};
 use crate::rules::Rules;
+use crate::scene::PartSpec;
 use crate::score::{Closing, End, Outcome, Recorder};
 use crate::validate::ValidScene;
 use crate::world::{BodyPose, World};
@@ -19,6 +20,8 @@ pub struct Simulator {
     parts_used: u32,
     events: StepEvents,
     finished: Option<End>,
+    reactive: Reactive,
+    contacts: Vec<(PartId, PartId)>,
 }
 
 impl Simulator {
@@ -35,6 +38,26 @@ impl Simulator {
             parts_used: scene.scene_part_count(),
             events: StepEvents::new(),
             finished: None,
+            reactive: Reactive::from_scene(scene),
+            contacts: Vec::with_capacity(64),
+        }
+    }
+
+    /// Spring pads launch what touches them; pins pop balloons.
+    fn react(&mut self) {
+        for i in 0..self.contacts.len() {
+            let (a, b) = self.contacts[i];
+            for (x, y) in [(a, b), (b, a)] {
+                if let Some((_, n)) = self.reactive.pads.iter().find(|(p, _)| *p == x)
+                    && self.world.is_dynamic(y)
+                {
+                    let k = self.rules.spring_impulse_ns;
+                    self.world.apply_impulse(y, [n[0] * k, n[1] * k]);
+                }
+                if self.reactive.pins.contains(&x) && self.reactive.balloons.contains(&y) {
+                    self.world.remove_part(y);
+                }
+            }
         }
     }
 
@@ -45,9 +68,12 @@ impl Simulator {
             return self.events.events();
         }
         let raw = self.world.step();
-        for (a, b) in &raw.contacts {
+        self.contacts.clear();
+        self.contacts.extend_from_slice(&raw.contacts);
+        for (a, b) in &self.contacts {
             self.events.push(EventKind::contact(*a, *b));
         }
+        self.react();
         self.step += 1;
         self.events.finish_step(self.step);
         if self.step >= self.limit_steps {
@@ -125,6 +151,38 @@ impl Simulator {
     #[must_use]
     pub fn state_hash(&self) -> u64 {
         self.world.state_hash()
+    }
+}
+
+/// Parts the simulator reacts to after each step, by id.
+struct Reactive {
+    /// Spring pads with their launch normals.
+    pads: Vec<(PartId, [f32; 2])>,
+    pins: Vec<PartId>,
+    balloons: Vec<PartId>,
+}
+
+impl Reactive {
+    #[allow(clippy::cast_possible_truncation)]
+    fn from_scene(scene: &ValidScene) -> Self {
+        let mut r = Self {
+            pads: Vec::new(),
+            pins: Vec::new(),
+            balloons: Vec::new(),
+        };
+        for (i, placed) in scene.placed().iter().enumerate() {
+            // validate caps the part count at u16::MAX.
+            let id = PartId(i as u16);
+            match placed.spec {
+                PartSpec::SpringPad { angle_deg, .. } => {
+                    r.pads.push((id, spring_pad::normal(angle_deg)));
+                }
+                PartSpec::Pin { .. } => r.pins.push(id),
+                PartSpec::Balloon { .. } => r.balloons.push(id),
+                _ => {}
+            }
+        }
+        r
     }
 }
 

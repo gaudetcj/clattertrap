@@ -2,12 +2,17 @@
 //! parameters through `world::Builder` and names how it is drawn.
 
 mod ball;
+mod balloon;
 mod beam;
+mod bucket;
 mod crate_box;
 mod domino;
+mod funnel;
 mod pendulum;
+mod pin;
 mod rope;
 mod seesaw;
+pub(crate) mod spring_pad;
 
 use crate::events::PartId;
 use crate::scene::PartSpec;
@@ -15,7 +20,18 @@ use crate::world::Builder;
 
 /// Part kinds the simulator builds today. `validate` rejects the rest until their milestone step lands.
 pub const SUPPORTED: &[&str] = &[
-    "beam", "ball", "domino", "crate", "seesaw", "pendulum", "rope",
+    "beam",
+    "funnel",
+    "ball",
+    "domino",
+    "crate",
+    "seesaw",
+    "pendulum",
+    "spring_pad",
+    "bucket",
+    "balloon",
+    "pin",
+    "rope",
 ];
 
 /// Surface finish the viewer draws.
@@ -29,6 +45,12 @@ pub enum Look {
     Rubber,
     /// Cream tile with a dark edge.
     Domino,
+    /// Red balloon.
+    Balloon,
+    /// Spring pad: a coil under a plate.
+    Pad,
+    /// Steel needle.
+    Pin,
 }
 
 /// What one body looks like, in metres, relative to its pose.
@@ -47,6 +69,17 @@ pub enum Visual {
         w_m: f32,
         /// Full height.
         h_m: f32,
+        /// Finish.
+        look: Look,
+    },
+    /// An open-top U whose origin is the floor's underside centre.
+    Trough {
+        /// Inner width.
+        inner_w_m: f32,
+        /// Inner height.
+        inner_h_m: f32,
+        /// Wall and floor thickness.
+        wall_m: f32,
         /// Finish.
         look: Look,
     },
@@ -82,6 +115,15 @@ pub(crate) fn build(spec: &PartSpec, id: PartId, b: &mut Builder<'_>) {
             length_cm,
             angle_deg,
         } => beam::build(id, [*x_cm, *y_cm], *length_cm, *angle_deg, b),
+        PartSpec::Funnel {
+            x_cm,
+            y_cm,
+            mouth_cm,
+            throat_cm,
+            height_cm,
+        } => {
+            funnel::build(id, [*x_cm, *y_cm], [*mouth_cm, *throat_cm, *height_cm], b);
+        }
         PartSpec::Ball {
             x_cm,
             y_cm,
@@ -109,6 +151,23 @@ pub(crate) fn build(spec: &PartSpec, id: PartId, b: &mut Builder<'_>) {
             length_cm,
             angle_deg,
         } => pendulum::build(id, [*x_cm, *y_cm], *length_cm, *angle_deg, b),
+        PartSpec::SpringPad {
+            x_cm,
+            y_cm,
+            angle_deg,
+        } => spring_pad::build(id, [*x_cm, *y_cm], *angle_deg, b),
+        PartSpec::Bucket {
+            x_cm,
+            y_cm,
+            width_cm,
+            height_cm,
+        } => bucket::build(id, [*x_cm, *y_cm], [*width_cm, *height_cm], b),
+        PartSpec::Balloon { x_cm, y_cm } => balloon::build(id, [*x_cm, *y_cm], b),
+        PartSpec::Pin {
+            x_cm,
+            y_cm,
+            angle_deg,
+        } => pin::build(id, [*x_cm, *y_cm], *angle_deg, b),
         PartSpec::Rope {
             a,
             b: other,

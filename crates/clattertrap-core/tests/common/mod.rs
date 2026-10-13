@@ -181,3 +181,61 @@ pub fn on_plank(x_cm: f32, y_cm: f32, angle_deg: f32, along_cm: f32, radius_m: f
         y_cm + along_cm * sin + lift * cos,
     ]
 }
+
+pub fn spring_pad(id: &str, x_cm: f32, y_cm: f32, angle_deg: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::SpringPad {
+            x_cm,
+            y_cm,
+            angle_deg,
+        },
+    )
+}
+
+pub fn balloon(id: &str, x_cm: f32, y_cm: f32) -> Placed {
+    placed(id, PartSpec::Balloon { x_cm, y_cm })
+}
+
+pub fn pin(id: &str, x_cm: f32, y_cm: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Pin {
+            x_cm,
+            y_cm,
+            angle_deg: -90.0,
+        },
+    )
+}
+
+pub fn funnel(
+    id: &str,
+    x_cm: f32,
+    y_cm: f32,
+    mouth_cm: f32,
+    throat_cm: f32,
+    height_cm: f32,
+) -> Placed {
+    placed(
+        id,
+        PartSpec::Funnel {
+            x_cm,
+            y_cm,
+            mouth_cm,
+            throat_cm,
+            height_cm,
+        },
+    )
+}
+
+pub fn bucket(id: &str, x_cm: f32, y_cm: f32, width_cm: f32, height_cm: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Bucket {
+            x_cm,
+            y_cm,
+            width_cm,
+            height_cm,
+        },
+    )
+}

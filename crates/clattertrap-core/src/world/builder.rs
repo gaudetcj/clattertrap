@@ -17,6 +17,21 @@ pub(crate) struct Surface {
     pub restitution: f32,
 }
 
+/// How a balloon floats: a negative gravity scale and the damping that caps its rise.
+#[derive(Debug, Clone, Copy)]
+pub(crate) struct Lift {
+    pub density: f32,
+    pub gravity_scale: f32,
+    pub damping: f32,
+}
+
+/// Inner size and wall thickness of an open-top U.
+#[derive(Debug, Clone, Copy)]
+pub(crate) struct Trough {
+    pub inner_m: [f32; 2],
+    pub wall_m: f32,
+}
+
 /// One rigid body, the part it belongs to, and how to draw it, in insertion order.
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct BodyMeta {
@@ -157,6 +172,90 @@ impl<'a> Builder<'a> {
             look,
         };
         self.insert(part, true, body, collider, visual)
+    }
+
+    /// A rising disc: light, pushed up by a negative gravity scale, slowed by damping.
+    pub(crate) fn balloon(
+        &mut self,
+        part: PartId,
+        centre_m: [f32; 2],
+        radius_m: f32,
+        lift: Lift,
+        look: Look,
+    ) -> RigidBodyHandle {
+        let body = RigidBodyBuilder::dynamic()
+            .translation(Vector::new(centre_m[0], centre_m[1]))
+            .gravity_scale(lift.gravity_scale)
+            .linear_damping(lift.damping)
+            .ccd_enabled(true);
+        let collider = ColliderBuilder::ball(radius_m)
+            .density(lift.density)
+            .friction(0.1)
+            .restitution(0.1);
+        self.insert(
+            part,
+            true,
+            body,
+            collider,
+            Visual::Circle {
+                r_m: radius_m,
+                look,
+            },
+        )
+    }
+
+    /// An open-top U: a floor and two walls on one body whose origin is the floor's underside centre.
+    pub(crate) fn trough(
+        &mut self,
+        part: PartId,
+        dynamic: bool,
+        origin_m: [f32; 2],
+        shape: Trough,
+        props: MaterialProps,
+        look: Look,
+    ) -> RigidBodyHandle {
+        let builder = if dynamic {
+            RigidBodyBuilder::dynamic().ccd_enabled(true)
+        } else {
+            RigidBodyBuilder::fixed()
+        };
+        let handle = self
+            .pw
+            .insert_body(builder.translation(Vector::new(origin_m[0], origin_m[1])));
+        let Trough {
+            inner_m: [w, h],
+            wall_m,
+        } = shape;
+        let wall_x = f32::midpoint(w, wall_m);
+        let pieces = [
+            ([0.0, wall_m / 2.0], [w / 2.0 + wall_m, wall_m / 2.0]),
+            ([-wall_x, wall_m + h / 2.0], [wall_m / 2.0, h / 2.0]),
+            ([wall_x, wall_m + h / 2.0], [wall_m / 2.0, h / 2.0]),
+        ];
+        for (at, half) in pieces {
+            let collider = ColliderBuilder::cuboid(half[0], half[1])
+                .translation(Vector::new(at[0], at[1]))
+                .density(props.density)
+                .friction(props.friction)
+                .restitution(props.restitution)
+                .restitution_combine_rule(CoefficientCombineRule::Max)
+                .active_events(ActiveEvents::COLLISION_EVENTS)
+                .user_data(u128::from(part.0));
+            self.pw.insert_collider(collider, Some(handle));
+        }
+        let visual = Visual::Trough {
+            inner_w_m: w,
+            inner_h_m: h,
+            wall_m,
+            look,
+        };
+        self.metas.push(BodyMeta {
+            handle,
+            part,
+            dynamic,
+            visual,
+        });
+        handle
     }
 
     /// A free hinge between two bodies at the given body-local anchors.
