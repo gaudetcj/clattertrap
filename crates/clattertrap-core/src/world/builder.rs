@@ -200,7 +200,8 @@ impl<'a> Builder<'a> {
             .ccd_enabled(true);
         let collider = ColliderBuilder::ball(radius_m)
             .density(lift.density)
-            .friction(0.1)
+            .friction(0.0)
+            .friction_combine_rule(CoefficientCombineRule::Min)
             .restitution(0.1);
         self.insert(
             part,
