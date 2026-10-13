@@ -99,6 +99,10 @@ pub struct Rules {
     pub button_travel: Range,
     /// Narrowest funnel throat; two balls must still pass.
     pub funnel_throat_min_m: f32,
+    /// Spring that returns a button cap to rest, in newtons per metre.
+    pub button_spring_n_m: f32,
+    /// Damping of the button spring.
+    pub button_damping: f32,
     /// Basket wall thickness.
     pub basket_wall_m: f32,
     /// Speed below which a body counts as resting for goals.
@@ -152,7 +156,7 @@ impl Rules {
             max_m: 1.20,
         },
         spring_pad_size_m: [0.30, 0.04],
-        spring_impulse_ns: 1.0,
+        spring_impulse_ns: 0.6,
         wall_thickness_m: 0.02,
         bucket_size: Range {
             min_m: 0.15,
@@ -177,7 +181,7 @@ impl Rules {
         },
         bell_radius_m: 0.10,
         bell_density: 40.0,
-        bell_min_impulse_ns: 0.1,
+        bell_min_impulse_ns: 0.2,
         bell_rope: Range {
             min_m: 0.10,
             max_m: 1.00,
@@ -188,6 +192,8 @@ impl Rules {
             max_m: 0.10,
         },
         funnel_throat_min_m: 0.14,
+        button_spring_n_m: 50.0,
+        button_damping: 2.0,
         basket_wall_m: 0.02,
         rest_speed_m_s: 0.02,
         chain_move_speed_m_s: 0.05,

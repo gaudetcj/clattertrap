@@ -3,8 +3,11 @@
 
 mod ball;
 mod balloon;
+mod basket;
 mod beam;
+mod bell;
 mod bucket;
+mod button;
 mod crate_box;
 mod domino;
 mod funnel;
@@ -18,7 +21,7 @@ use crate::events::PartId;
 use crate::scene::PartSpec;
 use crate::world::Builder;
 
-/// Part kinds the simulator builds today. `validate` rejects the rest until their milestone step lands.
+/// Part kinds the simulator builds. Every kind of rules v1 is here.
 pub const SUPPORTED: &[&str] = &[
     "beam",
     "funnel",
@@ -32,6 +35,9 @@ pub const SUPPORTED: &[&str] = &[
     "balloon",
     "pin",
     "rope",
+    "bell",
+    "button",
+    "basket",
 ];
 
 /// Surface finish the viewer draws.
@@ -51,6 +57,10 @@ pub enum Look {
     Pad,
     /// Steel needle.
     Pin,
+    /// Polished brass.
+    Brass,
+    /// Woven basket.
+    Wicker,
 }
 
 /// What one body looks like, in metres, relative to its pose.
@@ -173,7 +183,23 @@ pub(crate) fn build(spec: &PartSpec, id: PartId, b: &mut Builder<'_>) {
             b: other,
             max_length_cm,
         } => rope::build(a, other, *max_length_cm, b),
-        // validate rejects every kind outside SUPPORTED before a world is built.
-        other => unreachable!("validate admits only SUPPORTED kinds, got {}", other.kind()),
+        PartSpec::Bell {
+            x_cm,
+            y_cm,
+            rope_cm,
+        } => bell::build(id, [*x_cm, *y_cm], *rope_cm, b),
+        PartSpec::Button {
+            x_cm,
+            y_cm,
+            travel_cm,
+        } => button::build(id, [*x_cm, *y_cm], *travel_cm, b),
+        PartSpec::Basket {
+            x_cm,
+            y_cm,
+            inner_width_cm,
+            inner_height_cm,
+        } => {
+            basket::build(id, [*x_cm, *y_cm], [*inner_width_cm, *inner_height_cm], b);
+        }
     }
 }

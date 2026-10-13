@@ -2,8 +2,9 @@
 //! The rapier world is the only mutable state.
 
 use crate::events::{Event, EventKind, PartId, StepEvents};
+use crate::goal::{StepInputs, Tracker};
 use crate::level::Level;
-use crate::parts::{Visual, spring_pad};
+use crate::parts::{Visual, m, spring_pad};
 use crate::rules::Rules;
 use crate::scene::PartSpec;
 use crate::score::{Closing, End, Outcome, Recorder};
@@ -21,7 +22,14 @@ pub struct Simulator {
     events: StepEvents,
     finished: Option<End>,
     reactive: Reactive,
+    goal: Tracker,
+    /// World rectangle plus the leave margin: min x, min y, max x, max y.
+    bounds: [f32; 4],
     contacts: Vec<(PartId, PartId)>,
+    impulses: Vec<(PartId, PartId, f32)>,
+    leaving: Vec<PartId>,
+    asleep: Vec<bool>,
+    moved: Vec<bool>,
 }
 
 impl Simulator {
@@ -29,6 +37,8 @@ impl Simulator {
     #[must_use]
     #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
     pub fn new(level: &Level, scene: &ValidScene, rules: &Rules) -> Self {
+        let n = scene.names().len();
+        let margin = rules.leave_margin_m;
         Self {
             world: World::build(level, scene, rules),
             rules: *rules,
@@ -39,8 +49,58 @@ impl Simulator {
             events: StepEvents::new(),
             finished: None,
             reactive: Reactive::from_scene(scene),
+            goal: Tracker::new(level, scene, rules),
+            bounds: [
+                -margin,
+                -margin,
+                m(level.world.width_cm) + margin,
+                m(level.world.height_cm) + margin,
+            ],
             contacts: Vec::with_capacity(64),
+            impulses: Vec::with_capacity(16),
+            leaving: Vec::with_capacity(4),
+            asleep: vec![false; n],
+            moved: vec![false; n],
         }
+    }
+
+    /// Advances one fixed step and returns its events, sorted. Returns nothing once the run has ended.
+    pub fn step(&mut self) -> &[Event] {
+        self.events.clear();
+        if self.finished.is_some() {
+            return self.events.events();
+        }
+        let raw = self.world.step();
+        self.contacts.clear();
+        self.contacts.extend_from_slice(&raw.contacts);
+        self.impulses.clear();
+        self.impulses.extend_from_slice(&raw.impulses);
+        for (a, b) in &self.contacts {
+            self.events.push(EventKind::contact(*a, *b));
+        }
+        self.react();
+        self.sweep();
+        let inputs = StepInputs {
+            contacts: &self.contacts,
+            impulses: &self.impulses,
+        };
+        if self
+            .goal
+            .observe(&self.world, &inputs, &self.rules, &mut self.events)
+        {
+            self.events.push(EventKind::GoalMet);
+            self.finished = Some(End::GoalMet);
+        }
+        self.step += 1;
+        self.events.finish_step(self.step);
+        if self.finished.is_none() {
+            if self.step >= self.limit_steps {
+                self.finished = Some(End::TimeLimit);
+            } else if self.world.all_asleep() {
+                self.finished = Some(End::AllAsleep);
+            }
+        }
+        self.events.events()
     }
 
     /// Spring pads launch what touches them; pins pop balloons.
@@ -61,27 +121,29 @@ impl Simulator {
         }
     }
 
-    /// Advances one fixed step and returns its events, sorted. Returns nothing once the run has ended.
-    pub fn step(&mut self) -> &[Event] {
-        self.events.clear();
-        if self.finished.is_some() {
-            return self.events.events();
+    /// Removes bodies that left the world, notes which parts moved, and reports parts that fell asleep.
+    fn sweep(&mut self) {
+        self.leaving.clear();
+        let [x0, y0, x1, y1] = self.bounds;
+        for s in self.world.dynamic_states() {
+            let i = usize::from(s.part.0);
+            if s.x_m < x0 || s.x_m > x1 || s.y_m < y0 || s.y_m > y1 {
+                self.leaving.push(s.part);
+                continue;
+            }
+            if s.speed_m_s > self.rules.chain_move_speed_m_s {
+                self.moved[i] = true;
+            }
+            if s.asleep && !self.asleep[i] {
+                self.events.push(EventKind::AtRest(s.part));
+            }
+            self.asleep[i] = s.asleep;
         }
-        let raw = self.world.step();
-        self.contacts.clear();
-        self.contacts.extend_from_slice(&raw.contacts);
-        for (a, b) in &self.contacts {
-            self.events.push(EventKind::contact(*a, *b));
+        for i in 0..self.leaving.len() {
+            let part = self.leaving[i];
+            self.events.push(EventKind::LeftWorld(part));
+            self.world.remove_part(part);
         }
-        self.react();
-        self.step += 1;
-        self.events.finish_step(self.step);
-        if self.step >= self.limit_steps {
-            self.finished = Some(End::TimeLimit);
-        } else if self.world.all_asleep() {
-            self.finished = Some(End::AllAsleep);
-        }
-        self.events.events()
     }
 
     /// Steps taken so far.
@@ -101,6 +163,13 @@ impl Simulator {
     #[must_use]
     pub const fn finished(&self) -> Option<End> {
         self.finished
+    }
+
+    /// Distinct parts set moving so far.
+    #[must_use]
+    #[allow(clippy::cast_possible_truncation)]
+    pub fn chain_length(&self) -> u32 {
+        self.moved.iter().filter(|m| **m).count() as u32
     }
 
     /// The id of a named part.
@@ -211,7 +280,7 @@ pub fn run(level: &Level, scene: &ValidScene, rules: &Rules) -> Run {
         steps: sim.step_index(),
         dt_s: rules.dt_s,
         parts_used: sim.parts_used,
-        chain_length: 0,
+        chain_length: sim.chain_length(),
         state_hash: sim.state_hash(),
         rules_version: rules.version,
     };

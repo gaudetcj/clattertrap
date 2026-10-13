@@ -3,7 +3,7 @@
 mod builder;
 mod collector;
 
-pub(crate) use builder::{Builder, Lift, Surface, Trough};
+pub(crate) use builder::{Builder, Lift, Slide, Surface, Trough};
 pub(crate) use collector::RawEvents;
 
 use crate::events::PartId;
@@ -43,6 +43,16 @@ pub(crate) struct Overlap {
     pub depth_m: f32,
 }
 
+/// Where a dynamic body is, how fast it moves, and whether it sleeps.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub(crate) struct DynamicState {
+    pub part: PartId,
+    pub x_m: f32,
+    pub y_m: f32,
+    pub speed_m_s: f32,
+    pub asleep: bool,
+}
+
 /// The physics world for one run.
 pub(crate) struct World {
     pw: PhysicsWorld,
@@ -68,7 +78,7 @@ impl World {
         b.fixed_box(
             valid.floor_id(),
             [width_m / 2.0, -0.5],
-            [width_m / 2.0 + rules.leave_margin_m, 0.5],
+            [width_m / 2.0 + rules.leave_margin_m / 2.0, 0.5],
             0.0,
             floor,
             Look::Wood,
@@ -183,6 +193,21 @@ impl World {
     /// Angular velocity of a part's first body.
     pub(crate) fn angular_velocity(&self, part: PartId) -> Option<f32> {
         self.body(part).map(RigidBody::angvel)
+    }
+
+    /// Position, speed, and sleep state of every dynamic body that still exists, in insertion order.
+    pub(crate) fn dynamic_states(&self) -> impl Iterator<Item = DynamicState> + '_ {
+        self.metas.iter().filter(|m| m.dynamic).filter_map(|m| {
+            let b = self.pw.bodies.get(m.handle)?;
+            let (t, v) = (b.translation(), b.linvel());
+            Some(DynamicState {
+                part: m.part,
+                x_m: t.x,
+                y_m: t.y,
+                speed_m_s: libm::sqrtf(v.x * v.x + v.y * v.y),
+                asleep: b.is_sleeping(),
+            })
+        })
     }
 
     /// Whether a part has a dynamic body.

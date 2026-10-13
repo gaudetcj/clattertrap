@@ -20,7 +20,11 @@ fn bodies_pair_poses_with_visuals_in_insertion_order() {
     );
     let bodies: Vec<_> = s.bodies().collect();
     let r = Rules::V1;
-    assert_eq!(bodies.len(), 5, "floor, ball, beam, plank, pivot");
+    assert_eq!(
+        bodies.len(),
+        7,
+        "floor, ball, bell, bell anchor, beam, plank, pivot"
+    );
     assert_eq!(bodies[1].0.part, part(&s, "k"));
     assert_eq!(
         bodies[1].1,
@@ -31,20 +35,28 @@ fn bodies_pair_poses_with_visuals_in_insertion_order() {
     );
     assert_eq!(
         bodies[2].1,
+        Visual::Circle {
+            r_m: r.bell_radius_m,
+            look: Look::Brass
+        }
+    );
+    assert_eq!(bodies[3].1, Visual::Pivot);
+    assert_eq!(
+        bodies[4].1,
         Visual::Box {
             w_m: 0.8,
             h_m: r.plank_thickness_m,
             look: Look::Wood
         }
     );
-    assert_eq!(bodies[3].0.part, part(&s, "s"));
+    assert_eq!(bodies[5].0.part, part(&s, "s"));
     assert!(matches!(
-        bodies[3].1,
+        bodies[5].1,
         Visual::Box {
             look: Look::Wood,
             ..
         }
     ));
-    assert_eq!(bodies[4].1, Visual::Pivot);
-    assert!((bodies[4].0.x_m - 3.0).abs() < 1e-6 && (bodies[4].0.y_m - 0.5).abs() < 1e-6);
+    assert_eq!(bodies[6].1, Visual::Pivot);
+    assert!((bodies[6].0.x_m - 3.0).abs() < 1e-6 && (bodies[6].0.y_m - 0.5).abs() < 1e-6);
 }

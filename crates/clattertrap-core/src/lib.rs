@@ -4,6 +4,7 @@
 #![forbid(unsafe_code)]
 
 pub mod events;
+mod goal;
 mod hash;
 pub mod level;
 pub mod parts;

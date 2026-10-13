@@ -4,8 +4,9 @@ use crate::events::PartId;
 use crate::parts::{Look, Visual};
 use crate::rules::{MaterialProps, Rules};
 use rapier2d::prelude::{
-    ActiveEvents, CoefficientCombineRule, ColliderBuilder, PhysicsWorld, RevoluteJointBuilder,
-    RigidBodyBuilder, RigidBodyHandle, RopeJointBuilder, Vector,
+    ActiveEvents, CoefficientCombineRule, ColliderBuilder, MotorModel, PhysicsWorld,
+    PrismaticJointBuilder, RevoluteJointBuilder, RigidBodyBuilder, RigidBodyHandle,
+    RopeJointBuilder, Vector,
 };
 
 /// Friction and restitution of a fixed surface.
@@ -30,6 +31,15 @@ pub(crate) struct Lift {
 pub(crate) struct Trough {
     pub inner_m: [f32; 2],
     pub wall_m: f32,
+}
+
+/// A sprung slider: its axis, travel limits, and the spring that returns it to zero.
+#[derive(Debug, Clone, Copy)]
+pub(crate) struct Slide {
+    pub axis: [f32; 2],
+    pub limits_m: [f32; 2],
+    pub stiffness_n_m: f32,
+    pub damping: f32,
 }
 
 /// One rigid body, the part it belongs to, and how to draw it, in insertion order.
@@ -258,6 +268,54 @@ impl<'a> Builder<'a> {
         handle
     }
 
+    /// A dynamic disc that also reports contact forces above `force_threshold_n`, for the bell.
+    pub(crate) fn bell(
+        &mut self,
+        part: PartId,
+        centre_m: [f32; 2],
+        radius_m: f32,
+        props: MaterialProps,
+        force_threshold_n: f32,
+        look: Look,
+    ) -> RigidBodyHandle {
+        let body = RigidBodyBuilder::dynamic()
+            .translation(Vector::new(centre_m[0], centre_m[1]))
+            .ccd_enabled(true);
+        let collider = ColliderBuilder::ball(radius_m)
+            .density(props.density)
+            .friction(props.friction)
+            .restitution(props.restitution)
+            .active_events(ActiveEvents::COLLISION_EVENTS | ActiveEvents::CONTACT_FORCE_EVENTS)
+            .contact_force_event_threshold(force_threshold_n);
+        self.insert(
+            part,
+            true,
+            body,
+            collider,
+            Visual::Circle {
+                r_m: radius_m,
+                look,
+            },
+        )
+    }
+
+    /// A slider along `axis` between two bodies, held at zero by a spring and stopped at `limits`.
+    pub(crate) fn prismatic(
+        &mut self,
+        a: RigidBodyHandle,
+        b: RigidBodyHandle,
+        anchors_m: [[f32; 2]; 2],
+        slide: Slide,
+    ) {
+        let joint = PrismaticJointBuilder::new(Vector::new(slide.axis[0], slide.axis[1]))
+            .local_anchor1(Vector::new(anchors_m[0][0], anchors_m[0][1]))
+            .local_anchor2(Vector::new(anchors_m[1][0], anchors_m[1][1]))
+            .limits(slide.limits_m)
+            .motor_model(MotorModel::ForceBased)
+            .motor_position(0.0, slide.stiffness_n_m, slide.damping);
+        self.pw.insert_impulse_joint(a, b, joint);
+    }
+
     /// A free hinge between two bodies at the given body-local anchors.
     pub(crate) fn revolute(
         &mut self,
@@ -287,9 +345,10 @@ impl<'a> Builder<'a> {
         visual: Visual,
     ) -> RigidBodyHandle {
         // Restitution takes the bouncier of the pair so a rubber ball bounces on a dead floor.
+        let events = collider.active_events | ActiveEvents::COLLISION_EVENTS;
         let collider = collider
             .restitution_combine_rule(CoefficientCombineRule::Max)
-            .active_events(ActiveEvents::COLLISION_EVENTS)
+            .active_events(events)
             .user_data(u128::from(part.0));
         let (handle, _) = self.pw.insert(body, collider);
         self.metas.push(BodyMeta {

@@ -237,3 +237,27 @@ fn a_rope_may_not_link_a_rope() {
         "{msg}"
     );
 }
+
+#[test]
+fn the_goal_target_must_be_a_fixed_object_of_the_right_kind() {
+    let mut lv = level(vec![]);
+    lv.fixed.clear();
+    let msg = only(&lv, &scene(vec![]));
+    assert!(
+        msg.starts_with("goal: ")
+            && msg.contains("\"bell\"")
+            && msg.contains("names no fixed bell"),
+        "{msg}"
+    );
+
+    let mut lv = level(vec![]);
+    lv.goal = Goal::Press {
+        target: "bell".to_owned(),
+        via: vec![],
+    };
+    let msg = only(&lv, &scene(vec![]));
+    assert!(
+        msg.starts_with("goal: ") && msg.contains("names no fixed button"),
+        "{msg}"
+    );
+}

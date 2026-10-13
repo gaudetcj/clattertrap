@@ -16,7 +16,26 @@ use clattertrap_core::validate::validate;
 
 pub const PI: f32 = std::f32::consts::PI;
 
-pub fn level(fixed: Vec<Placed>) -> Level {
+/// A level whose goal is a bell tucked in the top-right corner, out of the way of physics tests.
+pub fn level(mut fixed: Vec<Placed>) -> Level {
+    fixed.push(placed(
+        "bell",
+        PartSpec::Bell {
+            x_cm: 390.0,
+            y_cm: 280.0,
+            rope_cm: 10.0,
+        },
+    ));
+    level_with_goal(
+        fixed,
+        Goal::Ring {
+            target: "bell".to_owned(),
+            via: vec![],
+        },
+    )
+}
+
+pub fn level_with_goal(fixed: Vec<Placed>, goal: Goal) -> Level {
     Level {
         id: "test".to_owned(),
         title: "test".to_owned(),
@@ -47,10 +66,7 @@ pub fn level(fixed: Vec<Placed>) -> Level {
             pin: 2,
             rope: 2,
         },
-        goal: Goal::Ring {
-            target: "bell".to_owned(),
-            via: vec![],
-        },
+        goal,
         showcase: false,
     }
 }
@@ -149,39 +165,6 @@ pub fn rope(id: &str, a: &str, b: &str, max_length_cm: f32) -> Placed {
     )
 }
 
-pub fn sim(level: &Level, scene: &Scene) -> Simulator {
-    let valid =
-        validate(level, scene, &Rules::V1).unwrap_or_else(|problems| panic!("{problems:#?}"));
-    Simulator::new(level, &valid, &Rules::V1)
-}
-
-pub fn part(sim: &Simulator, name: &str) -> PartId {
-    sim.part_id(name)
-        .unwrap_or_else(|| panic!("no part named {name}"))
-}
-
-pub fn step_for(sim: &mut Simulator, seconds: f32) {
-    let steps = (seconds / Rules::V1.dt_s).round() as u32;
-    for _ in 0..steps {
-        sim.step();
-    }
-}
-
-pub fn close(actual: f32, expected: f32, tolerance: f32) -> bool {
-    (actual - expected).abs() <= tolerance * expected.abs()
-}
-
-/// Centre of a ball resting on a plank whose centre line passes through (`x_cm`, `y_cm`) at `angle_deg`.
-pub fn on_plank(x_cm: f32, y_cm: f32, angle_deg: f32, along_cm: f32, radius_m: f32) -> [f32; 2] {
-    let a = angle_deg * PI / 180.0;
-    let (cos, sin) = (libm::cosf(a), libm::sinf(a));
-    let lift = (radius_m + Rules::V1.plank_thickness_m / 2.0) * 100.0 + 0.2;
-    [
-        x_cm + along_cm * cos - lift * sin,
-        y_cm + along_cm * sin + lift * cos,
-    ]
-}
-
 pub fn spring_pad(id: &str, x_cm: f32, y_cm: f32, angle_deg: f32) -> Placed {
     placed(
         id,
@@ -238,4 +221,37 @@ pub fn bucket(id: &str, x_cm: f32, y_cm: f32, width_cm: f32, height_cm: f32) -> 
             height_cm,
         },
     )
+}
+
+pub fn sim(level: &Level, scene: &Scene) -> Simulator {
+    let valid =
+        validate(level, scene, &Rules::V1).unwrap_or_else(|problems| panic!("{problems:#?}"));
+    Simulator::new(level, &valid, &Rules::V1)
+}
+
+pub fn part(sim: &Simulator, name: &str) -> PartId {
+    sim.part_id(name)
+        .unwrap_or_else(|| panic!("no part named {name}"))
+}
+
+pub fn step_for(sim: &mut Simulator, seconds: f32) {
+    let steps = (seconds / Rules::V1.dt_s).round() as u32;
+    for _ in 0..steps {
+        sim.step();
+    }
+}
+
+pub fn close(actual: f32, expected: f32, tolerance: f32) -> bool {
+    (actual - expected).abs() <= tolerance * expected.abs()
+}
+
+/// Centre of a ball resting on a plank whose centre line passes through (`x_cm`, `y_cm`) at `angle_deg`.
+pub fn on_plank(x_cm: f32, y_cm: f32, angle_deg: f32, along_cm: f32, radius_m: f32) -> [f32; 2] {
+    let a = angle_deg * PI / 180.0;
+    let (cos, sin) = (libm::cosf(a), libm::sinf(a));
+    let lift = (radius_m + Rules::V1.plank_thickness_m / 2.0) * 100.0 + 0.2;
+    [
+        x_cm + along_cm * cos - lift * sin,
+        y_cm + along_cm * sin + lift * cos,
+    ]
 }

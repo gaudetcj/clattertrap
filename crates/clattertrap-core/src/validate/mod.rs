@@ -110,6 +110,7 @@ pub fn validate(level: &Level, scene: &Scene, rules: &Rules) -> Result<ValidScen
     checks::zones(level, scene, &mut problems);
     checks::ranges(level, scene, rules, &mut problems);
     checks::links(level, scene, &names, &mut problems);
+    checks::goal_target(level, &mut problems);
     if !problems.is_empty() {
         return Err(problems);
     }

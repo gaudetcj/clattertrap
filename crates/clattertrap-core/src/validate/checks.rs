@@ -293,3 +293,24 @@ pub(super) fn links(level: &Level, scene: &Scene, names: &[String], out: &mut Ve
         }
     }
 }
+
+/// The goal names a fixed object whose kind matches the goal.
+pub(super) fn goal_target(level: &Level, out: &mut Vec<Problem>) {
+    let wanted = match level.goal {
+        crate::level::Goal::Ring { .. } => "bell",
+        crate::level::Goal::Press { .. } => "button",
+        crate::level::Goal::Fill { .. } => "basket",
+        crate::level::Goal::Pop { .. } => "balloon",
+    };
+    let target = level.goal.target();
+    let found = level
+        .fixed
+        .iter()
+        .any(|p| p.id == target && p.spec.kind() == wanted);
+    if !found {
+        out.push(Problem::new(
+            "goal",
+            format!("target {target:?} names no fixed {wanted}; add a {wanted} with that id to fixed or change the target"),
+        ));
+    }
+}

@@ -25,7 +25,8 @@ fn a_spring_pad_launches_a_wood_ball_faster_than_it_arrived() {
     let mut launched = false;
     while s.time_s() < 3.0 && s.finished().is_none() {
         s.step();
-        let vy = s.velocity(k).unwrap()[1];
+        let Some(v) = s.velocity(k) else { break };
+        let vy = v[1];
         if !launched && vy < 0.0 {
             arrival = arrival.max(-vy);
         }
@@ -34,7 +35,7 @@ fn a_spring_pad_launches_a_wood_ball_faster_than_it_arrived() {
             launch = launch.max(vy);
         }
         if launched {
-            apex = apex.max(s.pose(k).unwrap().y_m);
+            apex = apex.max(s.pose(k).map_or(apex, |p| p.y_m));
         }
     }
     assert!(launched, "the ball never left the pad");
