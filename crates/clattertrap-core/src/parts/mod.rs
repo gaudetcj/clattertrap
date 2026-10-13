@@ -20,6 +20,7 @@ pub(crate) mod spring_pad;
 use crate::events::PartId;
 use crate::scene::PartSpec;
 use crate::world::Builder;
+use serde::Serialize;
 
 /// Part kinds the simulator builds. Every kind of rules v1 is here.
 pub const SUPPORTED: &[&str] = &[
@@ -41,7 +42,8 @@ pub const SUPPORTED: &[&str] = &[
 ];
 
 /// Surface finish the viewer draws.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
 pub enum Look {
     /// Tan plank or box.
     Wood,
@@ -64,7 +66,8 @@ pub enum Look {
 }
 
 /// What one body looks like, in metres, relative to its pose.
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize)]
+#[serde(tag = "shape", rename_all = "snake_case")]
 pub enum Visual {
     /// A disc.
     Circle {

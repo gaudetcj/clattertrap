@@ -2,9 +2,11 @@
 
 use crate::events::Event;
 use crate::hash::Fnv64;
+use serde::{Serialize, Serializer};
 
 /// Why a run stopped.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
 pub enum End {
     /// The goal was met.
     GoalMet,
@@ -14,8 +16,14 @@ pub enum End {
     AllAsleep,
 }
 
+/// Hashes serialize as 16 hex digits because JSON numbers cannot hold a u64 exactly.
+#[allow(clippy::trivially_copy_pass_by_ref)] // serde's serialize_with signature
+fn hex_u64<S: Serializer>(value: &u64, s: S) -> Result<S::Ok, S::Error> {
+    s.serialize_str(&format!("{value:016x}"))
+}
+
 /// The result of one run.
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct Outcome {
     /// Whether the goal was met.
     pub goal_met: bool,
@@ -30,8 +38,10 @@ pub struct Outcome {
     /// Distinct parts set moving before the goal, or before the end if the goal was missed.
     pub chain_length: u32,
     /// FNV-1a 64 over the event log.
+    #[serde(serialize_with = "hex_u64")]
     pub event_hash: u64,
     /// FNV-1a 64 over the final body states.
+    #[serde(serialize_with = "hex_u64")]
     pub state_hash: u64,
     /// Rules the run used.
     pub rules_version: u32,

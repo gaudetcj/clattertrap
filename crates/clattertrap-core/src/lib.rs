@@ -15,4 +15,4 @@ pub mod sim;
 pub mod validate;
 mod world;
 
-pub use world::BodyPose;
+pub use world::{BodyPose, Slot};

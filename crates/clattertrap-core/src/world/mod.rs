@@ -32,6 +32,19 @@ pub struct BodyPose {
     pub asleep: bool,
 }
 
+/// One body slot: the part it belongs to, how it is drawn, and its pose while the body exists.
+///
+/// Slots keep their order for the whole run, so a viewer can key per-body state on the index.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Slot {
+    /// Part the body belongs to.
+    pub part: PartId,
+    /// How to draw it.
+    pub visual: Visual,
+    /// Where it is, or `None` once the body was removed.
+    pub pose: Option<BodyPose>,
+}
+
 /// Penetration deeper than this at the start is an overlap; shallower is a resting contact.
 const OVERLAP_TOLERANCE_M: f32 = 0.002;
 
@@ -167,13 +180,16 @@ impl World {
         })
     }
 
-    /// Every body's pose with its drawing description, in insertion order.
-    pub(crate) fn bodies(&self) -> impl Iterator<Item = (BodyPose, Visual)> + '_ {
-        self.metas.iter().filter_map(|m| {
-            self.pw
+    /// Every body slot in insertion order, removed bodies included with no pose.
+    pub(crate) fn slots(&self) -> impl Iterator<Item = Slot> + '_ {
+        self.metas.iter().map(|m| Slot {
+            part: m.part,
+            visual: m.visual,
+            pose: self
+                .pw
                 .bodies
                 .get(m.handle)
-                .map(|b| (Self::pose_of(m.part, b), m.visual))
+                .map(|b| Self::pose_of(m.part, b)),
         })
     }
 

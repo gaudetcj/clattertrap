@@ -2,6 +2,8 @@
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
 use clattertrap_core::level::{Goal, Level};
+use clattertrap_core::parts::{Look, Visual};
+use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::{Material, PartSpec, Scene};
 
 const BELL_LEVEL: &str = r#"{
@@ -131,4 +133,45 @@ fn missing_required_field_is_rejected() {
     let json = r#"{ "level": "x", "parts": [ { "id": "a", "kind": "beam", "x_cm": 1, "y_cm": 2, "angle_deg": 0 } ] }"#;
     let err = serde_json::from_str::<Scene>(json).unwrap_err().to_string();
     assert!(err.contains("length_cm"), "{err}");
+}
+
+#[test]
+fn outcome_serializes_hashes_as_hex_strings() {
+    let level: Level = serde_json::from_str(BELL_LEVEL).unwrap();
+    let scene = Scene {
+        level: "bell-drop".to_owned(),
+        parts: vec![],
+    };
+    let valid = clattertrap_core::validate::validate(&level, &scene, &Rules::V1).unwrap();
+    let outcome = clattertrap_core::sim::run(&level, &valid, &Rules::V1).outcome;
+    let json = serde_json::to_value(&outcome).unwrap();
+    assert_eq!(
+        json["event_hash"],
+        serde_json::Value::String(format!("{:016x}", outcome.event_hash))
+    );
+    assert_eq!(
+        json["state_hash"],
+        serde_json::Value::String(format!("{:016x}", outcome.state_hash))
+    );
+    assert_eq!(json["state_hash"].as_str().unwrap().len(), 16);
+    assert_eq!(json["end"], "all_asleep");
+    assert_eq!(json["goal_met"], false);
+    assert_eq!(json["rules_version"], 1);
+}
+
+#[test]
+fn visuals_serialize_with_a_shape_tag() {
+    let circle = Visual::Circle {
+        r_m: 0.06,
+        look: Look::Rubber,
+    };
+    assert_eq!(
+        serde_json::to_string(&circle).unwrap(),
+        r#"{"shape":"circle","r_m":0.06,"look":"rubber"}"#
+    );
+    assert_eq!(
+        serde_json::to_string(&Visual::Pivot).unwrap(),
+        r#"{"shape":"pivot"}"#
+    );
+    assert_eq!(serde_json::to_string(&Look::Pad).unwrap(), r#""pad""#);
 }

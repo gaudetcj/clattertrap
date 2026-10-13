@@ -276,3 +276,21 @@ fn chain_length_counts_distinct_parts_set_moving() {
     );
     assert_eq!(r.outcome.parts_used, 2);
 }
+
+#[test]
+fn closing_appears_at_the_end_and_matches_run() {
+    let lv = common::level(vec![ball("k", 70.0, 280.0, Material::Steel)]);
+    let sc = scene(vec![beam("b1", 120.0, 210.0, 120.0, -15.0)]);
+    let valid = validate(&lv, &sc, &Rules::V1).unwrap();
+    let mut sim = clattertrap_core::sim::Simulator::new(&lv, &valid, &Rules::V1);
+    let mut recorder = clattertrap_core::score::Recorder::new();
+    assert!(sim.closing().is_none(), "no closing before the run ends");
+    while sim.finished().is_none() {
+        recorder.record(sim.step());
+    }
+    let closing = sim.closing().expect("a finished run has a closing");
+    let (outcome, events) = recorder.finish(closing);
+    let r = run(&lv, &valid, &Rules::V1);
+    assert_eq!(outcome, r.outcome);
+    assert_eq!(events, r.events);
+}

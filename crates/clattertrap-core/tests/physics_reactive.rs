@@ -85,7 +85,7 @@ fn a_balloon_pops_on_a_pin_and_disappears() {
     let t = popped_at.expect("the balloon should reach the pin");
     assert!(t > 1.0 && t < 3.0, "popped at {t} s");
     assert!(s.pose(b).is_none(), "the balloon body should be gone");
-    assert!(s.bodies().all(|(p, _)| p.part != b));
+    assert!(s.slots().all(|slot| slot.part != b || slot.pose.is_none()));
     step_for(&mut s, 0.5);
     assert!(s.poses().all(|p| p.x_m.is_finite() && p.y_m.is_finite()));
 }

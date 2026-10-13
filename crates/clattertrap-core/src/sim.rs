@@ -4,12 +4,12 @@
 use crate::events::{Event, EventKind, PartId, StepEvents};
 use crate::goal::{StepInputs, Tracker};
 use crate::level::Level;
-use crate::parts::{Visual, m, spring_pad};
+use crate::parts::{m, spring_pad};
 use crate::rules::Rules;
 use crate::scene::PartSpec;
 use crate::score::{Closing, End, Outcome, Recorder};
 use crate::validate::ValidScene;
-use crate::world::{BodyPose, World};
+use crate::world::{BodyPose, Slot, World};
 
 /// One run in progress.
 pub struct Simulator {
@@ -198,9 +198,23 @@ impl Simulator {
         self.world.poses()
     }
 
-    /// Every body's pose with its drawing description, in insertion order.
-    pub fn bodies(&self) -> impl Iterator<Item = (BodyPose, Visual)> + '_ {
-        self.world.bodies()
+    /// Every body slot in insertion order, removed bodies included with no pose.
+    pub fn slots(&self) -> impl Iterator<Item = Slot> + '_ {
+        self.world.slots()
+    }
+
+    /// What `Recorder::finish` needs, once the run has ended.
+    #[must_use]
+    pub fn closing(&self) -> Option<Closing> {
+        self.finished.map(|end| Closing {
+            end,
+            steps: self.step,
+            dt_s: self.rules.dt_s,
+            parts_used: self.parts_used,
+            chain_length: self.chain_length(),
+            state_hash: self.state_hash(),
+            rules_version: self.rules.version,
+        })
     }
 
     /// Pose of a part's body, if it still exists.
@@ -274,20 +288,11 @@ pub struct Run {
 pub fn run(level: &Level, scene: &ValidScene, rules: &Rules) -> Run {
     let mut sim = Simulator::new(level, scene, rules);
     let mut recorder = Recorder::new();
-    let end = loop {
+    let closing = loop {
         recorder.record(sim.step());
-        if let Some(end) = sim.finished() {
-            break end;
+        if let Some(closing) = sim.closing() {
+            break closing;
         }
-    };
-    let closing = Closing {
-        end,
-        steps: sim.step_index(),
-        dt_s: rules.dt_s,
-        parts_used: sim.parts_used,
-        chain_length: sim.chain_length(),
-        state_hash: sim.state_hash(),
-        rules_version: rules.version,
     };
     let (outcome, events) = recorder.finish(closing);
     Run { outcome, events }
