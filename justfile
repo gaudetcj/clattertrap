@@ -32,9 +32,9 @@ hero:
 pilot model runs arm:
     cargo xtask stub pilot
 
-# Criterion benches (milestone 2).
+# Criterion benches, including run_level.
 bench:
-    cargo xtask stub bench
+    cargo bench -p clattertrap-core
 
 # Fuzz the scene parser; Linux only (milestone 4).
 fuzz target secs="60":

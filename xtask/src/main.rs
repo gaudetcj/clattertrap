@@ -86,7 +86,6 @@ fn prose(root: &Path) -> Result<()> {
 /// Later milestones replace these with real recipes.
 fn stub(name: &str) -> Result<()> {
     let milestone = match name {
-        "bench" => 2,
         "wasm" | "wasm-test" => 3,
         "fuzz" => 4,
         "pilot" => 5,
