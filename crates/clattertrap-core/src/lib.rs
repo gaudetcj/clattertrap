@@ -1,4 +1,4 @@
-//! Clattertrap core: levels, scenes, validation, parts, the physics world, and scoring.
+//! Clattertrap core library. Today it holds `rules`; the simulator modules arrive with milestone 2.
 //!
 //! Pure library with no I/O. Builds for wasm32.
 #![forbid(unsafe_code)]

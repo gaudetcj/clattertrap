@@ -1,6 +1,6 @@
 [package]
 name = "xtask"
-description = "Project automation: the ci driver, prose lint, and build recipes"
+description = "Project automation: the ci driver, the prose lint, and stubs for later recipes"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
