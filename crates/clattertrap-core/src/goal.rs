@@ -128,7 +128,7 @@ impl Tracker {
                     .count();
                 resting >= count
             }
-            Kind::Pop => world.pose(t).is_none(),
+            Kind::Pop => step.popped.contains(&t),
         }
     }
 }
@@ -137,4 +137,6 @@ impl Tracker {
 pub(crate) struct StepInputs<'a> {
     pub contacts: &'a [(PartId, PartId)],
     pub impulses: &'a [(PartId, PartId, f32)],
+    /// Balloons a pin popped this step. A balloon that floats out of the world is not popped.
+    pub popped: &'a [PartId],
 }

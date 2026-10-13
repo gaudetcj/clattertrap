@@ -28,6 +28,7 @@ pub struct Simulator {
     contacts: Vec<(PartId, PartId)>,
     impulses: Vec<(PartId, PartId, f32)>,
     leaving: Vec<PartId>,
+    popped: Vec<PartId>,
     asleep: Vec<bool>,
     moved: Vec<bool>,
 }
@@ -59,6 +60,7 @@ impl Simulator {
             contacts: Vec::with_capacity(64),
             impulses: Vec::with_capacity(16),
             leaving: Vec::with_capacity(4),
+            popped: Vec::with_capacity(2),
             asleep: vec![false; n],
             moved: vec![false; n],
         }
@@ -75,6 +77,7 @@ impl Simulator {
         self.contacts.extend_from_slice(&raw.contacts);
         self.impulses.clear();
         self.impulses.extend_from_slice(&raw.impulses);
+        self.popped.clear();
         for (a, b) in &self.contacts {
             self.events.push(EventKind::contact(*a, *b));
         }
@@ -83,6 +86,7 @@ impl Simulator {
         let inputs = StepInputs {
             contacts: &self.contacts,
             impulses: &self.impulses,
+            popped: &self.popped,
         };
         if self
             .goal
@@ -116,6 +120,7 @@ impl Simulator {
                 }
                 if self.reactive.pins.contains(&x) && self.reactive.balloons.contains(&y) {
                     self.world.remove_part(y);
+                    self.popped.push(y);
                 }
             }
         }
