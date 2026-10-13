@@ -12,7 +12,13 @@ rust-version = "1.96"
 clattertrap-core = { path = "crates/clattertrap-core" }
 anyhow = "1"
 clap = { version = "4.5", features = ["derive"] }
+criterion = { version = "0.5", default-features = false }
 insta = "1"
+libm = "0.2"
+proptest = "1"
+rapier2d = { version = "=0.36.1", features = ["enhanced-determinism"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }
 wasm-bindgen = "=0.2.129"
 
 [workspace.lints.rust]
