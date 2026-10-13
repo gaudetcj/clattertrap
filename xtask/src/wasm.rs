@@ -92,7 +92,8 @@ pub fn build(root: &Path) -> Result<()> {
     )
 }
 
-/// Runs core's tests on wasm32-wasip1 under the pinned wasmtime.
+/// Runs core's tests on wasm32-wasip1 under the pinned wasmtime, then the wrapper's tests on
+/// wasm32-unknown-unknown under the pinned wasm-bindgen-test-runner.
 ///
 /// # Errors
 /// When a tool is missing or at another version, or a test fails.
@@ -101,15 +102,28 @@ pub fn test(root: &Path) -> Result<()> {
         "install it with: cargo install wasmtime-cli --version {WASMTIME_VERSION} --locked"
     );
     require_tool("wasmtime", WASMTIME_VERSION, &install)?;
+    require_wasm_bindgen(root, "wasm-bindgen-test-runner")?;
+    let cargo = cargo();
     step(
         root,
-        &cargo(),
+        &cargo,
         &[
             "test",
             "-p",
             "clattertrap-core",
             "--target",
             "wasm32-wasip1",
+        ],
+    )?;
+    step(
+        root,
+        &cargo,
+        &[
+            "test",
+            "-p",
+            "clattertrap-wasm",
+            "--target",
+            "wasm32-unknown-unknown",
         ],
     )
 }

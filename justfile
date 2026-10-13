@@ -12,7 +12,7 @@ test:
 wasm:
     cargo xtask wasm
 
-# Core tests on wasm32-wasip1 under the pinned wasmtime.
+# Core tests on wasm32-wasip1 under the pinned wasmtime, plus the wrapper tests on wasm32-unknown-unknown.
 wasm-test:
     cargo xtask wasm-test
 
