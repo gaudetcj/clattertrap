@@ -1,9 +1,9 @@
-//! Entry point for `cargo xtask <command>`: the ci driver, the prose lint, and stubs for later milestones.
+//! Entry point for `cargo xtask <command>`: the ci driver, the prose lint, the wasm recipes, and stubs for later milestones.
 #![forbid(unsafe_code)]
 
-use anyhow::{Context, Result, bail};
+use anyhow::{Result, bail};
 use std::path::{Path, PathBuf};
-use std::process::Command;
+use xtask::{cargo, step, wasm};
 
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -16,8 +16,8 @@ fn main() -> Result<()> {
     {
         ["ci"] => ci(&root),
         ["prose"] => prose(&root),
-        ["wasm"] => stub("wasm"),
-        ["wasm-test"] => stub("wasm-test"),
+        ["wasm"] => wasm::build(&root),
+        ["wasm-test"] => wasm::test(&root),
         ["stub", name] => stub(name),
         _ => bail!("usage: cargo xtask <ci | prose | wasm | wasm-test | stub NAME>"),
     }
@@ -29,9 +29,10 @@ fn repo_root() -> PathBuf {
         .map_or_else(|| PathBuf::from("."), Path::to_path_buf)
 }
 
-/// Runs the merge gate: fmt, clippy on native and wasm32, prose, nextest, doc tests, wasm tests, web lint and tests, gallery verify.
+/// Runs the merge gate: fmt, clippy on native and wasm32, prose, nextest, doc tests, wasm tests, the wasm
+/// build, web lint and tests, gallery verify.
 fn ci(root: &Path) -> Result<()> {
-    let cargo = std::env::var("CARGO").unwrap_or_else(|_| "cargo".to_owned());
+    let cargo = cargo();
     step(root, &cargo, &["fmt", "--all", "--check"])?;
     step(
         root,
@@ -64,7 +65,9 @@ fn ci(root: &Path) -> Result<()> {
     prose(root)?;
     step(root, &cargo, &["nextest", "run", "--workspace"])?;
     step(root, &cargo, &["test", "--doc", "--workspace"])?;
-    stub("wasm-test")?;
+    wasm::test(root)?;
+    // The web lint type-checks against the generated web/pkg types.
+    wasm::build(root)?;
     anyhow::ensure!(
         root.join("web").join("node_modules").is_dir(),
         "web/node_modules is missing; run: npm --prefix web ci"
@@ -86,7 +89,6 @@ fn prose(root: &Path) -> Result<()> {
 /// Later milestones replace these with real recipes.
 fn stub(name: &str) -> Result<()> {
     let milestone = match name {
-        "wasm" | "wasm-test" => 3,
         "fuzz" => 4,
         "pilot" => 5,
         "verify" | "hero" => 6,
@@ -98,19 +100,4 @@ fn stub(name: &str) -> Result<()> {
 
 fn npm() -> &'static str {
     if cfg!(windows) { "npm.cmd" } else { "npm" }
-}
-
-fn step(root: &Path, program: &str, args: &[&str]) -> Result<()> {
-    println!("== {program} {}", args.join(" "));
-    let status = Command::new(program)
-        .args(args)
-        .current_dir(root)
-        .status()
-        .with_context(|| format!("running {program}"))?;
-    anyhow::ensure!(
-        status.success(),
-        "{program} {} failed with {status}",
-        args.join(" ")
-    );
-    Ok(())
 }

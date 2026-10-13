@@ -8,11 +8,11 @@ ci:
 test:
     cargo nextest run --workspace
 
-# Build clattertrap-wasm into web/pkg/ (milestone 3).
+# Build clattertrap-wasm into web/pkg/ with the pinned wasm-bindgen.
 wasm:
     cargo xtask wasm
 
-# Core tests on wasm32-wasip1 plus wasm-bindgen tests (milestone 3).
+# Core tests on wasm32-wasip1 under the pinned wasmtime.
 wasm-test:
     cargo xtask wasm-test
 

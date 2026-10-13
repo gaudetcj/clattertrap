@@ -19,7 +19,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - uses: taiki-e/install-action@v2
         with:
-          tool: just,nextest
+          tool: just,nextest,wasm-bindgen@0.2.129,wasmtime@49.0.2
       - uses: actions/setup-node@v4
         with:
           node-version: 22
