@@ -1,0 +1,115 @@
+//! Shared builders for physics tests: a 4 by 3 m level with everything allowed, and a validated simulator.
+#![allow(
+    dead_code,
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::cast_possible_truncation,
+    clippy::cast_sign_loss
+)]
+
+use clattertrap_core::events::PartId;
+use clattertrap_core::level::{Goal, Inventory, Level, WorldSize, Zone};
+use clattertrap_core::rules::Rules;
+use clattertrap_core::scene::{Material, PartSpec, Placed, Scene};
+use clattertrap_core::sim::Simulator;
+use clattertrap_core::validate::validate;
+
+pub const PI: f32 = std::f32::consts::PI;
+
+pub fn level(fixed: Vec<Placed>) -> Level {
+    Level {
+        id: "test".to_owned(),
+        title: "test".to_owned(),
+        rules_version: 1,
+        world: WorldSize {
+            width_cm: 400.0,
+            height_cm: 300.0,
+        },
+        time_limit_s: 20.0,
+        fixed,
+        zones: vec![Zone {
+            x_cm: 0.0,
+            y_cm: 0.0,
+            width_cm: 400.0,
+            height_cm: 300.0,
+        }],
+        inventory: Inventory {
+            beam: 8,
+            funnel: 2,
+            ball: 8,
+            domino: 16,
+            crates: 4,
+            seesaw: 2,
+            pendulum: 2,
+            spring_pad: 2,
+            bucket: 2,
+            balloon: 2,
+            pin: 2,
+            rope: 2,
+        },
+        goal: Goal::Ring {
+            target: "bell".to_owned(),
+            via: vec![],
+        },
+        showcase: false,
+    }
+}
+
+pub fn scene(parts: Vec<Placed>) -> Scene {
+    Scene {
+        level: "test".to_owned(),
+        parts,
+    }
+}
+
+pub fn placed(id: &str, spec: PartSpec) -> Placed {
+    Placed {
+        id: id.to_owned(),
+        spec,
+    }
+}
+
+pub fn ball(id: &str, x_cm: f32, y_cm: f32, material: Material) -> Placed {
+    placed(
+        id,
+        PartSpec::Ball {
+            x_cm,
+            y_cm,
+            material,
+        },
+    )
+}
+
+pub fn beam(id: &str, x_cm: f32, y_cm: f32, length_cm: f32, angle_deg: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Beam {
+            x_cm,
+            y_cm,
+            length_cm,
+            angle_deg,
+        },
+    )
+}
+
+pub fn sim(level: &Level, scene: &Scene) -> Simulator {
+    let valid =
+        validate(level, scene, &Rules::V1).unwrap_or_else(|problems| panic!("{problems:#?}"));
+    Simulator::new(level, &valid, &Rules::V1)
+}
+
+pub fn part(sim: &Simulator, name: &str) -> PartId {
+    sim.part_id(name)
+        .unwrap_or_else(|| panic!("no part named {name}"))
+}
+
+pub fn step_for(sim: &mut Simulator, seconds: f32) {
+    let steps = (seconds / Rules::V1.dt_s).round() as u32;
+    for _ in 0..steps {
+        sim.step();
+    }
+}
+
+pub fn close(actual: f32, expected: f32, tolerance: f32) -> bool {
+    (actual - expected).abs() <= tolerance * expected.abs()
+}
