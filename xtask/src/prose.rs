@@ -134,7 +134,12 @@ pub fn run(root: &Path) -> Result<usize> {
         if !should_scan(path) {
             continue;
         }
-        let bytes = std::fs::read(root.join(path)).with_context(|| format!("reading {rel}"))?;
+        let full = root.join(path);
+        // A path can be in the index after its file was deleted; there is nothing to lint then.
+        if !full.is_file() {
+            continue;
+        }
+        let bytes = std::fs::read(&full).with_context(|| format!("reading {rel}"))?;
         let Ok(text) = String::from_utf8(bytes) else {
             continue;
         };
@@ -214,5 +219,25 @@ mod tests {
         assert!(!should_scan(Path::new("gallery/bell/opus/notes.md")));
         assert!(!should_scan(Path::new("docs/hero.gif")));
         assert!(!should_scan(Path::new("web/package-lock.json")));
+    }
+
+    #[test]
+    fn skips_tracked_files_that_no_longer_exist_on_disk() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let git = |args: &[&str]| {
+            let status = std::process::Command::new("git")
+                .args(args)
+                .current_dir(root)
+                .status()
+                .unwrap();
+            assert!(status.success(), "git {args:?}");
+        };
+        git(&["init", "-q"]);
+        std::fs::write(root.join("kept.md"), "A ball rolls.\n").unwrap();
+        std::fs::write(root.join("gone.md"), "A ball rolls.\n").unwrap();
+        git(&["add", "kept.md", "gone.md"]);
+        std::fs::remove_file(root.join("gone.md")).unwrap();
+        assert_eq!(super::run(root).unwrap(), 0);
     }
 }
