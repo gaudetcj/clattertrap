@@ -12,8 +12,14 @@ rapier2d.workspace = true
 serde.workspace = true
 
 [dev-dependencies]
+criterion.workspace = true
 insta.workspace = true
+proptest.workspace = true
 serde_json.workspace = true
+
+[[bench]]
+name = "run_level"
+harness = false
 
 [lints]
 workspace = true
