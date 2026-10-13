@@ -1,4 +1,4 @@
-//! Clattertrap core library. Today it holds `rules`; the simulator modules arrive with milestone 2.
+//! Clattertrap core library: level and scene formats, validation, every v0.1 part, the rapier world, the simulator, events, and scoring.
 //!
 //! Pure library with no I/O. Builds for wasm32.
 #![forbid(unsafe_code)]
