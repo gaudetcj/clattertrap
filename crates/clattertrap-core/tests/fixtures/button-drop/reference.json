@@ -1,0 +1,8 @@
+{
+  "level": "button-drop",
+  "parts": [
+    { "id": "b1", "kind": "beam", "x_cm": 140, "y_cm": 200, "length_cm": 140, "angle_deg": -15 },
+    { "id": "b2", "kind": "beam", "x_cm": 255, "y_cm": 130, "length_cm": 100, "angle_deg": -10 },
+    { "id": "f1", "kind": "funnel", "x_cm": 330, "y_cm": 60, "mouth_cm": 100, "throat_cm": 16, "height_cm": 60 }
+  ]
+}

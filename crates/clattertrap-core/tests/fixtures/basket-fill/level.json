@@ -1,0 +1,16 @@
+{
+  "id": "basket-fill",
+  "title": "Fill the basket",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "wood", "x_cm": 350, "y_cm": 280 },
+    { "id": "ball1", "kind": "ball", "material": "wood", "x_cm": 350, "y_cm": 262 },
+    { "id": "ball2", "kind": "ball", "material": "wood", "x_cm": 350, "y_cm": 244 },
+    { "id": "basket", "kind": "basket", "x_cm": 60, "y_cm": 0.5, "inner_width_cm": 50, "inner_height_cm": 40 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 50, "width_cm": 360, "height_cm": 250 } ],
+  "inventory": { "beam": 5, "seesaw": 1 },
+  "goal": { "kind": "fill", "target": "basket", "count": 2 }
+}

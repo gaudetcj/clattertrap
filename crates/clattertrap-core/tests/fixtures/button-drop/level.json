@@ -1,0 +1,14 @@
+{
+  "id": "button-drop",
+  "title": "Press the button",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 80, "y_cm": 250 },
+    { "id": "button", "kind": "button", "x_cm": 330, "y_cm": 40, "travel_cm": 3 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 60, "width_cm": 360, "height_cm": 240 } ],
+  "inventory": { "beam": 3, "domino": 8, "funnel": 1 },
+  "goal": { "kind": "press", "target": "button" }
+}

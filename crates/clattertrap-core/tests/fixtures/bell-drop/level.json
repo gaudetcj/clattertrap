@@ -1,0 +1,14 @@
+{
+  "id": "bell-drop",
+  "title": "Ring the bell",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 70, "y_cm": 280 },
+    { "id": "bell", "kind": "bell", "x_cm": 360, "y_cm": 100, "rope_cm": 50 }
+  ],
+  "zones": [ { "x_cm": 30, "y_cm": 0, "width_cm": 310, "height_cm": 300 } ],
+  "inventory": { "beam": 4, "seesaw": 1, "domino": 6 },
+  "goal": { "kind": "ring", "target": "bell" }
+}

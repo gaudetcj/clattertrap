@@ -1,0 +1,14 @@
+{
+  "id": "balloon-pin",
+  "title": "Pop the balloon",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "balloon", "kind": "balloon", "x_cm": 50, "y_cm": 30 },
+    { "id": "pin", "kind": "pin", "x_cm": 320, "y_cm": 290 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 60, "width_cm": 360, "height_cm": 200 } ],
+  "inventory": { "beam": 4, "ball": 1 },
+  "goal": { "kind": "pop", "target": "balloon" }
+}
