@@ -1,8 +1,7 @@
 //! Beam: a fixed wooden plank.
 
-use super::{Look, Visual, m, rad};
+use super::{Look, m, m2, rad};
 use crate::events::PartId;
-use crate::rules::Rules;
 use crate::world::{Builder, Surface};
 
 pub(crate) fn build(
@@ -18,19 +17,5 @@ pub(crate) fn build(
         friction: rules.wood.friction,
         restitution: 0.0,
     };
-    b.fixed_box(
-        id,
-        [m(centre_cm[0]), m(centre_cm[1])],
-        half,
-        rad(angle_deg),
-        surface,
-    );
-}
-
-pub(crate) fn visual(length_cm: f32, rules: &Rules) -> Visual {
-    Visual::Box {
-        w_m: m(length_cm),
-        h_m: rules.plank_thickness_m,
-        look: Look::Wood,
-    }
+    b.fixed_box(id, m2(centre_cm), half, rad(angle_deg), surface, Look::Wood);
 }

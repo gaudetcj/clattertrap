@@ -1,28 +1,37 @@
-//! One small module per part kind. Each builds its bodies and colliders from validated parameters
-//! through `world::Builder` and owns its drawing description.
+//! One small module per part kind. Each builds its bodies, colliders, and joints from validated
+//! parameters through `world::Builder` and names how it is drawn.
 
 mod ball;
 mod beam;
+mod crate_box;
+mod domino;
+mod pendulum;
+mod rope;
+mod seesaw;
 
 use crate::events::PartId;
 use crate::scene::PartSpec;
 use crate::world::Builder;
 
 /// Part kinds the simulator builds today. `validate` rejects the rest until their milestone step lands.
-pub const SUPPORTED: &[&str] = &["beam", "ball"];
+pub const SUPPORTED: &[&str] = &[
+    "beam", "ball", "domino", "crate", "seesaw", "pendulum", "rope",
+];
 
 /// Surface finish the viewer draws.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Look {
-    /// Tan plank.
+    /// Tan plank or box.
     Wood,
     /// Grey metal.
     Steel,
     /// Dark rubber.
     Rubber,
+    /// Cream tile with a dark edge.
+    Domino,
 }
 
-/// What a part looks like, in metres, relative to its body pose.
+/// What one body looks like, in metres, relative to its pose.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Visual {
     /// A disc.
@@ -32,7 +41,7 @@ pub enum Visual {
         /// Finish.
         look: Look,
     },
-    /// An axis-aligned box before the body's rotation.
+    /// A rectangle before the body's rotation.
     Box {
         /// Full width.
         w_m: f32,
@@ -41,6 +50,8 @@ pub enum Visual {
         /// Finish.
         look: Look,
     },
+    /// A fixed pivot or pin point.
+    Pivot,
 }
 
 /// Centimetres to metres.
@@ -49,13 +60,20 @@ pub(crate) fn m(cm: f32) -> f32 {
     cm / 100.0
 }
 
+/// A centimetre point to metres.
+#[must_use]
+pub(crate) fn m2(cm: [f32; 2]) -> [f32; 2] {
+    [m(cm[0]), m(cm[1])]
+}
+
 /// Degrees to radians.
 #[must_use]
 pub(crate) fn rad(deg: f32) -> f32 {
     deg * core::f32::consts::PI / 180.0
 }
 
-/// Adds a part to the world under construction.
+/// Adds a part to the world under construction. Ropes need both ends built first; `World::build`
+/// adds them in a second pass.
 pub(crate) fn build(spec: &PartSpec, id: PartId, b: &mut Builder<'_>) {
     match spec {
         PartSpec::Beam {
@@ -69,17 +87,34 @@ pub(crate) fn build(spec: &PartSpec, id: PartId, b: &mut Builder<'_>) {
             y_cm,
             material,
         } => ball::build(id, [*x_cm, *y_cm], *material, b),
+        PartSpec::Domino {
+            x_cm,
+            y_cm,
+            angle_deg,
+        } => domino::build(id, [*x_cm, *y_cm], *angle_deg, b),
+        PartSpec::Crate {
+            x_cm,
+            y_cm,
+            side_cm,
+        } => crate_box::build(id, [*x_cm, *y_cm], *side_cm, b),
+        PartSpec::Seesaw {
+            x_cm,
+            y_cm,
+            length_cm,
+            angle_deg,
+        } => seesaw::build(id, [*x_cm, *y_cm], *length_cm, *angle_deg, b),
+        PartSpec::Pendulum {
+            x_cm,
+            y_cm,
+            length_cm,
+            angle_deg,
+        } => pendulum::build(id, [*x_cm, *y_cm], *length_cm, *angle_deg, b),
+        PartSpec::Rope {
+            a,
+            b: other,
+            max_length_cm,
+        } => rope::build(a, other, *max_length_cm, b),
         // validate rejects every kind outside SUPPORTED before a world is built.
         other => unreachable!("validate admits only SUPPORTED kinds, got {}", other.kind()),
-    }
-}
-
-/// The drawing description of a part.
-#[must_use]
-pub fn visual(spec: &PartSpec, rules: &crate::rules::Rules) -> Option<Visual> {
-    match spec {
-        PartSpec::Beam { length_cm, .. } => Some(beam::visual(*length_cm, rules)),
-        PartSpec::Ball { material, .. } => Some(ball::visual(*material, rules)),
-        _ => None,
     }
 }

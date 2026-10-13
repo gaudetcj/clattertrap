@@ -3,6 +3,7 @@
 
 use crate::events::{Event, EventKind, PartId, StepEvents};
 use crate::level::Level;
+use crate::parts::Visual;
 use crate::rules::Rules;
 use crate::score::{Closing, End, Outcome, Recorder};
 use crate::validate::ValidScene;
@@ -95,6 +96,11 @@ impl Simulator {
     /// Every body's pose.
     pub fn poses(&self) -> impl Iterator<Item = BodyPose> + '_ {
         self.world.poses()
+    }
+
+    /// Every body's pose with its drawing description, in insertion order.
+    pub fn bodies(&self) -> impl Iterator<Item = (BodyPose, Visual)> + '_ {
+        self.world.bodies()
     }
 
     /// Pose of a part's body, if it still exists.

@@ -9,8 +9,9 @@ pub(crate) use collector::RawEvents;
 use crate::events::PartId;
 use crate::hash::Fnv64;
 use crate::level::Level;
-use crate::parts;
+use crate::parts::{self, Look, Visual};
 use crate::rules::Rules;
+use crate::scene::PartSpec;
 use crate::validate::ValidScene;
 use builder::BodyMeta;
 use collector::Collector;
@@ -58,7 +59,7 @@ impl World {
         pw.integration_parameters.dt = rules.dt_s;
         pw.integration_parameters.max_ccd_substeps = rules.max_ccd_substeps;
         let mut metas = Vec::with_capacity(valid.placed().len() + 1);
-        let mut b = Builder::new(&mut pw, &mut metas, rules);
+        let mut b = Builder::new(&mut pw, &mut metas, rules, valid.names());
         let width_m = parts::m(level.world.width_cm);
         let floor = Surface {
             friction: rules.wood.friction,
@@ -70,11 +71,18 @@ impl World {
             [width_m / 2.0 + rules.leave_margin_m, 0.5],
             0.0,
             floor,
+            Look::Wood,
         );
-        for (i, placed) in valid.placed().iter().enumerate() {
-            // validate caps the part count at u16::MAX.
-            #[allow(clippy::cast_possible_truncation)]
-            parts::build(&placed.spec, PartId(i as u16), &mut b);
+        // Ropes link bodies, so every other part is built first.
+        for pass in [false, true] {
+            for (i, placed) in valid.placed().iter().enumerate() {
+                if matches!(placed.spec, PartSpec::Rope { .. }) != pass {
+                    continue;
+                }
+                // validate caps the part count at u16::MAX.
+                #[allow(clippy::cast_possible_truncation)]
+                parts::build(&placed.spec, PartId(i as u16), &mut b);
+            }
         }
         Self {
             pw,
@@ -146,6 +154,16 @@ impl World {
                 .bodies
                 .get(m.handle)
                 .map(|b| Self::pose_of(m.part, b))
+        })
+    }
+
+    /// Every body's pose with its drawing description, in insertion order.
+    pub(crate) fn bodies(&self) -> impl Iterator<Item = (BodyPose, Visual)> + '_ {
+        self.metas.iter().filter_map(|m| {
+            self.pw
+                .bodies
+                .get(m.handle)
+                .map(|b| (Self::pose_of(m.part, b), m.visual))
         })
     }
 

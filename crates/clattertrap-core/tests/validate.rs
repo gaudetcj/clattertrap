@@ -189,3 +189,51 @@ fn every_problem_is_reported_at_once() {
     let ps = problems(&lv, &scene(parts));
     assert!(ps.len() >= 3, "{ps:#?}");
 }
+
+#[test]
+fn a_rope_to_a_missing_part_is_rejected() {
+    let lv = level(vec![ball("k1", 50.0, 250.0, Material::Steel)]);
+    let rope = placed(
+        "r1",
+        PartSpec::Rope {
+            a: "k1".to_owned(),
+            b: "zz".to_owned(),
+            max_length_cm: 40.0,
+        },
+    );
+    let msg = only(&lv, &scene(vec![rope]));
+    assert!(msg.starts_with("parts[0] (rope r1): "), "{msg}");
+    assert!(
+        msg.contains("b = \"zz\"") && msg.contains("names no part"),
+        "{msg}"
+    );
+}
+
+#[test]
+fn a_rope_may_not_link_a_rope() {
+    let lv = level(vec![
+        ball("k1", 50.0, 250.0, Material::Steel),
+        ball("k2", 150.0, 250.0, Material::Steel),
+    ]);
+    let r1 = placed(
+        "r1",
+        PartSpec::Rope {
+            a: "k1".to_owned(),
+            b: "k2".to_owned(),
+            max_length_cm: 40.0,
+        },
+    );
+    let r2 = placed(
+        "r2",
+        PartSpec::Rope {
+            a: "k1".to_owned(),
+            b: "r1".to_owned(),
+            max_length_cm: 40.0,
+        },
+    );
+    let msg = only(&lv, &scene(vec![r1, r2]));
+    assert!(
+        msg.starts_with("parts[1] (rope r2): ") && msg.contains("is a rope"),
+        "{msg}"
+    );
+}

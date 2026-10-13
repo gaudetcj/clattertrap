@@ -92,6 +92,63 @@ pub fn beam(id: &str, x_cm: f32, y_cm: f32, length_cm: f32, angle_deg: f32) -> P
     )
 }
 
+pub fn domino(id: &str, x_cm: f32, y_cm: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Domino {
+            x_cm,
+            y_cm,
+            angle_deg: 0.0,
+        },
+    )
+}
+
+pub fn crate_box(id: &str, x_cm: f32, y_cm: f32, side_cm: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Crate {
+            x_cm,
+            y_cm,
+            side_cm,
+        },
+    )
+}
+
+pub fn seesaw(id: &str, x_cm: f32, y_cm: f32, length_cm: f32, angle_deg: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Seesaw {
+            x_cm,
+            y_cm,
+            length_cm,
+            angle_deg,
+        },
+    )
+}
+
+pub fn pendulum(id: &str, x_cm: f32, y_cm: f32, length_cm: f32, angle_deg: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Pendulum {
+            x_cm,
+            y_cm,
+            length_cm,
+            angle_deg,
+        },
+    )
+}
+
+pub fn rope(id: &str, a: &str, b: &str, max_length_cm: f32) -> Placed {
+    placed(
+        id,
+        PartSpec::Rope {
+            a: a.to_owned(),
+            b: b.to_owned(),
+            max_length_cm,
+        },
+    )
+}
+
 pub fn sim(level: &Level, scene: &Scene) -> Simulator {
     let valid =
         validate(level, scene, &Rules::V1).unwrap_or_else(|problems| panic!("{problems:#?}"));
@@ -112,4 +169,15 @@ pub fn step_for(sim: &mut Simulator, seconds: f32) {
 
 pub fn close(actual: f32, expected: f32, tolerance: f32) -> bool {
     (actual - expected).abs() <= tolerance * expected.abs()
+}
+
+/// Centre of a ball resting on a plank whose centre line passes through (`x_cm`, `y_cm`) at `angle_deg`.
+pub fn on_plank(x_cm: f32, y_cm: f32, angle_deg: f32, along_cm: f32, radius_m: f32) -> [f32; 2] {
+    let a = angle_deg * PI / 180.0;
+    let (cos, sin) = (libm::cosf(a), libm::sinf(a));
+    let lift = (radius_m + Rules::V1.plank_thickness_m / 2.0) * 100.0 + 0.2;
+    [
+        x_cm + along_cm * cos - lift * sin,
+        y_cm + along_cm * sin + lift * cos,
+    ]
 }
