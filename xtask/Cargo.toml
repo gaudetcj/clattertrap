@@ -1,0 +1,14 @@
+[package]
+name = "xtask"
+description = "Project automation: the ci driver, prose lint, and build recipes"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+anyhow.workspace = true
+
+[lints]
+workspace = true
