@@ -1,0 +1,11 @@
+---
+source: crates/clattertrap-cli/tests/help.rs
+expression: "String::from_utf8(out.stdout).unwrap()"
+---
+Build Rube Goldberg machines with AI models and watch whether they work
+
+Usage: clattertrap
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version

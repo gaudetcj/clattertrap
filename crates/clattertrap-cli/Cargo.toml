@@ -1,0 +1,21 @@
+[package]
+name = "clattertrap-cli"
+description = "The clattertrap command line: rules, levels, check, look, run, mcp, report, verify, arena"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "clattertrap"
+path = "src/main.rs"
+
+[dependencies]
+clap.workspace = true
+clattertrap-core.workspace = true
+
+[dev-dependencies]
+insta.workspace = true
+
+[lints]
+workspace = true
