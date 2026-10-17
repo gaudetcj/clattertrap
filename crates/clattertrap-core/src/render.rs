@@ -245,6 +245,10 @@ impl Frame {
         pixmap.stroke_path(&path, &edge, &stroke, transform, None);
     }
 
+    fn clamp_label(&self, x: f32, y: f32, name: &str) -> (f32, f32) {
+        clamp_label_in(self.width_px, self.height_px, x, y, name)
+    }
+
     /// Each part's id just right of its first body, clear of the outline.
     fn labels(&self, pixmap: &mut Pixmap, slots: &[Slot], names: &[String], floor: PartId) {
         let ink = paint::solid(INK, 1.0);
@@ -264,16 +268,18 @@ impl Frame {
             let Some(pose) = slot.pose else { continue };
             let reach_px = paint::reach_m(&slot.visual) * 100.0 * self.px_per_cm;
             let (x, y) = self.px(pose.x_m * 100.0, pose.y_m * 100.0);
-            font::draw(
-                pixmap,
-                x + reach_px + 4.0,
-                y - 3.5 * TEXT_SCALE,
-                name,
-                TEXT_SCALE,
-                &ink,
-            );
+            let (x, y) = self.clamp_label(x + reach_px + 4.0, y - 3.5 * TEXT_SCALE, name);
+            font::draw(pixmap, x, y, name, TEXT_SCALE, &ink);
         }
     }
+}
+
+/// A label origin pulled inside the picture, with a 2 px margin.
+#[allow(clippy::cast_precision_loss)]
+fn clamp_label_in(width_px: u32, height_px: u32, x: f32, y: f32, name: &str) -> (f32, f32) {
+    let right = width_px as f32 - text_width(name, TEXT_SCALE) - 2.0;
+    let bottom = height_px as f32 - 7.0 * TEXT_SCALE - 2.0;
+    (x.min(right).max(2.0), y.min(bottom).max(2.0))
 }
 
 /// The first body of a part that is not a pivot and still exists.

@@ -16,7 +16,7 @@ use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::Scene;
 use clattertrap_core::sim::Simulator;
 use clattertrap_core::validate::validate;
-use common::{level, pendulum, scene};
+use common::{crate_box, level, pendulum, scene};
 use tiny_skia::{Color, Pixmap};
 
 const BELL_LEVEL: &str = include_str!("../../../levels/bell-drop/level.json");
@@ -119,4 +119,16 @@ fn png_bytes_start_with_the_signature() {
         &[0x89, b'P', b'N', b'G', 0x0d, 0x0a, 0x1a, 0x0a]
     );
     assert!(bytes.len() > 2000, "{}", bytes.len());
+}
+
+#[test]
+fn a_label_near_the_edge_stays_inside_the_picture() {
+    let lv = level(vec![crate_box("corner", 395.0, 6.0, 10.0)]);
+    let sc = scene(vec![]);
+    let valid = validate(&lv, &sc, &Rules::V1).unwrap();
+    let sim = Simulator::new(&lv, &valid, &Rules::V1);
+    let p = Frame::new(&lv, 2.0).draw(&sim, &valid);
+    // "corner" is 70 px wide at this scale, so it is pulled left of the crate (x 780..800) and up off the edge.
+    let lettered = (728..776).any(|x| (584..598).any(|y| ink(rgb(&p, x, y))));
+    assert!(lettered, "no label left of the corner crate");
 }
