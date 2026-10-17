@@ -133,3 +133,14 @@ fn a_label_near_the_edge_stays_inside_the_picture() {
     let lettered = (768..815).any(|x| (584..598).any(|y| ink(rgb(&p, x, y))));
     assert!(lettered, "no label left of the corner crate");
 }
+
+#[test]
+fn the_axis_numbers_sit_in_the_margins_uncovered() {
+    let (_, p) = bell_drop_at_start();
+    // "50" is centred under x = 50 cm, which is 140 px in, inside the 20 px bottom margin.
+    let x_label = (129..152).any(|x| (603..617).any(|y| ink(rgb(&p, x, y))));
+    assert!(x_label, "no x label in the bottom margin");
+    // "50" for y = 50 cm ends 4 px left of the world, 500 px down.
+    let y_label = (12..37).any(|x| (493..507).any(|y| ink(rgb(&p, x, y))));
+    assert!(y_label, "no y label in the left margin");
+}

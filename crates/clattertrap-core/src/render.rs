@@ -98,12 +98,14 @@ impl Frame {
         self.paper(&mut pixmap);
         let slots: Vec<Slot> = sim.slots().collect();
         self.links(&mut pixmap, &slots, valid);
-        for slot in &slots {
+        // The floor slab would cover the bottom margin; the floor line stands for it.
+        let floor = valid.floor_id();
+        for slot in slots.iter().filter(|s| s.part != floor) {
             if let Some(pose) = slot.pose {
                 self.body(&mut pixmap, &slot.visual, &pose);
             }
         }
-        self.labels(&mut pixmap, &slots, sim.names(), valid.floor_id());
+        self.labels(&mut pixmap, &slots, sim.names(), floor);
         pixmap
     }
 
