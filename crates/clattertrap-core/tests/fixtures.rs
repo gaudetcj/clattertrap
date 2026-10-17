@@ -2,39 +2,14 @@
 //! the same on every platform (invariant 1). The committed snapshots are the golden hashes.
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
+mod common;
+
 use clattertrap_core::level::Level;
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::Scene;
 use clattertrap_core::sim::{Run, run};
 use clattertrap_core::validate::validate;
-
-/// Fixture id, level JSON, reference JSON, and the committed golden lines for the reference and the empty scene.
-struct Fixture {
-    id: &'static str,
-    level: &'static str,
-    reference: &'static str,
-    reference_snap: &'static str,
-    empty_snap: &'static str,
-}
-
-macro_rules! fixture {
-    ($id:literal) => {
-        Fixture {
-            id: $id,
-            level: include_str!(concat!("../../../levels/", $id, "/level.json")),
-            reference: include_str!(concat!("../../../levels/", $id, "/reference.json")),
-            reference_snap: include_str!(concat!("snapshots/fixtures__", $id, "-reference.snap")),
-            empty_snap: include_str!(concat!("snapshots/fixtures__", $id, "-empty.snap")),
-        }
-    };
-}
-
-const FIXTURES: [Fixture; 4] = [
-    fixture!("bell-drop"),
-    fixture!("balloon-pin"),
-    fixture!("basket-fill"),
-    fixture!("button-drop"),
-];
+use common::levels::{ALL as FIXTURES, Fixture};
 
 fn load(f: &Fixture) -> (Level, Scene) {
     (
@@ -143,4 +118,22 @@ fn golden_hashes_match_the_committed_snapshots() {
             f.id
         );
     }
+}
+
+/// The embedded list and the directory agree, so no level is left out of the golden tests.
+#[test]
+#[cfg(not(target_family = "wasm"))]
+fn every_level_directory_is_embedded() {
+    let dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("..")
+        .join("..")
+        .join("levels");
+    let mut on_disk: Vec<String> = std::fs::read_dir(dir)
+        .unwrap()
+        .map(|e| e.unwrap().file_name().to_string_lossy().into_owned())
+        .collect();
+    on_disk.sort();
+    let mut embedded: Vec<String> = FIXTURES.iter().map(|f| f.id.to_owned()).collect();
+    embedded.sort();
+    assert_eq!(embedded, on_disk);
 }

@@ -1,9 +1,10 @@
-//! Entry point for `cargo xtask <command>`: the ci driver, the prose lint, the wasm recipes, and stubs for later milestones.
+//! Entry point for `cargo xtask <command>`: the ci driver, the prose lint, the wasm recipes, the fuzz
+//! runner, and stubs for later milestones.
 #![forbid(unsafe_code)]
 
 use anyhow::{Result, bail};
 use std::path::{Path, PathBuf};
-use xtask::{cargo, step, wasm};
+use xtask::{cargo, fuzz, step, wasm};
 
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -18,8 +19,12 @@ fn main() -> Result<()> {
         ["prose"] => prose(&root),
         ["wasm"] => wasm::build(&root),
         ["wasm-test"] => wasm::test(&root),
+        ["fuzz", target] => fuzz(&root, target, 60),
+        ["fuzz", target, secs] => fuzz(&root, target, secs.parse()?),
         ["stub", name] => stub(name),
-        _ => bail!("usage: cargo xtask <ci | prose | wasm | wasm-test | stub NAME>"),
+        _ => bail!(
+            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | stub NAME>"
+        ),
     }
 }
 
@@ -89,7 +94,6 @@ fn prose(root: &Path) -> Result<()> {
 /// Later milestones replace these with real recipes.
 fn stub(name: &str) -> Result<()> {
     let milestone = match name {
-        "fuzz" => 4,
         "pilot" => 5,
         "verify" | "hero" => 6,
         _ => bail!("unknown stub {name}"),

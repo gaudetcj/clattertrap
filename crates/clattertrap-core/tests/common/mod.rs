@@ -14,6 +14,8 @@ use clattertrap_core::scene::{Material, PartSpec, Placed, Scene};
 use clattertrap_core::sim::Simulator;
 use clattertrap_core::validate::validate;
 
+pub mod levels;
+
 pub const PI: f32 = std::f32::consts::PI;
 
 /// A level whose goal is a bell tucked in the top-right corner, out of the way of physics tests.

@@ -36,6 +36,6 @@ pilot model runs arm:
 bench:
     cargo bench -p clattertrap-core
 
-# Fuzz the scene parser; Linux only (milestone 4).
+# Fuzz a parser with random and mutated input for a time budget in seconds. Targets: scene.
 fuzz target secs="60":
-    cargo xtask stub fuzz
+    cargo xtask fuzz {{target}} {{secs}}

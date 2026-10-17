@@ -1,4 +1,5 @@
-//! Project automation for Clattertrap: the `ci` driver, the prose lint, the wasm recipes, and stubs for later recipes.
+//! Project automation for Clattertrap: the `ci` driver, the prose lint, the wasm recipes, the fuzz runner,
+//! and stubs for later recipes.
 #![forbid(unsafe_code)]
 
 pub mod prose;
@@ -31,4 +32,53 @@ pub fn step(root: &Path, program: &str, args: &[&str]) -> Result<()> {
         args.join(" ")
     );
     Ok(())
+}
+
+/// The test binary behind a `just fuzz` target.
+#[must_use]
+pub fn fuzz_test_name(target: &str) -> Option<&'static str> {
+    match target {
+        "scene" => Some("fuzz_scene"),
+        _ => None,
+    }
+}
+
+/// Runs a fuzz target's ignored long-form test in release mode for `secs` seconds.
+///
+/// # Errors
+/// When the target is unknown or the test finds a panic.
+pub fn fuzz(root: &Path, target: &str, secs: u64) -> Result<()> {
+    let Some(test) = fuzz_test_name(target) else {
+        anyhow::bail!("unknown fuzz target {target:?}; targets: scene");
+    };
+    println!("== fuzz {target} for {secs} s");
+    let status = Command::new(cargo())
+        .args([
+            "test",
+            "-p",
+            "clattertrap-core",
+            "--release",
+            "--test",
+            test,
+            "--",
+            "--ignored",
+            "--nocapture",
+        ])
+        .env("CLATTERTRAP_FUZZ_SECS", secs.to_string())
+        .current_dir(root)
+        .status()
+        .context("running cargo test")?;
+    anyhow::ensure!(status.success(), "fuzz {target} failed with {status}");
+    Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::fuzz_test_name;
+
+    #[test]
+    fn fuzz_targets_map_to_their_test_binaries() {
+        assert_eq!(fuzz_test_name("scene"), Some("fuzz_scene"));
+        assert_eq!(fuzz_test_name("levels"), None);
+    }
 }
