@@ -1,7 +1,9 @@
-// The level page: pick a level, play its reference solution, hear it, and read the verdict.
+// The level page: pick a level, play its reference solution or an opened scene, hear it, and read the
+// verdict.
 
 import { loadWasm } from './replay';
 import { Player } from './player';
+import { parseOpened } from './submission';
 
 interface Fixture {
   id: string;
@@ -72,32 +74,65 @@ async function page(app: HTMLElement): Promise<void> {
   const playButton = el('button', 'Play');
   const restartButton = el('button', 'Restart');
   const muteButton = el('button', 'Mute');
+  const openInput = el('input');
+  openInput.type = 'file';
+  openInput.accept = '.json,application/json';
+  const openLabel = el('label', 'Open scene ');
+  openLabel.append(openInput);
   const controls = el('div', undefined, 'controls');
-  controls.append(select, playButton, restartButton, muteButton);
+  controls.append(select, playButton, restartButton, muteButton, openLabel);
   const canvas = el('canvas');
+  const caption = el('p', '', 'caption');
   const status = el('p', 'loading', 'status');
-  app.replaceChildren(el('h1', 'Clattertrap'), controls, canvas, status);
+  app.replaceChildren(el('h1', 'Clattertrap'), controls, canvas, caption, status);
 
   const player = new Player(canvas, wasm.dt_s, (text) => {
     status.textContent = text;
     playButton.textContent = player.isPlaying() ? 'Pause' : 'Play';
   });
-  const load = (): void => {
-    const f = levels.find((x) => x.id === select.value);
+  // Loads a scene onto its level; the reference solution when no scene is given.
+  const show = (levelId: string, sceneJson: string | null, text: string): void => {
+    const f = levels.find((x) => x.id === levelId);
     if (!f) {
-      status.textContent = 'no levels found';
+      status.textContent = `no level ${levelId}`;
       return;
     }
     if (rulesVersionOf(f.level) !== wasm.rules_version) {
       status.textContent = `${f.id} was written for rules v${rulesVersionOf(f.level)}; this build runs v${wasm.rules_version}`;
       return;
     }
+    select.value = f.id;
+    caption.textContent = text;
     try {
-      player.load(f.level, f.reference);
+      player.load(f.level, sceneJson ?? f.reference);
     } catch (e) {
       status.textContent = e instanceof Error ? e.message : String(e);
     }
   };
+  const load = (): void => show(select.value, null, '');
+  const open = async (file: File): Promise<void> => {
+    try {
+      const opened = parseOpened(await file.text());
+      const text = [opened.name, opened.prediction].filter((s) => s !== undefined).join(': ');
+      show(opened.levelId, opened.sceneJson, text || file.name);
+    } catch (e) {
+      status.textContent = `${file.name}: ${e instanceof Error ? e.message : String(e)}`;
+    }
+  };
+  openInput.addEventListener('change', () => {
+    const file = openInput.files?.[0];
+    if (file) {
+      void open(file);
+    }
+  });
+  app.addEventListener('dragover', (e) => e.preventDefault());
+  app.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer?.files[0];
+    if (file) {
+      void open(file);
+    }
+  });
   select.addEventListener('change', load);
   playButton.addEventListener('click', () => player.toggle());
   restartButton.addEventListener('click', () => player.restart());
