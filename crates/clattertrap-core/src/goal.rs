@@ -31,6 +31,7 @@ pub(crate) struct Tracker {
     target: PartId,
     via: Vec<PartId>,
     via_done: usize,
+    floor: PartId,
 }
 
 impl Tracker {
@@ -83,10 +84,12 @@ impl Tracker {
             target,
             via,
             via_done: 0,
+            floor: scene.floor_id(),
         }
     }
 
-    /// Records waypoints touched this step and reports whether the goal is met.
+    /// Records waypoints touched this step and reports whether the goal is met. A touch is a contact
+    /// with anything but the floor while one of the pair is moving, so resting contacts never count.
     pub(crate) fn observe(
         &mut self,
         world: &World,
@@ -95,7 +98,13 @@ impl Tracker {
         events: &mut StepEvents,
     ) -> bool {
         while let Some(next) = self.via.get(self.via_done).copied() {
-            if !step.contacts.iter().any(|(a, b)| *a == next || *b == next) {
+            let touched = step.contacts.iter().any(|&(a, b)| {
+                (a == next || b == next)
+                    && a != self.floor
+                    && b != self.floor
+                    && (moving(world, a, rules) || moving(world, b, rules))
+            });
+            if !touched {
                 break;
             }
             events.push(EventKind::Via(next));
@@ -139,4 +148,12 @@ pub(crate) struct StepInputs<'a> {
     pub impulses: &'a [(PartId, PartId, f32)],
     /// Balloons a pin popped this step. A balloon that floats out of the world is not popped.
     pub popped: &'a [PartId],
+}
+
+/// Whether a part moves faster than the chain threshold; fixed and removed parts never do.
+fn moving(world: &World, part: PartId, rules: &Rules) -> bool {
+    let s = rules.chain_move_speed_m_s;
+    world
+        .velocity(part)
+        .is_some_and(|[vx, vy]| vx * vx + vy * vy > s * s)
 }

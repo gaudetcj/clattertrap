@@ -78,7 +78,7 @@ An object counts once its centre is inside the inner rectangle and its speed is 
 
 ## Goals and waypoints
 
-A goal is one of `ring`, `press`, `fill`, or `pop` and names a fixed object of the matching kind. `via` lists part ids that must be touched in order first; each touch emits a `Via` event, and the goal is ignored until the list is done.
+A goal is one of `ring`, `press`, `fill`, or `pop` and names a fixed object of the matching kind. `via` lists part ids that must be touched in order first; the goal is ignored until the list is done. A touch is a contact between the waypoint and anything but the floor while one of the two moves faster than 0.05 m/s, so a waypoint resting on the floor or a shelf is not touched until something arrives. Each touch emits a `Via` event.
 
 ## Events
 

@@ -9,7 +9,7 @@
 
 mod common;
 
-use clattertrap_core::events::EventKind;
+use clattertrap_core::events::{EventKind, PartId};
 use clattertrap_core::level::Goal;
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::{Material, PartSpec, Scene};
@@ -293,4 +293,35 @@ fn closing_appears_at_the_end_and_matches_run() {
     let r = run(&lv, &valid, &Rules::V1);
     assert_eq!(outcome, r.outcome);
     assert_eq!(events, r.events);
+}
+
+#[test]
+fn a_waypoint_counts_only_when_something_moving_touches_it() {
+    // The post rests on the floor from the first step; only the falling ball touches it.
+    let lv = level_with_goal(
+        vec![
+            crate_box("post", 200.0, 15.0, 30.0),
+            ball("k", 200.0, 200.0, Material::Steel),
+            bell_at(300.0, 100.0),
+        ],
+        ring(&["post"]),
+    );
+    let r = finished(&lv, &scene(vec![]));
+    assert!(!r.outcome.goal_met);
+    let via = r
+        .events
+        .iter()
+        .find(|e| matches!(e.kind, EventKind::Via(_)))
+        .expect("the ball touched the post");
+    let landing = r
+        .events
+        .iter()
+        .find(|e| e.kind == EventKind::contact(PartId(0), PartId(1)))
+        .expect("the ball landed on the post");
+    assert!(
+        via.step > 1,
+        "via fired at step {} before anything moved",
+        via.step
+    );
+    assert_eq!(via.step, landing.step);
 }
