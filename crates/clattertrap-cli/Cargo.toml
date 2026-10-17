@@ -1,6 +1,6 @@
 [package]
 name = "clattertrap-cli"
-description = "The clattertrap command line; subcommands arrive with their milestones"
+description = "The clattertrap command line: rules, levels, level, check, look, and run"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

@@ -1,4 +1,4 @@
-//! The `clattertrap` command line: what contestants and people read and run.
+//! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, and `run`.
 #![forbid(unsafe_code)]
 
 mod catalog;

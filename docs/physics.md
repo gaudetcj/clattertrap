@@ -100,6 +100,10 @@ A run ends on the first of: the goal is met, the time limit passes, or every dyn
 
 Two FNV-1a 64 hashes identify a run. The event hash covers every event's step and bytes. The state hash covers, in body insertion order, the bit patterns of each body's position, angle, linear and angular velocity, and its sleep flag. A removed body hashes as a single marker byte. The same level, scene, and rules give the same hashes on Windows, Linux, and wasm32. In a serialized outcome both hashes are strings of 16 hex digits, since JSON numbers cannot hold a u64 exactly.
 
+## Pictures
+
+The `render` module draws a scene at any step with tiny-skia for `clattertrap look`, `level --png`, and `run --png`: the world at 2 pixels per centimetre beside a 40 px margin for y labels and a 20 px margin for x labels, a 50 cm grid, build zones as a dashed tint, each body in its look's flat colour with a darker outline, pivot and rope links as lines, and every part's id lettered beside it in a 5 by 7 bitmap font. The floor slab is not drawn; the floor line stands for it. These pictures are a reading aid for models; the browser viewer is the art.
+
 ## Viewer
 
 The browser page re-simulates a scene in the same core compiled to wasm32, so the hashes it shows are the ones the native simulator produces. It never decides an outcome itself. Bodies are drawn from each slot's `Visual` and pose; a pendulum rod, a bell rope, and a rope part are drawn as lines between their bodies. Sound is synthesized from the event log: a contact's timbre comes from the two parts' looks and its volume from the faster part's speed, a pin meeting a balloon pops, and the goal event voices the bell, button, or basket.

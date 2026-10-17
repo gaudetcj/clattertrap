@@ -1,6 +1,6 @@
 [package]
 name = "clattertrap-core"
-description = "Clattertrap core library: levels, scenes, validation, parts, the deterministic simulator, events, and scoring"
+description = "Clattertrap core library: levels, scenes, validation, JSON Schemas, parts, the deterministic simulator, events, scoring, and PNG rendering"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

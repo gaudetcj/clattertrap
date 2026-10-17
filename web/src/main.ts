@@ -1,4 +1,4 @@
-// The level page: pick a fixture level, play its reference solution, hear it, and read the verdict.
+// The level page: pick a level, play its reference solution, hear it, and read the verdict.
 
 import { loadWasm } from './replay';
 import { Player } from './player';

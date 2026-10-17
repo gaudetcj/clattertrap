@@ -1,4 +1,5 @@
-//! Clattertrap core library: level and scene formats, validation, every v0.1 part, the rapier world, the simulator, events, and scoring.
+//! Clattertrap core library: level and scene formats with their JSON Schemas, validation, every v0.1
+//! part, the rapier world, the simulator, events, scoring, and a PNG renderer for the `look` tool.
 //!
 //! Pure library with no I/O. Builds for wasm32.
 #![forbid(unsafe_code)]
