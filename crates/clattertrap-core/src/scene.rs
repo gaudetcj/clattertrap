@@ -3,10 +3,11 @@
 //! The same `PartSpec` describes a level's fixed objects; the goal objects `bell`, `button`, and
 //! `basket` are only accepted there, which `validate` enforces.
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// A contestant's placement for one level.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Scene {
     /// Id of the level this scene is for.
@@ -16,7 +17,7 @@ pub struct Scene {
 }
 
 /// One part with its id. The `kind` tag and the part's fields sit beside `id` in JSON.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
 pub struct Placed {
     /// Unique id within the level and scene.
     pub id: String,
@@ -26,7 +27,7 @@ pub struct Placed {
 }
 
 /// Ball materials.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum Material {
     /// Heavy, barely bounces.
@@ -43,7 +44,7 @@ const fn pin_down() -> f32 {
 
 /// Every part kind of rules v1 with its parameters. Positions are the part's centre in centimetres,
 /// y up; angles are degrees, counterclockwise positive.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum PartSpec {
     /// Fixed wooden plank.
@@ -253,4 +254,10 @@ impl PartSpec {
             Self::Rope { .. } => None,
         }
     }
+}
+
+/// The JSON Schema for a scene, generated from these types.
+#[must_use]
+pub fn schema() -> serde_json::Value {
+    schemars::schema_for!(Scene).to_value()
 }

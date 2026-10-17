@@ -194,3 +194,31 @@ fn visuals_serialize_with_a_shape_tag() {
     );
     assert_eq!(serde_json::to_string(&Look::Pad).unwrap(), r#""pad""#);
 }
+
+#[test]
+fn the_scene_schema_names_every_part_kind_and_closes_objects() {
+    let text = serde_json::to_string_pretty(&clattertrap_core::scene::schema()).unwrap();
+    for kind in clattertrap_core::parts::SUPPORTED {
+        assert!(text.contains(&format!("\"{kind}\"")), "{kind} missing");
+    }
+    assert!(text.contains("\"additionalProperties\": false"), "{text}");
+    assert!(text.contains("\"max_length_cm\""), "{text}");
+    // insta needs the snapshot file, which wasmtime cannot see; the asserts above run everywhere.
+    #[cfg(not(target_family = "wasm"))]
+    insta::assert_snapshot!(text);
+}
+
+#[test]
+fn the_level_schema_carries_the_goal_kinds_and_the_tier() {
+    let text = serde_json::to_string_pretty(&clattertrap_core::level::schema()).unwrap();
+    for kind in ["ring", "press", "fill", "pop"] {
+        assert!(text.contains(&format!("\"{kind}\"")), "{kind} missing");
+    }
+    assert!(
+        text.contains("\"tier\"") && text.contains("\"description\""),
+        "{text}"
+    );
+    // insta needs the snapshot file, which wasmtime cannot see; the asserts above run everywhere.
+    #[cfg(not(target_family = "wasm"))]
+    insta::assert_snapshot!(text);
+}

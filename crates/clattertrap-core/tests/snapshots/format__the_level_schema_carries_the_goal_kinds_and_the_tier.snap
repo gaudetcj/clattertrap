@@ -1,0 +1,899 @@
+---
+source: crates/clattertrap-core/tests/format.rs
+expression: text
+---
+{
+  "$defs": {
+    "Goal": {
+      "description": "The level's goal. `target` names a fixed object; `via` lists parts that must be touched first, in order.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Ring the bell named by `target`.",
+          "properties": {
+            "kind": {
+              "const": "ring",
+              "type": "string"
+            },
+            "target": {
+              "description": "Bell id.",
+              "type": "string"
+            },
+            "via": {
+              "default": [],
+              "description": "Waypoint part ids.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "kind",
+            "target"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Press the button named by `target`.",
+          "properties": {
+            "kind": {
+              "const": "press",
+              "type": "string"
+            },
+            "target": {
+              "description": "Button id.",
+              "type": "string"
+            },
+            "via": {
+              "default": [],
+              "description": "Waypoint part ids.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "kind",
+            "target"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Rest `count` objects inside the basket named by `target`.",
+          "properties": {
+            "count": {
+              "description": "Objects required at rest inside.",
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "fill",
+              "type": "string"
+            },
+            "target": {
+              "description": "Basket id.",
+              "type": "string"
+            },
+            "via": {
+              "default": [],
+              "description": "Waypoint part ids.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "kind",
+            "target",
+            "count"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Pop the balloon named by `target`.",
+          "properties": {
+            "kind": {
+              "const": "pop",
+              "type": "string"
+            },
+            "target": {
+              "description": "Balloon id.",
+              "type": "string"
+            },
+            "via": {
+              "default": [],
+              "description": "Waypoint part ids.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "kind",
+            "target"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "Inventory": {
+      "additionalProperties": false,
+      "description": "Parts a contestant may place, by kind. Missing kinds are zero.",
+      "properties": {
+        "ball": {
+          "default": 0,
+          "description": "Balls of any material.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "balloon": {
+          "default": 0,
+          "description": "Balloons.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "beam": {
+          "default": 0,
+          "description": "Beams.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "bucket": {
+          "default": 0,
+          "description": "Buckets.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "crate": {
+          "default": 0,
+          "description": "Crates.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "domino": {
+          "default": 0,
+          "description": "Dominoes.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "funnel": {
+          "default": 0,
+          "description": "Funnels.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pendulum": {
+          "default": 0,
+          "description": "Pendulums.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "pin": {
+          "default": 0,
+          "description": "Pins.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rope": {
+          "default": 0,
+          "description": "Ropes.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "seesaw": {
+          "default": 0,
+          "description": "Seesaws.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "spring_pad": {
+          "default": 0,
+          "description": "Spring pads.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Material": {
+      "description": "Ball materials.",
+      "oneOf": [
+        {
+          "const": "steel",
+          "description": "Heavy, barely bounces.",
+          "type": "string"
+        },
+        {
+          "const": "wood",
+          "description": "Medium weight and bounce.",
+          "type": "string"
+        },
+        {
+          "const": "rubber",
+          "description": "Light, bounces high.",
+          "type": "string"
+        }
+      ]
+    },
+    "Placed": {
+      "description": "One part with its id. The `kind` tag and the part's fields sit beside `id` in JSON.",
+      "oneOf": [
+        {
+          "description": "Fixed wooden plank.",
+          "properties": {
+            "angle_deg": {
+              "description": "Tilt; negative slopes down to the right.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "beam",
+              "type": "string"
+            },
+            "length_cm": {
+              "description": "Length along the plank.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "length_cm",
+            "angle_deg"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Fixed pair of inward-sloping walls.",
+          "properties": {
+            "height_cm": {
+              "description": "Height from throat to mouth.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "funnel",
+              "type": "string"
+            },
+            "mouth_cm": {
+              "description": "Width of the top opening.",
+              "format": "float",
+              "type": "number"
+            },
+            "throat_cm": {
+              "description": "Width of the bottom opening.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Centre x of the throat.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "y of the throat opening.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "mouth_cm",
+            "throat_cm",
+            "height_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Rolling ball of a material.",
+          "properties": {
+            "kind": {
+              "const": "ball",
+              "type": "string"
+            },
+            "material": {
+              "$ref": "#/$defs/Material",
+              "description": "Steel, wood, or rubber."
+            },
+            "x_cm": {
+              "description": "Centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "material"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Standing tile that tips when pushed.",
+          "properties": {
+            "angle_deg": {
+              "default": 0.0,
+              "description": "Tilt from upright.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "domino",
+              "type": "string"
+            },
+            "x_cm": {
+              "description": "Centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Wooden box.",
+          "properties": {
+            "kind": {
+              "const": "crate",
+              "type": "string"
+            },
+            "side_cm": {
+              "description": "Side length.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "side_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Plank pivoting freely about its fixed centre.",
+          "properties": {
+            "angle_deg": {
+              "default": 0.0,
+              "description": "Starting tilt.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "seesaw",
+              "type": "string"
+            },
+            "length_cm": {
+              "description": "Plank length.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Pivot x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Pivot y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "length_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Steel weight hanging from a fixed pin on a rigid rope.",
+          "properties": {
+            "angle_deg": {
+              "default": 0.0,
+              "description": "Starting angle from straight down, counterclockwise positive.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "pendulum",
+              "type": "string"
+            },
+            "length_cm": {
+              "description": "Rope length.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Pin x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Pin y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "length_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Fixed pad that launches whatever lands on it.",
+          "properties": {
+            "angle_deg": {
+              "default": 0.0,
+              "description": "Tilt of the pad; the launch is along its up normal.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "spring_pad",
+              "type": "string"
+            },
+            "x_cm": {
+              "description": "Centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Open-top wooden container that moves.",
+          "properties": {
+            "height_cm": {
+              "description": "Inner height.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "bucket",
+              "type": "string"
+            },
+            "width_cm": {
+              "description": "Inner width.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Centre x of the floor.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "y of the floor's underside.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "width_cm",
+            "height_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Rises until it meets a pin.",
+          "properties": {
+            "kind": {
+              "const": "balloon",
+              "type": "string"
+            },
+            "x_cm": {
+              "description": "Centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Fixed needle that pops balloons.",
+          "properties": {
+            "angle_deg": {
+              "default": -90.0,
+              "description": "Direction the point faces; the default points down.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "pin",
+              "type": "string"
+            },
+            "x_cm": {
+              "description": "Base x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Base y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Links two parts so they stay within a maximum distance.",
+          "properties": {
+            "a": {
+              "description": "Id of the first linked part.",
+              "type": "string"
+            },
+            "b": {
+              "description": "Id of the second linked part.",
+              "type": "string"
+            },
+            "kind": {
+              "const": "rope",
+              "type": "string"
+            },
+            "max_length_cm": {
+              "description": "Longest the rope can stretch.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "a",
+            "b",
+            "max_length_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Goal object: brass bell hanging from a bracket.",
+          "properties": {
+            "kind": {
+              "const": "bell",
+              "type": "string"
+            },
+            "rope_cm": {
+              "description": "Rope length up to the bracket.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Bell centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Bell centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "rope_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Goal object: a cap that must be pushed down.",
+          "properties": {
+            "kind": {
+              "const": "button",
+              "type": "string"
+            },
+            "travel_cm": {
+              "description": "Travel needed to press.",
+              "format": "float",
+              "type": "number"
+            },
+            "x_cm": {
+              "description": "Centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "y of the cap's resting underside.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "travel_cm"
+          ],
+          "type": "object"
+        },
+        {
+          "description": "Goal object: fixed open-top container to fill.",
+          "properties": {
+            "inner_height_cm": {
+              "description": "Inner height.",
+              "format": "float",
+              "type": "number"
+            },
+            "inner_width_cm": {
+              "description": "Inner width.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "basket",
+              "type": "string"
+            },
+            "x_cm": {
+              "description": "Centre x of the floor.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "y of the floor's underside.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "inner_width_cm",
+            "inner_height_cm"
+          ],
+          "type": "object"
+        }
+      ],
+      "properties": {
+        "id": {
+          "description": "Unique id within the level and scene.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "WorldSize": {
+      "additionalProperties": false,
+      "description": "World rectangle in centimetres, origin bottom-left.",
+      "properties": {
+        "height_cm": {
+          "description": "Height.",
+          "format": "float",
+          "type": "number"
+        },
+        "width_cm": {
+          "description": "Width.",
+          "format": "float",
+          "type": "number"
+        }
+      },
+      "required": [
+        "width_cm",
+        "height_cm"
+      ],
+      "type": "object"
+    },
+    "Zone": {
+      "additionalProperties": false,
+      "description": "A build zone rectangle in centimetres, by its bottom-left corner.",
+      "properties": {
+        "height_cm": {
+          "description": "Height.",
+          "format": "float",
+          "type": "number"
+        },
+        "width_cm": {
+          "description": "Width.",
+          "format": "float",
+          "type": "number"
+        },
+        "x_cm": {
+          "description": "Left edge.",
+          "format": "float",
+          "type": "number"
+        },
+        "y_cm": {
+          "description": "Bottom edge.",
+          "format": "float",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x_cm",
+        "y_cm",
+        "width_cm",
+        "height_cm"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One level.",
+  "properties": {
+    "description": {
+      "description": "The layout in prose for contestants: where things are and what they do at the start.",
+      "type": "string"
+    },
+    "fixed": {
+      "description": "Objects placed by the level, including goal objects.",
+      "items": {
+        "$ref": "#/$defs/Placed"
+      },
+      "type": "array"
+    },
+    "goal": {
+      "$ref": "#/$defs/Goal",
+      "description": "What counts as success."
+    },
+    "id": {
+      "description": "Stable id, also the directory name.",
+      "type": "string"
+    },
+    "inventory": {
+      "$ref": "#/$defs/Inventory",
+      "description": "How many of each part kind a contestant may use."
+    },
+    "rules_version": {
+      "description": "Rules version the level was authored for.",
+      "format": "uint32",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "showcase": {
+      "default": false,
+      "description": "Whether chain length is scored too.",
+      "type": "boolean"
+    },
+    "tier": {
+      "description": "Difficulty from 1 (one part) to 5 (several mechanisms in a chain).",
+      "format": "uint8",
+      "maximum": 255,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "time_limit_s": {
+      "description": "Run length cap.",
+      "format": "float",
+      "type": "number"
+    },
+    "title": {
+      "description": "Short title shown to viewers.",
+      "type": "string"
+    },
+    "world": {
+      "$ref": "#/$defs/WorldSize",
+      "description": "Size of the world rectangle; the floor is its bottom edge."
+    },
+    "zones": {
+      "description": "Rectangles where a contestant may place part centres.",
+      "items": {
+        "$ref": "#/$defs/Zone"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "tier",
+    "description",
+    "rules_version",
+    "world",
+    "time_limit_s",
+    "fixed",
+    "zones",
+    "inventory",
+    "goal"
+  ],
+  "title": "Level",
+  "type": "object"
+}

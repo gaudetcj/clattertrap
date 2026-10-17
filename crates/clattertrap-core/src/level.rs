@@ -3,10 +3,11 @@
 //! A level's reference solution lives in a separate file and never in this type.
 
 use crate::scene::Placed;
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// One level.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Level {
     /// Stable id, also the directory name.
@@ -37,7 +38,7 @@ pub struct Level {
 }
 
 /// World rectangle in centimetres, origin bottom-left.
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct WorldSize {
     /// Width.
@@ -47,7 +48,7 @@ pub struct WorldSize {
 }
 
 /// A build zone rectangle in centimetres, by its bottom-left corner.
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Zone {
     /// Left edge.
@@ -72,7 +73,7 @@ impl Zone {
 }
 
 /// Parts a contestant may place, by kind. Missing kinds are zero.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields, default)]
 pub struct Inventory {
     /// Beams.
@@ -125,7 +126,7 @@ impl Inventory {
 }
 
 /// The level's goal. `target` names a fixed object; `via` lists parts that must be touched first, in order.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Goal {
     /// Ring the bell named by `target`.
@@ -186,4 +187,10 @@ impl Goal {
             | Self::Pop { via, .. } => via,
         }
     }
+}
+
+/// The JSON Schema for a level, generated from these types.
+#[must_use]
+pub fn schema() -> serde_json::Value {
+    schemars::schema_for!(Level).to_value()
 }
