@@ -1,0 +1,53 @@
+---
+source: crates/clattertrap-cli/tests/cli.rs
+expression: out
+---
+Clattertrap rules v1
+
+World
+- Units are centimetres and degrees. The origin is bottom-left, x runs right, y runs up. A part's position is its centre unless the table says otherwise.
+- Angles are counterclockwise positive. angle_deg 0 is horizontal; a beam at -15 slopes down to the right.
+- Gravity is 981 cm/s^2 downward. Everything starts at rest and physics starts at once, so anything in the air falls.
+- The floor is solid. There are no walls and no ceiling: a part whose centre goes more than 50 cm outside the level rectangle is removed.
+- Time advances in steps of 1/120 s. A run ends when the goal is met, when the level's time limit passes, or when everything has stopped moving.
+
+Materials
+| material | mass of a ball | bounce | friction |
+| steel | 1.00 kg | 0.2 | 0.2 |
+| wood | 0.15 kg | 0.3 | 0.5 |
+| rubber | 0.20 kg | 0.8 | 0.9 |
+Bounce between two bodies is the larger of the pair; friction is the average. Beams, dominoes, crates, seesaws, and buckets are wood.
+
+Parts you may place
+The level's inventory says how many of each kind. Kinds it does not list are not available.
+| kind | fields | size | behaviour |
+| beam | x_cm, y_cm, length_cm (20..150), angle_deg | 4 cm thick | fixed wood plank |
+| funnel | x_cm, y_cm (throat centre), mouth_cm (30..150), throat_cm (14..mouth), height_cm (20..80) | 2 cm walls | fixed; two walls slope in from the mouth down to the throat |
+| ball | x_cm, y_cm, material (steel, wood, rubber) | radius 6 cm | rolls and bounces as its material does |
+| domino | x_cm, y_cm, angle_deg (default 0) | 4 by 20 cm | wood tile standing on end; tips when pushed |
+| crate | x_cm, y_cm, side_cm (10..40) | square | wood box |
+| seesaw | x_cm, y_cm, length_cm (40..150), angle_deg (default 0) | 4 cm thick | wood plank that pivots freely about its centre, which is fixed in space |
+| pendulum | x_cm, y_cm (the pin), length_cm (20..120), angle_deg (default 0, measured from straight down) | steel weight of radius 5 cm | swings on a rigid rope from the pin and is released at once |
+| spring_pad | x_cm, y_cm, angle_deg (default 0) | 30 by 4 cm | fixed plate; a body that lands on it gets a kick of 0.6 N s along the plate's normal: a wood ball leaves at 4.1 m/s and rises about 85 cm, a steel ball at 0.6 m/s rises 2 cm |
+| bucket | x_cm, y_cm (centre of the floor's underside), width_cm (15..60), height_cm (15..60) | 2 cm walls | wood open box; it can move |
+| balloon | x_cm, y_cm | radius 10 cm | rises at up to 1.5 m/s and slides along the underside of anything above it; a pin pops it |
+| pin | x_cm, y_cm (the base), angle_deg (default -90, pointing down) | 1 by 16 cm | fixed needle |
+| rope | a, b, max_length_cm (10..200) | no body | ties the centres of parts a and b; slack until taut, then keeps them within that length |
+
+Goal objects, which only a level places
+| bell | brass disc of radius 10 cm hung below its anchor | rings when hit hard enough: a wood ball at 1.4 m/s or a steel ball at 0.2 m/s |
+| button | 12 by 3 cm cap on a spring | pressed when pushed down its full travel and held there |
+| basket | open box with 2 cm walls | counts objects that come to rest inside it |
+
+Goals
+ring, press, fill (count objects at rest inside the basket), or pop. A goal may list via: part ids that must be touched in that order before the goal counts.
+
+Placement rules
+- Every placed part's centre must lie inside a build zone. Fixed objects are exempt.
+- Nothing may overlap at the start: not another part, a fixed object, or the floor. Leave a gap of a few millimetres.
+- Every part has a unique id; the fixed objects' ids are taken.
+- Lengths outside the ranges above are rejected. check lists every problem with its JSON path and a fix.
+
+Scene JSON
+{"level": "<level id>", "parts": [{"id": "example", "kind": "beam", "x_cm": 120, "y_cm": 210, "length_cm": 120, "angle_deg": -15}]}
+Field names carry their units. The full schema: clattertrap rules --schema

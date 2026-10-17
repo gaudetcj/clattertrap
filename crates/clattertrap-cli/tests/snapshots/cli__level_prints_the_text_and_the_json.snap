@@ -1,0 +1,73 @@
+---
+source: crates/clattertrap-cli/tests/cli.rs
+expression: out
+---
+bell-drop: Ring the bell (tier 1)
+Goal: ring bell.
+Time limit: 20 s. World: 400 by 300 cm.
+
+A steel ball hangs in the air at (70, 280), top left, and falls from the start. The bell hangs at (360, 100) on the right from a bracket 50 cm above it. The build zone covers x from 30 to 340 at every height. Nothing else is in the way.
+
+Fixed objects:
+  ball0: steel ball at (70, 280)
+  bell: bell at (360, 100), hung 50 cm below its anchor
+Build zones: x 30..340, y 0..300
+Inventory: beam 4, domino 6, seesaw 1
+
+Level JSON:
+{
+  "id": "bell-drop",
+  "title": "Ring the bell",
+  "tier": 1,
+  "description": "A steel ball hangs in the air at (70, 280), top left, and falls from the start. The bell hangs at (360, 100) on the right from a bracket 50 cm above it. The build zone covers x from 30 to 340 at every height. Nothing else is in the way.",
+  "rules_version": 1,
+  "world": {
+    "width_cm": 400.0,
+    "height_cm": 300.0
+  },
+  "time_limit_s": 20.0,
+  "fixed": [
+    {
+      "id": "ball0",
+      "kind": "ball",
+      "x_cm": 70.0,
+      "y_cm": 280.0,
+      "material": "steel"
+    },
+    {
+      "id": "bell",
+      "kind": "bell",
+      "x_cm": 360.0,
+      "y_cm": 100.0,
+      "rope_cm": 50.0
+    }
+  ],
+  "zones": [
+    {
+      "x_cm": 30.0,
+      "y_cm": 0.0,
+      "width_cm": 310.0,
+      "height_cm": 300.0
+    }
+  ],
+  "inventory": {
+    "beam": 4,
+    "funnel": 0,
+    "ball": 0,
+    "domino": 6,
+    "crate": 0,
+    "seesaw": 1,
+    "pendulum": 0,
+    "spring_pad": 0,
+    "bucket": 0,
+    "balloon": 0,
+    "pin": 0,
+    "rope": 0
+  },
+  "goal": {
+    "kind": "ring",
+    "target": "bell",
+    "via": []
+  },
+  "showcase": false
+}

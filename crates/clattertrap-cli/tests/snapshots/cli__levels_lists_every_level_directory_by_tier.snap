@@ -1,0 +1,8 @@
+---
+source: crates/clattertrap-cli/tests/cli.rs
+expression: out
+---
+bell-drop      1  ring   Ring the bell
+balloon-pin    2  pop    Pop the balloon
+basket-fill    2  fill   Fill the basket
+button-drop    2  press  Press the button
