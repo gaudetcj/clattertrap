@@ -8,6 +8,7 @@ mod goal;
 mod hash;
 pub mod level;
 pub mod parts;
+pub mod render;
 pub mod rules;
 pub mod scene;
 pub mod score;
