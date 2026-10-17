@@ -35,6 +35,20 @@ fn a_scene_for_another_level_is_rejected() {
 }
 
 #[test]
+fn a_tier_outside_1_to_5_is_rejected() {
+    for tier in [0u8, 6] {
+        let mut lv = level(vec![]);
+        lv.tier = tier;
+        let msg = only(&lv, &scene(vec![]));
+        assert!(msg.starts_with("level: "), "{msg}");
+        assert!(
+            msg.contains(&format!("tier {tier}")) && msg.contains("1..5"),
+            "{msg}"
+        );
+    }
+}
+
+#[test]
 fn inventory_overrun_names_the_part_past_the_limit() {
     let mut lv = level(vec![]);
     lv.inventory.beam = 2;

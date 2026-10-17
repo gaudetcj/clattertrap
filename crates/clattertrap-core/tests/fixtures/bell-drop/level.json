@@ -1,6 +1,8 @@
 {
   "id": "bell-drop",
   "title": "Ring the bell",
+  "tier": 1,
+  "description": "A steel ball hangs in the air at (70, 280), top left, and falls from the start. The bell hangs at (360, 100) on the right from a bracket 50 cm above it. The build zone covers x from 30 to 340 at every height. Nothing else is in the way.",
   "rules_version": 1,
   "world": { "width_cm": 400, "height_cm": 300 },
   "time_limit_s": 20,

@@ -25,13 +25,22 @@ fn all<'a>(level: &'a Level, scene: &'a Scene) -> impl Iterator<Item = (String, 
     fixed.chain(parts)
 }
 
-pub(super) fn level_id(level: &Level, scene: &Scene, out: &mut Vec<Problem>) {
+pub(super) fn level_header(level: &Level, scene: &Scene, out: &mut Vec<Problem>) {
     if scene.level != level.id {
         out.push(Problem::new(
             "level",
             format!(
                 "is {:?} but this level is {:?}; set level to {:?}",
                 scene.level, level.id, level.id
+            ),
+        ));
+    }
+    if !(1..=5).contains(&level.tier) {
+        out.push(Problem::new(
+            "level",
+            format!(
+                "tier {} is outside 1..5; set tier within that range",
+                level.tier
             ),
         ));
     }

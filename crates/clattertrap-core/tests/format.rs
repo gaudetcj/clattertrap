@@ -9,6 +9,8 @@ use clattertrap_core::scene::{Material, PartSpec, Scene};
 const BELL_LEVEL: &str = r#"{
   "id": "bell-drop",
   "title": "Ring the bell",
+  "tier": 1,
+  "description": "A steel ball falls from the top left. The bell hangs on the right.",
   "rules_version": 1,
   "world": { "width_cm": 400, "height_cm": 300 },
   "time_limit_s": 20,
@@ -37,8 +39,25 @@ fn level_round_trips_through_json() {
         }
     );
     assert!(!level.showcase);
+    assert_eq!(level.tier, 1);
+    assert!(level.description.starts_with("A steel ball"));
     let again: Level = serde_json::from_str(&serde_json::to_string(&level).unwrap()).unwrap();
     assert_eq!(again, level);
+}
+
+#[test]
+fn a_level_needs_a_tier_and_a_description() {
+    for field in ["tier", "description"] {
+        let without: String = BELL_LEVEL
+            .lines()
+            .filter(|l| !l.contains(&format!("\"{field}\"")))
+            .collect::<Vec<_>>()
+            .join("\n");
+        let err = serde_json::from_str::<Level>(&without)
+            .unwrap_err()
+            .to_string();
+        assert!(err.contains(field), "{err}");
+    }
 }
 
 #[test]

@@ -1,6 +1,8 @@
 {
   "id": "button-drop",
   "title": "Press the button",
+  "tier": 2,
+  "description": "A steel ball hangs in the air at (80, 250), top left, and falls from the start. A button with 3 cm of travel stands at (330, 40), bottom right. The build zone covers x from 20 to 380 and y from 60 to 300. The ball has to come down on the cap and stay on it.",
   "rules_version": 1,
   "world": { "width_cm": 400, "height_cm": 300 },
   "time_limit_s": 20,

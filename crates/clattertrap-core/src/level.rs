@@ -13,6 +13,10 @@ pub struct Level {
     pub id: String,
     /// Short title shown to viewers.
     pub title: String,
+    /// Difficulty from 1 (one part) to 5 (several mechanisms in a chain).
+    pub tier: u8,
+    /// The layout in prose for contestants: where things are and what they do at the start.
+    pub description: String,
     /// Rules version the level was authored for.
     pub rules_version: u32,
     /// Size of the world rectangle; the floor is its bottom edge.

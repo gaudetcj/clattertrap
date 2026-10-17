@@ -39,6 +39,8 @@ pub fn level_with_goal(fixed: Vec<Placed>, goal: Goal) -> Level {
     Level {
         id: "test".to_owned(),
         title: "test".to_owned(),
+        tier: 1,
+        description: "A test level with every part allowed.".to_owned(),
         rules_version: 1,
         world: WorldSize {
             width_cm: 400.0,

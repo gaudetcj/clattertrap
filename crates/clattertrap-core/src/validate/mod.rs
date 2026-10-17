@@ -104,7 +104,7 @@ impl ValidScene {
 /// Returns every problem found, so a contestant can fix them all at once.
 pub fn validate(level: &Level, scene: &Scene, rules: &Rules) -> Result<ValidScene, Vec<Problem>> {
     let mut problems = Vec::new();
-    checks::level_id(level, scene, &mut problems);
+    checks::level_header(level, scene, &mut problems);
     let names = checks::names(level, scene, &mut problems);
     checks::inventory(level, scene, &mut problems);
     checks::zones(level, scene, &mut problems);

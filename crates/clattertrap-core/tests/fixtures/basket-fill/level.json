@@ -1,6 +1,8 @@
 {
   "id": "basket-fill",
   "title": "Fill the basket",
+  "tier": 2,
+  "description": "Three wood balls hang in a column at x = 350 near the top right, at heights 280, 262, and 244, and fall from the start. A basket 50 cm wide and 40 cm deep stands on the floor at (60, 0.5), bottom left. The build zone covers x from 20 to 380 and y from 50 to 300. Two balls have to come to rest inside the basket.",
   "rules_version": 1,
   "world": { "width_cm": 400, "height_cm": 300 },
   "time_limit_s": 20,

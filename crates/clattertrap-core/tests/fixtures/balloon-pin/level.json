@@ -1,6 +1,8 @@
 {
   "id": "balloon-pin",
   "title": "Pop the balloon",
+  "tier": 2,
+  "description": "A red balloon rests on the floor at (50, 30), bottom left, and rises from the start at up to 1.5 m/s. A pin points down from (320, 290), near the top right. The build zone covers x from 20 to 380 and y from 60 to 260. Left alone, the balloon drifts straight up past the pin and out of the world.",
   "rules_version": 1,
   "world": { "width_cm": 400, "height_cm": 300 },
   "time_limit_s": 20,
