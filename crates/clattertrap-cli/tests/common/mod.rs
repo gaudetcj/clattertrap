@@ -4,6 +4,8 @@
 use std::path::PathBuf;
 use std::process::{Command, Output};
 
+pub mod mcp;
+
 /// Runs `clattertrap` with `args` from the repository root.
 pub fn clattertrap(args: &[&str]) -> Output {
     Command::new(env!("CARGO_BIN_EXE_clattertrap"))

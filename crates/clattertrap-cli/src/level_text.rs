@@ -3,6 +3,7 @@
 use anyhow::Result;
 use clattertrap_core::level::{Goal, Inventory, Level};
 use clattertrap_core::scene::{Material, PartSpec};
+use std::fmt::Write;
 
 /// The goal's kind as it appears in JSON.
 pub fn goal_kind(goal: &Goal) -> &'static str {
@@ -171,6 +172,24 @@ pub fn inventory_text(inv: &Inventory) -> String {
     } else {
         listed.join(", ")
     }
+}
+
+/// The `levels` listing: id, tier, goal kind, and title, one level per line.
+#[must_use]
+pub fn levels_text(levels: &[Level]) -> String {
+    let mut text = String::new();
+    for level in levels {
+        // Writing to a String cannot fail.
+        let _ = writeln!(
+            text,
+            "{:<14} {}  {:<6} {}",
+            level.id,
+            level.tier,
+            goal_kind(&level.goal),
+            level.title
+        );
+    }
+    text
 }
 
 /// The full `level` output.

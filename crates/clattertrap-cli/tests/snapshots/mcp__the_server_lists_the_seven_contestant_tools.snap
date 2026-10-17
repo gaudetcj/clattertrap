@@ -1,0 +1,19 @@
+---
+source: crates/clattertrap-cli/tests/mcp.rs
+assertion_line: 33
+expression: listing
+---
+check: Validate a scene against its level without running it. Answers ok with the part count, or every problem with its JSON path, the rule, and a fix.
+  {"$schema":"https://json-schema.org/draft/2020-12/schema","properties":{"scene":{"description":"The scene: `{\"level\": \"<id>\", \"parts\": [...]}`, as the rules describe it."}},"required":["scene"],"type":"object"}
+level: One level in words and JSON, with a picture of it before anything is placed. In a pilot session only your assigned level.
+  {"$schema":"https://json-schema.org/draft/2020-12/schema","properties":{"id":{"description":"The level id, as `levels` lists it.","type":"string"}},"required":["id"],"type":"object"}
+levels: Every level with its tier and goal kind, one per line.
+  {"properties":{},"type":"object"}
+look: A picture of a valid scene at the start of its run, before anything moves. Lists the problems instead when the rules reject the scene.
+  {"$schema":"https://json-schema.org/draft/2020-12/schema","properties":{"scene":{"description":"The scene: `{\"level\": \"<id>\", \"parts\": [...]}`, as the rules describe it."}},"required":["scene"],"type":"object"}
+rules: The rules every contestant plays by: units, materials, every part kind with its fields and sizes, the goal objects, and the placement rules. Pass schema true for the scene JSON Schema instead.
+  {"$schema":"https://json-schema.org/draft/2020-12/schema","properties":{"schema":{"default":false,"description":"Return the scene JSON Schema instead of the rules text.","type":"boolean"}},"type":"object"}
+run: Simulate a valid scene to its end: every event with its time, the outcome, how many runs you have left, and a picture of the final frame. Costs one run from your budget; a rejected scene costs nothing.
+  {"$schema":"https://json-schema.org/draft/2020-12/schema","properties":{"scene":{"description":"The scene: `{\"level\": \"<id>\", \"parts\": [...]}`, as the rules describe it."}},"required":["scene"],"type":"object"}
+submit: Submit your machine, once: the scene, a machine name of 60 characters or fewer, and a one-sentence prediction of 280 or fewer. The scene is run and its outcome is final; nothing more can be done afterwards.
+  {"$schema":"https://json-schema.org/draft/2020-12/schema","properties":{"name":{"description":"A name for the machine, 60 characters or fewer.","type":"string"},"prediction":{"description":"One sentence saying what the machine will do, 280 characters or fewer.","type":"string"},"scene":{"description":"The scene: `{\"level\": \"<id>\", \"parts\": [...]}`, as the rules describe it."}},"required":["scene","name","prediction"],"type":"object"}

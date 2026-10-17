@@ -18,13 +18,21 @@ pub fn problems_error(problems: &[Problem]) -> anyhow::Error {
     anyhow::anyhow!("{}", lines.join("\n"))
 }
 
+/// The simulator's current state as PNG bytes.
+///
+/// # Errors
+/// When encoding fails.
+pub fn png_bytes(level: &Level, valid: &ValidScene, sim: &Simulator) -> Result<Vec<u8>> {
+    let pixmap = Frame::new(level, PX_PER_CM).draw(sim, valid);
+    Ok(png(&pixmap)?)
+}
+
 /// Writes the simulator's current state to `path`.
 ///
 /// # Errors
 /// When encoding or writing the file fails.
 pub fn write_png(level: &Level, valid: &ValidScene, sim: &Simulator, path: &Path) -> Result<()> {
-    let pixmap = Frame::new(level, PX_PER_CM).draw(sim, valid);
-    let bytes = png(&pixmap)?;
+    let bytes = png_bytes(level, valid, sim)?;
     std::fs::write(path, bytes).with_context(|| format!("writing {}", path.display()))
 }
 

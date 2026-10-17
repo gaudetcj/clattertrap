@@ -1,0 +1,22 @@
+---
+source: crates/clattertrap-cli/src/mcp/tests.rs
+assertion_line: 119
+expression: reply.text
+---
+  0.317 contact ball0 b1
+  0.517 at_rest bell
+  1.492 contact ball0 b2
+  1.925 contact ball0 bell
+  1.925 goal_met
+{
+  "goal_met": true,
+  "end": "goal_met",
+  "time_s": 1.9250001,
+  "steps": 231,
+  "parts_used": 2,
+  "chain_length": 2,
+  "event_hash": "41a3e9905cb8f870",
+  "state_hash": "bbf5aaffac928e50",
+  "rules_version": 1
+}
+runs left: 7

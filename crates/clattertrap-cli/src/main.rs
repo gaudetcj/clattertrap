@@ -1,9 +1,10 @@
-//! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, and `run`.
+//! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, and `mcp`.
 #![forbid(unsafe_code)]
 
 mod catalog;
 mod check;
 mod level_text;
+mod mcp;
 mod picture;
 mod rules_text;
 mod run;
@@ -70,6 +71,18 @@ enum Command {
         #[arg(long, value_name = "PATH")]
         png: Option<PathBuf>,
     },
+    /// Serve the contestant tools over stdio as an MCP server
+    Mcp {
+        /// Assign one level; other levels are refused
+        #[arg(long, value_name = "ID")]
+        level: Option<String>,
+        /// The arm, which sets the run budget
+        #[arg(long, value_enum, default_value_t = mcp::arm::Arm::Workshop)]
+        arm: mcp::arm::Arm,
+        /// Directory for the call records and the submission
+        #[arg(long, value_name = "DIR")]
+        out: Option<PathBuf>,
+    },
 }
 
 /// Exit code for a scene the rules reject.
@@ -96,6 +109,10 @@ fn dispatch() -> Result<ExitCode> {
         Command::Check { scene } => check_command(&scene),
         Command::Look { scene, out } => look(&scene, out),
         Command::Run { scene, trace, png } => run_command(&scene, trace, png.as_deref()),
+        Command::Mcp { level, arm, out } => {
+            mcp::serve(level.as_deref(), arm, out)?;
+            Ok(ExitCode::SUCCESS)
+        }
     }
 }
 
@@ -111,15 +128,7 @@ fn rules(schema: bool, level_schema: bool) -> Result<ExitCode> {
 }
 
 fn levels() -> Result<ExitCode> {
-    for level in catalog::levels()? {
-        println!(
-            "{:<14} {}  {:<6} {}",
-            level.id,
-            level.tier,
-            level_text::goal_kind(&level.goal),
-            level.title
-        );
-    }
+    print!("{}", level_text::levels_text(&catalog::levels()?));
     Ok(ExitCode::SUCCESS)
 }
 

@@ -1,0 +1,18 @@
+---
+source: crates/clattertrap-cli/src/mcp/tests.rs
+assertion_line: 159
+expression: reply.text
+---
+Submitted "Two planks".
+{
+  "goal_met": true,
+  "end": "goal_met",
+  "time_s": 1.9250001,
+  "steps": 231,
+  "parts_used": 2,
+  "chain_length": 2,
+  "event_hash": "41a3e9905cb8f870",
+  "state_hash": "bbf5aaffac928e50",
+  "rules_version": 1
+}
+Your session is complete; there is nothing more to do.
