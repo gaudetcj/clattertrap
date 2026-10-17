@@ -2,10 +2,10 @@
 
 use crate::events::Event;
 use crate::hash::Fnv64;
-use serde::{Serialize, Serializer};
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 /// Why a run stopped.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum End {
     /// The goal was met.
@@ -22,8 +22,14 @@ fn hex_u64<S: Serializer>(value: &u64, s: S) -> Result<S::Ok, S::Error> {
     s.serialize_str(&format!("{value:016x}"))
 }
 
+/// Parses the 16 hex digits `hex_u64` writes.
+fn parse_hex_u64<'de, D: Deserializer<'de>>(d: D) -> Result<u64, D::Error> {
+    let text = String::deserialize(d)?;
+    u64::from_str_radix(&text, 16).map_err(serde::de::Error::custom)
+}
+
 /// The result of one run.
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Outcome {
     /// Whether the goal was met.
     pub goal_met: bool,
@@ -38,10 +44,10 @@ pub struct Outcome {
     /// Distinct parts set moving before the goal, or before the end if the goal was missed.
     pub chain_length: u32,
     /// FNV-1a 64 over the event log.
-    #[serde(serialize_with = "hex_u64")]
+    #[serde(serialize_with = "hex_u64", deserialize_with = "parse_hex_u64")]
     pub event_hash: u64,
     /// FNV-1a 64 over the final body states.
-    #[serde(serialize_with = "hex_u64")]
+    #[serde(serialize_with = "hex_u64", deserialize_with = "parse_hex_u64")]
     pub state_hash: u64,
     /// Rules the run used.
     pub rules_version: u32,

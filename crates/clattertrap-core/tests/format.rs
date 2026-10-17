@@ -179,6 +179,22 @@ fn outcome_serializes_hashes_as_hex_strings() {
 }
 
 #[test]
+fn outcome_parses_back_from_its_json() {
+    let level: Level = serde_json::from_str(BELL_LEVEL).unwrap();
+    let scene = Scene {
+        level: "bell-drop".to_owned(),
+        parts: vec![],
+    };
+    let valid = clattertrap_core::validate::validate(&level, &scene, &Rules::V1).unwrap();
+    let outcome = clattertrap_core::sim::run(&level, &valid, &Rules::V1).outcome;
+    let json = serde_json::to_string(&outcome).unwrap();
+    let back: clattertrap_core::score::Outcome = serde_json::from_str(&json).unwrap();
+    assert_eq!(back, outcome);
+    let bad = json.replace(&format!("{:016x}", outcome.state_hash), "not-hex");
+    assert!(serde_json::from_str::<clattertrap_core::score::Outcome>(&bad).is_err());
+}
+
+#[test]
 fn visuals_serialize_with_a_shape_tag() {
     let circle = Visual::Circle {
         r_m: 0.06,
