@@ -1,0 +1,5 @@
+---
+source: crates/clattertrap-cli/tests/cli_run.rs
+expression: text
+---
+parts[0] (domino low): overlaps floor by 5.0 cm at the start; move it up to y_cm = 10.0

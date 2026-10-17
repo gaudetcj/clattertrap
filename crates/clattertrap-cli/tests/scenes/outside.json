@@ -1,0 +1,7 @@
+{
+  "level": "bell-drop",
+  "parts": [
+    { "id": "far", "kind": "beam", "x_cm": 10, "y_cm": 150, "length_cm": 100, "angle_deg": 0 },
+    { "id": "far", "kind": "beam", "x_cm": 200, "y_cm": 150, "length_cm": 500, "angle_deg": 0 }
+  ]
+}

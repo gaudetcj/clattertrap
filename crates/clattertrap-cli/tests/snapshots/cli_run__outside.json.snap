@@ -1,0 +1,7 @@
+---
+source: crates/clattertrap-cli/tests/cli_run.rs
+expression: text
+---
+parts[1] (beam far): id "far" is already used; give this part a new id
+parts[0] (beam far): centre (10, 150) is outside every build zone; move it inside x 30..340, y 0..300
+parts[1] (beam far): length_cm 500 is outside 20..150; set length_cm within that range

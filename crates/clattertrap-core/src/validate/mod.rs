@@ -125,12 +125,20 @@ pub fn parse_level(json: &str) -> Result<Level, Problem> {
     parse_json(json, "level")
 }
 
+/// Parses scene JSON.
+///
+/// # Errors
+/// One problem naming the JSON path of the first thing the parser rejected.
+pub fn parse_scene(json: &str) -> Result<Scene, Problem> {
+    parse_json(json, "scene")
+}
+
 /// Parses scene JSON and checks it against its level and the rules, as `validate` does.
 ///
 /// # Errors
 /// The parse problem alone when the JSON does not parse, otherwise every validation problem.
 pub fn check(level: &Level, scene_json: &str, rules: &Rules) -> Result<ValidScene, Vec<Problem>> {
-    let scene: Scene = parse_json(scene_json, "scene").map_err(|p| vec![p])?;
+    let scene = parse_scene(scene_json).map_err(|p| vec![p])?;
     validate(level, &scene, rules)
 }
 

@@ -2,16 +2,19 @@
 #![forbid(unsafe_code)]
 
 mod catalog;
+mod check;
 mod level_text;
 mod picture;
 mod rules_text;
+mod run;
 
 use anyhow::Result;
 use clap::{Parser, Subcommand};
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::Scene;
+use clattertrap_core::sim::Simulator;
 use clattertrap_core::{level, scene};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
 /// Build Rube Goldberg machines with AI models and watch whether they work.
@@ -43,10 +46,37 @@ enum Command {
         #[arg(long, value_name = "PATH")]
         png: Option<PathBuf>,
     },
+    /// Validate a scene file against its level; exits 1 with the problems
+    Check {
+        /// Scene JSON file
+        scene: PathBuf,
+    },
+    /// Write a PNG of a scene at the start of its run
+    Look {
+        /// Scene JSON file
+        scene: PathBuf,
+        /// Where to write; the default is the scene's path with a .png extension
+        #[arg(long, value_name = "PATH")]
+        out: Option<PathBuf>,
+    },
+    /// Run a scene to its end and print the outcome as JSON
+    Run {
+        /// Scene JSON file
+        scene: PathBuf,
+        /// Print every event, one per line, before the outcome
+        #[arg(long)]
+        trace: bool,
+        /// Also write a PNG of the final frame
+        #[arg(long, value_name = "PATH")]
+        png: Option<PathBuf>,
+    },
 }
 
+/// Exit code for a scene the rules reject.
+const REJECTED: u8 = 1;
+
 fn main() -> ExitCode {
-    match run() {
+    match dispatch() {
         Ok(code) => code,
         Err(e) => {
             eprintln!("error: {e:#}");
@@ -55,43 +85,91 @@ fn main() -> ExitCode {
     }
 }
 
-fn run() -> Result<ExitCode> {
+fn dispatch() -> Result<ExitCode> {
     match Cli::parse().command {
         Command::Rules {
             schema,
             level_schema,
-        } => {
-            if schema {
-                println!("{}", serde_json::to_string_pretty(&scene::schema())?);
-            } else if level_schema {
-                println!("{}", serde_json::to_string_pretty(&level::schema())?);
-            } else {
-                print!("{}", rules_text::rules_text(&Rules::V1));
-            }
+        } => rules(schema, level_schema),
+        Command::Levels => levels(),
+        Command::Level { id, png } => level_command(&id, png.as_deref()),
+        Command::Check { scene } => check_command(&scene),
+        Command::Look { scene, out } => look(&scene, out),
+        Command::Run { scene, trace, png } => run_command(&scene, trace, png.as_deref()),
+    }
+}
+
+fn rules(schema: bool, level_schema: bool) -> Result<ExitCode> {
+    if schema {
+        println!("{}", serde_json::to_string_pretty(&scene::schema())?);
+    } else if level_schema {
+        println!("{}", serde_json::to_string_pretty(&level::schema())?);
+    } else {
+        print!("{}", rules_text::rules_text(&Rules::V1));
+    }
+    Ok(ExitCode::SUCCESS)
+}
+
+fn levels() -> Result<ExitCode> {
+    for level in catalog::levels()? {
+        println!(
+            "{:<14} {}  {:<6} {}",
+            level.id,
+            level.tier,
+            level_text::goal_kind(&level.goal),
+            level.title
+        );
+    }
+    Ok(ExitCode::SUCCESS)
+}
+
+fn level_command(id: &str, png: Option<&Path>) -> Result<ExitCode> {
+    let level = catalog::level(catalog::find(id)?)?;
+    print!("{}", level_text::level_text(&level)?);
+    if let Some(path) = png {
+        let empty = Scene {
+            level: level.id.clone(),
+            parts: vec![],
+        };
+        picture::write_start_png(&level, &empty, path)?;
+        println!("wrote {}", path.display());
+    }
+    Ok(ExitCode::SUCCESS)
+}
+
+fn check_command(scene: &Path) -> Result<ExitCode> {
+    let Some(loaded) = check::load_or_report(scene)? else {
+        return Ok(ExitCode::from(REJECTED));
+    };
+    let n = loaded.valid.scene_part_count();
+    println!("ok: {n} part{} placed", if n == 1 { "" } else { "s" });
+    Ok(ExitCode::SUCCESS)
+}
+
+fn look(scene: &Path, out: Option<PathBuf>) -> Result<ExitCode> {
+    let Some(loaded) = check::load_or_report(scene)? else {
+        return Ok(ExitCode::from(REJECTED));
+    };
+    let out = out.unwrap_or_else(|| scene.with_extension("png"));
+    let sim = Simulator::new(&loaded.level, &loaded.valid, &Rules::V1);
+    picture::write_png(&loaded.level, &loaded.valid, &sim, &out)?;
+    println!("wrote {}", out.display());
+    Ok(ExitCode::SUCCESS)
+}
+
+fn run_command(scene: &Path, trace: bool, png: Option<&Path>) -> Result<ExitCode> {
+    let Some(loaded) = check::load_or_report(scene)? else {
+        return Ok(ExitCode::from(REJECTED));
+    };
+    let (outcome, events, sim) = run::run_to_end(&loaded.level, &loaded.valid);
+    if trace {
+        for event in &events {
+            println!("{}", run::trace_line(*event, sim.names(), Rules::V1.dt_s));
         }
-        Command::Levels => {
-            for level in catalog::levels()? {
-                println!(
-                    "{:<14} {}  {:<6} {}",
-                    level.id,
-                    level.tier,
-                    level_text::goal_kind(&level.goal),
-                    level.title
-                );
-            }
-        }
-        Command::Level { id, png } => {
-            let level = catalog::level(catalog::find(&id)?)?;
-            print!("{}", level_text::level_text(&level)?);
-            if let Some(path) = png {
-                let empty = Scene {
-                    level: level.id.clone(),
-                    parts: vec![],
-                };
-                picture::write_start_png(&level, &empty, &path)?;
-                println!("wrote {}", path.display());
-            }
-        }
+    }
+    println!("{}", serde_json::to_string_pretty(&outcome)?);
+    if let Some(path) = png {
+        picture::write_png(&loaded.level, &loaded.valid, &sim, path)?;
     }
     Ok(ExitCode::SUCCESS)
 }

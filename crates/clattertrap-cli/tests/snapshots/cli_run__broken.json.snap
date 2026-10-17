@@ -1,0 +1,5 @@
+---
+source: crates/clattertrap-cli/tests/cli_run.rs
+expression: text
+---
+scene: key must be a string at line 1 column 25; write what the format asks for there

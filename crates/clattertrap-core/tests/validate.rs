@@ -6,7 +6,7 @@ mod common;
 use clattertrap_core::level::{Goal, Level, Zone};
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::{Material, PartSpec, Scene};
-use clattertrap_core::validate::{check, parse_level, validate};
+use clattertrap_core::validate::{check, parse_level, parse_scene, validate};
 use common::{ball, beam, level, placed, scene};
 
 fn problems(level: &Level, scene: &Scene) -> Vec<String> {
@@ -325,4 +325,14 @@ fn the_goal_target_must_be_a_fixed_object_of_the_right_kind() {
         msg.starts_with("goal: ") && msg.contains("names no fixed button"),
         "{msg}"
     );
+}
+
+#[test]
+fn parse_scene_names_the_path_of_a_bad_value() {
+    let json = r#"{ "level": "test", "parts": "none" }"#;
+    let msg = parse_scene(json).unwrap_err().to_string();
+    assert!(msg.starts_with("parts: "), "{msg}");
+    assert!(msg.contains("expected a sequence"), "{msg}");
+    let ok = parse_scene(r#"{ "level": "test", "parts": [] }"#).unwrap();
+    assert_eq!(ok, scene(vec![]));
 }
