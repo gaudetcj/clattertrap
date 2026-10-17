@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "clattertrap": {
+      "command": "cargo",
+      "args": ["run", "--quiet", "--package", "clattertrap-cli", "--", "mcp", "--arm", "workshop", "--out", "pilot/scratch"]
+    }
+  }
+}
