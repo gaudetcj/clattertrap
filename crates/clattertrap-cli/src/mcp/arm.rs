@@ -1,4 +1,5 @@
-//! The pilot arms: how many simulator runs a contestant gets before it submits.
+//! The pilot arms: how many simulator runs a contestant gets before it submits, and the caps every
+//! session shares.
 
 use serde::{Deserialize, Serialize};
 use std::fmt;
@@ -22,6 +23,12 @@ impl Arm {
             Self::Workshop => 8,
         }
     }
+
+    /// The dollar cap on one session, the same for every arm and model.
+    pub const MAX_BUDGET_USD: f64 = 6.0;
+
+    /// The wall-clock cap on one session in seconds, the same for every arm and model.
+    pub const WALL_CLOCK_S: u64 = 1200;
 
     /// The directory prefix of a run under this arm, as in `blueprint-01`.
     #[must_use]

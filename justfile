@@ -30,7 +30,7 @@ hero:
 
 # Headless Claude Code contestant runs against clattertrap mcp (milestone 5).
 pilot model runs arm:
-    cargo xtask stub pilot
+    cargo run --release --package clattertrap-cli -- arena --model {{model}} --runs {{runs}} --arm {{arm}}
 
 # Criterion benches, including run_level.
 bench:

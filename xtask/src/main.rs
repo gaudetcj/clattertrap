@@ -94,7 +94,6 @@ fn prose(root: &Path) -> Result<()> {
 /// Later milestones replace these with real recipes.
 fn stub(name: &str) -> Result<()> {
     let milestone = match name {
-        "pilot" => 5,
         "verify" | "hero" => 6,
         _ => bail!("unknown stub {name}"),
     };

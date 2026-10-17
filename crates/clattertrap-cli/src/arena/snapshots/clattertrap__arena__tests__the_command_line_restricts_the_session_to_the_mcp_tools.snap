@@ -1,0 +1,26 @@
+---
+source: crates/clattertrap-cli/src/arena/tests.rs
+assertion_line: 85
+expression: "args.join(\"\\n\")"
+---
+-p
+--model
+claude-haiku-5-5
+--mcp-config
+C:/runs/bell-drop/workshop-01/mcp.json
+--strict-mcp-config
+--restricted
+--tools
+
+--allowedTools
+mcp__clattertrap__*
+--permission-mode
+dontAsk
+--permission-prompts
+none
+--output-format
+stream-json
+--verbose
+--no-session-persistence
+--max-budget-usd
+6

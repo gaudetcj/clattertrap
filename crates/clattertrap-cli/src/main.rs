@@ -1,6 +1,8 @@
-//! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, and `mcp`.
+//! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, `mcp`, and
+//! `arena`.
 #![forbid(unsafe_code)]
 
+mod arena;
 mod catalog;
 mod check;
 mod level_text;
@@ -71,6 +73,27 @@ enum Command {
         #[arg(long, value_name = "PATH")]
         png: Option<PathBuf>,
     },
+    /// Run a Claude model through the contestant tools and save every run (the pilot)
+    Arena {
+        /// Model alias or id; Claude models only
+        #[arg(long)]
+        model: String,
+        /// Sessions per level
+        #[arg(long, default_value_t = 1)]
+        runs: u32,
+        /// The arm, which sets the run budget
+        #[arg(long, value_enum)]
+        arm: mcp::arm::Arm,
+        /// One level instead of all of them
+        #[arg(long, value_name = "ID")]
+        level: Option<String>,
+        /// Where run directories go
+        #[arg(long, value_name = "DIR", default_value = "pilot/runs")]
+        out: PathBuf,
+        /// The claude executable
+        #[arg(long, default_value = "claude")]
+        claude: String,
+    },
     /// Serve the contestant tools over stdio as an MCP server
     Mcp {
         /// Assign one level; other levels are refused
@@ -109,6 +132,24 @@ fn dispatch() -> Result<ExitCode> {
         Command::Check { scene } => check_command(&scene),
         Command::Look { scene, out } => look(&scene, out),
         Command::Run { scene, trace, png } => run_command(&scene, trace, png.as_deref()),
+        Command::Arena {
+            model,
+            runs,
+            arm,
+            level,
+            out,
+            claude,
+        } => {
+            arena::run(&arena::Options {
+                model,
+                runs,
+                arm,
+                level,
+                out,
+                claude,
+            })?;
+            Ok(ExitCode::SUCCESS)
+        }
         Command::Mcp { level, arm, out } => {
             mcp::serve(level.as_deref(), arm, out)?;
             Ok(ExitCode::SUCCESS)

@@ -31,5 +31,8 @@ fn the_mcp_config_starts_the_mcp_subcommand_in_the_workshop_arm() {
         .map(|a| a.as_str().unwrap())
         .collect();
     let at = args.iter().position(|a| *a == "mcp").unwrap();
-    assert_eq!(args[at + 1..], ["--arm", "workshop", "--out", "pilot/scratch"]);
+    assert_eq!(
+        args[at + 1..],
+        ["--arm", "workshop", "--out", "pilot/scratch"]
+    );
 }
