@@ -1,0 +1,19 @@
+{
+  "id": "spring-launch",
+  "title": "Spring to the button",
+  "tier": 4,
+  "description": "A wood ball rests at (60, 151) on a fixed ramp that slopes down to the right and ends at (137, 113). High on the right, two fixed ledges run level with their tops at y = 122: one from x = 280 to x = 348, one from x = 362 to x = 390. In the 14 cm slot between them a button with 2 cm of travel sits with its cap top at y = 120, 2 cm below the ledges. The build zone covers x from 20 to 380 and y from 2 to 100, below the ledges. The ball has to be thrown up onto a ledge, drop into the slot, and come to rest on the button.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "wood", "x_cm": 60, "y_cm": 151 },
+    { "id": "ramp", "kind": "beam", "x_cm": 90, "y_cm": 130, "length_cm": 100, "angle_deg": -20 },
+    { "id": "ledge", "kind": "beam", "x_cm": 314, "y_cm": 120, "length_cm": 68, "angle_deg": 0 },
+    { "id": "ledge2", "kind": "beam", "x_cm": 376, "y_cm": 120, "length_cm": 28, "angle_deg": 0 },
+    { "id": "button", "kind": "button", "x_cm": 355, "y_cm": 117, "travel_cm": 2 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 2, "width_cm": 360, "height_cm": 98 } ],
+  "inventory": { "spring_pad": 1, "beam": 3 },
+  "goal": { "kind": "press", "target": "button" }
+}

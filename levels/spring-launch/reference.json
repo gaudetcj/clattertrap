@@ -1,0 +1,6 @@
+{
+  "level": "spring-launch",
+  "parts": [
+    { "id": "pad", "kind": "spring_pad", "x_cm": 230, "y_cm": 2, "angle_deg": -10 }
+  ]
+}

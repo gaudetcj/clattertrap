@@ -1,0 +1,19 @@
+{
+  "id": "seesaw-launch",
+  "title": "Launch to the bell",
+  "tier": 4,
+  "description": "A steel ball hangs in the air at (100, 270), top left, and falls from the start. A bell hangs at (180, 150) inside a fixed box that is open only at the bottom: a roof from x = 140 to x = 220 at y = 180, and two walls at x = 140 and x = 220 from y = 130 up to the roof. The bell's bracket is 20 cm above it. The build zone covers x from 20 to 380 and y from 10 to 120. Nothing can roll into the box; something has to be thrown up through its open bottom.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 100, "y_cm": 270 },
+    { "id": "roof", "kind": "beam", "x_cm": 180, "y_cm": 180, "length_cm": 80, "angle_deg": 0 },
+    { "id": "left", "kind": "beam", "x_cm": 140, "y_cm": 155, "length_cm": 50, "angle_deg": 90 },
+    { "id": "right", "kind": "beam", "x_cm": 220, "y_cm": 155, "length_cm": 50, "angle_deg": 90 },
+    { "id": "bell", "kind": "bell", "x_cm": 180, "y_cm": 150, "rope_cm": 20 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 10, "width_cm": 360, "height_cm": 110 } ],
+  "inventory": { "seesaw": 1, "domino": 1, "beam": 2 },
+  "goal": { "kind": "ring", "target": "bell" }
+}

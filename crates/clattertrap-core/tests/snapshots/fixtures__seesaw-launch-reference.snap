@@ -1,0 +1,5 @@
+---
+source: crates/clattertrap-core/tests/fixtures.rs
+expression: "golden(&play(&level, &reference))"
+---
+d44dbb9ff445d11d db95679656da4b4a steps 121 GoalMet chain 4

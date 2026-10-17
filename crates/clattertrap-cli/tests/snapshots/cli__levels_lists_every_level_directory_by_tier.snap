@@ -3,6 +3,14 @@ source: crates/clattertrap-cli/tests/cli.rs
 expression: out
 ---
 bell-drop      1  ring   Ring the bell
+pendulum-bell  1  ring   Swing into the bell
 balloon-pin    2  pop    Pop the balloon
 basket-fill    2  fill   Fill the basket
 button-drop    2  press  Press the button
+domino-run     2  fill   Topple into the basket
+funnel-basket  3  fill   Three into the basket
+post-first     3  ring   Touch the post, then ring
+rope-swing     3  ring   Swing on a rope
+seesaw-launch  4  ring   Launch to the bell
+spring-launch  4  press  Spring to the button
+grand-tour     5  ring   The grand tour

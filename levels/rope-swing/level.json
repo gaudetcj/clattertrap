@@ -1,0 +1,17 @@
+{
+  "id": "rope-swing",
+  "title": "Swing on a rope",
+  "tier": 3,
+  "description": "A steel ball hangs in the air at (120, 240) and falls from the start. A short fixed beam, the hook, sits at (200, 280) near the top. A bell hangs at (290, 215) from a bracket 30 cm above it. The build zone covers x from 20 to 380 and y from 20 to 260. The bell is too far right for the ball to fall onto.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 120, "y_cm": 240 },
+    { "id": "hook", "kind": "beam", "x_cm": 200, "y_cm": 280, "length_cm": 20, "angle_deg": 0 },
+    { "id": "bell", "kind": "bell", "x_cm": 290, "y_cm": 215, "rope_cm": 30 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 20, "width_cm": 360, "height_cm": 240 } ],
+  "inventory": { "rope": 1, "beam": 2 },
+  "goal": { "kind": "ring", "target": "bell" }
+}

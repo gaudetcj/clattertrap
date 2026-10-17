@@ -1,0 +1,5 @@
+---
+source: crates/clattertrap-core/tests/fixtures.rs
+expression: "golden(&play(&level, &empty(f.id)))"
+---
+38e2aceea303484e c7c15423d51dcb61 steps 277 AllAsleep chain 1

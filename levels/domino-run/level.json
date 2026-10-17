@@ -1,0 +1,19 @@
+{
+  "id": "domino-run",
+  "title": "Topple into the basket",
+  "tier": 2,
+  "description": "A wood ball rests at (45, 171) on a fixed ramp that slopes down to the right and ends at (106, 133). A fixed shelf runs level from x = 115 to x = 265 with its top at y = 127, so the ball rolls off the ramp onto its left end. A basket 60 cm wide and 40 cm deep stands on the floor under the right end of the shelf, its floor centred at (305, 0.5). The build zone is the top of the shelf: x from 115 to 275, y from 125 to 185. Two objects have to come to rest in the basket.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "wood", "x_cm": 45, "y_cm": 171 },
+    { "id": "ramp", "kind": "beam", "x_cm": 70, "y_cm": 150, "length_cm": 80, "angle_deg": -25 },
+    { "id": "shelf", "kind": "beam", "x_cm": 190, "y_cm": 125, "length_cm": 150, "angle_deg": 0 },
+    { "id": "basket", "kind": "basket", "x_cm": 305, "y_cm": 0.5, "inner_width_cm": 60, "inner_height_cm": 40 }
+  ],
+  "zones": [ { "x_cm": 115, "y_cm": 125, "width_cm": 160, "height_cm": 60 } ],
+  "inventory": { "domino": 10, "beam": 1 },
+  "goal": { "kind": "fill", "target": "basket", "count": 2 },
+  "showcase": true
+}

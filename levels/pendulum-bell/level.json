@@ -1,0 +1,15 @@
+{
+  "id": "pendulum-bell",
+  "title": "Swing into the bell",
+  "tier": 1,
+  "description": "A bell hangs at (300, 80), low on the right, from a bracket 60 cm above it. Nothing else is in the world. The build zone covers x from 20 to 380 and y from 20 to 280. You have one pendulum: its weight starts at rest where you hang it and swings down at once.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "bell", "kind": "bell", "x_cm": 300, "y_cm": 80, "rope_cm": 60 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 20, "width_cm": 360, "height_cm": 260 } ],
+  "inventory": { "pendulum": 1 },
+  "goal": { "kind": "ring", "target": "bell" }
+}

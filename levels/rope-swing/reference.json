@@ -1,0 +1,6 @@
+{
+  "level": "rope-swing",
+  "parts": [
+    { "id": "r1", "kind": "rope", "a": "ball0", "b": "hook", "max_length_cm": 100 }
+  ]
+}

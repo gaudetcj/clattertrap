@@ -1,0 +1,7 @@
+{
+  "level": "seesaw-launch",
+  "parts": [
+    { "id": "s1", "kind": "seesaw", "x_cm": 130, "y_cm": 10, "length_cm": 80, "angle_deg": -11.5 },
+    { "id": "d1", "kind": "domino", "x_cm": 160, "y_cm": 16.1, "angle_deg": -11.5 }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "post-first",
+  "title": "Touch the post, then ring",
+  "tier": 3,
+  "description": "A steel ball hangs in the air at (60, 270), top left, and falls from the start. A short fixed beam, the post, runs level from x = 180 to x = 230 with its top at y = 122. A bell hangs at (340, 80), low on the right, from a bracket 50 cm above it. The build zone covers x from 20 to 380 and y from 20 to 280. The ball has to touch the post before anything touches the bell.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 60, "y_cm": 270 },
+    { "id": "post", "kind": "beam", "x_cm": 205, "y_cm": 120, "length_cm": 50, "angle_deg": 0 },
+    { "id": "bell", "kind": "bell", "x_cm": 340, "y_cm": 80, "rope_cm": 50 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 20, "width_cm": 360, "height_cm": 260 } ],
+  "inventory": { "beam": 4 },
+  "goal": { "kind": "ring", "target": "bell", "via": ["post"] }
+}

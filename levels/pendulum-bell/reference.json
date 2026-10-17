@@ -1,0 +1,6 @@
+{
+  "level": "pendulum-bell",
+  "parts": [
+    { "id": "p1", "kind": "pendulum", "x_cm": 300, "y_cm": 170, "length_cm": 90, "angle_deg": -60 }
+  ]
+}
