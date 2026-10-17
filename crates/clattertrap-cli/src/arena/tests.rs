@@ -217,3 +217,14 @@ fn the_per_run_config_serves_the_level_into_the_run_directory() {
         ])
     );
 }
+
+#[test]
+fn the_output_directory_is_made_absolute_before_any_session_starts() {
+    let out = super::absolute_out(Path::new("pilot/runs")).unwrap();
+    assert!(out.is_absolute(), "{}", out.display());
+    assert!(
+        out.ends_with(Path::new("pilot").join("runs")),
+        "{}",
+        out.display()
+    );
+}

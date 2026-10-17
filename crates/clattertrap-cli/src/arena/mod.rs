@@ -38,6 +38,15 @@ pub struct Options {
     pub claude: String,
 }
 
+/// `out` as an absolute path, so the per-run MCP config and the server's `--out` stay valid from any
+/// working directory: the session runs with its run directory as cwd.
+///
+/// # Errors
+/// When the current directory cannot be read.
+pub fn absolute_out(out: &Path) -> Result<PathBuf> {
+    std::path::absolute(out).with_context(|| format!("resolving {}", out.display()))
+}
+
 /// The prompt for one level under one arm.
 #[must_use]
 pub fn fill_prompt(level: &str, run_budget: u32) -> String {
@@ -74,6 +83,7 @@ pub fn run(opts: &Options) -> Result<()> {
         Some(id) => vec![catalog::level(catalog::find(id)?)?],
         None => catalog::levels()?,
     };
+    let out = absolute_out(&opts.out)?;
     let runtime = tokio::runtime::Builder::new_current_thread()
         .enable_all()
         .build()
@@ -81,7 +91,7 @@ pub fn run(opts: &Options) -> Result<()> {
     let mut again = Vec::new();
     for level in &levels {
         for _ in 0..opts.runs {
-            let (dir, summary) = runtime.block_on(one_run(opts, &level.id))?;
+            let (dir, summary) = runtime.block_on(one_run(opts, &out, &level.id))?;
             println!("{}", run_line(&dir, &summary));
             if !summary.status.counts() {
                 again.push(dir);
@@ -97,8 +107,8 @@ pub fn run(opts: &Options) -> Result<()> {
     Ok(())
 }
 
-async fn one_run(opts: &Options, level: &str) -> Result<(PathBuf, Summary)> {
-    let dir = next_run_dir(&opts.out, &opts.model, level, opts.arm)?;
+async fn one_run(opts: &Options, out: &Path, level: &str) -> Result<(PathBuf, Summary)> {
+    let dir = next_run_dir(out, &opts.model, level, opts.arm)?;
     std::fs::create_dir_all(&dir).with_context(|| format!("creating {}", dir.display()))?;
     let exe = std::env::current_exe().context("finding this executable")?;
     let config_path = dir.join("mcp.json");
