@@ -44,23 +44,24 @@ fn bell_drop_at_start() -> (Frame, Pixmap) {
 }
 
 #[test]
-fn the_frame_is_the_world_at_the_given_scale() {
+// The world sits right of a 40 px margin for y labels and above a 20 px margin for x labels.
+fn the_frame_is_the_world_at_the_given_scale_plus_margins() {
     let (frame, pixmap) = bell_drop_at_start();
-    assert_eq!((frame.width_px(), frame.height_px()), (800, 600));
-    assert_eq!((pixmap.width(), pixmap.height()), (800, 600));
+    assert_eq!((frame.width_px(), frame.height_px()), (840.0, 620.0));
+    assert_eq!((pixmap.width(), pixmap.height()), (840, 620));
 }
 
 #[test]
 fn parts_paint_their_look_at_their_centre_and_zones_tint_the_air() {
     let (_, p) = bell_drop_at_start();
     // The steel ball sits at (70, 280) cm and the brass bell at (360, 100) cm; y flips.
-    assert_eq!(rgb(&p, 140, 40), look_rgb(Look::Steel));
-    assert_eq!(rgb(&p, 720, 400), look_rgb(Look::Brass));
-    let inside_zone = rgb(&p, 400, 300);
-    assert_eq!(inside_zone, rgb(&p, 500, 200), "the zone is one flat tint");
+    assert_eq!(rgb(&p, 180, 40), look_rgb(Look::Steel));
+    assert_eq!(rgb(&p, 760, 400), look_rgb(Look::Brass));
+    let inside_zone = rgb(&p, 440, 300);
+    assert_eq!(inside_zone, rgb(&p, 540, 200), "the zone is one flat tint");
     assert_ne!(
         inside_zone,
-        rgb(&p, 20, 300),
+        rgb(&p, 60, 300),
         "outside the zone is a different tint"
     );
     assert!(!ink(inside_zone));
@@ -70,9 +71,9 @@ fn parts_paint_their_look_at_their_centre_and_zones_tint_the_air() {
 fn a_part_id_is_lettered_beside_its_centre() {
     let (_, p) = bell_drop_at_start();
     // "ball0" starts right of the ball, whose radius is 12 px here; the outline ends by 14 px.
-    let lettered = (156..230).any(|x| (28..52).any(|y| ink(rgb(&p, x, y))));
+    let lettered = (196..270).any(|x| (28..52).any(|y| ink(rgb(&p, x, y))));
     assert!(lettered, "no ink right of the ball");
-    let empty = (156..230).all(|x| (70..100).all(|y| !ink(rgb(&p, x, y))));
+    let empty = (196..270).all(|x| (70..100).all(|y| !ink(rgb(&p, x, y))));
     assert!(empty, "ink below the label where nothing is drawn");
 }
 
@@ -99,12 +100,12 @@ fn a_pendulum_rod_joins_the_pin_to_the_weight() {
     let p = Frame::new(&lv, 2.0).draw(&sim, &valid);
     // Pin at (200, 200), weight at (200, 100): the rod's midpoint is (200, 150) cm.
     assert!(
-        ink(rgb(&p, 400, 300)),
+        ink(rgb(&p, 440, 300)),
         "no rod at the midpoint: {:?}",
-        rgb(&p, 400, 300)
+        rgb(&p, 440, 300)
     );
     assert_eq!(
-        rgb(&p, 400, 400),
+        rgb(&p, 440, 400),
         look_rgb(Look::Steel),
         "the weight hangs 1 m down"
     );
@@ -129,6 +130,6 @@ fn a_label_near_the_edge_stays_inside_the_picture() {
     let sim = Simulator::new(&lv, &valid, &Rules::V1);
     let p = Frame::new(&lv, 2.0).draw(&sim, &valid);
     // "corner" is 70 px wide at this scale, so it is pulled left of the crate (x 780..800) and up off the edge.
-    let lettered = (728..776).any(|x| (584..598).any(|y| ink(rgb(&p, x, y))));
+    let lettered = (768..815).any(|x| (584..598).any(|y| ink(rgb(&p, x, y))));
     assert!(lettered, "no label left of the corner crate");
 }

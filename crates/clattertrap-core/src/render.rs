@@ -1,10 +1,12 @@
-//! Rasterizes a scene at a step with tiny-skia: the world at a fixed scale, zones, a grid with
-//! centimetre labels, every body in its look's flat colour, links as lines, and part ids beside parts.
+//! Rasterizes a scene at a step with tiny-skia: the world at a fixed scale beside two label margins,
+//! zones, a grid with centimetre labels, every body in its look's flat colour, links as lines, and
+//! part ids beside parts.
 //!
 //! This is a reading aid for the `look` tool; the browser viewer is the art.
 
 mod font;
 mod paint;
+mod paper;
 
 pub use font::text_width;
 pub use paint::look_rgb;
@@ -16,11 +18,9 @@ use crate::scene::PartSpec;
 use crate::sim::Simulator;
 use crate::validate::ValidScene;
 use crate::world::{BodyPose, Slot};
-use tiny_skia::{Color, LineCap, Paint, PathBuilder, Pixmap, Rect, Stroke, StrokeDash, Transform};
+use tiny_skia::{Color, LineCap, Paint, PathBuilder, Pixmap, Stroke, Transform};
 
 const BACKGROUND: [u8; 3] = [0xf6, 0xf1, 0xe7];
-const ZONE: [u8; 3] = [0x3b, 0x82, 0xf6];
-const GRID: [u8; 3] = [0xd9, 0xd2, 0xc3];
 const INK: [u8; 3] = [0x22, 0x22, 0x22];
 const LINK: [u8; 3] = [0x33, 0x33, 0x33];
 /// Grid spacing in centimetres.
@@ -29,35 +29,40 @@ const GRID_CM: f32 = 50.0;
 const TEXT_SCALE: f32 = 2.0;
 /// Outline width in metres, so it scales with the frame.
 const EDGE_M: f32 = 0.01;
-/// Largest frame side, small enough that tiny-skia always accepts the pixmap.
-const MAX_SIDE_PX: f32 = 8192.0;
 /// Link line width in metres.
 const LINK_M: f32 = 0.015;
+/// Strip left of the world for the y labels, in pixels.
+const MARGIN_LEFT_PX: f32 = 40.0;
+/// Strip below the world for the x labels, in pixels.
+const MARGIN_BOTTOM_PX: f32 = 20.0;
+/// Largest side of the world area, small enough that tiny-skia always accepts the pixmap.
+const MAX_WORLD_SIDE_PX: f32 = 8000.0;
 
 /// PNG encoding failed.
 #[derive(Debug, thiserror::Error)]
 #[error("could not encode the PNG: {0}")]
 pub struct PngError(String);
 
-/// A level's picture frame: its size in pixels and how centimetres map to them.
+/// A level's picture frame: the world area in pixels, the margins around it, and the centimetre scale.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Frame {
     px_per_cm: f32,
-    width_px: u32,
-    height_px: u32,
+    /// Width of the world area, right of the left margin.
+    world_w_px: f32,
+    /// Height of the world area, above the bottom margin.
+    world_h_px: f32,
     zones: Vec<[f32; 4]>,
 }
 
 impl Frame {
-    /// A frame for `level` at `px_per_cm`, each side clamped to 1..=8192 pixels.
+    /// A frame for `level` at `px_per_cm`; the world area is clamped to 1..=8000 pixels a side.
     #[must_use]
-    #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
     pub fn new(level: &Level, px_per_cm: f32) -> Self {
-        let px = |cm: f32| libm::roundf(cm * px_per_cm).clamp(1.0, MAX_SIDE_PX) as u32;
+        let px = |cm: f32| libm::roundf(cm * px_per_cm).clamp(1.0, MAX_WORLD_SIDE_PX);
         Self {
             px_per_cm,
-            width_px: px(level.world.width_cm),
-            height_px: px(level.world.height_cm),
+            world_w_px: px(level.world.width_cm),
+            world_h_px: px(level.world.height_cm),
             zones: level
                 .zones
                 .iter()
@@ -66,32 +71,31 @@ impl Frame {
         }
     }
 
-    /// Width in pixels.
+    /// Width in pixels, margin included.
     #[must_use]
-    pub const fn width_px(&self) -> u32 {
-        self.width_px
+    pub fn width_px(&self) -> f32 {
+        self.world_w_px + MARGIN_LEFT_PX
     }
 
-    /// Height in pixels.
+    /// Height in pixels, margin included.
     #[must_use]
-    pub const fn height_px(&self) -> u32 {
-        self.height_px
+    pub fn height_px(&self) -> f32 {
+        self.world_h_px + MARGIN_BOTTOM_PX
     }
 
     /// Paints the simulator's current state.
     ///
     /// # Panics
-    /// Never: `new` clamps both sides to 1..=8192 pixels, which tiny-skia always accepts.
+    /// Never: `new` clamps the world area to 1..=8000 pixels a side, which tiny-skia always accepts.
     #[must_use]
+    #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
     pub fn draw(&self, sim: &Simulator, valid: &ValidScene) -> Pixmap {
-        // Both sides are within 1..=8192 (`new` clamps them), so the pixmap exists.
+        // Both sides are whole numbers within 41..=8040 (`new` clamps them), so the pixmap exists.
         #[allow(clippy::expect_used)]
-        let mut pixmap =
-            Pixmap::new(self.width_px, self.height_px).expect("frame sides are within 1..=8192");
+        let mut pixmap = Pixmap::new(self.width_px() as u32, self.height_px() as u32)
+            .expect("frame sides are within 41..=8040");
         pixmap.fill(colour(BACKGROUND));
-        self.grid(&mut pixmap);
-        self.zones(&mut pixmap);
-        self.floor(&mut pixmap);
+        self.paper(&mut pixmap);
         let slots: Vec<Slot> = sim.slots().collect();
         self.links(&mut pixmap, &slots, valid);
         for slot in &slots {
@@ -104,98 +108,19 @@ impl Frame {
     }
 
     /// A centimetre point to pixels, y down.
-    #[allow(clippy::cast_precision_loss)]
     fn px(&self, x_cm: f32, y_cm: f32) -> (f32, f32) {
         (
-            x_cm * self.px_per_cm,
-            self.height_px as f32 - y_cm * self.px_per_cm,
+            MARGIN_LEFT_PX + x_cm * self.px_per_cm,
+            self.world_h_px - y_cm * self.px_per_cm,
         )
     }
 
     /// Maps a body's metre frame (y up, rotated) onto pixels.
-    #[allow(clippy::cast_precision_loss)]
     fn body_transform(&self, pose: &BodyPose) -> Transform {
         let k = self.px_per_cm * 100.0;
         let (s, c) = (libm::sinf(pose.angle_rad), libm::cosf(pose.angle_rad));
-        Transform::from_row(
-            k * c,
-            -k * s,
-            -k * s,
-            -k * c,
-            pose.x_m * k,
-            self.height_px as f32 - pose.y_m * k,
-        )
-    }
-
-    #[allow(clippy::cast_precision_loss)]
-    fn grid(&self, pixmap: &mut Pixmap) {
-        let thin = Stroke {
-            width: 1.0,
-            ..Stroke::default()
-        };
-        let line = paint::solid(GRID, 1.0);
-        let ink = paint::solid(INK, 1.0);
-        let (w, h) = (self.width_px as f32, self.height_px as f32);
-        let mut x_cm = GRID_CM;
-        while x_cm * self.px_per_cm < w {
-            let (x, _) = self.px(x_cm, 0.0);
-            stroke_line(pixmap, (x, 0.0), (x, h), &line, &thin);
-            let label = format!("{x_cm}");
-            let lx = x - text_width(&label, TEXT_SCALE) / 2.0;
-            font::draw(pixmap, lx, h - 9.0 * TEXT_SCALE, &label, TEXT_SCALE, &ink);
-            x_cm += GRID_CM;
-        }
-        let mut y_cm = GRID_CM;
-        while y_cm * self.px_per_cm < h {
-            let (_, y) = self.px(0.0, y_cm);
-            stroke_line(pixmap, (0.0, y), (w, y), &line, &thin);
-            font::draw(
-                pixmap,
-                3.0,
-                y - 3.5 * TEXT_SCALE,
-                &format!("{y_cm}"),
-                TEXT_SCALE,
-                &ink,
-            );
-            y_cm += GRID_CM;
-        }
-    }
-
-    fn zones(&self, pixmap: &mut Pixmap) {
-        let fill = paint::solid(ZONE, 0.08);
-        let edge = paint::solid(ZONE, 0.6);
-        let dashed = Stroke {
-            width: 1.5,
-            dash: StrokeDash::new(vec![6.0, 4.0], 0.0),
-            ..Stroke::default()
-        };
-        for [x, y, w, h] in &self.zones {
-            let (left, bottom) = self.px(*x, *y);
-            let (right, top) = self.px(x + w, y + h);
-            let Some(rect) = Rect::from_ltrb(left, top, right, bottom) else {
-                continue;
-            };
-            pixmap.fill_rect(rect, &fill, Transform::identity(), None);
-            let path = PathBuilder::from_rect(rect);
-            pixmap.stroke_path(&path, &edge, &dashed, Transform::identity(), None);
-        }
-    }
-
-    #[allow(clippy::cast_precision_loss)]
-    fn floor(&self, pixmap: &mut Pixmap) {
-        let (_, y) = self.px(0.0, 0.0);
-        let stroke = Stroke {
-            width: 2.0,
-            ..Stroke::default()
-        };
-        let ink = paint::solid(INK, 1.0);
-        stroke_line(
-            pixmap,
-            (0.0, y - 1.0),
-            (self.width_px as f32, y - 1.0),
-            &ink,
-            &stroke,
-        );
+        let (tx, ty) = self.px(pose.x_m * 100.0, pose.y_m * 100.0);
+        Transform::from_row(k * c, -k * s, -k * s, -k * c, tx, ty)
     }
 
     /// Pivot to body lines for pendulums, bells, and seesaws, and rope lines between parts.
@@ -245,8 +170,14 @@ impl Frame {
         pixmap.stroke_path(&path, &edge, &stroke, transform, None);
     }
 
+    /// A label origin pulled inside the world area, with a 2 px margin.
     fn clamp_label(&self, x: f32, y: f32, name: &str) -> (f32, f32) {
-        clamp_label_in(self.width_px, self.height_px, x, y, name)
+        let right = self.width_px() - text_width(name, TEXT_SCALE) - 2.0;
+        let bottom = self.world_h_px - 7.0 * TEXT_SCALE - 2.0;
+        (
+            x.min(right).max(MARGIN_LEFT_PX + 2.0),
+            y.min(bottom).max(2.0),
+        )
     }
 
     /// Each part's id just right of its first body, clear of the outline.
@@ -272,14 +203,6 @@ impl Frame {
             font::draw(pixmap, x, y, name, TEXT_SCALE, &ink);
         }
     }
-}
-
-/// A label origin pulled inside the picture, with a 2 px margin.
-#[allow(clippy::cast_precision_loss)]
-fn clamp_label_in(width_px: u32, height_px: u32, x: f32, y: f32, name: &str) -> (f32, f32) {
-    let right = width_px as f32 - text_width(name, TEXT_SCALE) - 2.0;
-    let bottom = height_px as f32 - 7.0 * TEXT_SCALE - 2.0;
-    (x.min(right).max(2.0), y.min(bottom).max(2.0))
 }
 
 /// The first body of a part that is not a pivot and still exists.
