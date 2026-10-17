@@ -6,7 +6,7 @@ mod common;
 use clattertrap_core::level::{Goal, Level, Zone};
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::{Material, PartSpec, Scene};
-use clattertrap_core::validate::validate;
+use clattertrap_core::validate::{check, parse_level, validate};
 use common::{ball, beam, level, placed, scene};
 
 fn problems(level: &Level, scene: &Scene) -> Vec<String> {
@@ -31,6 +31,57 @@ fn a_scene_for_another_level_is_rejected() {
     assert!(
         msg.contains("\"other\"") && msg.contains("\"test\""),
         "{msg}"
+    );
+}
+
+#[test]
+fn check_reports_a_wrong_type_at_its_json_path() {
+    let json = r#"{ "level": "test", "parts": [
+      { "id": "b1", "kind": "beam", "x_cm": 100, "y_cm": 100, "length_cm": "90", "angle_deg": 0 }
+    ] }"#;
+    let problems = check(&level(vec![]), json, &Rules::V1).unwrap_err();
+    assert_eq!(problems.len(), 1, "{problems:#?}");
+    let msg = problems[0].to_string();
+    // The flattened part spec hides field names from the path; the line and column still point at the value.
+    assert!(msg.starts_with("parts[0]: "), "{msg}");
+    assert!(msg.contains("line 2 column"), "{msg}");
+    assert!(
+        msg.contains("expected f32") && msg.contains("\"90\""),
+        "{msg}"
+    );
+}
+
+#[test]
+fn check_reports_broken_json_at_the_scene_root() {
+    let problems = check(&level(vec![]), "{", &Rules::V1).unwrap_err();
+    assert_eq!(problems.len(), 1, "{problems:#?}");
+    let msg = problems[0].to_string();
+    assert!(msg.starts_with("scene: "), "{msg}");
+    assert!(msg.contains("line 1"), "{msg}");
+}
+
+#[test]
+fn check_on_valid_json_equals_validate() {
+    let lv = level(vec![]);
+    let sc = scene(vec![ball("k1", 100.0, 100.0, Material::Wood)]);
+    let json = serde_json::to_string(&sc).unwrap();
+    assert_eq!(
+        check(&lv, &json, &Rules::V1),
+        validate(&lv, &sc, &Rules::V1)
+    );
+}
+
+#[test]
+fn parse_level_names_the_missing_field() {
+    let json = serde_json::to_string(&level(vec![]))
+        .unwrap()
+        .replace("\"tier\":1,", "");
+    let msg = parse_level(&json).unwrap_err().to_string();
+    assert!(msg.starts_with("level: "), "{msg}");
+    assert!(msg.contains("tier"), "{msg}");
+    assert_eq!(
+        parse_level(&serde_json::to_string(&level(vec![])).unwrap()).unwrap(),
+        level(vec![])
     );
 }
 

@@ -1,12 +1,14 @@
 //! `Level` and `Scene` to `ValidScene`, or a list of `Problem`s. The only place raw input is accepted.
 
 mod checks;
+mod ranges;
 
 use crate::events::PartId;
 use crate::level::Level;
 use crate::rules::Rules;
 use crate::scene::{Placed, Scene};
 use crate::world::{Overlap, World};
+use serde::de::DeserializeOwned;
 use std::fmt;
 
 /// Name reserved for the floor body.
@@ -98,6 +100,40 @@ impl ValidScene {
     }
 }
 
+/// Parses JSON into `T`, naming the JSON path of the first error, or `root` for errors at the top.
+fn parse_json<T: DeserializeOwned>(json: &str, root: &str) -> Result<T, Problem> {
+    let mut de = serde_json::Deserializer::from_str(json);
+    serde_path_to_error::deserialize(&mut de).map_err(|e| {
+        let path = e.path().to_string();
+        Problem::new(
+            // An empty path prints as "." and an error before any field as "?": both are the root.
+            if path == "." || path == "?" {
+                root.to_owned()
+            } else {
+                path
+            },
+            format!("{}; write what the format asks for there", e.inner()),
+        )
+    })
+}
+
+/// Parses level JSON.
+///
+/// # Errors
+/// One problem naming the JSON path of the first thing the parser rejected.
+pub fn parse_level(json: &str) -> Result<Level, Problem> {
+    parse_json(json, "level")
+}
+
+/// Parses scene JSON and checks it against its level and the rules, as `validate` does.
+///
+/// # Errors
+/// The parse problem alone when the JSON does not parse, otherwise every validation problem.
+pub fn check(level: &Level, scene_json: &str, rules: &Rules) -> Result<ValidScene, Vec<Problem>> {
+    let scene: Scene = parse_json(scene_json, "scene").map_err(|p| vec![p])?;
+    validate(level, &scene, rules)
+}
+
 /// Checks a scene against its level and the rules.
 ///
 /// # Errors
@@ -108,7 +144,7 @@ pub fn validate(level: &Level, scene: &Scene, rules: &Rules) -> Result<ValidScen
     let names = checks::names(level, scene, &mut problems);
     checks::inventory(level, scene, &mut problems);
     checks::zones(level, scene, &mut problems);
-    checks::ranges(level, scene, rules, &mut problems);
+    ranges::ranges(level, scene, rules, &mut problems);
     checks::links(level, scene, &names, &mut problems);
     checks::goal_target(level, &mut problems);
     if !problems.is_empty() {

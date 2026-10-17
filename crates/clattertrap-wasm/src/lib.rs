@@ -6,10 +6,9 @@ use clattertrap_core::events::{Event, EventKind, PartId};
 use clattertrap_core::level::{Goal, Level, Zone};
 use clattertrap_core::parts::Visual;
 use clattertrap_core::rules::{RULES_VERSION, Rules};
-use clattertrap_core::scene::Scene;
 use clattertrap_core::score::Recorder;
 use clattertrap_core::sim::Simulator;
-use clattertrap_core::validate::validate;
+use clattertrap_core::validate::{check, parse_level};
 use serde::Serialize;
 use wasm_bindgen::prelude::wasm_bindgen;
 
@@ -63,9 +62,8 @@ impl Replay {
     /// When either JSON does not parse or the scene fails validation.
     #[wasm_bindgen(constructor)]
     pub fn new(level_json: &str, scene_json: &str) -> Result<Replay, String> {
-        let level: Level = serde_json::from_str(level_json).map_err(|e| format!("level: {e}"))?;
-        let scene: Scene = serde_json::from_str(scene_json).map_err(|e| format!("scene: {e}"))?;
-        let valid = validate(&level, &scene, &Rules::V1).map_err(|problems| {
+        let level = parse_level(level_json).map_err(|p| p.to_string())?;
+        let valid = check(&level, scene_json, &Rules::V1).map_err(|problems| {
             problems
                 .iter()
                 .map(ToString::to_string)
