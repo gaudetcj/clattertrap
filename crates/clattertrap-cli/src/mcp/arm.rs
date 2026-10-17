@@ -5,7 +5,9 @@ use serde::{Deserialize, Serialize};
 use std::fmt;
 
 /// Which arm a session plays under.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, clap::ValueEnum)]
+#[derive(
+    Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, clap::ValueEnum,
+)]
 #[serde(rename_all = "snake_case")]
 pub enum Arm {
     /// No simulator runs: check and look, then submit blind.

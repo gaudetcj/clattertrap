@@ -1,0 +1,13 @@
+---
+source: crates/clattertrap-cli/tests/report.rs
+assertion_line: 58
+expression: out
+---
+model,arm,level,run,status,goal_met,name,cost_usd,duration_s,turns,tool_calls,attempts,accepted,rejected,error
+claude-haiku-5-5,blueprint,bell-drop,blueprint-01,submitted,false,"Long ramp",0.2100,61.5,6,3,0,2,1,""
+claude-haiku-5-5,workshop,bell-drop,workshop-01,submitted,true,"Two planks",0.5500,140.0,11,6,3,4,1,""
+claude-haiku-5-5,workshop,seesaw-launch,workshop-01,aborted,,"",0.0200,12.0,1,0,0,0,0,"error_during_execution: API Error: 529 overloaded"
+claude-opus-5-5,blueprint,bell-drop,blueprint-01,submitted,true,"Gutter ball",1.8000,95.0,7,3,0,3,0,""
+claude-opus-5-5,workshop,grand-tour,workshop-01,flagged,true,"Cheater",3.1000,300.0,20,9,0,0,0,"called Bash"
+claude-opus-5-5,workshop,grand-tour,workshop-02,no_submission,,"",4.0000,410.0,25,12,8,8,0,""
+claude-opus-5-5,blueprint,seesaw-launch,blueprint-01,submitted,true,"Catapult",2.4000,130.0,9,4,0,2,1,""

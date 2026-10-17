@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "bell-drop",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792267300,
+  "duration_s": 140.0,
+  "cost_usd": 0.55,
+  "turns": 11,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

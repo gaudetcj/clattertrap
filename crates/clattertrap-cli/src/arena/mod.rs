@@ -2,7 +2,7 @@
 //! so far, Claude Code headless.
 
 mod claude;
-mod records;
+pub mod records;
 mod transcript;
 
 #[cfg(test)]

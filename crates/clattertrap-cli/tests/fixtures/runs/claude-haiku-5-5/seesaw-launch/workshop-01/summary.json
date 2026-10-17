@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "seesaw-launch",
+  "arm": "workshop",
+  "status": "aborted",
+  "started_unix_s": 1792267500,
+  "duration_s": 12.0,
+  "cost_usd": 0.02,
+  "turns": 1,
+  "tool_calls": 0,
+  "foreign_tools": [],
+  "result_subtype": "error_during_execution",
+  "exit_code": 0,
+  "error": "error_during_execution: API Error: 529 overloaded"
+}

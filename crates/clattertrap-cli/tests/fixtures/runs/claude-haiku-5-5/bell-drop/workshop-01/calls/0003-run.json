@@ -1,0 +1,5 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": { "level": "x", "parts": [] }, "problems": ["parts[0] (beam b1): overlaps floor by 5.0 cm at the start; move it up to y_cm = 10.0"]
+}

@@ -1,5 +1,5 @@
-//! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, `mcp`, and
-//! `arena`.
+//! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, `mcp`, `arena`,
+//! and `report`.
 #![forbid(unsafe_code)]
 
 mod arena;
@@ -8,6 +8,7 @@ mod check;
 mod level_text;
 mod mcp;
 mod picture;
+mod report;
 mod rules_text;
 mod run;
 
@@ -94,6 +95,20 @@ enum Command {
         #[arg(long, default_value = "claude")]
         claude: String,
     },
+    /// Summarize a directory of pilot runs: levels solved per model and arm, attempts, and exclusions
+    Report {
+        /// The runs directory, <model>/<level>/<arm>-NN underneath
+        dir: PathBuf,
+        /// One CSV row per run instead of the tables
+        #[arg(long, conflicts_with = "sample")]
+        csv: bool,
+        /// Print this many counted submissions to watch, chosen with --seed
+        #[arg(long, value_name = "N")]
+        sample: Option<usize>,
+        /// Seed for --sample
+        #[arg(long, default_value_t = 1)]
+        seed: u64,
+    },
     /// Serve the contestant tools over stdio as an MCP server
     Mcp {
         /// Assign one level; other levels are refused
@@ -147,6 +162,20 @@ fn dispatch() -> Result<ExitCode> {
                 level,
                 out,
                 claude,
+            })?;
+            Ok(ExitCode::SUCCESS)
+        }
+        Command::Report {
+            dir,
+            csv,
+            sample,
+            seed,
+        } => {
+            report::run(&report::Options {
+                dir,
+                csv,
+                sample,
+                seed,
             })?;
             Ok(ExitCode::SUCCESS)
         }

@@ -1,0 +1,5 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": { "level": "x", "parts": [] }, "outcome": { "goal_met": false, "end": "all_asleep", "time_s": 3.0, "steps": 360, "parts_used": 1, "chain_length": 1, "event_hash": "0000000000000001", "state_hash": "0000000000000002", "rules_version": 1 }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-5-5",
+  "level": "grand-tour",
+  "arm": "workshop",
+  "status": "no_submission",
+  "started_unix_s": 1792268800,
+  "duration_s": 410.0,
+  "cost_usd": 4.00,
+  "turns": 25,
+  "tool_calls": 12,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}
