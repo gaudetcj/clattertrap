@@ -1,13 +1,12 @@
-//! The wrapper replays a fixture to the committed golden hash on wasm32 and refuses bad input with
+//! The wrapper replays a level to the committed golden hash on wasm32 and refuses bad input with
 //! the validation message.
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
 use clattertrap_wasm::Replay;
 use wasm_bindgen_test::wasm_bindgen_test;
 
-const LEVEL: &str = include_str!("../../clattertrap-core/tests/fixtures/bell-drop/level.json");
-const REFERENCE: &str =
-    include_str!("../../clattertrap-core/tests/fixtures/bell-drop/reference.json");
+const LEVEL: &str = include_str!("../../../levels/bell-drop/level.json");
+const REFERENCE: &str = include_str!("../../../levels/bell-drop/reference.json");
 const SNAP: &str =
     include_str!("../../clattertrap-core/tests/snapshots/fixtures__bell-drop-reference.snap");
 

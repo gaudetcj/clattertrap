@@ -9,16 +9,16 @@ interface Fixture {
   reference: string;
 }
 
-// The fixture levels live in the core crate's tests until milestone 4 moves them to levels/.
+// Every level in levels/ with its reference solution, bundled as raw JSON.
 function fixtures(): Fixture[] {
-  const files = import.meta.glob('../../crates/clattertrap-core/tests/fixtures/*/{level,reference}.json', {
+  const files = import.meta.glob('../../levels/*/{level,reference}.json', {
     query: '?raw',
     import: 'default',
     eager: true,
   }) as Record<string, string>;
   const byId = new Map<string, Partial<Fixture>>();
   for (const [path, text] of Object.entries(files)) {
-    const m = /fixtures\/([^/]+)\/(level|reference)\.json$/.exec(path);
+    const m = /levels\/([^/]+)\/(level|reference)\.json$/.exec(path);
     if (!m) {
       continue;
     }
@@ -85,7 +85,7 @@ async function page(app: HTMLElement): Promise<void> {
   const load = (): void => {
     const f = levels.find((x) => x.id === select.value);
     if (!f) {
-      status.textContent = 'no fixture levels found';
+      status.textContent = 'no levels found';
       return;
     }
     if (rulesVersionOf(f.level) !== wasm.rules_version) {

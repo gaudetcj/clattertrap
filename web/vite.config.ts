@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitest/config';
 
-// The fixture levels live in the core crate's tests until milestone 4 moves them to levels/.
+// The page bundles levels/ from the repository root, one directory up.
 export default defineConfig({
   server: {
     fs: {

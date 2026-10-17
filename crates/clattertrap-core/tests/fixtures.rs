@@ -1,5 +1,5 @@
-//! Fixture levels: each reference solution meets its goal, each empty scene does not, and both hash the same
-//! on every platform (invariant 1). The committed snapshots are the golden hashes.
+//! The levels in `levels/`: each reference solution meets its goal, each empty scene does not, and both hash
+//! the same on every platform (invariant 1). The committed snapshots are the golden hashes.
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
 use clattertrap_core::level::Level;
@@ -21,8 +21,8 @@ macro_rules! fixture {
     ($id:literal) => {
         Fixture {
             id: $id,
-            level: include_str!(concat!("fixtures/", $id, "/level.json")),
-            reference: include_str!(concat!("fixtures/", $id, "/reference.json")),
+            level: include_str!(concat!("../../../levels/", $id, "/level.json")),
+            reference: include_str!(concat!("../../../levels/", $id, "/reference.json")),
             reference_snap: include_str!(concat!("snapshots/fixtures__", $id, "-reference.snap")),
             empty_snap: include_str!(concat!("snapshots/fixtures__", $id, "-empty.snap")),
         }
