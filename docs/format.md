@@ -92,6 +92,32 @@ The overlap check runs only once everything else passes. Two fixed objects that 
 
 `end` is `goal_met`, `time_limit`, or `all_asleep`. The two hashes are 16 hex digits each and are the same on every platform for the same level, scene, and rules version. With `--trace`, each event comes first, one per line: the time in seconds, the kind (`contact`, `via`, `goal_met`, `at_rest`, `left_world`), and the parts by name.
 
+## Pilot records
+
+`clattertrap arena` writes one directory per session under `pilot/runs/<model>/<level>/<arm>-NN`, numbered from 01. The arms are `blueprint`, with no simulator runs, and `workshop`, with 8. Every session has the same prompt (`pilot/prompt.txt` with the level id and the run budget filled in), the same 6 USD cap, and the same 20 minute wall clock.
+
+| file | written by | holds |
+|---|---|---|
+| `mcp.json` | the runner | the MCP config for this session: this binary serving `mcp --level <id> --arm <arm> --out <dir>` |
+| `transcript.jsonl` | the runner | Claude Code's stream-json output, one record per line |
+| `stderr.txt` | the runner | whatever Claude Code printed on stderr |
+| `calls/NNNN-<tool>.json` | the MCP server | every `check`, `look`, `run`, and `submit` call: `seq`, `tool`, the `scene` as sent, and either `problems` or the `outcome` |
+| `submission.json` | the MCP server | the one submission: `level`, `arm`, `name`, `prediction`, `scene`, `outcome` |
+| `summary.json` | the runner | `model`, `level`, `arm`, `status`, `started_unix_s`, `duration_s`, `cost_usd`, `turns`, `tool_calls`, `foreign_tools`, `result_subtype`, `exit_code`, `error` |
+
+`status` is one of:
+
+| status | meaning | counts |
+|---|---|---|
+| `submitted` | the contestant submitted a machine | yes |
+| `no_submission` | the session ended on its own without a submission | yes, as a miss |
+| `over_budget` | the dollar cap stopped the session first | yes, as a miss |
+| `timed_out` | the wall clock stopped the session first | yes, as a miss |
+| `aborted` | an error, a usage limit, or an MCP server that never connected | no; run it again |
+| `flagged` | a tool call outside the clattertrap MCP tools | no |
+
+`clattertrap report <dir>` prints, per model and arm, the levels solved (a level counts once however many runs solved it), the hard levels solved (tiers 4 and 5), the runs counted, the aborted and flagged runs, and the mean cost and time. A second table gives, per level, the runs, the runs that solved it, the attempts (`run` calls, accepted or not), the scene calls accepted and rejected by validation, and the submissions. `--csv` prints one row per run, every run included. `--sample N --seed S` prints N counted submissions to open on the level page, which plays any dropped scene or submission file.
+
 ## Exit codes
 
 0 when the command did its job, including a run whose goal was missed. 1 when `check`, `look`, or `run` rejected the scene; the problems are on stdout. 2 for a usage error, an unknown level, or a file that could not be read; the reason is on stderr.
