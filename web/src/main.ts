@@ -103,6 +103,12 @@ async function page(app: HTMLElement): Promise<void> {
     option.value = run.key;
     picker.append(option);
   }
+  const look = el('select');
+  for (const [value, text] of [['', 'paper'], ['1', '16-bit, 1 cm/px'], ['1.5', '16-bit, 1.5 cm/px'], ['2', '16-bit, 2 cm/px']]) {
+    const option = el('option', text);
+    option.value = value ?? '';
+    look.append(option);
+  }
   const playButton = el('button', 'Play');
   const restartButton = el('button', 'Restart');
   const muteButton = el('button', 'Mute');
@@ -112,7 +118,7 @@ async function page(app: HTMLElement): Promise<void> {
   const openLabel = el('label', 'Open scene ');
   openLabel.append(openInput);
   const controls = el('div', undefined, 'controls');
-  controls.append(select, playButton, restartButton, muteButton, openLabel);
+  controls.append(select, look, playButton, restartButton, muteButton, openLabel);
   if (runs.length > 0) {
     controls.append(picker);
   }
@@ -199,6 +205,7 @@ async function page(app: HTMLElement): Promise<void> {
     }
   });
   select.addEventListener('change', load);
+  look.addEventListener('change', () => player.setLook(look.value === '' ? null : Number(look.value)));
   playButton.addEventListener('click', () => player.toggle());
   restartButton.addEventListener('click', () => player.restart());
   let muted = false;

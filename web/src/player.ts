@@ -22,6 +22,7 @@ export class Player {
   private outcome: Outcome | null = null;
   private levelJson = '';
   private sceneJson = '';
+  private cm_per_px: number | null = null;
 
   constructor(
     private readonly canvas: HTMLCanvasElement,
@@ -37,12 +38,26 @@ export class Player {
     this.replay = Replay.start(levelJson, sceneJson);
     this.levelJson = levelJson;
     this.sceneJson = sceneJson;
-    this.view = new LevelView(this.canvas, this.replay.setup, this.replay.links);
-    this.view.resize(this.canvas.clientWidth, this.canvas.clientHeight);
+    this.view = new LevelView(this.canvas, this.replay.setup, this.replay.links, this.cm_per_px);
+    this.fit();
     this.playing = false;
     this.done = 0;
     this.outcome = null;
     this.onStatus('ready');
+  }
+
+  // Switches between the paper look (null) and 16-bit pixels of the given size.
+  setLook(cm_per_px: number | null): void {
+    this.cm_per_px = cm_per_px;
+    this.view?.setLook(cm_per_px);
+    this.fit();
+  }
+
+  // Lets the canvas take its stylesheet size again before the view sizes its backing store.
+  private fit(): void {
+    this.canvas.style.width = '';
+    this.canvas.style.height = '';
+    this.view?.resize(this.canvas.clientWidth, this.canvas.clientHeight);
   }
 
   play(): void {

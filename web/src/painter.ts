@@ -83,14 +83,14 @@ export class PartPainter {
   }
 
   // A rod or rope between two body centres.
-  drawLink(ctx: Ctx2D, camera: Camera, from: Pose, to: Pose): void {
+  drawLink(ctx: Ctx2D, camera: Camera, from: Pose, to: Pose, colour = '#4a3a28'): void {
     if (!from.alive || !to.alive) {
       return;
     }
     const a = camera.toPx(from.x_m, from.y_m);
     const b = camera.toPx(to.x_m, to.y_m);
     ctx.save();
-    ctx.strokeStyle = '#4a3a28';
+    ctx.strokeStyle = colour;
     ctx.lineWidth = Math.max(1, camera.px(0.006));
     ctx.lineCap = 'round';
     ctx.beginPath();
