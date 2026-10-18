@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { callKey, entryKey, indexGallery, keyString, lineup, loadersFor, MODEL_ORDER, modelLabel, modelRank, transcriptKey } from './gallery';
+import { byLevel, callKey, entryKey, indexGallery, keyString, lineup, loadersFor, misses, MODEL_ORDER, modelLabel, modelRank, transcriptKey } from './gallery';
 
 function submission(level: string, name: string, goal_met: boolean): string {
   return JSON.stringify({
@@ -121,5 +121,29 @@ describe('on-demand files', () => {
       model: 'claude-haiku-5-5',
       run: 'workshop-01',
     });
+  });
+});
+
+describe('the gallery page index', () => {
+  const files = {
+    '../../gallery/seesaw-launch/claude-sonnet-5-5/blueprint-01/submission.json': submission('seesaw-launch', 'Tilted plank', false),
+    '../../gallery/seesaw-launch/claude-opus-5-5/blueprint-01/submission.json': submission('seesaw-launch', 'Swatter Seesaw', true),
+    '../../gallery/bell-drop/claude-opus-5-5/workshop-01/submission.json': submission('bell-drop', 'Two planks', true),
+  };
+  const summaries = {
+    '../../gallery/seesaw-launch/claude-opus-5-5/blueprint-01/summary.json': summary,
+    '../../gallery/seesaw-launch/claude-haiku-5-5/workshop-01/summary.json': summary.replace('"status":"submitted"', '"status":"no_submission"').replace('claude-opus-5-5', 'claude-haiku-5-5'),
+  };
+
+  it('groups entries by level in model order', () => {
+    const groups = byLevel(indexGallery(files, summaries));
+    expect([...groups.keys()]).toEqual(['bell-drop', 'seesaw-launch']);
+    expect(groups.get('seesaw-launch')?.map((e) => e.model)).toEqual(['claude-sonnet-5-5', 'claude-opus-5-5']);
+  });
+
+  it('lists the counted runs that never submitted', () => {
+    expect(misses(indexGallery(files, summaries), summaries)).toEqual([
+      { key: 'seesaw-launch/claude-haiku-5-5/workshop-01', level: 'seesaw-launch', model: 'claude-haiku-5-5', run: 'workshop-01', status: 'no_submission' },
+    ]);
   });
 });

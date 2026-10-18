@@ -156,6 +156,52 @@ export function lineup(entries: Entry[], level: string, arm: string, run = '01')
     .sort((a, b) => modelRank(a.model) - modelRank(b.model) || a.model.localeCompare(b.model));
 }
 
+// Entries grouped by level, each group in model order then run.
+export function byLevel(entries: Entry[]): Map<string, Entry[]> {
+  const groups = new Map<string, Entry[]>();
+  for (const e of [...entries].sort((a, b) => a.level.localeCompare(b.level))) {
+    const group = groups.get(e.level) ?? [];
+    group.push(e);
+    groups.set(e.level, group);
+  }
+  for (const group of groups.values()) {
+    group.sort((a, b) => modelRank(a.model) - modelRank(b.model) || a.model.localeCompare(b.model) || a.run.localeCompare(b.run));
+  }
+  return groups;
+}
+
+export interface Miss {
+  key: string;
+  level: string;
+  model: string;
+  run: string;
+  status: string;
+}
+
+// Counted runs with a summary but no submission: misses the leaderboard must still see.
+export function misses(entries: Entry[], summaries: Record<string, string>): Miss[] {
+  const known = new Set(entries.map((e) => e.key));
+  const out: Miss[] = [];
+  for (const [path, text] of Object.entries(summaries)) {
+    const key = keyOf(SUMMARY.exec(path));
+    const summary = readSummary(text);
+    if (!key || !summary || known.has(keyString(key))) {
+      continue;
+    }
+    out.push({ key: keyString(key), ...key, status: summary.status });
+  }
+  return out.sort((a, b) => a.key.localeCompare(b.key));
+}
+
+// Every summary in the gallery, bundled at build time.
+export function gallerySummaries(): Record<string, string> {
+  return import.meta.glob('../../gallery/*/*/*/summary.json', {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  }) as Record<string, string>;
+}
+
 // A file that loads on demand: calls and transcripts are only read one entry at a time.
 export type Loader = () => Promise<string>;
 
@@ -191,10 +237,5 @@ export function galleryEntries(): Entry[] {
     import: 'default',
     eager: true,
   }) as Record<string, string>;
-  const summaries = import.meta.glob('../../gallery/*/*/*/summary.json', {
-    query: '?raw',
-    import: 'default',
-    eager: true,
-  }) as Record<string, string>;
-  return indexGallery(submissions, summaries);
+  return indexGallery(submissions, gallerySummaries());
 }
