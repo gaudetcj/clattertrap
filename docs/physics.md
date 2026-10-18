@@ -33,7 +33,7 @@ Restitution between two bodies is the larger of the two, so a rubber ball bounce
 | domino | dynamic box, 4 by 20 cm | wood |
 | crate | dynamic box | wood |
 | seesaw | dynamic plank on a revolute joint to a fixed pivot at its centre | wood, 4 cm thick |
-| pendulum | steel disc, radius 5 cm, on a revolute joint to a fixed pin | the rope is rigid |
+| pendulum | steel disc, radius 5 cm, on a revolute joint to a fixed pin, with a rigid rod 1.5 cm thick between them | the rod collides but has no mass |
 | spring pad | fixed plate, 30 by 4 cm | see spring pad below |
 | bucket | one dynamic body: a floor and two walls, 2 cm thick | wood |
 | balloon | dynamic disc, radius 10 cm | see balloon below |
@@ -54,7 +54,7 @@ A disc rolling without slipping down a slope of angle θ accelerates at `g sin �
 
 ### Pendulum
 
-`angle_deg` is measured from straight down, counterclockwise positive, so the weight starts at `pin + L (sin θ, -cos θ)`. The small-angle period is `2π sqrt(L / g)`.
+`angle_deg` is measured from straight down, counterclockwise positive, so the weight starts at `pin + L (sin θ, -cos θ)`. The small-angle period is `2π sqrt(L / g)`. The rod is a massless capsule on the weight body, so it stops against anything in its sweep and a scene whose rod crosses a part at the start is an overlap.
 
 ### Spring pad
 

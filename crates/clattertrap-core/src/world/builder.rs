@@ -317,6 +317,29 @@ impl<'a> Builder<'a> {
         self.pw.insert_impulse_joint(a, b, joint);
     }
 
+    /// A massless capsule on an existing body between two body-local points, for a pendulum rod.
+    pub(crate) fn rod(
+        &mut self,
+        part: PartId,
+        body: RigidBodyHandle,
+        ends_m: [[f32; 2]; 2],
+        radius_m: f32,
+        props: MaterialProps,
+    ) {
+        let collider = ColliderBuilder::capsule_from_endpoints(
+            Vector::new(ends_m[0][0], ends_m[0][1]),
+            Vector::new(ends_m[1][0], ends_m[1][1]),
+            radius_m,
+        )
+        .density(0.0)
+        .friction(props.friction)
+        .restitution(props.restitution)
+        .restitution_combine_rule(CoefficientCombineRule::Max)
+        .active_events(ActiveEvents::COLLISION_EVENTS)
+        .user_data(u128::from(part.0));
+        self.pw.insert_collider(collider, Some(body));
+    }
+
     /// A free hinge between two bodies at the given body-local anchors.
     pub(crate) fn revolute(
         &mut self,

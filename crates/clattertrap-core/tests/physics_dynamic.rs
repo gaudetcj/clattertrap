@@ -137,3 +137,19 @@ fn a_crate_dropped_on_the_floor_comes_to_rest_upright() {
     assert!(close(p.y_m, 0.10, 0.05), "crate centre at {} m", p.y_m);
     assert!(p.angle_rad.abs() < 0.05, "crate tilted {} rad", p.angle_rad);
 }
+
+#[test]
+fn a_pendulum_rod_is_stopped_by_a_beam_the_weight_would_clear() {
+    // The rod sweeps through a short post near the pin; the weight itself never comes near it.
+    let lv = level(vec![beam("b", 215.0, 230.0, 20.0, 90.0)]);
+    let mut s = sim(&lv, &scene(vec![pendulum("p", 200.0, 250.0, 100.0, -60.0)]));
+    let (p, b) = (part(&s, "p"), part(&s, "b"));
+    let mut touched = false;
+    let mut far_x = 0.0_f32;
+    while s.time_s() < 3.0 {
+        touched |= s.step().iter().any(|e| e.kind == EventKind::contact(p, b));
+        far_x = far_x.max(s.pose(p).unwrap().x_m);
+    }
+    assert!(touched, "the rod never touched the beam");
+    assert!(far_x < 2.70, "the weight swung on to x = {far_x} m");
+}

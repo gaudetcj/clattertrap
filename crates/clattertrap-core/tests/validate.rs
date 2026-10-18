@@ -7,7 +7,7 @@ use clattertrap_core::level::{Goal, Level, Zone};
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::{Material, PartSpec, Scene};
 use clattertrap_core::validate::{check, parse_level, parse_scene, validate};
-use common::{ball, beam, level, placed, scene};
+use common::{ball, beam, level, pendulum, placed, scene};
 
 fn problems(level: &Level, scene: &Scene) -> Vec<String> {
     match validate(level, scene, &Rules::V1) {
@@ -335,4 +335,14 @@ fn parse_scene_names_the_path_of_a_bad_value() {
     assert!(msg.contains("expected a sequence"), "{msg}");
     let ok = parse_scene(r#"{ "level": "test", "parts": [] }"#).unwrap();
     assert_eq!(ok, scene(vec![]));
+}
+
+#[test]
+fn a_pendulum_rod_crossing_a_beam_at_the_start_is_an_overlap() {
+    let lv = level(vec![beam("b", 200.0, 200.0, 80.0, 0.0)]);
+    let msg = only(&lv, &scene(vec![pendulum("p", 200.0, 250.0, 100.0, 0.0)]));
+    assert!(
+        msg.starts_with("parts[0] (pendulum p): overlaps b by"),
+        "{msg}"
+    );
 }

@@ -59,8 +59,10 @@ pub struct Rules {
     pub crate_side: Range,
     /// Radius of a pendulum weight (steel).
     pub pendulum_radius_m: f32,
-    /// Allowed pendulum rope lengths.
+    /// Allowed pendulum rod lengths.
     pub pendulum_length: Range,
+    /// Radius of the rigid, massless rod between a pendulum weight and its pin.
+    pub pendulum_rod_radius_m: f32,
     /// Spring pad width and thickness.
     pub spring_pad_size_m: [f32; 2],
     /// Impulse a spring pad gives a body that touches its top face.
@@ -155,6 +157,7 @@ impl Rules {
             min_m: 0.20,
             max_m: 1.20,
         },
+        pendulum_rod_radius_m: 0.0075,
         spring_pad_size_m: [0.30, 0.04],
         spring_impulse_ns: 0.6,
         wall_thickness_m: 0.02,
