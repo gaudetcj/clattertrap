@@ -1,0 +1,20 @@
+{
+  "id": "uphill-relay",
+  "title": "Uphill relay",
+  "tier": 5,
+  "description": "A steel ball hangs in the air at (40, 280), top left, and falls from the start. Three short fixed posts, each a level beam 30 cm long: post a runs from x = 105 to 135 with its top at y = 232; post b from x = 195 to 225 with its top at y = 42, just above the floor; post c from x = 305 to 335 with its top at y = 112, 70 cm higher than b. A bell hangs at (350, 75) from a bracket 20 cm above it. The build zone covers x from 20 to 380 and y from 2 to 290. Something moving has to touch a, then b, then c, in that order, before anything rings the bell. Nothing rolling off b can reach c; something has to be sent up to it. Chain length is scored too.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 40, "y_cm": 280 },
+    { "id": "a", "kind": "beam", "x_cm": 120, "y_cm": 230, "length_cm": 30, "angle_deg": 0 },
+    { "id": "b", "kind": "beam", "x_cm": 210, "y_cm": 40, "length_cm": 30, "angle_deg": 0 },
+    { "id": "c", "kind": "beam", "x_cm": 320, "y_cm": 110, "length_cm": 30, "angle_deg": 0 },
+    { "id": "bell", "kind": "bell", "x_cm": 350, "y_cm": 75, "rope_cm": 20 }
+  ],
+  "zones": [ { "x_cm": 20, "y_cm": 2, "width_cm": 360, "height_cm": 288 } ],
+  "inventory": { "beam": 6, "seesaw": 1, "ball": 2, "domino": 4, "crate": 1, "spring_pad": 1, "funnel": 1 },
+  "goal": { "kind": "ring", "target": "bell", "via": ["a", "b", "c"] },
+  "showcase": true
+}

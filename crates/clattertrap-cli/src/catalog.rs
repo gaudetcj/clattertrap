@@ -23,7 +23,7 @@ macro_rules! entry {
 }
 
 /// Every level, in directory order.
-pub const ALL: [Entry; 12] = [
+pub const ALL: [Entry; 15] = [
     entry!("balloon-pin"),
     entry!("basket-fill"),
     entry!("bell-drop"),
@@ -33,9 +33,12 @@ pub const ALL: [Entry; 12] = [
     entry!("grand-tour"),
     entry!("pendulum-bell"),
     entry!("post-first"),
+    entry!("return-trip"),
     entry!("rope-swing"),
     entry!("seesaw-launch"),
     entry!("spring-launch"),
+    entry!("uphill-relay"),
+    entry!("wake-the-pendulum"),
 ];
 
 /// The entry with this id.

@@ -1,0 +1,3 @@
+{ "level": "wake-the-pendulum", "parts": [
+  { "id": "r1", "kind": "beam", "x_cm": 100, "y_cm": 222, "length_cm": 150, "angle_deg": -30 }
+] }

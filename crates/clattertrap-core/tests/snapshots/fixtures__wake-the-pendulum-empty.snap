@@ -1,0 +1,5 @@
+---
+source: crates/clattertrap-core/tests/fixtures.rs
+expression: "golden(&play(&level, &empty(f.id)))"
+---
+3b46ce6c611e258d ebeeaee972b7cabe steps 2400 TimeLimit chain 2

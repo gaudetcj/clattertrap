@@ -178,11 +178,12 @@ pub fn inventory_text(inv: &Inventory) -> String {
 #[must_use]
 pub fn levels_text(levels: &[Level]) -> String {
     let mut text = String::new();
+    let width = levels.iter().map(|l| l.id.len()).max().unwrap_or(0);
     for level in levels {
         // Writing to a String cannot fail.
         let _ = writeln!(
             text,
-            "{:<14} {}  {:<6} {}",
+            "{:<width$} {}  {:<6} {}",
             level.id,
             level.tier,
             goal_kind(&level.goal),

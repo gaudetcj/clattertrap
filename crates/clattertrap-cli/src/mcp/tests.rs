@@ -56,7 +56,7 @@ fn rules_gives_the_text_or_the_scene_schema() {
 fn levels_lists_every_level_by_tier() {
     let text = ok(Session::levels()).text;
     assert!(text.starts_with("bell-drop "), "{text}");
-    assert_eq!(text.lines().count(), 12);
+    assert_eq!(text.lines().count(), 15);
 }
 
 #[test]

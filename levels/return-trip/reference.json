@@ -1,0 +1,6 @@
+{ "level": "return-trip", "parts": [
+  { "id": "r1", "kind": "beam", "x_cm": 88, "y_cm": 250, "length_cm": 110, "angle_deg": -12 },
+  { "id": "r2", "kind": "beam", "x_cm": 234, "y_cm": 189, "length_cm": 144, "angle_deg": -23.7 },
+  { "id": "r3", "kind": "beam", "x_cm": 313, "y_cm": 108, "length_cm": 149.5, "angle_deg": 12.4 },
+  { "id": "f", "kind": "funnel", "x_cm": 110, "y_cm": 46, "mouth_cm": 140, "throat_cm": 16, "height_cm": 25 }
+] }

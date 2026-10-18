@@ -1,0 +1,26 @@
+{
+  "id": "return-trip",
+  "title": "The return trip",
+  "tier": 5,
+  "description": "A steel ball hangs in the air at (40, 280), top left, and falls from the start. A fixed post, a, runs level from x = 135 to 165 with its top at y = 222. On the right, a fixed shelf runs level from x = 300 to 360 with its top at y = 152, and two wood balls, w1 and w2, rest on it at (315, 158) and (345, 158). A fixed wall stands at x = 395 from y = 130 up to y = 200. Lower and back to the left, a second post, d, runs level from x = 185 to 215 with its top at y = 82. A basket 50 cm wide and 40 cm deep stands on the floor at (110, 0.5), bottom left. The build zone covers x from 20 to 380 from y = 45 up, and x from 150 to 380 below that: nothing can be placed in or over the basket. Something moving has to touch post a, then the wood ball w1, then post d, in that order, and then three objects have to come to rest inside the basket. Chain length is scored too.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 40, "y_cm": 280 },
+    { "id": "a", "kind": "beam", "x_cm": 150, "y_cm": 220, "length_cm": 30, "angle_deg": 0 },
+    { "id": "shelf", "kind": "beam", "x_cm": 330, "y_cm": 150, "length_cm": 60, "angle_deg": 0 },
+    { "id": "w1", "kind": "ball", "material": "wood", "x_cm": 315, "y_cm": 158 },
+    { "id": "w2", "kind": "ball", "material": "wood", "x_cm": 345, "y_cm": 158 },
+    { "id": "d", "kind": "beam", "x_cm": 200, "y_cm": 80, "length_cm": 30, "angle_deg": 0 },
+    { "id": "wall", "kind": "beam", "x_cm": 395, "y_cm": 165, "length_cm": 70, "angle_deg": 90 },
+    { "id": "basket", "kind": "basket", "x_cm": 110, "y_cm": 0.5, "inner_width_cm": 50, "inner_height_cm": 40 }
+  ],
+  "zones": [
+    { "x_cm": 20, "y_cm": 45, "width_cm": 360, "height_cm": 245 },
+    { "x_cm": 150, "y_cm": 2, "width_cm": 230, "height_cm": 43 }
+  ],
+  "inventory": { "beam": 6, "funnel": 1, "seesaw": 1, "bucket": 1, "crate": 1, "domino": 4 },
+  "goal": { "kind": "fill", "target": "basket", "count": 3, "via": ["a", "w1", "d"] },
+  "showcase": true
+}

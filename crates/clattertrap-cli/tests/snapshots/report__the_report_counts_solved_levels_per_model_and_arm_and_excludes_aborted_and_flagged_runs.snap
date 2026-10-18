@@ -1,13 +1,12 @@
 ---
 source: crates/clattertrap-cli/tests/report.rs
-assertion_line: 34
 expression: out
 ---
 model             arm        solved  hard  runs  aborted  flagged  mean USD  mean s
-claude-haiku-5-5  blueprint   0/12   0/3     1        0        0      0.21      62
-claude-haiku-5-5  workshop    1/12   0/3     1        1        0      0.55     140
-claude-opus-5-5   blueprint   2/12   1/3     2        0        0      2.10     112
-claude-opus-5-5   workshop    0/12   0/3     1        0        1      4.00     410
+claude-haiku-5-5  blueprint   0/15   0/6     1        0        0      0.21      62
+claude-haiku-5-5  workshop    1/15   0/6     1        1        0      0.55     140
+claude-opus-5-5   blueprint   2/15   1/6     2        0        0      2.10     112
+claude-opus-5-5   workshop    0/15   0/6     1        0        1      4.00     410
 
 model             arm        level          runs  solved  attempts  accepted  rejected  submitted
 claude-haiku-5-5  blueprint  bell-drop         1      0        0        2        1         1
