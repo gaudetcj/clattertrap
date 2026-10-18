@@ -1,0 +1,27 @@
+{
+  "seq": 3,
+  "tool": "check",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 15,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 140,
+        "x_cm": 120,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 185,
+        "y_cm": 70
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (domino domino1): overlaps seesaw1 by 5.0 cm at the start; move it up to y_cm = 75.0"
+  ]
+}

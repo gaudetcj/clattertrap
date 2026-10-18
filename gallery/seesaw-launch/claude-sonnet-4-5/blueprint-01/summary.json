@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "seesaw-launch",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792364920,
+  "duration_s": 173.1274166,
+  "cost_usd": 0.2755338,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

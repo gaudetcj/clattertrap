@@ -1,0 +1,60 @@
+{
+  "level": "uphill-relay",
+  "arm": "blueprint",
+  "name": "Underside Knock Relay",
+  "prediction": "The steel ball rolls down r1 across a, drops onto b and rolls right into the wood ball, which rolls onto the spring pad, is kicked up into c's underside, and bounces down-right onto the bell to ring it.",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 63,
+        "y_cm": 242
+      },
+      {
+        "angle_deg": 0,
+        "id": "r4",
+        "kind": "beam",
+        "length_cm": 41,
+        "x_cm": 170.5,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 0,
+        "id": "ledge",
+        "kind": "beam",
+        "length_cm": 63,
+        "x_cm": 260.5,
+        "y_cm": 40
+      },
+      {
+        "id": "wood",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 255,
+        "y_cm": 48.4
+      },
+      {
+        "angle_deg": 0,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 308,
+        "y_cm": 39
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 5,
+    "chain_length": 2,
+    "event_hash": "82dfa98afd94e781",
+    "state_hash": "f7b2998a0b45b47c",
+    "rules_version": 1
+  }
+}

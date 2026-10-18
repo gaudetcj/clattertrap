@@ -1,0 +1,47 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 63,
+        "y_cm": 242
+      },
+      {
+        "angle_deg": 0,
+        "id": "r4",
+        "kind": "beam",
+        "length_cm": 41,
+        "x_cm": 170.5,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 0,
+        "id": "ledge",
+        "kind": "beam",
+        "length_cm": 63,
+        "x_cm": 260.5,
+        "y_cm": 40
+      },
+      {
+        "id": "wood",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 255,
+        "y_cm": 48.4
+      },
+      {
+        "angle_deg": 0,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 308,
+        "y_cm": 39
+      }
+    ]
+  }
+}

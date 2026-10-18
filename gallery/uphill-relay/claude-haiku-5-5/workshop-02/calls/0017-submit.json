@@ -1,0 +1,44 @@
+{
+  "seq": 17,
+  "tool": "submit",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 42.6,
+        "x_cm": 80,
+        "y_cm": 279.3
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "rubber",
+        "x_cm": 80,
+        "y_cm": 288.3
+      },
+      {
+        "angle_deg": -10,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 280,
+        "y_cm": 140
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.9250002,
+    "steps": 471,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "628bb6f89a357ada",
+    "state_hash": "451110b280fa040e",
+    "rules_version": 1
+  },
+  "name": "Rubber relay, no bell",
+  "prediction": "A rubber ball rolls down a short 20-degree ramp, bounces onto post a, hops over to post b, then bounces up onto post c, touching all three in order, but it overshoots the bell and the goal is not met."
+}

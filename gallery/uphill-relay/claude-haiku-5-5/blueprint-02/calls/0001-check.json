@@ -1,0 +1,38 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 81,
+        "x_cm": 61.9,
+        "y_cm": 235.6
+      },
+      {
+        "angle_deg": 0,
+        "id": "tipper",
+        "kind": "domino",
+        "x_cm": 222,
+        "y_cm": 52.3
+      },
+      {
+        "id": "carrier",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 222,
+        "y_cm": 68.6
+      },
+      {
+        "angle_deg": -15,
+        "id": "kicker",
+        "kind": "spring_pad",
+        "x_cm": 260,
+        "y_cm": 50
+      }
+    ]
+  }
+}

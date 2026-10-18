@@ -1,0 +1,31 @@
+{
+  "seq": 3,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -45,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 68,
+        "x_cm": 76,
+        "y_cm": 269
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "rubber",
+        "x_cm": 70,
+        "y_cm": 287.5
+      },
+      {
+        "angle_deg": -20,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 248,
+        "y_cm": 140
+      }
+    ]
+  }
+}

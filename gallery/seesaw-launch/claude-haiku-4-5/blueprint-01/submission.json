@@ -1,0 +1,37 @@
+{
+  "level": "seesaw-launch",
+  "arm": "blueprint",
+  "name": "Seesaw Launch",
+  "prediction": "The falling steel ball impacts the seesaw, causing it to pivot and launch the domino upward toward the bell, ringing it.",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 140,
+        "x_cm": 120,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 200,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.8416668,
+    "steps": 221,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "b7f271dd9a2c95b1",
+    "state_hash": "68e4fb1cebc36443",
+    "rules_version": 1
+  }
+}

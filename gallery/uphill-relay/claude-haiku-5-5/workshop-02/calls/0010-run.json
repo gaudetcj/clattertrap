@@ -1,0 +1,44 @@
+{
+  "seq": 10,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 42.6,
+        "x_cm": 80,
+        "y_cm": 279.3
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "rubber",
+        "x_cm": 77,
+        "y_cm": 288.8
+      },
+      {
+        "height_cm": 60,
+        "id": "f",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 18,
+        "x_cm": 352,
+        "y_cm": 110
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.1166668,
+    "steps": 254,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "654073781dd2ab00",
+    "state_hash": "ef4db37b10049c82",
+    "rules_version": 1
+  }
+}

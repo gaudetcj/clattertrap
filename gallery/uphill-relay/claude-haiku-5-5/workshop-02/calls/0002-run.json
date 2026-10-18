@@ -1,0 +1,28 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 60,
+        "y_cm": 255
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.2416668,
+    "steps": 269,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "2be15f1cb6b2aa09",
+    "state_hash": "09dc1e6ba71d31ab",
+    "rules_version": 1
+  }
+}
