@@ -3,6 +3,7 @@
 
 import { Camera } from './camera';
 import type { Pose, Setup } from './decode';
+import { drawText, GLYPH_H, textWidth } from './font';
 import type { Link } from './links';
 import { PartPainter } from './painter';
 import { CM_PER_PX, PALETTE, pixelGrid, rgbPalette, snapToPalette } from './pixel';
@@ -17,7 +18,6 @@ export class LevelView {
   private readonly painter = new PartPainter();
   private readonly snapped = new Map<number, number>();
   private camera: Camera;
-  private scale = 1;
 
   constructor(
     private readonly canvas: HTMLCanvasElement,
@@ -31,7 +31,6 @@ export class LevelView {
   // without smoothing, and refits the camera.
   resize(css_w: number, css_h: number): void {
     const grid = pixelGrid(css_w, css_h, this.setup.width_cm, CM_PER_PX);
-    this.scale = grid.scale;
     this.canvas.width = grid.w;
     this.canvas.height = grid.h;
     this.canvas.style.width = `${grid.w * grid.scale}px`;
@@ -103,33 +102,22 @@ export class LevelView {
   }
 
   private clock(ctx: CanvasRenderingContext2D, time_s: number): void {
-    ctx.save();
-    ctx.fillStyle = CLOCK;
-    const size = Math.max(8, Math.round(14 / this.scale));
-    ctx.font = `${size}px ui-monospace, Consolas, monospace`;
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-    ctx.fillText(`${time_s.toFixed(2)} s`, Math.round(10 / this.scale), Math.round(8 / this.scale));
-    ctx.restore();
+    drawText(ctx, `${time_s.toFixed(2)} s`, 4, 4, 1, CLOCK);
   }
 
+  // A straight banner across the middle: paper, a thick border in the verdict's colour, pixel text.
   private stamp(ctx: CanvasRenderingContext2D, w: number, h: number, text: string, success: boolean): void {
     const colour = success ? '#1f7a3a' : '#b3261e';
-    ctx.save();
-    ctx.translate(w / 2, h / 2);
-    ctx.rotate(-0.1);
-    ctx.font = `bold ${Math.round(Math.min(w, h) / 9)}px Georgia, "Times New Roman", serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    const width = ctx.measureText(text).width + 40 / this.scale;
-    const height = Math.min(w, h) / 6;
-    ctx.fillStyle = '#f6f1e7';
-    ctx.fillRect(-width / 2, -height / 2, width, height);
-    ctx.strokeStyle = colour;
-    ctx.lineWidth = Math.max(2, 4 / this.scale);
-    ctx.strokeRect(-width / 2, -height / 2, width, height);
+    const px = Math.max(2, Math.round(Math.min(w, h) / 12 / GLYPH_H));
+    const pad = 3 * px;
+    const width = textWidth(text, px) + pad * 2;
+    const height = GLYPH_H * px + pad * 2;
+    const x = Math.round((w - width) / 2);
+    const y = Math.round((h - height) / 2);
     ctx.fillStyle = colour;
-    ctx.fillText(text, 0, 0);
-    ctx.restore();
+    ctx.fillRect(x - px, y - px, width + 2 * px, height + 2 * px);
+    ctx.fillStyle = '#f6f1e7';
+    ctx.fillRect(x, y, width, height);
+    drawText(ctx, text, x + pad, y + pad, px, colour);
   }
 }
