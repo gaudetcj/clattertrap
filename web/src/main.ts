@@ -1,8 +1,12 @@
-// The level page: pick a level, play its reference solution or an opened scene, hear it, and read the
-// verdict.
+// The level page: pick a level or a pilot run, play its reference solution or an opened scene, hear
+// it, and read the verdict.
 
+import type { GoalKind } from './decode';
+import { GOAL_KINDS } from './decode';
 import { loadWasm } from './replay';
 import { Player } from './player';
+import { indexRuns, runFromSearch, searchForRun } from './runs';
+import type { Run } from './runs';
 import { parseOpened } from './submission';
 
 interface Fixture {
@@ -45,10 +49,27 @@ function fixtures(): Fixture[] {
   return out.sort((a, b) => a.id.localeCompare(b.id));
 }
 
+// Every pilot submission under pilot/runs, when the checkout has any; the gallery replaces this in time.
+function pilotRuns(goalOf: (levelId: string) => GoalKind | undefined): Run[] {
+  const files = import.meta.glob('../../pilot/runs/*/*/*/submission.json', {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  }) as Record<string, string>;
+  return indexRuns(files, goalOf);
+}
+
 function rulesVersionOf(levelJson: string): number {
   const parsed: unknown = JSON.parse(levelJson);
   const v = typeof parsed === 'object' && parsed !== null ? (parsed as { rules_version?: unknown }).rules_version : undefined;
   return typeof v === 'number' ? v : -1;
+}
+
+function goalKindOf(levelJson: string): GoalKind | undefined {
+  const parsed: unknown = JSON.parse(levelJson);
+  const goal = typeof parsed === 'object' && parsed !== null ? (parsed as { goal?: unknown }).goal : undefined;
+  const kind = typeof goal === 'object' && goal !== null ? (goal as { kind?: unknown }).kind : undefined;
+  return GOAL_KINDS.find((k) => k === kind);
 }
 
 function el<K extends keyof HTMLElementTagNameMap>(tag: K, text?: string, className?: string): HTMLElementTagNameMap[K] {
@@ -65,11 +86,22 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, text?: string, classN
 async function page(app: HTMLElement): Promise<void> {
   const wasm = await loadWasm();
   const levels = fixtures();
+  const runs = pilotRuns((id) => {
+    const f = levels.find((x) => x.id === id);
+    return f ? goalKindOf(f.level) : undefined;
+  });
   const select = el('select');
   for (const f of levels) {
     const option = el('option', f.id);
     option.value = f.id;
     select.append(option);
+  }
+  const picker = el('select', undefined, 'runs');
+  picker.append(el('option', `pilot runs (${runs.length})`));
+  for (const run of runs) {
+    const option = el('option', run.label);
+    option.value = run.key;
+    picker.append(option);
   }
   const playButton = el('button', 'Play');
   const restartButton = el('button', 'Restart');
@@ -81,6 +113,9 @@ async function page(app: HTMLElement): Promise<void> {
   openLabel.append(openInput);
   const controls = el('div', undefined, 'controls');
   controls.append(select, playButton, restartButton, muteButton, openLabel);
+  if (runs.length > 0) {
+    controls.append(picker);
+  }
   const canvas = el('canvas');
   const caption = el('p', '', 'caption');
   const status = el('p', 'loading', 'status');
@@ -109,16 +144,46 @@ async function page(app: HTMLElement): Promise<void> {
       status.textContent = e instanceof Error ? e.message : String(e);
     }
   };
-  const load = (): void => show(select.value, null, '');
+  // Keeps the picker and the address bar naming the open run, so a replay can be linked and reloaded.
+  const address = (key: string | undefined): void => {
+    picker.selectedIndex = key === undefined ? 0 : runs.findIndex((r) => r.key === key) + 1;
+    history.replaceState(null, '', key === undefined ? location.pathname : searchForRun(key));
+  };
+  const load = (): void => {
+    address(undefined);
+    show(select.value, null, '');
+  };
+  const openText = (text: string, fallback: string): void => {
+    const opened = parseOpened(text);
+    const line = [opened.name, opened.prediction].filter((s) => s !== undefined).join(': ');
+    show(opened.levelId, opened.sceneJson, line || fallback);
+  };
   const open = async (file: File): Promise<void> => {
     try {
-      const opened = parseOpened(await file.text());
-      const text = [opened.name, opened.prediction].filter((s) => s !== undefined).join(': ');
-      show(opened.levelId, opened.sceneJson, text || file.name);
+      address(undefined);
+      openText(await file.text(), file.name);
     } catch (e) {
       status.textContent = `${file.name}: ${e instanceof Error ? e.message : String(e)}`;
     }
   };
+  const openRun = (key: string): void => {
+    const run = runs.find((r) => r.key === key);
+    if (!run) {
+      status.textContent = `no pilot run ${key}`;
+      return;
+    }
+    address(key);
+    try {
+      openText(run.text, run.key);
+    } catch (e) {
+      status.textContent = `${key}: ${e instanceof Error ? e.message : String(e)}`;
+    }
+  };
+  picker.addEventListener('change', () => {
+    if (picker.selectedIndex > 0) {
+      openRun(picker.value);
+    }
+  });
   openInput.addEventListener('change', () => {
     const file = openInput.files?.[0];
     if (file) {
@@ -142,7 +207,12 @@ async function page(app: HTMLElement): Promise<void> {
     player.setMuted(muted);
     muteButton.textContent = muted ? 'Unmute' : 'Mute';
   });
-  load();
+  const linked = runFromSearch(location.search);
+  if (linked === undefined) {
+    load();
+  } else {
+    openRun(linked);
+  }
 }
 
 const app = document.getElementById('app');

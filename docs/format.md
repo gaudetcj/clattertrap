@@ -116,7 +116,7 @@ The overlap check runs only once everything else passes. Two fixed objects that 
 | `aborted` | an error, a usage limit, or an MCP server that never connected | no; run it again |
 | `flagged` | a tool call outside the clattertrap MCP tools | no |
 
-`clattertrap report <dir>` prints, per model and arm, the levels solved (a level counts once however many runs solved it), the hard levels solved (tiers 4 and 5), the runs counted, the aborted and flagged runs, and the mean cost and time. A second table gives, per level, the runs, the runs that solved it, the attempts (`run` calls, accepted or not), the scene calls accepted and rejected by validation, and the submissions. `--csv` prints one row per run, every run included. `--sample N --seed S` prints N counted submissions to open on the level page, which plays any dropped scene or submission file.
+`clattertrap report <dir>` prints, per model and arm, the levels solved (a level counts once however many runs solved it), the hard levels solved (tiers 4 and 5), the runs counted, the aborted and flagged runs, and the mean cost and time. A second table gives, per level, the runs, the runs that solved it, the attempts (`run` calls, accepted or not), the scene calls accepted and rejected by validation, and the submissions. `--csv` prints one row per run, every run included. `--sample N --seed S` prints N counted submissions to open on the level page. In a checkout with pilot runs, `just web` lists every submission under `pilot/runs/` in a picker on that page, and `?run=<model>/<level>/<arm>-NN` opens one directly; the page also plays any dropped scene or submission file.
 
 ## Exit codes
 
