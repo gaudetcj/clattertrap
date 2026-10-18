@@ -7,6 +7,7 @@ import { el } from './dom';
 import { galleryEntries, lineup, type Entry } from './gallery';
 import { fixtures, rulesVersionOf, type Fixture } from './levels';
 import { param, search } from './query';
+import { installRecorder } from './record';
 import { loadWasm } from './replay';
 
 const ARMS = ['blueprint', 'workshop'];
@@ -27,7 +28,7 @@ class ArenaPage {
     private readonly levels: Fixture[],
     private readonly entries: Entry[],
     private pick: Pick,
-    paced: boolean,
+    private readonly record: boolean,
   ) {
     const withEntries = levels.filter((f) => entries.some((e) => e.level === f.id));
     for (const f of withEntries) {
@@ -51,7 +52,7 @@ class ArenaPage {
     galleryLink.href = 'gallery.html';
     nav.append(levelLink, ' ', galleryLink);
     app.replaceChildren(el('h1', 'Clattertrap arena'), nav, controls, this.canvas, this.status);
-    this.conductor = new Conductor(this.canvas, this.dt_s, paced, (c) => this.changed(c));
+    this.conductor = new Conductor(this.canvas, this.dt_s, !record, (c) => this.changed(c));
     this.levelSelect.addEventListener('change', () => this.open({ ...this.pick, level: this.levelSelect.value, run: '01' }));
     this.armSelect.addEventListener('change', () => this.open({ ...this.pick, arm: this.armSelect.value, run: '01' }));
     this.playButton.addEventListener('click', () => this.conductor.toggle());
@@ -85,6 +86,10 @@ class ArenaPage {
       this.conductor.load(lanes);
     } catch (e) {
       this.status.textContent = e instanceof Error ? e.message : String(e);
+      return;
+    }
+    if (this.record) {
+      installRecorder(this.canvas, this.conductor, lanes, this.dt_s);
     }
   }
 
@@ -113,7 +118,7 @@ async function page(app: HTMLElement): Promise<void> {
   const query = location.search;
   const wasm = await loadWasm();
   const record = param(query, 'record') !== undefined;
-  const arena = new ArenaPage(app, wasm.dt_s, wasm.rules_version, fixtures(), galleryEntries(), pickFrom(query), !record);
+  const arena = new ArenaPage(app, wasm.dt_s, wasm.rules_version, fixtures(), galleryEntries(), pickFrom(query), record);
   if (param(query, 'autoplay') !== undefined) {
     arena.autoplay();
   }
