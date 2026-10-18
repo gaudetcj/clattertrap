@@ -7,6 +7,7 @@ import { LevelView } from './level_view';
 import { Replay } from './replay';
 import { Soundtrack, voiceFor } from './sound';
 import { stampText } from './stamp';
+import { tray } from './tray';
 
 const VOICES_PER_STEP = 6;
 
@@ -37,7 +38,7 @@ export class Player {
     this.replay = Replay.start(levelJson, sceneJson);
     this.levelJson = levelJson;
     this.sceneJson = sceneJson;
-    this.view = new LevelView(this.canvas, this.replay.setup, this.replay.links);
+    this.view = new LevelView(this.canvas, this.replay.setup, this.replay.links, tray(levelJson, sceneJson));
     this.fit();
     this.playing = false;
     this.done = 0;

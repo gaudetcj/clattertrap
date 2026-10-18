@@ -7,6 +7,8 @@ import { drawText, GLYPH_H, textWidth } from './font';
 import type { Link } from './links';
 import { PartPainter } from './painter';
 import { CM_PER_PX, PALETTE, paletteLut, pixelGrid, rgbPalette, snapToPalette } from './pixel';
+import type { TrayItem } from './tray';
+import { drawTray, TRAY_H } from './tray_view';
 
 const BACKGROUND = '#1b2233';
 const ZONE_EDGE = '#3d5a80';
@@ -23,6 +25,7 @@ export class LevelView {
     private readonly canvas: HTMLCanvasElement,
     private readonly setup: Setup,
     private readonly links: Link[],
+    private readonly items: TrayItem[],
   ) {
     this.camera = Camera.fit(setup.width_cm, setup.height_cm, canvas.width, canvas.height);
   }
@@ -36,7 +39,8 @@ export class LevelView {
     this.canvas.style.width = `${grid.w * grid.scale}px`;
     this.canvas.style.height = `${grid.h * grid.scale}px`;
     this.canvas.style.imageRendering = 'pixelated';
-    this.camera = Camera.fit(this.setup.width_cm, this.setup.height_cm, grid.w, grid.h);
+    // The world sits above the tray.
+    this.camera = Camera.fit(this.setup.width_cm, this.setup.height_cm, grid.w, grid.h - TRAY_H);
   }
 
   draw(poses: Pose[], time_s: number, stamp: string | null, success: boolean): void {
@@ -64,9 +68,10 @@ export class LevelView {
         this.painter.draw(ctx, this.camera, slot.visual, pose);
       }
     });
+    drawTray(ctx, this.painter, this.items, h - TRAY_H, w);
     this.clock(ctx, time_s);
     if (stamp !== null) {
-      this.stamp(ctx, w, h, stamp, success);
+      this.stamp(ctx, w, h - TRAY_H, stamp, success);
     }
     const frame = ctx.getImageData(0, 0, w, h);
     snapToPalette(frame.data, RGB, LUT);

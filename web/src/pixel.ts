@@ -23,7 +23,7 @@ export const PALETTE: string[] = [
   '#c9a46a', '#6e4e22', '#8f6a35',
   '#3a3a3a', '#111111', '#a0a0a0', '#5b4327',
   '#1f7a3a', '#b3261e', '#f6f1e7',
-  '#1b2233', '#3d5a80', '#243149', '#dfe6ee',
+  '#1b2233', '#3d5a80', '#243149', '#dfe6ee', '#141a27', '#141a27',
 ];
 
 // The low-res size and whole-number upscale that puts about `cm_per_px` centimetres in one pixel.
