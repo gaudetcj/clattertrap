@@ -142,6 +142,8 @@ Everything else in the runner's stream is dropped: the init record (it names the
 
 The viewer (`just web`) bundles the gallery into four pages. `index.html` replays one entry, `?entry=<level>/<model>/<arm>-NN`, or a level's reference solution. `arena.html?level=<id>&arm=<arm>` plays one entry per model side by side, released at once; `&autoplay=1` starts it muted, and `&record=1` leaves it unpaced for `just hero`. `reel.html?entry=...` plays an entry's accepted `run` calls in order, then its submission, with the text records of its transcript as the model's notes. `gallery.html` lists every entry with links to the three. Every replay re-simulates the stored scene and stamps `REPLAY MISMATCH` when its outcome differs from the stored one.
 
+`just hero [level] [arm]` records that arena page through the record hook at 30 frames per second into `docs/hero.mp4`, the whole run with its soundtrack, and `docs/hero.gif`, which stops 6 s in (`HERO_WINDOW_S`) and stamps the lanes still running with their stored verdicts so a miss does not take 20 s to read.
+
 ## Verifying stored results
 
 `clattertrap verify <dir>` re-simulates every stored outcome under a directory of runs and prints each one that no longer holds. It walks `<dir>/*/*/*/summary.json`, so it reads both `pilot/runs` (model, level, run) and `gallery` (level, model, run), taking the level from each summary. For every entry it checks that the summary parses, that its status counts, and that it called no foreign tools; for a submitted run it re-runs the submission's scene, and for every call with an outcome (`run` and `submit`) it re-runs that scene too. Each field that differs is one line:

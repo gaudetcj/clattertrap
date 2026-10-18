@@ -1,5 +1,6 @@
 //! `cargo xtask hero`: records the arena grid in the browser and assembles `docs/hero.gif` and
-//! `docs/hero.mp4` with ffmpeg. The browser side writes `frames/NNNNN.png` and `audio.wav`.
+//! `docs/hero.mp4` with ffmpeg. The browser side writes `frames/NNNNN.png` for the whole run,
+//! `gif/NNNNN.png` for the shorter GIF, and `audio.wav`.
 
 use crate::{step_env, wasm};
 use anyhow::{Context, Result};
@@ -22,8 +23,8 @@ pub fn hero_env(level: &str, arm: &str, out: &Path) -> Vec<(String, String)> {
     ]
 }
 
-fn frames_pattern(out: &Path) -> String {
-    out.join("frames").join("%05d.png").display().to_string()
+fn frames_pattern(out: &Path, set: &str) -> String {
+    out.join(set).join("%05d.png").display().to_string()
 }
 
 /// ffmpeg arguments for the MP4: H.264 in yuv420p so every player opens it, with the rendered audio.
@@ -34,7 +35,7 @@ pub fn mp4_args(out: &Path, wav: &Path, mp4: &Path) -> Vec<String> {
         "-framerate",
         &FPS.to_string(),
         "-i",
-        &frames_pattern(out),
+        &frames_pattern(out, "frames"),
         "-i",
         &wav.display().to_string(),
         "-c:v",
@@ -61,7 +62,7 @@ pub fn mp4_args(out: &Path, wav: &Path, mp4: &Path) -> Vec<String> {
     .collect()
 }
 
-/// ffmpeg arguments for the GIF: a palette made from the frames, no dither, looping.
+/// ffmpeg arguments for the GIF: the shorter frame set, a palette made from it, no dither, looping.
 #[must_use]
 pub fn gif_args(out: &Path, gif: &Path) -> Vec<String> {
     let filter = format!(
@@ -72,7 +73,7 @@ pub fn gif_args(out: &Path, gif: &Path) -> Vec<String> {
         "-framerate",
         &FPS.to_string(),
         "-i",
-        &frames_pattern(out),
+        &frames_pattern(out, "gif"),
         "-vf",
         &filter,
         "-loop",
@@ -167,7 +168,11 @@ mod tests {
         assert!(text.contains("audio.wav"), "{text}");
         assert!(text.contains("-c:a aac"), "{text}");
         assert!(text.ends_with("hero.mp4"), "{text}");
-        assert!(args.iter().any(|a| a.ends_with("%05d.png")), "{text}");
+        assert!(
+            args.iter()
+                .any(|a| a.ends_with("%05d.png") && a.contains("frames")),
+            "{text}"
+        );
     }
 
     #[test]
@@ -179,5 +184,10 @@ mod tests {
         assert!(text.contains("fps=12"), "{text}");
         assert!(text.contains("-loop 0"), "{text}");
         assert!(!text.contains("audio"), "{text}");
+        assert!(
+            args.iter()
+                .any(|a| a.ends_with("%05d.png") && a.contains("gif")),
+            "{text}"
+        );
     }
 }

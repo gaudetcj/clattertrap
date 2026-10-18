@@ -10,6 +10,7 @@ import type { PanelFrame } from './panel_view';
 import { Replay } from './replay';
 import { Soundtrack } from './sound';
 import { tray } from './tray';
+import { stampText } from './stamp';
 import { type Stamp, verdictFor } from './verdict';
 import { VOICES_PER_STEP, voicesAt } from './voices';
 
@@ -186,6 +187,21 @@ export class Conductor {
       this.onChange(this);
     }
     return ended;
+  }
+
+  // Draws every lane once with its stored verdict stamped over the ones still running, for a
+  // recording that stops early. Nothing is kept: the next step redraws the running lanes as they are.
+  drawStoredVerdicts(): void {
+    const frames: PanelFrame[] = this.lanes.map((lane) => {
+      const stored = lane.stored;
+      const stamp =
+        lane.stamp ??
+        (stored === null
+          ? null
+          : { text: stampText(lane.replay.setup.goal.kind, stored), tone: stored.goal_met ? 'success' : 'failure' });
+      return { poses: lane.replay.frame(), time_s: lane.replay.stepIndex() * this.dt_s, stamp };
+    });
+    this.view?.draw(frames);
   }
 
   private frame(): void {

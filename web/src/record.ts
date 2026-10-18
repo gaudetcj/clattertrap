@@ -12,6 +12,8 @@ export interface RecordHook {
   advance(steps: number): boolean;
   // The whole canvas as a PNG data URL.
   frame(): string;
+  // The canvas with the stored verdicts stamped over the lanes still running, as a PNG data URL.
+  stampedFrame(): string;
   // The soundtrack from `lead_s` in, `total_s` long, as a base64 WAV.
   audio(lead_s: number, total_s: number): Promise<string>;
 }
@@ -29,6 +31,10 @@ export function installRecorder(canvas: HTMLCanvasElement, conductor: Conductor,
     height: size.h,
     advance: (steps) => conductor.advance(steps),
     frame: () => canvas.toDataURL('image/png'),
+    stampedFrame: () => {
+      conductor.drawStoredVerdicts();
+      return canvas.toDataURL('image/png');
+    },
     audio: async (lead_s, total_s) => {
       const buffer = await renderAudio(lanes, dt_s, lead_s, total_s);
       return toBase64(encodeWav([buffer.getChannelData(0)], buffer.sampleRate));
