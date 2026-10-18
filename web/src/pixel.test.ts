@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PALETTE, pixelGrid, rgbPalette, snapToPalette } from './pixel';
+import { PALETTE, paletteLut, pixelGrid, rgbPalette, snapToPalette } from './pixel';
 
 describe('pixelGrid', () => {
   it('picks a whole-number upscale so one pixel is about the asked centimetres', () => {
@@ -18,19 +18,16 @@ describe('pixelGrid', () => {
 
 describe('snapToPalette', () => {
   const palette = rgbPalette(['#ff0000', '#000000', '#f6f1e7']);
+  const lut = paletteLut(palette);
+
+  it('builds one table entry per five-bit colour', () => {
+    expect(lut.length).toBe(32768);
+  });
 
   it('leaves palette colours alone and moves blends to the nearest one', () => {
     const data = new Uint8ClampedArray([255, 0, 0, 255, 250, 12, 4, 255, 120, 110, 100, 255]);
-    snapToPalette(data, palette, new Map());
+    snapToPalette(data, palette, lut);
     expect(Array.from(data)).toEqual([255, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 255]);
-  });
-
-  it('reuses the cache for a colour it has already placed', () => {
-    const cache = new Map<number, number>();
-    const data = new Uint8ClampedArray([250, 12, 4, 255, 250, 12, 4, 255]);
-    snapToPalette(data, palette, cache);
-    expect(cache.size).toBe(1);
-    expect(Array.from(data.slice(4))).toEqual([255, 0, 0, 255]);
   });
 
   it('ships a palette of a few dozen colours that includes the paper and the stamp greens and reds', () => {

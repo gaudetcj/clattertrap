@@ -1,5 +1,5 @@
-// The 16-bit look: a low-resolution frame, one pixel per a few centimetres of world, upscaled by a
-// whole number with no smoothing, and every colour snapped to a fixed palette so edges stay hard.
+// The 16-bit look: a low-resolution frame, one pixel per centimetre of world, upscaled by a whole
+// number with no smoothing, and every colour snapped to a fixed palette so edges stay hard.
 
 export interface Grid {
   scale: number;
@@ -21,7 +21,7 @@ export const PALETTE: string[] = [
   '#d8dde3', '#3a3f46', '#8a9099',
   '#e2b53c', '#6b4f0a', '#fff0b8', '#5a3d05',
   '#c9a46a', '#6e4e22', '#8f6a35',
-  '#3a3a3a', '#111111', '#a0a0a0', '#4a3a28',
+  '#3a3a3a', '#111111', '#a0a0a0', '#5b4327',
   '#1f7a3a', '#b3261e', '#f6f1e7',
   '#1b2233', '#3d5a80', '#243149', '#dfe6ee',
 ];
@@ -53,24 +53,31 @@ function nearest(r: number, g: number, b: number, palette: Uint8Array): number {
     const d = dr * dr + dg * dg + db * db;
     if (d < bestD) {
       bestD = d;
-      best = i;
+      best = i / 3;
     }
   }
   return best;
 }
 
-// Moves every RGBA pixel to its nearest palette colour; the cache maps a packed RGB to a palette offset.
-export function snapToPalette(data: Uint8ClampedArray, palette: Uint8Array, cache: Map<number, number>): void {
+// Five bits back to eight, so a bucket's representative sits where its exact colours do.
+function expand(q: number): number {
+  return (q << 3) | (q >> 2);
+}
+
+// The palette index nearest every five-bit-per-channel colour, built once per palette.
+export function paletteLut(palette: Uint8Array): Uint8Array {
+  const lut = new Uint8Array(32768);
+  for (let key = 0; key < lut.length; key += 1) {
+    lut[key] = nearest(expand(key >> 10), expand((key >> 5) & 31), expand(key & 31), palette);
+  }
+  return lut;
+}
+
+// Moves every RGBA pixel to its nearest palette colour through the table.
+export function snapToPalette(data: Uint8ClampedArray, palette: Uint8Array, lut: Uint8Array): void {
   for (let i = 0; i < data.length; i += 4) {
-    const r = data[i] ?? 0;
-    const g = data[i + 1] ?? 0;
-    const b = data[i + 2] ?? 0;
-    const key = (r << 16) | (g << 8) | b;
-    let at = cache.get(key);
-    if (at === undefined) {
-      at = nearest(r, g, b, palette);
-      cache.set(key, at);
-    }
+    const key = (((data[i] ?? 0) >> 3) << 10) | (((data[i + 1] ?? 0) >> 3) << 5) | ((data[i + 2] ?? 0) >> 3);
+    const at = (lut[key] ?? 0) * 3;
     data[i] = palette[at] ?? 0;
     data[i + 1] = palette[at + 1] ?? 0;
     data[i + 2] = palette[at + 2] ?? 0;

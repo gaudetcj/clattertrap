@@ -6,17 +6,17 @@ import type { Pose, Setup } from './decode';
 import { drawText, GLYPH_H, textWidth } from './font';
 import type { Link } from './links';
 import { PartPainter } from './painter';
-import { CM_PER_PX, PALETTE, pixelGrid, rgbPalette, snapToPalette } from './pixel';
+import { CM_PER_PX, PALETTE, paletteLut, pixelGrid, rgbPalette, snapToPalette } from './pixel';
 
 const BACKGROUND = '#1b2233';
 const ZONE_EDGE = '#3d5a80';
 const ZONE_FILL = '#243149';
 const CLOCK = '#dfe6ee';
 const RGB = rgbPalette(PALETTE);
+const LUT = paletteLut(RGB);
 
 export class LevelView {
   private readonly painter = new PartPainter();
-  private readonly snapped = new Map<number, number>();
   private camera: Camera;
 
   constructor(
@@ -69,7 +69,7 @@ export class LevelView {
       this.stamp(ctx, w, h, stamp, success);
     }
     const frame = ctx.getImageData(0, 0, w, h);
-    snapToPalette(frame.data, RGB, this.snapped);
+    snapToPalette(frame.data, RGB, LUT);
     ctx.putImageData(frame, 0, 0);
   }
 
