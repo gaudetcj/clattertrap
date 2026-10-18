@@ -36,7 +36,7 @@ fn repo_root() -> PathBuf {
 }
 
 /// Runs the merge gate: fmt, clippy on native and wasm32, prose, nextest, doc tests, wasm tests, the wasm
-/// build, web lint and tests, gallery verify.
+/// build, web lint, unit tests, and the browser test, gallery verify.
 fn ci(root: &Path) -> Result<()> {
     let cargo = cargo();
     step(root, &cargo, &["fmt", "--all", "--check"])?;
@@ -80,6 +80,7 @@ fn ci(root: &Path) -> Result<()> {
     );
     step(root, npm(), &["--prefix", "web", "run", "lint"])?;
     step(root, npm(), &["--prefix", "web", "test"])?;
+    step(root, npm(), &["--prefix", "web", "run", "test:e2e"])?;
     step(
         root,
         &cargo,

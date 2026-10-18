@@ -26,4 +26,10 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
       - run: npm --prefix web ci
+      - run: npx playwright install --with-deps chromium
+        working-directory: web
+        if: runner.os == 'Linux'
+      - run: npx playwright install chromium
+        working-directory: web
+        if: runner.os == 'Windows'
       - run: just ci
