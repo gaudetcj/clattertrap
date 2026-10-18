@@ -22,6 +22,6 @@ Tiers run from 1 to 5 and say how much a solution needs: one part placed well, a
 | wake-the-pendulum | 5, showcase | ring, via pend, ball1, post | beam 5, domino 4, ball 1, crate 1, funnel 1, seesaw 1 | the ball sets a hanging pendulum swinging, whose weight knocks a wood ball off a ledge onto a post, and that ball drops onto a bell |
 | return-trip | 5, showcase | fill 3, via a, w1, d | beam 6, funnel 1, seesaw 1, bucket 1, crate 1, domino 4 | the ball crosses the world to knock two wood balls off a shelf, and all three have to come back past a low post into a basket on the left |
 
-Every level is 400 by 300 cm with a 20 s limit. Fixed objects are placed exactly at rest, so a waypoint that stands on the floor is not touched until something moving arrives. The three levels with three waypoints force a chain of at least four stages rather than scoring it; a goal that is satisfied before its last waypoint is touched does not count.
+Every level is 400 by 300 cm with a 20 s limit. Fixed objects are placed exactly at rest, so a waypoint that stands on the floor is not touched until something moving arrives. The three levels with three waypoints force a chain of at least four stages rather than scoring it. Waypoints and the goal count only for one chain of parts that have touched each other, so a second object timed to arrive on its own does not help.
 
 The inventories are deliberately larger than the reference solutions use. A contestant may build a longer machine than it needs, and on showcase levels the chain length counts.

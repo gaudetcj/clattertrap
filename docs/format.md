@@ -21,7 +21,7 @@ A level lives in `levels/<id>/level.json`. Its reference solution, a plain scene
 | `goal` | object | see below |
 | `showcase` | bool, default false | whether chain length is scored too |
 
-A goal is `{ "kind": "ring" | "press" | "fill" | "pop", "target": "<fixed id>" }`. `fill` adds `count`, the number of objects that must rest inside the basket. Any goal may add `via`, a list of part ids that must be touched in that order before the goal counts. The target must be a fixed object of the matching kind: a bell for `ring`, a button for `press`, a basket for `fill`, a balloon for `pop`.
+A goal is `{ "kind": "ring" | "press" | "fill" | "pop", "target": "<fixed id>" }`. `fill` adds `count`, the number of objects that must rest inside the basket. Any goal may add `via`, a list of part ids that must be touched in that order before the goal counts, by one chain of parts that touched each other (see docs/physics.md). The target must be a fixed object of the matching kind: a bell for `ring`, a button for `press`, a basket for `fill`, a balloon for `pop`.
 
 ## Scene
 

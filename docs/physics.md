@@ -78,7 +78,9 @@ An object counts once its centre is inside the inner rectangle and its speed is 
 
 ## Goals and waypoints
 
-A goal is one of `ring`, `press`, `fill`, or `pop` and names a fixed object of the matching kind. `via` lists part ids that must be touched in order first; the goal is ignored until the list is done. A touch is a contact between the waypoint and anything but the floor while one of the two moves faster than 0.05 m/s, so a waypoint resting on the floor or a shelf is not touched until something arrives. Each touch emits a `Via` event.
+A goal is one of `ring`, `press`, `fill`, or `pop` and names a fixed object of the matching kind. `via` lists part ids that must be touched in order first. A touch is a contact between the waypoint and anything but the floor while one of the two moves faster than 0.05 m/s, so a waypoint resting on the floor or a shelf is not touched until something arrives. Each touch emits a `Via` event.
+
+The waypoints and the goal have to be the work of one chain. Two dynamic parts that touch join one chain, and the two ends of a rope start in one; static parts such as beams carry nothing. A touch advances the toucher's chain only when the waypoint is that chain's next one, and the goal counts only for a chain that has touched them all: the part that rings the bell, the button cap and whatever pressed it, each object resting in the basket, the balloon that pops. A ball parked on a slope so it creeps into the last waypoint while another chain does the rest is on its own chain and does not count, and neither does an object parked in the basket from the start.
 
 ## Events
 

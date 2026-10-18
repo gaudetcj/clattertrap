@@ -325,3 +325,117 @@ fn a_waypoint_counts_only_when_something_moving_touches_it() {
     );
     assert_eq!(via.step, landing.step);
 }
+
+fn via_count(r: &Run) -> usize {
+    r.events
+        .iter()
+        .filter(|e| matches!(e.kind, EventKind::Via(_)))
+        .count()
+}
+
+#[test]
+fn a_waypoint_touched_by_a_separate_chain_does_not_count() {
+    // The level's ball lands on the first post; a parked wood ball drops onto the second post later.
+    // Nothing links the two, so the second touch belongs to a chain that never did the first post.
+    let lv = level_with_goal(
+        vec![
+            ball("k", 100.0, 200.0, Material::Steel),
+            crate_box("p1", 100.0, 15.0, 30.0),
+            crate_box("p2", 300.0, 15.0, 30.0),
+            bell_at(390.0, 280.0),
+        ],
+        ring(&["p1", "p2"]),
+    );
+    let sc = scene(vec![ball("lane", 300.0, 250.0, Material::Wood)]);
+    let r = finished(&lv, &sc);
+    assert_eq!(
+        via_count(&r),
+        1,
+        "only p1 is touched by the chain that started on it"
+    );
+    assert!(!r.outcome.goal_met);
+}
+
+#[test]
+fn a_part_the_chain_set_moving_touches_the_next_waypoint() {
+    // The ball drops on one arm of a seesaw; the other arm swings up into the post.
+    let lv = level_with_goal(
+        vec![
+            ball("k", 100.0, 200.0, Material::Steel),
+            beam("post", 205.0, 115.0, 30.0, 0.0),
+            bell_at(390.0, 280.0),
+        ],
+        ring(&["post"]),
+    );
+    let sc = scene(vec![seesaw("s", 130.0, 80.0, 150.0, -11.5)]);
+    let r = finished(&lv, &sc);
+    assert_eq!(
+        via_count(&r),
+        1,
+        "the plank the ball set moving touched the post"
+    );
+}
+
+#[test]
+fn a_rope_joins_two_parts_into_one_chain() {
+    // The falling ball yanks a wood ball off its ledge by rope; the wood ball lands on the post.
+    let lv = level_with_goal(
+        vec![
+            ball("k", 230.0, 100.0, Material::Steel),
+            beam("post", 130.0, 60.0, 140.0, 0.0),
+            bell_at(390.0, 280.0),
+        ],
+        ring(&["post"]),
+    );
+    let sc = scene(vec![
+        beam("shelf", 100.0, 122.0, 20.0, 0.0),
+        ball("w", 100.0, 130.0, Material::Wood),
+        common::rope("r", "k", "w", 150.0),
+    ]);
+    let r = finished(&lv, &sc);
+    assert_eq!(via_count(&r), 1, "the roped wood ball touched the post");
+    let k_hit_post = r
+        .events
+        .iter()
+        .any(|e| e.kind == EventKind::contact(PartId(0), PartId(1)));
+    assert!(
+        !k_hit_post,
+        "the steel ball itself stayed clear of the post"
+    );
+}
+
+#[test]
+fn a_parked_object_does_not_fill_a_basket_before_its_chain_is_done() {
+    // The ball rolls off the post into the basket. A domino parked on a perch inside the basket,
+    // out of the ball's way, would make two, but it never touched the post, so only the ball counts.
+    let lv = level_with_goal(
+        vec![
+            ball("k", 54.0, 200.0, Material::Steel),
+            beam("post", 62.0, 60.0, 30.0, -20.0),
+            beam("perch", 132.0, 30.0, 20.0, 0.0),
+            placed(
+                "basket",
+                PartSpec::Basket {
+                    x_cm: 100.0,
+                    y_cm: 0.5,
+                    inner_width_cm: 60.0,
+                    inner_height_cm: 40.0,
+                },
+            ),
+        ],
+        Goal::Fill {
+            target: "basket".to_owned(),
+            count: 2,
+            via: vec!["post".to_owned()],
+        },
+    );
+    let sc = scene(vec![common::domino("d", 127.0, 42.0)]);
+    let r = finished(&lv, &sc);
+    assert_eq!(via_count(&r), 1, "the ball touched the post");
+    let k_rest = r
+        .events
+        .iter()
+        .any(|e| e.kind == EventKind::AtRest(PartId(0)));
+    assert!(k_rest, "the ball came to rest");
+    assert!(!r.outcome.goal_met, "the parked domino must not count");
+}
