@@ -28,7 +28,7 @@ function entry(model: string, level: string, arm: string, run: string): Entry {
 
 describe('the arena pick', () => {
   it('comes from the query or the hero defaults', () => {
-    expect(pickFrom('')).toEqual({ level: 'seesaw-launch', arm: 'blueprint', run: '01' });
+    expect(pickFrom('')).toEqual({ level: 'seesaw-launch', arm: 'blueprint' });
     expect(pickFrom('?level=grand-tour&arm=workshop&run=02')).toEqual({ level: 'grand-tour', arm: 'workshop', run: '02' });
   });
 });
@@ -50,6 +50,6 @@ describe('lanesFor', () => {
   });
 
   it('is empty for a level the page does not know', () => {
-    expect(lanesFor(entries, levels, { level: 'nope', arm: 'blueprint', run: '01' })).toEqual([]);
+    expect(lanesFor(entries, levels, { level: 'nope', arm: 'blueprint' })).toEqual([]);
   });
 });

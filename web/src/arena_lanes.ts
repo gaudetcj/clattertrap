@@ -12,16 +12,17 @@ export const DEFAULT_ARM = 'blueprint';
 export interface Pick {
   level: string;
   arm: string;
-  run: string;
+  run?: string;
 }
 
 // The query's level, arm, and run, or the hero defaults.
 export function pickFrom(query: string): Pick {
-  return {
-    level: param(query, 'level') ?? DEFAULT_LEVEL,
-    arm: param(query, 'arm') ?? DEFAULT_ARM,
-    run: param(query, 'run') ?? '01',
-  };
+  const pick: Pick = { level: param(query, 'level') ?? DEFAULT_LEVEL, arm: param(query, 'arm') ?? DEFAULT_ARM };
+  const run = param(query, 'run');
+  if (run !== undefined) {
+    pick.run = run;
+  }
+  return pick;
 }
 
 export function lanesFor(entries: Entry[], levels: Fixture[], pick: Pick): LaneInput[] {

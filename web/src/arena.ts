@@ -53,8 +53,8 @@ class ArenaPage {
     nav.append(levelLink, ' ', galleryLink);
     app.replaceChildren(el('h1', 'Clattertrap arena'), nav, controls, this.canvas, this.status);
     this.conductor = new Conductor(this.canvas, this.dt_s, !record, (c) => this.changed(c));
-    this.levelSelect.addEventListener('change', () => this.open({ ...this.pick, level: this.levelSelect.value, run: '01' }));
-    this.armSelect.addEventListener('change', () => this.open({ ...this.pick, arm: this.armSelect.value, run: '01' }));
+    this.levelSelect.addEventListener('change', () => this.open({ level: this.levelSelect.value, arm: this.pick.arm }));
+    this.armSelect.addEventListener('change', () => this.open({ level: this.pick.level, arm: this.armSelect.value }));
     this.playButton.addEventListener('click', () => this.conductor.toggle());
     restartButton.addEventListener('click', () => this.conductor.restart());
     muteButton.addEventListener('click', () => {

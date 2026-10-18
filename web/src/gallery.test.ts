@@ -102,7 +102,9 @@ describe('indexGallery', () => {
     expect(six.map((e) => e.model)).toEqual(['claude-sonnet-5-5', 'claude-opus-5-5']);
     expect(six.map((e) => e.run)).toEqual(['blueprint-01', 'blueprint-01']);
     expect(lineup(entries, 'seesaw-launch', 'blueprint', '02').map((e) => e.run)).toEqual(['blueprint-02']);
-    expect(lineup(entries, 'bell-drop', 'blueprint')).toEqual([]);
+    const later = [...entries.filter((e) => e.model !== 'claude-opus-5-5' || e.run !== 'blueprint-01')];
+    expect(lineup(later, 'seesaw-launch', 'blueprint').map((e) => e.run)).toEqual(['blueprint-01', 'blueprint-02']);
+    expect(lineup(entries, 'post-first', 'blueprint')).toEqual([]);
   });
 });
 

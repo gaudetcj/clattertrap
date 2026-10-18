@@ -149,11 +149,17 @@ export function indexGallery(submissions: Record<string, string>, summaries: Rec
   return entries.sort((a, b) => a.key.localeCompare(b.key));
 }
 
-// One entry per model for a level and arm, the asked run number, in model order.
-export function lineup(entries: Entry[], level: string, arm: string, run = '01'): Entry[] {
-  return entries
-    .filter((e) => e.level === level && e.arm === arm && e.run === `${arm}-${run}`)
-    .sort((a, b) => modelRank(a.model) - modelRank(b.model) || a.model.localeCompare(b.model));
+// One entry per model for a level and arm, in model order: each model's first run, or the asked
+// run number when one is given.
+export function lineup(entries: Entry[], level: string, arm: string, run?: string): Entry[] {
+  const mine = entries.filter((e) => e.level === level && e.arm === arm && (run === undefined || e.run === `${arm}-${run}`));
+  const first = new Map<string, Entry>();
+  for (const e of [...mine].sort((a, b) => a.run.localeCompare(b.run))) {
+    if (!first.has(e.model)) {
+      first.set(e.model, e);
+    }
+  }
+  return [...first.values()].sort((a, b) => modelRank(a.model) - modelRank(b.model) || a.model.localeCompare(b.model));
 }
 
 // Entries grouped by level, each group in model order then run.
