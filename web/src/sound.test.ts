@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Look, ReplayEvent } from './decode';
-import { voiceFor } from './sound';
+import { MASTER_GAIN, masterFor, voiceFor } from './sound';
 
 const looks: Record<number, Look> = { 0: 'wood', 1: 'steel', 2: 'rubber', 3: 'brass', 4: 'pin', 5: 'balloon', 6: 'domino' };
 const lookOf = (part: number): Look | null => looks[part] ?? null;
@@ -41,5 +41,13 @@ describe('voiceFor', () => {
 
   it('stays silent for a part it cannot see', () => {
     expect(voiceFor(contact(0, 99), lookOf, 1, 'ring')).toBeNull();
+  });
+});
+
+describe('masterFor', () => {
+  it('shares the master level among the machines playing at once', () => {
+    expect(masterFor(1)).toBe(MASTER_GAIN);
+    expect(masterFor(4)).toBeCloseTo(MASTER_GAIN / 2);
+    expect(masterFor(0)).toBe(MASTER_GAIN);
   });
 });

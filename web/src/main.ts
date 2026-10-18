@@ -6,8 +6,8 @@ import type { Outcome } from './decode';
 import { el } from './dom';
 import { galleryEntries, modelLabel, type Entry } from './gallery';
 import { fixtures, goalKindOf, rulesVersionOf, titleOf } from './levels';
+import { Conductor } from './conductor';
 import { loadWasm } from './replay';
-import { Player } from './player';
 import { param, search } from './query';
 import { stampText } from './stamp';
 import { parseOpened } from './submission';
@@ -25,6 +25,16 @@ function entryLabel(entry: Entry, goalOf: (levelId: string) => ReturnType<typeof
   const goal = goalOf(entry.level);
   const stamp = goal === undefined ? '' : `  ${stampText(goal, entry.outcome)}`;
   return `${entry.level}  ${modelLabel(entry.model)}  ${entry.run}${stamp}`;
+}
+
+// The line under the canvas: the state, and once the run has ended its stamp and both hash pairs.
+function statusLine(c: Conductor): string {
+  const outcome = c.outcomes()[0] ?? null;
+  const stamp = c.verdicts()[0] ?? null;
+  if (outcome === null || stamp === null) {
+    return c.state();
+  }
+  return `${stamp.text} after ${outcome.steps} steps, chain ${outcome.chain_length}, events ${outcome.event_hash}, state ${outcome.state_hash}`;
 }
 
 async function page(app: HTMLElement): Promise<void> {
@@ -70,9 +80,9 @@ async function page(app: HTMLElement): Promise<void> {
   nav.append(arenaLink, ' ', galleryLink);
   app.replaceChildren(el('h1', 'Clattertrap'), nav, controls, canvas, status);
 
-  const player = new Player(canvas, wasm.dt_s, (text) => {
-    status.textContent = text;
-    playButton.textContent = player.isPlaying() ? 'Pause' : 'Play';
+  const player = new Conductor(canvas, wasm.dt_s, true, (c) => {
+    status.textContent = statusLine(c);
+    playButton.textContent = c.isPlaying() ? 'Pause' : 'Play';
   });
   // Loads a scene onto its level; the reference solution when no scene is given.
   const show = (levelId: string, sceneJson: string | null, shown: Shown): void => {
@@ -89,7 +99,7 @@ async function page(app: HTMLElement): Promise<void> {
     arenaLink.href = `arena.html${search({ level: f.id })}`;
     const chrome: PanelChrome = { label: shown.label, name: shown.name ?? titleOf(f.level), prediction: shown.prediction ?? '' };
     try {
-      player.load(f.level, sceneJson ?? f.reference, chrome, shown.outcome ?? null);
+      player.load([{ chrome, levelJson: f.level, sceneJson: sceneJson ?? f.reference, stored: shown.outcome ?? null }]);
     } catch (e) {
       status.textContent = e instanceof Error ? e.message : String(e);
     }

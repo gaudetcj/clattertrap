@@ -75,14 +75,27 @@ const BELL_PARTIALS: [number, number, number][] = [
   [4.19, 0.15, 0.7],
 ];
 
+// The master level for one machine; more machines share it so the mix does not clip.
+export const MASTER_GAIN = 0.5;
+
+// The master level for `machines` playing at once.
+export function masterFor(machines: number): number {
+  return MASTER_GAIN / Math.sqrt(Math.max(1, machines));
+}
+
 export class Soundtrack {
   private noise: AudioBuffer | null = null;
   private readonly master: GainNode;
 
   constructor(private readonly ctx: BaseAudioContext) {
     this.master = ctx.createGain();
-    this.master.gain.value = 0.5;
+    this.master.gain.value = MASTER_GAIN;
     this.master.connect(ctx.destination);
+  }
+
+  // Lowers the master for several machines sounding together.
+  setVoices(machines: number): void {
+    this.master.gain.value = masterFor(machines);
   }
 
   play(voice: Voice, at_s: number): void {
