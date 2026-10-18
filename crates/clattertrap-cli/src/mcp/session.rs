@@ -2,7 +2,7 @@
 //! text and pictures each tool answers with. Nothing here knows about the protocol.
 
 use super::arm::Arm;
-use super::record::{Call, Submission, write_call, write_submission};
+use crate::records::{Call, Submission, Tool, scene_json, write_call, write_submission};
 use crate::{catalog, level_text, picture, rules_text, run};
 use anyhow::Result;
 use clattertrap_core::level::Level;
@@ -155,8 +155,8 @@ impl Session {
         let seq = self.next_seq();
         self.record_call(&Call {
             seq,
-            tool: "check",
-            scene,
+            tool: Tool::Check,
+            scene: scene.clone(),
             problems,
             outcome: None,
             name: None,
@@ -191,8 +191,8 @@ impl Session {
         let seq = self.next_seq();
         self.record_call(&Call {
             seq,
-            tool: "look",
-            scene,
+            tool: Tool::Look,
+            scene: scene.clone(),
             problems,
             outcome: None,
             name: None,
@@ -221,8 +221,8 @@ impl Session {
                 let seq = self.next_seq();
                 self.record_call(&Call {
                     seq,
-                    tool: "run",
-                    scene,
+                    tool: Tool::Run,
+                    scene: scene.clone(),
                     problems: Some(problem_strings(&problems)),
                     outcome: None,
                     name: None,
@@ -245,10 +245,10 @@ impl Session {
         let seq = self.next_seq();
         self.record_call(&Call {
             seq,
-            tool: "run",
-            scene,
+            tool: Tool::Run,
+            scene: scene.clone(),
             problems: None,
-            outcome: Some(&outcome),
+            outcome: Some(outcome.clone()),
             name: None,
             prediction: None,
         })?;
@@ -277,12 +277,12 @@ impl Session {
                 let seq = self.next_seq();
                 self.record_call(&Call {
                     seq,
-                    tool: "submit",
-                    scene,
+                    tool: Tool::Submit,
+                    scene: scene.clone(),
                     problems: Some(problem_strings(&problems)),
                     outcome: None,
-                    name: Some(name),
-                    prediction: Some(prediction),
+                    name: Some(name.to_owned()),
+                    prediction: Some(prediction.to_owned()),
                 })?;
                 return Ok(Reply::text(problems_text(&problems)));
             }
@@ -291,23 +291,23 @@ impl Session {
         let seq = self.next_seq();
         self.record_call(&Call {
             seq,
-            tool: "submit",
-            scene,
+            tool: Tool::Submit,
+            scene: scene.clone(),
             problems: None,
-            outcome: Some(&outcome),
-            name: Some(name),
-            prediction: Some(prediction),
+            outcome: Some(outcome.clone()),
+            name: Some(name.to_owned()),
+            prediction: Some(prediction.to_owned()),
         })?;
         if let Some(dir) = &self.out {
             write_submission(
                 dir,
                 &Submission {
-                    level: &accepted.level.id,
+                    level: accepted.level.id.clone(),
                     arm: self.arm,
-                    name,
-                    prediction,
-                    scene,
-                    outcome: &outcome,
+                    name: name.to_owned(),
+                    prediction: prediction.to_owned(),
+                    scene: scene.clone(),
+                    outcome: outcome.clone(),
                 },
             )?;
         }
@@ -330,10 +330,7 @@ impl Session {
 
     /// Parses and validates a scene against its level: the assigned one, or the one it names.
     fn accept(&self, scene: &Value) -> Result<Accepted, Vec<Problem>> {
-        let json = match scene {
-            Value::String(text) => text.clone(),
-            other => other.to_string(),
-        };
+        let json = scene_json(scene);
         let level = match &self.level {
             Some(level) => level.clone(),
             None => match level_named(&json) {
@@ -349,7 +346,7 @@ impl Session {
         self.seq
     }
 
-    fn record_call(&self, call: &Call<'_>) -> Result<(), ToolError> {
+    fn record_call(&self, call: &Call) -> Result<(), ToolError> {
         if let Some(dir) = &self.out {
             write_call(dir, call)?;
         }

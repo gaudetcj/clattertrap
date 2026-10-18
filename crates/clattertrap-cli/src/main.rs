@@ -8,6 +8,7 @@ mod check;
 mod level_text;
 mod mcp;
 mod picture;
+mod records;
 mod report;
 mod rules_text;
 mod run;

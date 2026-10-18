@@ -2,8 +2,9 @@
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
 use super::claude::{command_args, is_claude_model};
-use super::records::{Status, Summary, next_run_dir};
+use super::next_run_dir;
 use crate::mcp::arm::Arm;
+use crate::records::{Status, Summary};
 use std::path::Path;
 
 #[test]
@@ -87,8 +88,8 @@ fn the_command_line_restricts_the_session_to_the_mcp_tools() {
 }
 
 mod transcript {
-    use super::super::records::Status;
     use super::super::transcript::{Transcript, status};
+    use crate::records::Status;
 
     const SMOKE: &str = include_str!("../../tests/fixtures/transcripts/haiku-smoke.jsonl");
 

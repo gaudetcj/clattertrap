@@ -2,7 +2,7 @@
 //! result. Fields are read leniently, since the format is Claude Code's, not ours.
 
 use super::claude::SERVER_NAME;
-use super::records::Status;
+use crate::records::Status;
 use serde_json::Value;
 
 /// The final `result` record.

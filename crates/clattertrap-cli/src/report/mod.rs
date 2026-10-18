@@ -2,10 +2,9 @@
 
 mod text;
 
-use crate::arena::records::{Status, Summary};
 use crate::catalog;
-use anyhow::{Context, Result, ensure};
-use serde_json::Value;
+use crate::records::{Status, Submission, Summary, Tool, read_calls, read_json};
+use anyhow::{Result, ensure};
 use std::path::{Path, PathBuf};
 
 /// What one `report` invocation prints.
@@ -133,10 +132,10 @@ fn read_run(dir: &Path, parts: &[&Path]) -> Result<Run> {
         .collect::<Vec<_>>()
         .join("/");
     let summary: Summary = read_json(&dir.join("summary.json"))?;
-    let submission = match read_json::<Value>(&dir.join("submission.json")) {
-        Ok(v) => Some(Submitted {
-            goal_met: v["outcome"]["goal_met"] == true,
-            name: v["name"].as_str().unwrap_or("").to_owned(),
+    let submission = match read_json::<Submission>(&dir.join("submission.json")) {
+        Ok(s) => Some(Submitted {
+            goal_met: s.outcome.goal_met,
+            name: s.name,
         }),
         Err(_) if !dir.join("submission.json").exists() => None,
         Err(e) => return Err(e),
@@ -145,43 +144,22 @@ fn read_run(dir: &Path, parts: &[&Path]) -> Result<Run> {
         rel,
         summary,
         submission,
-        calls: count_calls(&dir.join("calls"))?,
+        calls: count_calls(dir)?,
     })
 }
 
-fn count_calls(calls: &Path) -> Result<Calls> {
+fn count_calls(dir: &Path) -> Result<Calls> {
     let mut counts = Calls::default();
-    let Ok(entries) = std::fs::read_dir(calls) else {
-        return Ok(counts);
-    };
-    for entry in entries {
-        let path = entry?.path();
-        if path.extension().is_none_or(|e| e != "json") {
-            continue;
-        }
-        let call: Value = read_json(&path)?;
-        if call["tool"] == "run" {
+    for (_, call) in read_calls(dir)? {
+        let call = call?;
+        if call.tool == Tool::Run {
             counts.attempts += 1;
         }
-        if call.get("problems").is_some() {
-            counts.rejected += 1;
-        } else {
+        if call.accepted() {
             counts.accepted += 1;
+        } else {
+            counts.rejected += 1;
         }
     }
     Ok(counts)
-}
-
-fn read_json<T: serde::de::DeserializeOwned>(path: &Path) -> Result<T> {
-    let text =
-        std::fs::read_to_string(path).with_context(|| format!("reading {}", path.display()))?;
-    serde_json::from_str(&text).with_context(|| format!("parsing {}", path.display()))
-}
-
-/// The excluded statuses as the report names them.
-pub(crate) fn status_name(status: Status) -> String {
-    serde_json::to_value(status)
-        .ok()
-        .and_then(|v| v.as_str().map(ToOwned::to_owned))
-        .unwrap_or_default()
 }

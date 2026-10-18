@@ -3,7 +3,6 @@
 
 pub mod arm;
 mod handler;
-mod record;
 pub mod session;
 
 #[cfg(test)]

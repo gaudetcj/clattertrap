@@ -1,6 +1,6 @@
 //! The report's three outputs: the two tables, the CSV, and the sample.
 
-use super::{Run, status_name};
+use super::Run;
 use crate::mcp::arm::Arm;
 use std::collections::BTreeSet;
 use std::fmt::Write;
@@ -66,7 +66,7 @@ pub fn tables(runs: &[Run], tiers: &[(String, u8)]) -> String {
                 out,
                 "  {}  {}  {}",
                 r.rel,
-                status_name(r.summary.status),
+                r.summary.status.name(),
                 r.summary.error.as_deref().unwrap_or("")
             );
         }
@@ -132,7 +132,7 @@ pub fn csv(runs: &[Run]) -> String {
             s.model,
             s.arm,
             s.level,
-            status_name(s.status),
+            s.status.name(),
             r.submission
                 .as_ref()
                 .map_or(String::new(), |sub| sub.goal_met.to_string()),

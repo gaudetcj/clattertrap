@@ -2,7 +2,7 @@
 //! so far, Claude Code headless.
 
 mod claude;
-pub mod records;
+
 mod transcript;
 
 #[cfg(test)]
@@ -10,9 +10,9 @@ mod tests;
 
 use crate::catalog;
 use crate::mcp::arm::Arm;
+use crate::records::{Summary, write_summary};
 use anyhow::{Context, Result, ensure};
 use claude::{SERVER_NAME, command_args, is_claude_model, run_session};
-use records::{Summary, next_run_dir, write_summary};
 use serde_json::{Value, json};
 use std::path::{Path, PathBuf};
 use std::time::{Duration, Instant, SystemTime};
@@ -20,6 +20,18 @@ use transcript::{Transcript, status};
 
 /// The contestant prompt every model gets, with `{level}` and `{run_budget}` to fill.
 const PROMPT: &str = include_str!("../../../../pilot/prompt.txt");
+
+/// The next unused run directory: `<out>/<model>/<level>/<arm>-NN`, two digits from 01.
+///
+/// # Errors
+/// When every index up to 99 is taken.
+pub fn next_run_dir(out: &Path, model: &str, level: &str, arm: Arm) -> Result<PathBuf> {
+    let parent = out.join(model).join(level);
+    (1..=99)
+        .map(|n| parent.join(format!("{}-{n:02}", arm.dir_prefix())))
+        .find(|dir| !dir.exists())
+        .with_context(|| format!("{} has 99 {} runs already", parent.display(), arm))
+}
 
 /// What one `arena` invocation runs.
 #[derive(Debug)]
@@ -174,13 +186,10 @@ fn run_line(dir: &Path, summary: &Summary) -> String {
         Some(_) => "missed",
         None => "-",
     };
-    let status = serde_json::to_value(summary.status)
-        .ok()
-        .and_then(|v| v.as_str().map(ToOwned::to_owned))
-        .unwrap_or_default();
     format!(
-        "{} {name} {status} {verdict} {:.2} USD {:.0} s",
+        "{} {name} {} {verdict} {:.2} USD {:.0} s",
         summary.level,
+        summary.status.name(),
         summary.cost_usd.unwrap_or(0.0),
         summary.duration_s
     )
