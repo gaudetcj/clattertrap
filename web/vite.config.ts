@@ -1,10 +1,20 @@
 import { defineConfig } from 'vitest/config';
 
-// The page bundles levels/ from the repository root, one directory up.
+// The pages bundle levels/ and gallery/ from the repository root, one directory up.
 export default defineConfig({
   server: {
     fs: {
       allow: ['..'],
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        index: 'index.html',
+        arena: 'arena.html',
+        reel: 'reel.html',
+        gallery: 'gallery.html',
+      },
     },
   },
   test: {
