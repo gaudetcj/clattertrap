@@ -73,13 +73,17 @@ export function paletteLut(palette: Uint8Array): Uint8Array {
   return lut;
 }
 
-// Moves every RGBA pixel to its nearest palette colour through the table.
+// Moves every RGBA pixel to its nearest palette colour through the table, one 32-bit word per pixel
+// (little-endian, as every canvas is), keeping alpha.
 export function snapToPalette(data: Uint8ClampedArray, palette: Uint8Array, lut: Uint8Array): void {
-  for (let i = 0; i < data.length; i += 4) {
-    const key = (((data[i] ?? 0) >> 3) << 10) | (((data[i + 1] ?? 0) >> 3) << 5) | ((data[i + 2] ?? 0) >> 3);
-    const at = (lut[key] ?? 0) * 3;
-    data[i] = palette[at] ?? 0;
-    data[i + 1] = palette[at + 1] ?? 0;
-    data[i + 2] = palette[at + 2] ?? 0;
+  const words = new Uint32Array(palette.length / 3);
+  for (let i = 0; i < words.length; i += 1) {
+    words[i] = ((palette[i * 3 + 2] ?? 0) << 16) | ((palette[i * 3 + 1] ?? 0) << 8) | (palette[i * 3] ?? 0);
+  }
+  const px = new Uint32Array(data.buffer, data.byteOffset, data.length >> 2);
+  for (let i = 0; i < px.length; i += 1) {
+    const v = px[i] ?? 0;
+    const key = ((v & 0xf8) << 7) | ((v & 0xf800) >> 6) | ((v & 0xf80000) >> 19);
+    px[i] = (v & 0xff000000) | (words[lut[key] ?? 0] ?? 0);
   }
 }

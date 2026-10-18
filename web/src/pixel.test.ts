@@ -30,6 +30,15 @@ describe('snapToPalette', () => {
     expect(Array.from(data)).toEqual([255, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 255]);
   });
 
+  it('keeps alpha and snaps a pixel that is not at the start of its buffer', () => {
+    const buffer = new ArrayBuffer(16);
+    const data = new Uint8ClampedArray(buffer, 4, 8);
+    data.set([240, 230, 220, 128, 10, 0, 0, 7]);
+    snapToPalette(data, palette, lut);
+    expect(Array.from(data)).toEqual([246, 241, 231, 128, 0, 0, 0, 7]);
+    expect(Array.from(new Uint8ClampedArray(buffer, 0, 4))).toEqual([0, 0, 0, 0]);
+  });
+
   it('ships a palette of a few dozen colours that includes the paper and the stamp greens and reds', () => {
     expect(PALETTE.length).toBeGreaterThan(16);
     expect(PALETTE.length).toBeLessThan(48);
