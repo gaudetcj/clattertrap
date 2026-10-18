@@ -20,13 +20,13 @@ wasm-test:
 web:
     npm --prefix web run dev
 
-# Re-simulate every gallery entry and compare stored results (milestone 6).
+# Re-simulate every gallery entry and compare stored results.
 verify:
-    cargo xtask stub verify
+    cargo run --package clattertrap-cli -- verify gallery
 
-# Record the arena grid to docs/hero.gif and docs/hero.mp4 (milestone 6).
-hero:
-    cargo xtask stub hero
+# Record the arena grid for one level and arm to docs/hero.gif and docs/hero.mp4.
+hero level="seesaw-launch" arm="blueprint":
+    cargo xtask hero {{level}} {{arm}}
 
 # Headless contestant runs against clattertrap mcp, on every level or one.
 pilot model runs arm level="":

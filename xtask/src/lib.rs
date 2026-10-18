@@ -1,7 +1,8 @@
 //! Project automation for Clattertrap: the `ci` driver, the prose lint, the wasm recipes, the fuzz runner,
-//! and stubs for later recipes.
+//! and the hero recording.
 #![forbid(unsafe_code)]
 
+pub mod hero;
 pub mod prose;
 pub mod wasm;
 
@@ -20,9 +21,23 @@ pub fn cargo() -> String {
 /// # Errors
 /// When the tool cannot start or exits with failure.
 pub fn step(root: &Path, program: &str, args: &[&str]) -> Result<()> {
+    step_env(root, program, args, &[])
+}
+
+/// Runs one tool from the repository root with extra environment variables and fails if it does.
+///
+/// # Errors
+/// When the tool cannot start or exits with failure.
+pub fn step_env(
+    root: &Path,
+    program: &str,
+    args: &[&str],
+    envs: &[(String, String)],
+) -> Result<()> {
     println!("== {program} {}", args.join(" "));
     let status = Command::new(program)
         .args(args)
+        .envs(envs.iter().map(|(k, v)| (k.as_str(), v.as_str())))
         .current_dir(root)
         .status()
         .with_context(|| format!("running {program}"))?;

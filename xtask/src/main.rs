@@ -1,10 +1,10 @@
 //! Entry point for `cargo xtask <command>`: the ci driver, the prose lint, the wasm recipes, the fuzz
-//! runner, and stubs for later milestones.
+//! runner, and the hero recording.
 #![forbid(unsafe_code)]
 
 use anyhow::{Result, bail};
 use std::path::{Path, PathBuf};
-use xtask::{cargo, fuzz, step, wasm};
+use xtask::{cargo, fuzz, hero, step, wasm};
 
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -21,9 +21,10 @@ fn main() -> Result<()> {
         ["wasm-test"] => wasm::test(&root),
         ["fuzz", target] => fuzz(&root, target, 60),
         ["fuzz", target, secs] => fuzz(&root, target, secs.parse()?),
-        ["stub", name] => stub(name),
+        ["hero"] => hero::record(&root, "seesaw-launch", "blueprint"),
+        ["hero", level, arm] => hero::record(&root, level, arm),
         _ => bail!(
-            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | stub NAME>"
+            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | hero [LEVEL ARM]>"
         ),
     }
 }
@@ -79,7 +80,11 @@ fn ci(root: &Path) -> Result<()> {
     );
     step(root, npm(), &["--prefix", "web", "run", "lint"])?;
     step(root, npm(), &["--prefix", "web", "test"])?;
-    stub("verify")?;
+    step(
+        root,
+        &cargo,
+        &["run", "-p", "clattertrap-cli", "--", "verify", "gallery"],
+    )?;
     println!("ci: all green");
     Ok(())
 }
@@ -88,16 +93,6 @@ fn prose(root: &Path) -> Result<()> {
     println!("== prose lint");
     let hits = xtask::prose::run(root)?;
     anyhow::ensure!(hits == 0, "prose lint: {hits} hit(s)");
-    Ok(())
-}
-
-/// Later milestones replace these with real recipes.
-fn stub(name: &str) -> Result<()> {
-    let milestone = match name {
-        "verify" | "hero" => 6,
-        _ => bail!("unknown stub {name}"),
-    };
-    println!("{name}: stub until milestone {milestone}");
     Ok(())
 }
 
