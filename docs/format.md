@@ -116,7 +116,7 @@ The overlap check runs only once everything else passes. Two fixed objects that 
 | `aborted` | an error, a usage limit, or an MCP server that never connected | no; run it again |
 | `flagged` | a tool call outside the clattertrap MCP tools | no |
 
-`clattertrap report <dir>` prints, per model and arm, the levels solved (a level counts once however many runs solved it), the hard levels solved (tiers 4 and 5), the runs counted, the aborted and flagged runs, and the mean cost and time. A second table gives, per level, the runs, the runs that solved it, the attempts (`run` calls, accepted or not), the scene calls accepted and rejected by validation, and the submissions. `--csv` prints one row per run, every run included. `--sample N --seed S` prints N counted submissions to open on the level page. In a checkout with pilot runs, `just web` lists every submission under `pilot/runs/` in a picker on that page, and `?run=<model>/<level>/<arm>-NN` opens one directly; the page also plays any dropped scene or submission file.
+`clattertrap report <dir>` prints, per model and arm, the levels solved (a level counts once however many runs solved it), the hard levels solved (tiers 4 and 5), the runs counted, the aborted and flagged runs, and the mean cost and time. A second table gives, per level, the runs, the runs that solved it, the attempts (`run` calls, accepted or not), the scene calls accepted and rejected by validation, and the submissions. `--csv` prints one row per run, every run included. `--sample N --seed S` prints N counted submissions to open on the level page. Pilot runs reach the browser through the gallery: promote them, and `just web` lists every entry in a picker on the level page; the page also plays any dropped scene or submission file.
 
 ## Gallery records
 
@@ -139,6 +139,8 @@ The transcript export keeps what the contestant said and called, one JSON object
 | `result` | `subtype`, `num_turns`, `duration_ms`, `total_cost_usd` | the final record |
 
 Everything else in the runner's stream is dropped: the init record (it names the local directory), thinking blocks, token counts, usage, rate limit events, ids. The runner's `mcp.json` and `stderr.txt` are not copied.
+
+The viewer (`just web`) bundles the gallery into four pages. `index.html` replays one entry, `?entry=<level>/<model>/<arm>-NN`, or a level's reference solution. `arena.html?level=<id>&arm=<arm>` plays one entry per model side by side, released at once; `&autoplay=1` starts it muted, and `&record=1` leaves it unpaced for `just hero`. `reel.html?entry=...` plays an entry's accepted `run` calls in order, then its submission, with the text records of its transcript as the model's notes. `gallery.html` lists every entry with links to the three. Every replay re-simulates the stored scene and stamps `REPLAY MISMATCH` when its outcome differs from the stored one.
 
 ## Verifying stored results
 
