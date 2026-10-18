@@ -1,5 +1,5 @@
 //! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, `mcp`, `arena`,
-//! `report`, and `verify`.
+//! `report`, `promote`, and `verify`.
 #![forbid(unsafe_code)]
 
 mod arena;
@@ -111,6 +111,15 @@ enum Command {
         #[arg(long, default_value_t = 1)]
         seed: u64,
     },
+    /// Copy counted pilot runs into the gallery once their stored outcomes still hold
+    Promote {
+        /// Pilot run directories, <model>/<level>/<arm>-NN each
+        #[arg(required = true, value_name = "RUN_DIR")]
+        runs: Vec<PathBuf>,
+        /// The gallery root
+        #[arg(long, value_name = "DIR", default_value = "gallery")]
+        gallery: PathBuf,
+    },
     /// Re-simulate every stored outcome under a directory of runs; exits 1 with the mismatches
     Verify {
         /// The directory: <a>/<b>/<c>/summary.json three levels down, as pilot/runs and gallery/ are laid out
@@ -186,6 +195,10 @@ fn dispatch() -> Result<ExitCode> {
                 sample,
                 seed,
             })?;
+            Ok(ExitCode::SUCCESS)
+        }
+        Command::Promote { runs, gallery } => {
+            gallery::run(&gallery::Options { runs, gallery })?;
             Ok(ExitCode::SUCCESS)
         }
         Command::Verify { dir } => verify_command(&dir),

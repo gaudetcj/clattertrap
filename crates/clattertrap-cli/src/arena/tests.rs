@@ -58,6 +58,7 @@ fn only_claude_models_pass_the_allowlist() {
         "opus",
         "fable",
         "claude-haiku-5-5",
+        "claude-haiku-4-5",
         "claude-opus-5-5",
     ] {
         assert!(is_claude_model(ok), "{ok}");

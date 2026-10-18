@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-5-5",
+  "level": "seesaw-launch",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792292111,
+  "duration_s": 79.1414032,
+  "cost_usd": 0.2423944,
+  "turns": 8,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

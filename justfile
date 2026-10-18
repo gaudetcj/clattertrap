@@ -28,9 +28,9 @@ verify:
 hero:
     cargo xtask stub hero
 
-# Headless Claude Code contestant runs against clattertrap mcp (milestone 5).
-pilot model runs arm:
-    cargo run --release --package clattertrap-cli -- arena --model {{model}} --runs {{runs}} --arm {{arm}}
+# Headless contestant runs against clattertrap mcp, on every level or one.
+pilot model runs arm level="":
+    cargo run --release --package clattertrap-cli -- arena --model {{model}} --runs {{runs}} --arm {{arm}} {{ if level == "" { "" } else { "--level " + level } }}
 
 # Criterion benches, including run_level.
 bench:

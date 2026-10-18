@@ -1,0 +1,30 @@
+{
+  "level": "seesaw-launch",
+  "arm": "blueprint",
+  "name": "Swatter Seesaw",
+  "prediction": "The steel ball drops onto the seesaw's raised left arm at x=100, flipping it counterclockwise so the right arm swings up under the left wall and through the box's open bottom, striking and ringing the bell in under a second.",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "saw",
+        "kind": "seesaw",
+        "length_cm": 150,
+        "x_cm": 130,
+        "y_cm": 110
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.65000004,
+    "steps": 78,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "a9ca76d90b0a67d5",
+    "state_hash": "e0532e384d1d81e1",
+    "rules_version": 1
+  }
+}

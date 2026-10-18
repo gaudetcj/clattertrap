@@ -118,6 +118,28 @@ The overlap check runs only once everything else passes. Two fixed objects that 
 
 `clattertrap report <dir>` prints, per model and arm, the levels solved (a level counts once however many runs solved it), the hard levels solved (tiers 4 and 5), the runs counted, the aborted and flagged runs, and the mean cost and time. A second table gives, per level, the runs, the runs that solved it, the attempts (`run` calls, accepted or not), the scene calls accepted and rejected by validation, and the submissions. `--csv` prints one row per run, every run included. `--sample N --seed S` prints N counted submissions to open on the level page. In a checkout with pilot runs, `just web` lists every submission under `pilot/runs/` in a picker on that page, and `?run=<model>/<level>/<arm>-NN` opens one directly; the page also plays any dropped scene or submission file.
 
+## Gallery records
+
+The gallery is the committed record of every counted pilot run: `gallery/<level>/<model>/<arm>-NN/`, level first so one level's machines sit together. `clattertrap promote <run-dir>... [--gallery DIR]` copies pilot runs in, one at a time, and stops at the first it refuses. A run enters only when its status counts, it called no foreign tools, its `submission.json` is present exactly when the status is `submitted`, its `transcript.jsonl` exists, its entry does not exist yet, and every stored outcome re-simulates to the same result. A run that fails the last check is run again with `just pilot`, never edited; an entry already in the gallery is removed with git, never overwritten.
+
+| file | holds |
+|---|---|
+| `summary.json` | copied verbatim from the pilot run |
+| `submission.json` | copied verbatim, when the run submitted |
+| `calls/NNNN-<tool>.json` | copied verbatim, every one |
+| `transcript.jsonl` | the export below |
+
+The transcript export keeps what the contestant said and called, one JSON object per line, each with a `type`:
+
+| type | fields | from |
+|---|---|---|
+| `text` | `text` | each text block the contestant wrote |
+| `tool_use` | `name`, `input` | each tool call |
+| `tool_result` | `content` (a list of `{"type":"text","text":...}` and `{"type":"image","omitted":true}`), `is_error` when true | each tool answer; a picture becomes the marker |
+| `result` | `subtype`, `num_turns`, `duration_ms`, `total_cost_usd` | the final record |
+
+Everything else in the runner's stream is dropped: the init record (it names the local directory), thinking blocks, token counts, usage, rate limit events, ids. The runner's `mcp.json` and `stderr.txt` are not copied.
+
 ## Verifying stored results
 
 `clattertrap verify <dir>` re-simulates every stored outcome under a directory of runs and prints each one that no longer holds. It walks `<dir>/*/*/*/summary.json`, so it reads both `pilot/runs` (model, level, run) and `gallery` (level, model, run), taking the level from each summary. For every entry it checks that the summary parses, that its status counts, and that it called no foreign tools; for a submitted run it re-runs the submission's scene, and for every call with an outcome (`run` and `submit`) it re-runs that scene too. Each field that differs is one line:

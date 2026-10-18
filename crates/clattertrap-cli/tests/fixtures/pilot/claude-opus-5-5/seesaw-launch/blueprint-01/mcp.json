@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "clattertrap": {
+      "args": [
+        "mcp",
+        "--level",
+        "seesaw-launch",
+        "--arm",
+        "blueprint",
+        "--out",
+        "C:\\Projects\\clattertrap\\pilot\\runs\\claude-opus-5-5\\seesaw-launch\\blueprint-01"
+      ],
+      "command": "C:\\Projects\\clattertrap\\target\\release\\clattertrap.exe"
+    }
+  }
+}
