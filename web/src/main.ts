@@ -1,25 +1,16 @@
-// The level page: pick a level or a pilot run, play its reference solution or an opened scene, hear
-// it, and read the verdict.
+// The level page: pick a level or a gallery entry, play its reference solution or an opened scene,
+// hear it, and read the verdict.
 
 import type { PanelChrome } from './arena_view';
 import type { Outcome } from './decode';
 import { el } from './dom';
+import { galleryEntries, modelLabel, type Entry } from './gallery';
 import { fixtures, goalKindOf, rulesVersionOf, titleOf } from './levels';
 import { loadWasm } from './replay';
 import { Player } from './player';
-import { indexRuns, runFromSearch, searchForRun } from './runs';
-import type { Run } from './runs';
+import { param, search } from './query';
+import { stampText } from './stamp';
 import { parseOpened } from './submission';
-
-// Every pilot submission under pilot/runs, when the checkout has any; the gallery replaces this in time.
-function pilotRuns(goalOf: (levelId: string) => ReturnType<typeof goalKindOf>): Run[] {
-  const files = import.meta.glob('../../pilot/runs/*/*/*/submission.json', {
-    query: '?raw',
-    import: 'default',
-    eager: true,
-  }) as Record<string, string>;
-  return indexRuns(files, goalOf);
-}
 
 // What a panel shows about the scene on it; the name falls back to the level's title.
 interface Shown {
@@ -29,13 +20,21 @@ interface Shown {
   outcome?: Outcome;
 }
 
+// `seesaw-launch  OPUS 5.5  blueprint-01  RANG 0.7 s`, for the picker.
+function entryLabel(entry: Entry, goalOf: (levelId: string) => ReturnType<typeof goalKindOf>): string {
+  const goal = goalOf(entry.level);
+  const stamp = goal === undefined ? '' : `  ${stampText(goal, entry.outcome)}`;
+  return `${entry.level}  ${modelLabel(entry.model)}  ${entry.run}${stamp}`;
+}
+
 async function page(app: HTMLElement): Promise<void> {
   const wasm = await loadWasm();
   const levels = fixtures();
-  const runs = pilotRuns((id) => {
+  const entries = galleryEntries();
+  const goalOf = (id: string) => {
     const f = levels.find((x) => x.id === id);
     return f ? goalKindOf(f.level) : undefined;
-  });
+  };
   const select = el('select');
   for (const f of levels) {
     const option = el('option', f.id);
@@ -43,10 +42,10 @@ async function page(app: HTMLElement): Promise<void> {
     select.append(option);
   }
   const picker = el('select', undefined, 'runs');
-  picker.append(el('option', `pilot runs (${runs.length})`));
-  for (const run of runs) {
-    const option = el('option', run.label);
-    option.value = run.key;
+  picker.append(el('option', `gallery (${entries.length})`));
+  for (const entry of entries) {
+    const option = el('option', entryLabel(entry, goalOf));
+    option.value = entry.key;
     picker.append(option);
   }
   const playButton = el('button', 'Play');
@@ -59,12 +58,17 @@ async function page(app: HTMLElement): Promise<void> {
   openLabel.append(openInput);
   const controls = el('div', undefined, 'controls');
   controls.append(select, playButton, restartButton, muteButton, openLabel);
-  if (runs.length > 0) {
+  if (entries.length > 0) {
     controls.append(picker);
   }
   const canvas = el('canvas');
   const status = el('p', 'loading', 'status');
-  app.replaceChildren(el('h1', 'Clattertrap'), controls, canvas, status);
+  const nav = el('p', undefined, 'nav');
+  const arenaLink = el('a', 'arena');
+  const galleryLink = el('a', 'gallery');
+  galleryLink.href = 'gallery.html';
+  nav.append(arenaLink, ' ', galleryLink);
+  app.replaceChildren(el('h1', 'Clattertrap'), nav, controls, canvas, status);
 
   const player = new Player(canvas, wasm.dt_s, (text) => {
     status.textContent = text;
@@ -82,6 +86,7 @@ async function page(app: HTMLElement): Promise<void> {
       return;
     }
     select.value = f.id;
+    arenaLink.href = `arena.html${search({ level: f.id })}`;
     const chrome: PanelChrome = { label: shown.label, name: shown.name ?? titleOf(f.level), prediction: shown.prediction ?? '' };
     try {
       player.load(f.level, sceneJson ?? f.reference, chrome, shown.outcome ?? null);
@@ -89,10 +94,10 @@ async function page(app: HTMLElement): Promise<void> {
       status.textContent = e instanceof Error ? e.message : String(e);
     }
   };
-  // Keeps the picker and the address bar naming the open run, so a replay can be linked and reloaded.
+  // Keeps the picker and the address bar naming the open entry, so a replay can be linked and reloaded.
   const address = (key: string | undefined): void => {
-    picker.selectedIndex = key === undefined ? 0 : runs.findIndex((r) => r.key === key) + 1;
-    history.replaceState(null, '', key === undefined ? location.pathname : searchForRun(key));
+    picker.selectedIndex = key === undefined ? 0 : entries.findIndex((e) => e.key === key) + 1;
+    history.replaceState(null, '', key === undefined ? location.pathname : search({ entry: key }));
   };
   const load = (): void => {
     address(undefined);
@@ -110,22 +115,18 @@ async function page(app: HTMLElement): Promise<void> {
       status.textContent = `${file.name}: ${e instanceof Error ? e.message : String(e)}`;
     }
   };
-  const openRun = (key: string): void => {
-    const run = runs.find((r) => r.key === key);
-    if (!run) {
-      status.textContent = `no pilot run ${key}`;
+  const openEntry = (key: string): void => {
+    const entry = entries.find((e) => e.key === key);
+    if (!entry) {
+      status.textContent = `no gallery entry ${key}`;
       return;
     }
     address(key);
-    try {
-      openText(run.text, key.split('/')[0] ?? key);
-    } catch (e) {
-      status.textContent = `${key}: ${e instanceof Error ? e.message : String(e)}`;
-    }
+    show(entry.level, entry.sceneJson, { label: modelLabel(entry.model), name: entry.name, prediction: entry.prediction, outcome: entry.outcome });
   };
   picker.addEventListener('change', () => {
     if (picker.selectedIndex > 0) {
-      openRun(picker.value);
+      openEntry(picker.value);
     }
   });
   openInput.addEventListener('change', () => {
@@ -151,11 +152,11 @@ async function page(app: HTMLElement): Promise<void> {
     player.setMuted(muted);
     muteButton.textContent = muted ? 'Unmute' : 'Mute';
   });
-  const linked = runFromSearch(location.search);
+  const linked = param(location.search, 'entry');
   if (linked === undefined) {
     load();
   } else {
-    openRun(linked);
+    openEntry(linked);
   }
 }
 
