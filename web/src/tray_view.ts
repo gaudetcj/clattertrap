@@ -3,7 +3,7 @@
 
 import { Camera } from './camera';
 import { drawText } from './font';
-import type { PartPainter } from './painter';
+import type { Ctx2D, PartPainter } from './painter';
 import { cellWidth, iconFor, type TrayItem } from './tray';
 
 export const TRAY_H = 20;
@@ -16,7 +16,7 @@ const UNUSED = '#8a9099';
 // Icons are drawn true to the main view's scale: one pixel per centimetre.
 const ICON_CAMERA = Camera.fit(ICON_PX, ICON_PX, ICON_PX, ICON_PX);
 
-export function drawTray(ctx: CanvasRenderingContext2D, painter: PartPainter, items: TrayItem[], y: number, w: number): void {
+export function drawTray(ctx: Ctx2D, painter: PartPainter, items: TrayItem[], y: number, w: number): void {
   ctx.fillStyle = BAND;
   ctx.fillRect(0, y, w, TRAY_H);
   ctx.fillStyle = EDGE;

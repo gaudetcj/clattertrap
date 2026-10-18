@@ -1,19 +1,19 @@
 // Page state for one replay: the loaded run, whether it plays, the pacing anchor, and the outcome.
 // One requestAnimationFrame loop steps the simulator, voices its events, and redraws the view.
 
+import { ArenaView, type PanelChrome } from './arena_view';
 import { stepsDue } from './clock';
 import type { Outcome } from './decode';
-import { LevelView } from './level_view';
 import { Replay } from './replay';
 import { Soundtrack, voiceFor } from './sound';
-import { stampText } from './stamp';
 import { tray } from './tray';
+import { type Stamp, verdictFor } from './verdict';
 
 const VOICES_PER_STEP = 6;
 
 export class Player {
   private replay: Replay | null = null;
-  private view: LevelView | null = null;
+  private view: ArenaView | null = null;
   private sound: Soundtrack | null = null;
   private audio: AudioContext | null = null;
   private muted = false;
@@ -21,6 +21,9 @@ export class Player {
   private anchor_ms = 0;
   private done = 0;
   private outcome: Outcome | null = null;
+  private stamp: Stamp | null = null;
+  private stored: Outcome | null = null;
+  private chrome: PanelChrome = { label: '', name: '', prediction: '' };
   private levelJson = '';
   private sceneJson = '';
 
@@ -33,24 +36,26 @@ export class Player {
   }
 
   // Validates and starts a run at step 0, paused. Throws with the validation problems on refusal.
-  load(levelJson: string, sceneJson: string): void {
+  load(levelJson: string, sceneJson: string, chrome: PanelChrome, stored: Outcome | null): void {
     this.replay?.free();
     this.replay = Replay.start(levelJson, sceneJson);
     this.levelJson = levelJson;
     this.sceneJson = sceneJson;
-    this.view = new LevelView(this.canvas, this.replay.setup, this.replay.links, tray(levelJson, sceneJson));
-    this.fit();
+    this.chrome = chrome;
+    this.stored = stored;
+    const setup = this.replay.setup;
+    this.view = new ArenaView(
+      this.canvas,
+      [{ chrome, setup, links: this.replay.links, items: tray(levelJson, sceneJson) }],
+      setup.width_cm,
+      setup.height_cm,
+    );
+    this.view.resize(this.canvas.parentElement?.clientWidth ?? this.view.grid.w);
     this.playing = false;
     this.done = 0;
     this.outcome = null;
+    this.stamp = null;
     this.onStatus('ready');
-  }
-
-  // Lets the canvas take its stylesheet size again before the view sizes its backing store.
-  private fit(): void {
-    this.canvas.style.width = '';
-    this.canvas.style.height = '';
-    this.view?.resize(this.canvas.clientWidth, this.canvas.clientHeight);
   }
 
   play(): void {
@@ -85,7 +90,7 @@ export class Player {
       return;
     }
     const wasPlaying = this.playing || this.outcome !== null;
-    this.load(this.levelJson, this.sceneJson);
+    this.load(this.levelJson, this.sceneJson, this.chrome, this.stored);
     if (wasPlaying) {
       this.play();
     }
@@ -113,8 +118,7 @@ export class Player {
       }
     }
     const time_s = replay.stepIndex() * this.dt_s;
-    const stamp = this.outcome === null ? null : stampText(replay.setup.goal.kind, this.outcome);
-    view.draw(replay.frame(), time_s, stamp, this.outcome?.goal_met ?? false);
+    view.draw([{ poses: replay.frame(), time_s, stamp: this.stamp }]);
   }
 
   private advance(replay: Replay): void {
@@ -125,9 +129,11 @@ export class Player {
     if (this.outcome !== null) {
       this.playing = false;
       const o = this.outcome;
+      this.stamp = verdictFor(replay.setup.goal.kind, o, this.stored);
+      const stored = this.stored === null ? '' : `, stored events ${this.stored.event_hash}, state ${this.stored.state_hash}`;
       this.onStatus(
-        `${stampText(replay.setup.goal.kind, o)} after ${o.steps} steps, chain ${o.chain_length}, ` +
-          `events ${o.event_hash}, state ${o.state_hash}`,
+        `${this.stamp.text} after ${o.steps} steps, chain ${o.chain_length}, ` +
+          `events ${o.event_hash}, state ${o.state_hash}${stored}`,
       );
     }
   }

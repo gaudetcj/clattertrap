@@ -1,10 +1,13 @@
-// Reading a file dropped on the level page: a bare scene, or a pilot submission record wrapping one.
+// Reading a file dropped on the level page: a bare scene, or a submission record wrapping one.
+
+import { decodeOutcome, type Outcome } from './decode';
 
 export interface Opened {
   levelId: string;
   sceneJson: string;
   name?: string;
   prediction?: string;
+  outcome?: Outcome;
 }
 
 const NOT_A_SCENE = 'not a scene or a submission: expected {"level", "parts"} or {"scene": {"level", "parts"}}';
@@ -15,6 +18,15 @@ function isRecord(v: unknown): v is Record<string, unknown> {
 
 function isScene(v: unknown): v is { level: string; parts: unknown[] } {
   return isRecord(v) && typeof v['level'] === 'string' && Array.isArray(v['parts']);
+}
+
+// A stored outcome when the record carries a whole one; a partial one is ignored.
+function storedOutcome(v: unknown): Outcome | undefined {
+  try {
+    return decodeOutcome(JSON.stringify(v));
+  } catch {
+    return undefined;
+  }
 }
 
 // Throws when the text is not JSON or holds neither shape.
@@ -36,6 +48,10 @@ export function parseOpened(text: string): Opened {
     }
     if (typeof parsed['prediction'] === 'string') {
       opened.prediction = parsed['prediction'];
+    }
+    const outcome = storedOutcome(parsed['outcome']);
+    if (outcome !== undefined) {
+      opened.outcome = outcome;
     }
     return opened;
   }

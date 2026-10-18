@@ -27,6 +27,23 @@ describe('parseOpened', () => {
     expect(JSON.parse(opened.sceneJson)).toEqual(SCENE);
     expect(opened.name).toBe('Two planks');
     expect(opened.prediction).toBe('The ball rolls down both beams and rings the bell.');
+    expect(opened.outcome).toBeUndefined();
+  });
+
+  it('keeps a whole stored outcome', () => {
+    const outcome = {
+      goal_met: true,
+      end: 'goal_met',
+      time_s: 1.925,
+      steps: 231,
+      parts_used: 1,
+      chain_length: 1,
+      event_hash: '41a3e9905cb8f870',
+      state_hash: 'bbf5aaffac928e50',
+      rules_version: 1,
+    };
+    const opened = parseOpened(JSON.stringify({ level: 'bell-drop', scene: SCENE, outcome }));
+    expect(opened.outcome).toEqual(outcome);
   });
 
   it('refuses text that is not JSON or not a scene', () => {

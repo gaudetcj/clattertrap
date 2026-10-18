@@ -1,56 +1,18 @@
 // The level page: pick a level or a pilot run, play its reference solution or an opened scene, hear
 // it, and read the verdict.
 
-import type { GoalKind } from './decode';
-import { GOAL_KINDS } from './decode';
+import type { PanelChrome } from './arena_view';
+import type { Outcome } from './decode';
+import { el } from './dom';
+import { fixtures, goalKindOf, rulesVersionOf, titleOf } from './levels';
 import { loadWasm } from './replay';
 import { Player } from './player';
 import { indexRuns, runFromSearch, searchForRun } from './runs';
 import type { Run } from './runs';
 import { parseOpened } from './submission';
 
-interface Fixture {
-  id: string;
-  level: string;
-  reference: string;
-}
-
-// Every level in levels/ with its reference solution, bundled as raw JSON.
-function fixtures(): Fixture[] {
-  const files = import.meta.glob('../../levels/*/{level,reference}.json', {
-    query: '?raw',
-    import: 'default',
-    eager: true,
-  }) as Record<string, string>;
-  const byId = new Map<string, Partial<Fixture>>();
-  for (const [path, text] of Object.entries(files)) {
-    const m = /levels\/([^/]+)\/(level|reference)\.json$/.exec(path);
-    if (!m) {
-      continue;
-    }
-    const [, id, kind] = m;
-    if (id === undefined) {
-      continue;
-    }
-    const entry = byId.get(id) ?? { id };
-    if (kind === 'level') {
-      entry.level = text;
-    } else {
-      entry.reference = text;
-    }
-    byId.set(id, entry);
-  }
-  const out: Fixture[] = [];
-  for (const f of byId.values()) {
-    if (f.id !== undefined && f.level !== undefined && f.reference !== undefined) {
-      out.push({ id: f.id, level: f.level, reference: f.reference });
-    }
-  }
-  return out.sort((a, b) => a.id.localeCompare(b.id));
-}
-
 // Every pilot submission under pilot/runs, when the checkout has any; the gallery replaces this in time.
-function pilotRuns(goalOf: (levelId: string) => GoalKind | undefined): Run[] {
+function pilotRuns(goalOf: (levelId: string) => ReturnType<typeof goalKindOf>): Run[] {
   const files = import.meta.glob('../../pilot/runs/*/*/*/submission.json', {
     query: '?raw',
     import: 'default',
@@ -59,28 +21,12 @@ function pilotRuns(goalOf: (levelId: string) => GoalKind | undefined): Run[] {
   return indexRuns(files, goalOf);
 }
 
-function rulesVersionOf(levelJson: string): number {
-  const parsed: unknown = JSON.parse(levelJson);
-  const v = typeof parsed === 'object' && parsed !== null ? (parsed as { rules_version?: unknown }).rules_version : undefined;
-  return typeof v === 'number' ? v : -1;
-}
-
-function goalKindOf(levelJson: string): GoalKind | undefined {
-  const parsed: unknown = JSON.parse(levelJson);
-  const goal = typeof parsed === 'object' && parsed !== null ? (parsed as { goal?: unknown }).goal : undefined;
-  const kind = typeof goal === 'object' && goal !== null ? (goal as { kind?: unknown }).kind : undefined;
-  return GOAL_KINDS.find((k) => k === kind);
-}
-
-function el<K extends keyof HTMLElementTagNameMap>(tag: K, text?: string, className?: string): HTMLElementTagNameMap[K] {
-  const e = document.createElement(tag);
-  if (text !== undefined) {
-    e.textContent = text;
-  }
-  if (className !== undefined) {
-    e.className = className;
-  }
-  return e;
+// What a panel shows about the scene on it; the name falls back to the level's title.
+interface Shown {
+  label: string;
+  name?: string;
+  prediction?: string;
+  outcome?: Outcome;
 }
 
 async function page(app: HTMLElement): Promise<void> {
@@ -117,16 +63,15 @@ async function page(app: HTMLElement): Promise<void> {
     controls.append(picker);
   }
   const canvas = el('canvas');
-  const caption = el('p', '', 'caption');
   const status = el('p', 'loading', 'status');
-  app.replaceChildren(el('h1', 'Clattertrap'), controls, canvas, caption, status);
+  app.replaceChildren(el('h1', 'Clattertrap'), controls, canvas, status);
 
   const player = new Player(canvas, wasm.dt_s, (text) => {
     status.textContent = text;
     playButton.textContent = player.isPlaying() ? 'Pause' : 'Play';
   });
   // Loads a scene onto its level; the reference solution when no scene is given.
-  const show = (levelId: string, sceneJson: string | null, text: string): void => {
+  const show = (levelId: string, sceneJson: string | null, shown: Shown): void => {
     const f = levels.find((x) => x.id === levelId);
     if (!f) {
       status.textContent = `no level ${levelId}`;
@@ -137,9 +82,9 @@ async function page(app: HTMLElement): Promise<void> {
       return;
     }
     select.value = f.id;
-    caption.textContent = text;
+    const chrome: PanelChrome = { label: shown.label, name: shown.name ?? titleOf(f.level), prediction: shown.prediction ?? '' };
     try {
-      player.load(f.level, sceneJson ?? f.reference);
+      player.load(f.level, sceneJson ?? f.reference, chrome, shown.outcome ?? null);
     } catch (e) {
       status.textContent = e instanceof Error ? e.message : String(e);
     }
@@ -151,12 +96,11 @@ async function page(app: HTMLElement): Promise<void> {
   };
   const load = (): void => {
     address(undefined);
-    show(select.value, null, '');
+    show(select.value, null, { label: 'REFERENCE' });
   };
-  const openText = (text: string, fallback: string): void => {
+  const openText = (text: string, label: string): void => {
     const opened = parseOpened(text);
-    const line = [opened.name, opened.prediction].filter((s) => s !== undefined).join(': ');
-    show(opened.levelId, opened.sceneJson, line || fallback);
+    show(opened.levelId, opened.sceneJson, { ...opened, label });
   };
   const open = async (file: File): Promise<void> => {
     try {
@@ -174,7 +118,7 @@ async function page(app: HTMLElement): Promise<void> {
     }
     address(key);
     try {
-      openText(run.text, run.key);
+      openText(run.text, key.split('/')[0] ?? key);
     } catch (e) {
       status.textContent = `${key}: ${e instanceof Error ? e.message : String(e)}`;
     }
