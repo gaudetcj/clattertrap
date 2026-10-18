@@ -7,6 +7,9 @@ export interface Grid {
   h: number;
 }
 
+// One world centimetre per low-res pixel.
+export const CM_PER_PX = 1;
+
 // Every colour the painter and the view use, so a snapped frame keeps the materials readable.
 export const PALETTE: string[] = [
   '#c8955a', '#6f4a26', '#a9773f',

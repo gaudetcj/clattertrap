@@ -1,67 +1,36 @@
-// Draws one level: the background, build zones, ground line, every body, the rods and ropes, the
-// clock, and the verdict stamp once the run has ended. Two looks: paper, and 16-bit pixels.
+// Draws one level in 16-bit pixels: the background, build zones, ground line, every body, the rods
+// and ropes, the clock, and the verdict stamp once the run has ended.
 
 import { Camera } from './camera';
 import type { Pose, Setup } from './decode';
 import type { Link } from './links';
 import { PartPainter } from './painter';
-import { PALETTE, pixelGrid, rgbPalette, snapToPalette } from './pixel';
+import { CM_PER_PX, PALETTE, pixelGrid, rgbPalette, snapToPalette } from './pixel';
 
-interface Theme {
-  background: string;
-  zoneEdge: string;
-  zoneFill: string;
-  clock: string;
-  link: string;
-}
-
-const PAPER: Theme = {
-  background: '#f6f1e7',
-  zoneEdge: '#8fa6bd',
-  zoneFill: 'rgba(143, 166, 189, 0.08)',
-  clock: '#4a4a4a',
-  link: '#4a3a28',
-};
-const ARCADE: Theme = { background: '#1b2233', zoneEdge: '#3d5a80', zoneFill: '#243149', clock: '#dfe6ee', link: '#c9a46a' };
+const BACKGROUND = '#1b2233';
+const ZONE_EDGE = '#3d5a80';
+const ZONE_FILL = '#243149';
+const CLOCK = '#dfe6ee';
 const RGB = rgbPalette(PALETTE);
 
 export class LevelView {
   private readonly painter = new PartPainter();
   private readonly snapped = new Map<number, number>();
   private camera: Camera;
-  private dpr = 1;
   private scale = 1;
 
   constructor(
     private readonly canvas: HTMLCanvasElement,
     private readonly setup: Setup,
     private readonly links: Link[],
-    // Centimetres per pixel for the 16-bit look, or null for paper.
-    private cm_per_px: number | null,
   ) {
     this.camera = Camera.fit(setup.width_cm, setup.height_cm, canvas.width, canvas.height);
   }
 
-  setLook(cm_per_px: number | null): void {
-    this.cm_per_px = cm_per_px;
-  }
-
-  // Sizes the backing store: the device's pixels for paper, or the low-res grid for 16-bit, which
-  // the browser then upscales by a whole number without smoothing.
+  // Sizes the backing store to the low-res grid, which the browser upscales by a whole number
+  // without smoothing, and refits the camera.
   resize(css_w: number, css_h: number): void {
-    if (this.cm_per_px === null) {
-      this.dpr = window.devicePixelRatio || 1;
-      this.scale = 1;
-      this.canvas.width = Math.round(css_w * this.dpr);
-      this.canvas.height = Math.round(css_h * this.dpr);
-      this.canvas.style.width = `${css_w}px`;
-      this.canvas.style.height = `${css_h}px`;
-      this.canvas.style.imageRendering = '';
-      this.camera = Camera.fit(this.setup.width_cm, this.setup.height_cm, css_w, css_h);
-      return;
-    }
-    const grid = pixelGrid(css_w, css_h, this.setup.width_cm, this.cm_per_px);
-    this.dpr = 1;
+    const grid = pixelGrid(css_w, css_h, this.setup.width_cm, CM_PER_PX);
     this.scale = grid.scale;
     this.canvas.width = grid.w;
     this.canvas.height = grid.h;
@@ -72,26 +41,22 @@ export class LevelView {
   }
 
   draw(poses: Pose[], time_s: number, stamp: string | null, success: boolean): void {
-    // The 16-bit look reads every frame back for the palette snap.
+    // Every frame is read back for the palette snap.
     const ctx = this.canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) {
       return;
     }
-    const pixel = this.cm_per_px !== null;
-    const theme = pixel ? ARCADE : PAPER;
-    ctx.save();
-    ctx.scale(this.dpr, this.dpr);
-    const w = this.canvas.width / this.dpr;
-    const h = this.canvas.height / this.dpr;
-    ctx.fillStyle = theme.background;
+    const w = this.canvas.width;
+    const h = this.canvas.height;
+    ctx.fillStyle = BACKGROUND;
     ctx.fillRect(0, 0, w, h);
-    this.zones(ctx, theme, pixel);
+    this.zones(ctx);
     this.ground(ctx);
     for (const link of this.links) {
       const from = poses[link.from];
       const to = poses[link.to];
       if (from && to) {
-        this.painter.drawLink(ctx, this.camera, from, to, theme.link);
+        this.painter.drawLink(ctx, this.camera, from, to);
       }
     }
     this.setup.slots.forEach((slot, i) => {
@@ -100,26 +65,20 @@ export class LevelView {
         this.painter.draw(ctx, this.camera, slot.visual, pose);
       }
     });
-    this.clock(ctx, time_s, theme);
+    this.clock(ctx, time_s);
     if (stamp !== null) {
       this.stamp(ctx, w, h, stamp, success);
     }
-    ctx.restore();
-    if (pixel) {
-      const frame = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-      snapToPalette(frame.data, RGB, this.snapped);
-      ctx.putImageData(frame, 0, 0);
-    }
+    const frame = ctx.getImageData(0, 0, w, h);
+    snapToPalette(frame.data, RGB, this.snapped);
+    ctx.putImageData(frame, 0, 0);
   }
 
-  private zones(ctx: CanvasRenderingContext2D, theme: Theme, pixel: boolean): void {
+  private zones(ctx: CanvasRenderingContext2D): void {
     ctx.save();
-    ctx.strokeStyle = theme.zoneEdge;
-    ctx.fillStyle = theme.zoneFill;
+    ctx.strokeStyle = ZONE_EDGE;
+    ctx.fillStyle = ZONE_FILL;
     ctx.lineWidth = 1;
-    if (!pixel) {
-      ctx.setLineDash([6, 4]);
-    }
     for (const z of this.setup.zones) {
       const a = this.camera.toPx(z.x_cm / 100, (z.y_cm + z.height_cm) / 100);
       const wpx = this.camera.px(z.width_cm / 100);
@@ -143,9 +102,9 @@ export class LevelView {
     ctx.restore();
   }
 
-  private clock(ctx: CanvasRenderingContext2D, time_s: number, theme: Theme): void {
+  private clock(ctx: CanvasRenderingContext2D, time_s: number): void {
     ctx.save();
-    ctx.fillStyle = theme.clock;
+    ctx.fillStyle = CLOCK;
     const size = Math.max(8, Math.round(14 / this.scale));
     ctx.font = `${size}px ui-monospace, Consolas, monospace`;
     ctx.textAlign = 'left';
@@ -164,8 +123,6 @@ export class LevelView {
     ctx.textBaseline = 'middle';
     const width = ctx.measureText(text).width + 40 / this.scale;
     const height = Math.min(w, h) / 6;
-    // Flat in the 16-bit look: a translucent paper over the dark background would snap to grey.
-    ctx.globalAlpha = this.cm_per_px === null ? 0.9 : 1;
     ctx.fillStyle = '#f6f1e7';
     ctx.fillRect(-width / 2, -height / 2, width, height);
     ctx.strokeStyle = colour;
