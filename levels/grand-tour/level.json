@@ -2,7 +2,7 @@
   "id": "grand-tour",
   "title": "The grand tour",
   "tier": 5,
-  "description": "A steel ball hangs in the air at (40, 280), top left, and falls from the start. A short fixed beam, the post, runs level from x = 160 to x = 190 with its top at y = 202. A bell hangs at (355, 125), on the right, inside a fixed box that is open only at the bottom: a roof from x = 325 to x = 385 at y = 155, and two walls at x = 325 and x = 385 from y = 105 up to the roof. The bell's bracket is 20 cm above it. The build zone covers x from 20 to 380 and y from 10 to 280. The ball has to touch the post first, and then something has to come up through the open bottom of the box and ring the bell. Chain length is scored too.",
+  "description": "A steel ball hangs in the air at (40, 280), top left, and falls from the start. A short fixed beam, the post, runs level from x = 160 to x = 190 with its top at y = 202. A bell hangs at (355, 125), on the right, inside a fixed box that is open only at the bottom: a roof from x = 325 to x = 385 at y = 155, and two walls at x = 325 and x = 385 from y = 105 up to the roof. The bell's bracket is 20 cm above it. The build zone covers x from 20 to 320 at every height, and x from 320 to 380 only above the roof, from y = 160 up: nothing can be placed under or inside the box. The ball has to touch the post first, and then something has to come up through the open bottom of the box and ring the bell. Chain length is scored too.",
   "rules_version": 1,
   "world": { "width_cm": 400, "height_cm": 300 },
   "time_limit_s": 20,
@@ -14,7 +14,10 @@
     { "id": "right", "kind": "beam", "x_cm": 385, "y_cm": 130, "length_cm": 50, "angle_deg": 90 },
     { "id": "bell", "kind": "bell", "x_cm": 355, "y_cm": 125, "rope_cm": 20 }
   ],
-  "zones": [ { "x_cm": 20, "y_cm": 10, "width_cm": 360, "height_cm": 270 } ],
+  "zones": [
+    { "x_cm": 20, "y_cm": 10, "width_cm": 300, "height_cm": 270 },
+    { "x_cm": 320, "y_cm": 160, "width_cm": 60, "height_cm": 120 }
+  ],
   "inventory": { "beam": 6, "domino": 8, "seesaw": 1, "ball": 2, "funnel": 1, "spring_pad": 1, "crate": 2, "pendulum": 1, "bucket": 1, "rope": 1 },
   "goal": { "kind": "ring", "target": "bell", "via": ["post"] },
   "showcase": true

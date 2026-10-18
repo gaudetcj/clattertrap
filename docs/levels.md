@@ -17,7 +17,7 @@ Tiers run from 1 to 5 and say how much a solution needs: one part placed well, a
 | rope-swing | 3 | ring | rope 1, beam 2 | tie the falling ball to a fixed hook so it swings in an arc into the bell |
 | seesaw-launch | 4 | ring | seesaw 1, domino 1, beam 2 | the bell sits in a box open only below; a seesaw must throw something up into it |
 | spring-launch | 4 | press | spring_pad 1, beam 3 | a rolling wood ball must be kicked by a spring pad onto a high ledge and drop into a button slot |
-| grand-tour | 5, showcase | ring, via post | beam 6, domino 8, seesaw 1, ball 2, funnel 1, spring_pad 1, crate 2, pendulum 1, bucket 1, rope 1 | a ramp to a high ledge, a drop onto a seesaw, and a throw into a boxed bell, in that order |
+| grand-tour | 5, showcase | ring, via post | beam 6, domino 8, seesaw 1, ball 2, funnel 1, spring_pad 1, crate 2, pendulum 1, bucket 1, rope 1 | a ramp to the post, a drop onto a long seesaw left of a boxed bell, and its far arm swinging up through the open bottom, in that order |
 
 Every level is 400 by 300 cm with a 20 s limit. Fixed objects are placed exactly at rest, so a waypoint that stands on the floor is not touched until something moving arrives.
 
