@@ -1,0 +1,9 @@
+---
+source: crates/clattertrap-cli/tests/verify.rs
+expression: text
+---
+bell-drop/claude-haiku-5-5/workshop-01/submission.json: state_hash stored bd33e6b7c5e0f2bd, now bd33e6b7c5e0f2bc
+bell-drop/claude-haiku-5-5/workshop-01/submission.json: steps stored 185, now 184
+bell-drop/claude-haiku-5-5/workshop-01/calls/0002-run.json: time_s stored 1.5, now 1.5333334
+bell-drop/claude-haiku-5-5/workshop-01/calls/0003-submit.json: does not parse: EOF while parsing a value at line 12 column 5
+verified 2 entries, 4 runs, 4 mismatches

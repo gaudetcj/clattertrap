@@ -1,0 +1,12 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+     

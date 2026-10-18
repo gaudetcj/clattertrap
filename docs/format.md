@@ -118,6 +118,18 @@ The overlap check runs only once everything else passes. Two fixed objects that 
 
 `clattertrap report <dir>` prints, per model and arm, the levels solved (a level counts once however many runs solved it), the hard levels solved (tiers 4 and 5), the runs counted, the aborted and flagged runs, and the mean cost and time. A second table gives, per level, the runs, the runs that solved it, the attempts (`run` calls, accepted or not), the scene calls accepted and rejected by validation, and the submissions. `--csv` prints one row per run, every run included. `--sample N --seed S` prints N counted submissions to open on the level page. In a checkout with pilot runs, `just web` lists every submission under `pilot/runs/` in a picker on that page, and `?run=<model>/<level>/<arm>-NN` opens one directly; the page also plays any dropped scene or submission file.
 
+## Verifying stored results
+
+`clattertrap verify <dir>` re-simulates every stored outcome under a directory of runs and prints each one that no longer holds. It walks `<dir>/*/*/*/summary.json`, so it reads both `pilot/runs` (model, level, run) and `gallery` (level, model, run), taking the level from each summary. For every entry it checks that the summary parses, that its status counts, and that it called no foreign tools; for a submitted run it re-runs the submission's scene, and for every call with an outcome (`run` and `submit`) it re-runs that scene too. Each field that differs is one line:
+
+```
+bell-drop/claude-haiku-5-5/workshop-01/submission.json: steps stored 185, now 184
+bell-drop/claude-haiku-5-5/workshop-01/calls/0003-submit.json: does not parse: EOF while parsing a value at line 12 column 5
+verified 2 entries, 4 runs, 2 mismatches
+```
+
+The last line counts the run directories seen and the outcomes re-simulated. A file that does not parse, a scene that no longer validates, or a stored `rules_version` other than the current one is a mismatch, never a crash. `just verify` runs it over `gallery/`, and so does `just ci`.
+
 ## Exit codes
 
-0 when the command did its job, including a run whose goal was missed. 1 when `check`, `look`, or `run` rejected the scene; the problems are on stdout. 2 for a usage error, an unknown level, or a file that could not be read; the reason is on stderr.
+0 when the command did its job, including a run whose goal was missed. 1 when `check`, `look`, or `run` rejected the scene, or when `verify` found a mismatch; the problems or mismatches are on stdout. 2 for a usage error, an unknown level, or a file that could not be read; the reason is on stderr.

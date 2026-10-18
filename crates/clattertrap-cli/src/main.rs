@@ -1,10 +1,11 @@
 //! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, `mcp`, `arena`,
-//! and `report`.
+//! `report`, and `verify`.
 #![forbid(unsafe_code)]
 
 mod arena;
 mod catalog;
 mod check;
+mod gallery;
 mod level_text;
 mod mcp;
 mod picture;
@@ -110,6 +111,11 @@ enum Command {
         #[arg(long, default_value_t = 1)]
         seed: u64,
     },
+    /// Re-simulate every stored outcome under a directory of runs; exits 1 with the mismatches
+    Verify {
+        /// The directory: <a>/<b>/<c>/summary.json three levels down, as pilot/runs and gallery/ are laid out
+        dir: PathBuf,
+    },
     /// Serve the contestant tools over stdio as an MCP server
     Mcp {
         /// Assign one level; other levels are refused
@@ -126,6 +132,8 @@ enum Command {
 
 /// Exit code for a scene the rules reject.
 const REJECTED: u8 = 1;
+/// Exit code for a stored result that no longer holds.
+const MISMATCH: u8 = 1;
 
 fn main() -> ExitCode {
     match dispatch() {
@@ -180,6 +188,7 @@ fn dispatch() -> Result<ExitCode> {
             })?;
             Ok(ExitCode::SUCCESS)
         }
+        Command::Verify { dir } => verify_command(&dir),
         Command::Mcp { level, arm, out } => {
             mcp::serve(level.as_deref(), arm, out)?;
             Ok(ExitCode::SUCCESS)
@@ -235,6 +244,19 @@ fn look(scene: &Path, out: Option<PathBuf>) -> Result<ExitCode> {
     picture::write_png(&loaded.level, &loaded.valid, &sim, &out)?;
     println!("wrote {}", out.display());
     Ok(ExitCode::SUCCESS)
+}
+
+fn verify_command(dir: &Path) -> Result<ExitCode> {
+    let report = gallery::verify::verify(dir)?;
+    for mismatch in &report.mismatches {
+        println!("{mismatch}");
+    }
+    println!("{}", report.summary_line());
+    Ok(if report.mismatches.is_empty() {
+        ExitCode::SUCCESS
+    } else {
+        ExitCode::from(MISMATCH)
+    })
 }
 
 fn run_command(scene: &Path, trace: bool, png: Option<&Path>) -> Result<ExitCode> {
