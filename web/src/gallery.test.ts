@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { callKey, entryKey, indexGallery, keyString, lineup, MODEL_ORDER, modelLabel, modelRank } from './gallery';
+import { callKey, entryKey, indexGallery, keyString, lineup, loadersFor, MODEL_ORDER, modelLabel, modelRank, transcriptKey } from './gallery';
 
 function submission(level: string, name: string, goal_met: boolean): string {
   return JSON.stringify({
@@ -103,5 +103,23 @@ describe('indexGallery', () => {
     expect(six.map((e) => e.run)).toEqual(['blueprint-01', 'blueprint-01']);
     expect(lineup(entries, 'seesaw-launch', 'blueprint', '02').map((e) => e.run)).toEqual(['blueprint-02']);
     expect(lineup(entries, 'bell-drop', 'blueprint')).toEqual([]);
+  });
+});
+
+describe('on-demand files', () => {
+  it('pick the loaders of one entry by path', () => {
+    const load = () => Promise.resolve('');
+    const files = {
+      '../../gallery/bell-drop/claude-haiku-5-5/workshop-01/calls/0001-check.json': load,
+      '../../gallery/bell-drop/claude-haiku-5-5/workshop-01/calls/0002-run.json': load,
+      '../../gallery/bell-drop/claude-opus-5-5/workshop-01/calls/0001-run.json': load,
+    };
+    const mine = loadersFor(files, 'bell-drop/claude-haiku-5-5/workshop-01', (p) => callKey(p)?.key);
+    expect(mine.map(([path]) => path.split('/').pop())).toEqual(['0001-check.json', '0002-run.json']);
+    expect(transcriptKey('../../gallery/bell-drop/claude-haiku-5-5/workshop-01/transcript.jsonl')).toEqual({
+      level: 'bell-drop',
+      model: 'claude-haiku-5-5',
+      run: 'workshop-01',
+    });
   });
 });

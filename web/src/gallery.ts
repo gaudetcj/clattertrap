@@ -156,6 +156,34 @@ export function lineup(entries: Entry[], level: string, arm: string, run = '01')
     .sort((a, b) => modelRank(a.model) - modelRank(b.model) || a.model.localeCompare(b.model));
 }
 
+// A file that loads on demand: calls and transcripts are only read one entry at a time.
+export type Loader = () => Promise<string>;
+
+// The loaders in `files` that belong to one entry, by path.
+export function loadersFor(files: Record<string, Loader>, key: string, keyOf: (path: string) => EntryKey | undefined): [string, Loader][] {
+  return Object.entries(files).filter(([path]) => {
+    const k = keyOf(path);
+    return k !== undefined && keyString(k) === key;
+  });
+}
+
+// Every call file in the gallery, loaded on demand.
+export function callLoaders(): Record<string, Loader> {
+  return import.meta.glob('../../gallery/*/*/*/calls/*.json', { query: '?raw', import: 'default' }) as Record<string, Loader>;
+}
+
+// Every transcript in the gallery, loaded on demand.
+export function transcriptLoaders(): Record<string, Loader> {
+  return import.meta.glob('../../gallery/*/*/*/transcript.jsonl', { query: '?raw', import: 'default' }) as Record<string, Loader>;
+}
+
+const TRANSCRIPT = /gallery\/([^/]+)\/([^/]+)\/([^/]+)\/transcript\.jsonl$/;
+
+// The entry a transcript path belongs to.
+export function transcriptKey(path: string): EntryKey | undefined {
+  return keyOf(TRANSCRIPT.exec(path));
+}
+
 // The whole committed gallery: submissions and summaries, bundled at build time.
 export function galleryEntries(): Entry[] {
   const submissions = import.meta.glob('../../gallery/*/*/*/submission.json', {
