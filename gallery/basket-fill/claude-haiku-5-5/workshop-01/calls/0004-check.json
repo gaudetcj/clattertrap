@@ -1,0 +1,36 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 25,
+        "id": "ramp_a",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 292,
+        "y_cm": 173.3
+      },
+      {
+        "angle_deg": 25,
+        "id": "ramp_b",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 147,
+        "y_cm": 98.3
+      },
+      {
+        "angle_deg": 90,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 46,
+        "x_cm": 42,
+        "y_cm": 25
+      }
+    ]
+  },
+  "problems": [
+    "parts[2] (beam catch): centre (42, 25) is outside every build zone; move it inside x 20..380, y 50..300"
+  ]
+}

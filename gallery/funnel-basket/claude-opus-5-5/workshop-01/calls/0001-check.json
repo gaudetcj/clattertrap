@@ -1,0 +1,34 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "height_cm": 80,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 20,
+        "x_cm": 200,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": -20,
+        "id": "left",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 88,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": 20,
+        "id": "right",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 312,
+        "y_cm": 175
+      }
+    ]
+  }
+}

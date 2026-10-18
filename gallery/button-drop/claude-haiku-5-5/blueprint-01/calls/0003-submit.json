@@ -1,0 +1,30 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 142.4,
+        "y_cm": 217
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.825,
+    "steps": 219,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "1d7ed17d2dc03670",
+    "state_hash": "631db833de21ea42",
+    "rules_version": 1
+  },
+  "name": "Ramp Launch",
+  "prediction": "The steel ball lands on a 15-degree beam under its start, rolls off the right end near x 215 cm at about 2 m/s, and flies in a long arc to land near x 320 to 326 on the button cap, where it may or may not hold the press."
+}

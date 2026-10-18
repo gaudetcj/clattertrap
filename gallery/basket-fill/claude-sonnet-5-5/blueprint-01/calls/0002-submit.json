@@ -1,0 +1,46 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 330,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -15,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 220,
+        "y_cm": 150
+      },
+      {
+        "angle_deg": -15,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 150,
+        "y_cm": 88
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.7916667,
+    "steps": 215,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "973e4edf3c648ee0",
+    "state_hash": "bb964375d0a4a735",
+    "rules_version": 1
+  },
+  "name": "Three-step staircase to the basket",
+  "prediction": "Balls drop onto three descending left-sloping beams, roll off the last one at x≈100 and drop into the basket; at least two should settle inside."
+}

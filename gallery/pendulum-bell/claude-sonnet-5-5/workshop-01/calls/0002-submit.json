@@ -1,0 +1,30 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 60,
+        "id": "p",
+        "kind": "pendulum",
+        "length_cm": 105,
+        "x_cm": 300,
+        "y_cm": 185
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.5083334,
+    "steps": 61,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "6b3b70ad2e7d514a",
+    "state_hash": "15c33a5557ff8608",
+    "rules_version": 1
+  },
+  "name": "Single Swing",
+  "prediction": "The pendulum swings down from the upper right and hits the bell at about 0.5 s, ringing it."
+}

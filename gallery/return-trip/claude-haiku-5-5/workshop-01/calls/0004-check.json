@@ -1,0 +1,36 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": 25,
+        "id": "l1",
+        "kind": "beam",
+        "length_cm": 16,
+        "x_cm": 139,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -28.3,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 145,
+        "x_cm": 234,
+        "y_cm": 196.5
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam l1): length_cm 16 is outside 20..150; set length_cm within that range"
+  ]
+}

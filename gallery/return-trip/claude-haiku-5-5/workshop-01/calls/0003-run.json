@@ -1,0 +1,36 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -28.3,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 145,
+        "x_cm": 234,
+        "y_cm": 196.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.0333335,
+    "steps": 244,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "24ab38a4272c2053",
+    "state_hash": "59970525a3810e31",
+    "rules_version": 1
+  }
+}

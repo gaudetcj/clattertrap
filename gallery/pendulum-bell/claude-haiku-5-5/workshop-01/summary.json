@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "pendulum-bell",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792291472,
+  "duration_s": 28.2142134,
+  "cost_usd": 0.005056510000000001,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

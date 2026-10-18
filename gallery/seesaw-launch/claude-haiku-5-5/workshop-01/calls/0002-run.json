@@ -1,0 +1,28 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "s1",
+        "kind": "seesaw",
+        "length_cm": 140,
+        "x_cm": 160,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.6583335,
+    "steps": 439,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "29ac7e18ed05c7c4",
+    "state_hash": "3b5ef8f9444ef568",
+    "rules_version": 1
+  }
+}

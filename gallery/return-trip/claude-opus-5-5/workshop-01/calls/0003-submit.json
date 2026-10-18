@@ -1,0 +1,62 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -16.9,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 117,
+        "x_cm": 76,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": -24,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 142,
+        "x_cm": 233,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": 10.04,
+        "id": "r3a",
+        "kind": "beam",
+        "length_cm": 97.5,
+        "x_cm": 348,
+        "y_cm": 111.5
+      },
+      {
+        "angle_deg": 9.23,
+        "id": "r3b",
+        "kind": "beam",
+        "length_cm": 81,
+        "x_cm": 260,
+        "y_cm": 92.5
+      },
+      {
+        "angle_deg": 26.6,
+        "id": "r4",
+        "kind": "beam",
+        "length_cm": 47,
+        "x_cm": 161,
+        "y_cm": 65.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 6.5083337,
+    "steps": 781,
+    "parts_used": 5,
+    "chain_length": 3,
+    "event_hash": "6ba12faf5bdc2cc9",
+    "state_hash": "e9e82c60e0fd78bd",
+    "rules_version": 1
+  },
+  "name": "Out and Back Again",
+  "prediction": "The steel ball rolls down over post a and the ramp into w1, driving both wood balls off the shelf against the wall; all three then roll back left down the return ramps across post d and come to rest in the basket at about 6.5 s."
+}

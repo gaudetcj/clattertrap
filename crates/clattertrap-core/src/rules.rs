@@ -5,7 +5,8 @@
 
 use crate::scene::Material;
 
-/// Version of the physics and scoring rules. Stays 1 until the first gallery entry is committed.
+/// Version of the physics and scoring rules. A change to physics or scoring bumps it and re-verifies
+/// the gallery in the same change.
 pub const RULES_VERSION: u32 = 1;
 
 /// Physical properties of one material.

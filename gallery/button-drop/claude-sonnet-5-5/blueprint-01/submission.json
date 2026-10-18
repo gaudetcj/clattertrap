@@ -1,0 +1,47 @@
+{
+  "level": "button-drop",
+  "arm": "blueprint",
+  "name": "Two-ramp funnel drop",
+  "prediction": "The ball rolls down two sloped beams, drops into the wide funnel above the button, falls through the throat and presses the button.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 95,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -10,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 225,
+        "y_cm": 150
+      },
+      {
+        "height_cm": 50,
+        "id": "f",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 16,
+        "x_cm": 330,
+        "y_cm": 80
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.7,
+    "steps": 324,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "19453d7811da8696",
+    "state_hash": "1d3cfa6846e7a120",
+    "rules_version": 1
+  }
+}

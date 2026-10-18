@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "wake-the-pendulum",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792350906,
+  "duration_s": 142.0868684,
+  "cost_usd": 0.021687030000000003,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

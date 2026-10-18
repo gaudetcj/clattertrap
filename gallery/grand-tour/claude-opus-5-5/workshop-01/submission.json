@@ -1,0 +1,47 @@
+{
+  "level": "grand-tour",
+  "arm": "workshop",
+  "name": "Ramp, Funnel and Seesaw Swat",
+  "prediction": "The steel ball rolls down the ramp onto the post, flies into the funnel, drops onto the seesaw's left arm, and the right arm swings up through the open bottom of the box to ring the bell at about 2.14 s.",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -18.3,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 91.5,
+        "y_cm": 228
+      },
+      {
+        "height_cm": 58,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 120,
+        "throat_cm": 16,
+        "x_cm": 275,
+        "y_cm": 122
+      },
+      {
+        "angle_deg": 0,
+        "id": "saw",
+        "kind": "seesaw",
+        "length_cm": 104,
+        "x_cm": 318,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.141667,
+    "steps": 257,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "4e3fda36105dd0ef",
+    "state_hash": "a17c5fefe74b5c25",
+    "rules_version": 1
+  }
+}

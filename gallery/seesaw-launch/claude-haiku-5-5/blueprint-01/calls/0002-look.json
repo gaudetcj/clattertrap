@@ -1,0 +1,24 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "plank",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 130,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 0,
+        "id": "kicker",
+        "kind": "domino",
+        "x_cm": 176,
+        "y_cm": 72.3
+      }
+    ]
+  }
+}

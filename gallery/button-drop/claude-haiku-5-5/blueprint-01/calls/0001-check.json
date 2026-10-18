@@ -1,0 +1,17 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 142.4,
+        "y_cm": 217
+      }
+    ]
+  }
+}

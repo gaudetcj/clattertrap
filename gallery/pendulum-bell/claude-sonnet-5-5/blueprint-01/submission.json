@@ -1,0 +1,30 @@
+{
+  "level": "pendulum-bell",
+  "arm": "blueprint",
+  "name": "Straight-Down Swing",
+  "prediction": "The steel weight swings from 60° left, reaches the bottom of its arc at the bell at about 3 m/s, and rings it.",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": -60,
+        "id": "p",
+        "kind": "pendulum",
+        "length_cm": 100,
+        "x_cm": 300,
+        "y_cm": 180
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.4916667,
+    "steps": 59,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "bda787dcfca24b6e",
+    "state_hash": "a9d44a487b687d69",
+    "rules_version": 1
+  }
+}

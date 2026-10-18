@@ -1,0 +1,35 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "s",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 154,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 0,
+        "id": "d",
+        "kind": "domino",
+        "x_cm": 195,
+        "y_cm": 72.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "887cb3e303c93d2a",
+    "state_hash": "ac2fbf7949c3cb9a",
+    "rules_version": 1
+  }
+}

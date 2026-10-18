@@ -1,0 +1,69 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 68.2,
+        "y_cm": 245.1
+      },
+      {
+        "angle_deg": 0,
+        "id": "s1",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 152,
+        "y_cm": 229.5
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 158,
+        "y_cm": 237.8
+      },
+      {
+        "height_cm": 70,
+        "id": "f",
+        "kind": "funnel",
+        "mouth_cm": 130,
+        "throat_cm": 14,
+        "x_cm": 218,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": 0,
+        "id": "p",
+        "kind": "spring_pad",
+        "x_cm": 241,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": -35,
+        "id": "t",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 336,
+        "y_cm": 92
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 11.291667,
+    "steps": 1355,
+    "parts_used": 6,
+    "chain_length": 2,
+    "event_hash": "9397e79646fb390e",
+    "state_hash": "1e4111d3ed43e5cf",
+    "rules_version": 1
+  },
+  "name": "Steel nudges wood, spring pad hops it to c",
+  "prediction": "Steel ball rolls over a and bumps a wood ball off the shelf; it drops through the funnel onto b, is kicked by the spring pad onto c, and rolls down a chute into the bell. Success is uncertain."
+}

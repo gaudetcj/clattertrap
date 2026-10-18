@@ -1,0 +1,30 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": -70,
+        "id": "p",
+        "kind": "pendulum",
+        "length_cm": 85,
+        "x_cm": 270,
+        "y_cm": 170
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.5666667,
+    "steps": 68,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "16588be7805699f1",
+    "state_hash": "350e851c482f3fa8",
+    "rules_version": 1
+  },
+  "name": "One Swing Chime",
+  "prediction": "The steel pendulum pinned at (270,170) is released 70° to the left, swings through the bottom of its arc and hits the bell's left side at about 0.57 s, ringing it."
+}

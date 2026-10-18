@@ -1,0 +1,30 @@
+{
+  "level": "pendulum-bell",
+  "arm": "blueprint",
+  "name": "Low Swing Clapper",
+  "prediction": "The steel weight, released 80° to the left, swings down through about 74 cm and hits the bell's left side just past the bottom of its arc at roughly 3.8 m/s, which rings the bell within about half a second.",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": -80,
+        "id": "pend",
+        "kind": "pendulum",
+        "length_cm": 90,
+        "x_cm": 270,
+        "y_cm": 170
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.5916667,
+    "steps": 71,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "b614bcc1dea742a3",
+    "state_hash": "f9bd8fe8aa97cab3",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "name": "Three-Plank Cascade",
+  "prediction": "The steel ball drops onto the upper plank, rolls off onto the second, then onto the shallow last plank, and rolls into the bell at about bell height at well over 0.2 m/s, ringing it in roughly 2 seconds.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "a",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 115,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -15,
+        "id": "b",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 212.56,
+        "y_cm": 119.41
+      },
+      {
+        "angle_deg": -3,
+        "id": "c",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 312.05,
+        "y_cm": 91.83
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.8833334,
+    "steps": 226,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "0af55a5e28d5bf0c",
+    "state_hash": "f126f343e3d7d423",
+    "rules_version": 1
+  }
+}

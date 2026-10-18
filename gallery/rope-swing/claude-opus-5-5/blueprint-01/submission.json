@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "name": "Hooked Steel Swing",
+  "prediction": "The steel ball drops about 22 cm until the 102 cm rope to the hook goes taut, then swings under the hook and hits the bell at about 1.5 m/s on the right side of its arc, ringing it in under 1.5 s.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "swing",
+        "kind": "rope",
+        "max_length_cm": 102
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.87500006,
+    "steps": 105,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "30b9aee61b2b1800",
+    "state_hash": "4113165fbd0e0c3d",
+    "rules_version": 1
+  }
+}

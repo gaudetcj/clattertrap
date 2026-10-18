@@ -1,0 +1,38 @@
+{
+  "level": "post-first",
+  "arm": "workshop",
+  "name": "Two-Ramp Post Bounce",
+  "prediction": "Ball rolls down ramp b1, drops onto the post, rolls onto ramp b2 and hits the bell at about 1.8 s.",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -15,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 282,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.8083334,
+    "steps": 217,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "ef489e53bfd748be",
+    "state_hash": "e83f9e292d2facff",
+    "rules_version": 1
+  }
+}

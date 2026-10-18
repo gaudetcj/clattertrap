@@ -1,0 +1,54 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -60,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 46.5,
+        "y_cm": 195.7
+      },
+      {
+        "angle_deg": 0,
+        "id": "deck",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 107,
+        "y_cm": 169
+      },
+      {
+        "angle_deg": 36,
+        "id": "bell_ramp",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 61.75,
+        "y_cm": 82.85
+      },
+      {
+        "angle_deg": 60,
+        "id": "drop_ramp",
+        "kind": "beam",
+        "length_cm": 42,
+        "x_cm": 133.5,
+        "y_cm": 127.8
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.3333335,
+    "steps": 400,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "254ae2c8b9f87ea7",
+    "state_hash": "8d8caf37e58c769f",
+    "rules_version": 1
+  },
+  "name": "Ramp Relay to the Bell",
+  "prediction": "Ball0 drops onto a steep ramp, skids along the deck, and clips the pendulum weight; the swing may be too weak to knock the wood ball off the ledge onto the post and bell ramps."
+}

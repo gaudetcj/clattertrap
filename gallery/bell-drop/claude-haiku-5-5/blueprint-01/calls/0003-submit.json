@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -21,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 126,
+        "y_cm": 173.2
+      },
+      {
+        "angle_deg": -21,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 268,
+        "y_cm": 118.7
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.6583334,
+    "steps": 199,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "0b07a90fc43f42ef",
+    "state_hash": "5b473e4fc5af0337",
+    "rules_version": 1
+  },
+  "name": "Two-Ramp Drop",
+  "prediction": "The ball lands on the upper 150 cm beam near x=70, rolls down through the 2 cm gap onto the lower beam, and shoots off its right end at about y=100 with roughly 3.5 m/s, striking the bell's left edge at x≈344 and ringing it."
+}

@@ -1,0 +1,38 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 90,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -15,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 285,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.8750001,
+    "steps": 225,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "b8e37755c77d54e8",
+    "state_hash": "5f50b9320e9d94a3",
+    "rules_version": 1
+  },
+  "name": "Ramp, post, ramp",
+  "prediction": "Ball rolls down the first ramp, lands on the post, rolls off its right end onto the second ramp, and hits the bell."
+}

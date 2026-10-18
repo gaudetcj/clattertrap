@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 75,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -25.5,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 98,
+        "x_cm": 276,
+        "y_cm": 101
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.0833335,
+    "steps": 250,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "ebfb4fc19d124b1a",
+    "state_hash": "5a44f083e0375f74",
+    "rules_version": 1
+  },
+  "name": "Ramp to Post to Bell",
+  "prediction": "The falling steel ball lands on ramp1 at x≈60, rolls down-right and flies off onto the post near x≈200, rolls off its right end onto ramp2, and rolls down into the bell's left side at about 3 m/s, ringing it."
+}

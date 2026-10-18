@@ -1,0 +1,20 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 108,
+        "y_cm": 174
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam b1): overlaps ball1 by 7.0 cm at the start; move it up to y_cm = 181.0"
+  ]
+}

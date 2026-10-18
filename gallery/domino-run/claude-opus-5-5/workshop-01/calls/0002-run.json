@@ -1,0 +1,80 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 156,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 168,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 180,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 192,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 204,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 216,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 228,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 240,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 252,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 264.5,
+        "y_cm": 137.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 5.616667,
+    "steps": 674,
+    "parts_used": 10,
+    "chain_length": 11,
+    "event_hash": "5f058d6a742513ee",
+    "state_hash": "f41d8e329c200b0f",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 65,
+        "y_cm": 252
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 125,
+        "y_cm": 238.5
+      },
+      {
+        "angle_deg": -30,
+        "id": "p",
+        "kind": "spring_pad",
+        "x_cm": 242,
+        "y_cm": 50
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 9.725,
+    "steps": 1167,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "945da5206984ee43",
+    "state_hash": "051ebf71de87bda5",
+    "rules_version": 1
+  }
+}

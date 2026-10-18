@@ -1,0 +1,70 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -13.24,
+        "id": "t1",
+        "kind": "beam",
+        "length_cm": 104.8,
+        "x_cm": 80.5,
+        "y_cm": 236.1
+      },
+      {
+        "angle_deg": -22.8,
+        "id": "t2",
+        "kind": "beam",
+        "length_cm": 149.7,
+        "x_cm": 228.2,
+        "y_cm": 181.2
+      },
+      {
+        "angle_deg": 8,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 292.55,
+        "y_cm": 95.46
+      },
+      {
+        "angle_deg": 36.87,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 35,
+        "x_cm": 377.2,
+        "y_cm": 119.9
+      },
+      {
+        "angle_deg": 20.67,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 56.6,
+        "x_cm": 169.2,
+        "y_cm": 58.1
+      },
+      {
+        "angle_deg": 90,
+        "id": "stop",
+        "kind": "beam",
+        "length_cm": 76,
+        "x_cm": 82,
+        "y_cm": 85
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 5.2000003,
+    "steps": 624,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "f297b1d4f6589a1f",
+    "state_hash": "a5b0c87a8829be79",
+    "rules_version": 1
+  },
+  "name": "Zigzag Return Express",
+  "prediction": "The steel ball rolls down t1 across post a, down t2 into w1 and w2, all three balls drop past the shelf end into the wall gap, roll left along b1 over post d, then off b3 into the basket against the backstop."
+}

@@ -1,0 +1,37 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "pivot",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 208.75,
+        "y_cm": 252
+      },
+      {
+        "a": "pivot",
+        "b": "ball0",
+        "id": "tie",
+        "kind": "rope",
+        "max_length_cm": 89.6
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.8000001,
+    "steps": 96,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "1485e70c2cd8fa0a",
+    "state_hash": "f6e07d663bf2f062",
+    "rules_version": 1
+  },
+  "name": "Rope Pendulum Strike",
+  "prediction": "A short beam pivot at (208.75, 252) holds the steel ball on a 89.6 cm rope, so the ball swings down from its start and strikes the bell's lower-left side at about 2.7 m/s, ringing it."
+}

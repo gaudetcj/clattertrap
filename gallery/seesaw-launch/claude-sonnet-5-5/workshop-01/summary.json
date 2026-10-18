@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-5-5",
+  "level": "seesaw-launch",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792291627,
+  "duration_s": 78.5079999,
+  "cost_usd": 0.1777468,
+  "turns": 11,
+  "tool_calls": 10,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

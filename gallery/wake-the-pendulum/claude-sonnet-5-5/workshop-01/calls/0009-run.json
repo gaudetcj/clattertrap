@@ -1,0 +1,36 @@
+{
+  "seq": 9,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 82,
+        "y_cm": 198
+      },
+      {
+        "angle_deg": 22,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 92,
+        "y_cm": 78
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "f25774e8e1b53f1e",
+    "state_hash": "277ceac446eedd03",
+    "rules_version": 1
+  }
+}

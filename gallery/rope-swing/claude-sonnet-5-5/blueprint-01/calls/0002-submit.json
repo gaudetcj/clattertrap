@@ -1,0 +1,29 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "r1",
+        "kind": "rope",
+        "max_length_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.86666673,
+    "steps": 104,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "9a29c480a5beab1a",
+    "state_hash": "bf7940157d049e05",
+    "rules_version": 1
+  },
+  "name": "Hook Swing",
+  "prediction": "The ball falls ~20 cm, the 100 cm rope goes taut from the hook, and it swings down and up the right side, hitting the bell near (276,215) fast enough to ring it."
+}

@@ -1,0 +1,57 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -13.24,
+        "id": "t1",
+        "kind": "beam",
+        "length_cm": 104.8,
+        "x_cm": 80.5,
+        "y_cm": 236.1
+      },
+      {
+        "angle_deg": -22.8,
+        "id": "t2",
+        "kind": "beam",
+        "length_cm": 149.7,
+        "x_cm": 228.2,
+        "y_cm": 181.2
+      },
+      {
+        "angle_deg": 8,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 292.55,
+        "y_cm": 95.46
+      },
+      {
+        "angle_deg": 36.87,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 35,
+        "x_cm": 377.2,
+        "y_cm": 119.9
+      },
+      {
+        "angle_deg": 20.67,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 56.6,
+        "x_cm": 169.2,
+        "y_cm": 58.1
+      },
+      {
+        "angle_deg": 90,
+        "id": "stop",
+        "kind": "beam",
+        "length_cm": 76,
+        "x_cm": 82,
+        "y_cm": 85
+      }
+    ]
+  }
+}

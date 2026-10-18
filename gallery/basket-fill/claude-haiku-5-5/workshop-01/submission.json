@@ -1,0 +1,38 @@
+{
+  "level": "basket-fill",
+  "arm": "workshop",
+  "name": "Two-Ramp Drop",
+  "prediction": "The three wood balls drop onto a 150 cm beam sloping down-left at 25 degrees, roll off its end onto a shorter 120 cm beam at the same slope, and fly off into the basket, where at least two come to rest inside.",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 25,
+        "id": "ramp_a",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 292,
+        "y_cm": 173.3
+      },
+      {
+        "angle_deg": 25,
+        "id": "ramp_b",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 160.6,
+        "y_cm": 104.6
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.4416668,
+    "steps": 293,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "0e91c74d3bd74726",
+    "state_hash": "cb168a948d651f99",
+    "rules_version": 1
+  }
+}

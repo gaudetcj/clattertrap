@@ -1,0 +1,36 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 113,
+        "y_cm": 111.25
+      },
+      {
+        "angle_deg": 40,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 152.5,
+        "y_cm": 106.1
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.7916667,
+    "steps": 215,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "67659a93fb47c57a",
+    "state_hash": "7f53627ce4499595",
+    "rules_version": 1
+  }
+}

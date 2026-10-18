@@ -1,0 +1,46 @@
+{
+  "level": "balloon-pin",
+  "arm": "workshop",
+  "name": "Rising Guide Rail",
+  "prediction": "The balloon rises into a 39-degree ramp of three beams, slides up along their undersides to the top end just left of the pin, and touches the pin and pops at about 4.2 s.",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 39,
+        "id": "b0",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 76.6,
+        "y_cm": 96.6
+      },
+      {
+        "angle_deg": 39,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 171.4,
+        "y_cm": 173.3
+      },
+      {
+        "angle_deg": 39,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 266.2,
+        "y_cm": 250.1
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 4.191667,
+    "steps": 503,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "335f99cbbcc15fd4",
+    "state_hash": "768608d0bb10d6db",
+    "rules_version": 1
+  }
+}

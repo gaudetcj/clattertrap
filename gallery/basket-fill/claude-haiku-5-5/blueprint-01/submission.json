@@ -1,0 +1,46 @@
+{
+  "level": "basket-fill",
+  "arm": "blueprint",
+  "name": "Ramp and Stop Wall",
+  "prediction": "The three wood balls drop onto a shallow 5-degree two-beam ramp that runs down to the left, roll off its left end near x=90 at about 1 to 2 m/s, and hit a vertical stop beam at x=44; they should drop from there into the basket, with at least two coming to rest inside it.",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 5,
+        "id": "ramp_a",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 165,
+        "y_cm": 96.56
+      },
+      {
+        "angle_deg": 5,
+        "id": "ramp_b",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 305.25,
+        "y_cm": 108.83
+      },
+      {
+        "angle_deg": 90,
+        "id": "wall",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 44,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 4.6833334,
+    "steps": 562,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "15edbb2539a78d6d",
+    "state_hash": "479a32efc7f43b20",
+    "rules_version": 1
+  }
+}

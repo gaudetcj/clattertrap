@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-5-5",
+  "level": "funnel-basket",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792291582,
+  "duration_s": 15.8947635,
+  "cost_usd": 0.0463496,
+  "turns": 5,
+  "tool_calls": 4,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

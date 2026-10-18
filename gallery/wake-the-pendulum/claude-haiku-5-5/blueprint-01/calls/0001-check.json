@@ -1,0 +1,41 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -60,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 46.5,
+        "y_cm": 195.7
+      },
+      {
+        "angle_deg": 0,
+        "id": "deck",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 107,
+        "y_cm": 169
+      },
+      {
+        "angle_deg": 36,
+        "id": "bell_ramp",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 61.75,
+        "y_cm": 82.85
+      },
+      {
+        "angle_deg": 60,
+        "id": "drop_ramp",
+        "kind": "beam",
+        "length_cm": 42,
+        "x_cm": 133.5,
+        "y_cm": 127.8
+      }
+    ]
+  }
+}

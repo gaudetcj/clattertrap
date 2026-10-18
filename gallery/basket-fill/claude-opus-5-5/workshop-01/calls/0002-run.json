@@ -1,0 +1,52 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 12,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 290,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": 20.65,
+        "id": "rampB",
+        "kind": "beam",
+        "length_cm": 147.5,
+        "x_cm": 153,
+        "y_cm": 144
+      },
+      {
+        "angle_deg": 90,
+        "id": "leftwall",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 40,
+        "y_cm": 110
+      },
+      {
+        "angle_deg": 90,
+        "id": "rightwall",
+        "kind": "beam",
+        "length_cm": 56,
+        "x_cm": 82,
+        "y_cm": 80
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.1000001,
+    "steps": 372,
+    "parts_used": 4,
+    "chain_length": 3,
+    "event_hash": "9977bc7b5a5939ab",
+    "state_hash": "5d953d3d4af17520",
+    "rules_version": 1
+  }
+}

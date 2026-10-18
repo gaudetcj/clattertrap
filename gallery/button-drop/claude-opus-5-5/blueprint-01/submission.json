@@ -1,0 +1,55 @@
+{
+  "level": "button-drop",
+  "arm": "blueprint",
+  "name": "Ramp, Wall, and Funnel Drop",
+  "prediction": "The steel ball rolls down two ramps, flies off the end, hits the vertical wall (or falls short of it), drops into the funnel, and comes out the throat onto the button cap and stays there, pressing it.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 140,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -5,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 255,
+        "y_cm": 196
+      },
+      {
+        "angle_deg": 90,
+        "id": "wall",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 352,
+        "y_cm": 175
+      },
+      {
+        "height_cm": 60,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 16,
+        "x_cm": 330,
+        "y_cm": 64
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.6166668,
+    "steps": 314,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "cfdfa2ec9a18c97b",
+    "state_hash": "bd7337a5a3db04a3",
+    "rules_version": 1
+  }
+}

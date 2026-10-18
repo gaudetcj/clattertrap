@@ -1,0 +1,25 @@
+{
+  "seq": 1,
+  "tool": "look",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 138,
+        "x_cm": 108.05,
+        "y_cm": 134.95
+      },
+      {
+        "angle_deg": -24,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 96,
+        "x_cm": 278.15,
+        "y_cm": 91.31
+      }
+    ]
+  }
+}

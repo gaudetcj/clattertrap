@@ -1,0 +1,37 @@
+{
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "name": "Rubber Relay Near-Miss",
+  "prediction": "Steel ball rolls down a ramp and knocks a rubber ball off post a; it touches b but then misses c and the bell, so the goal will probably not be met.",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -13.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 75,
+        "x_cm": 68,
+        "y_cm": 253.5
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "rubber",
+        "x_cm": 125,
+        "y_cm": 238.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.091667,
+    "steps": 371,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "0de00adb6ab3d0e4",
+    "state_hash": "61c0007c71ec299c",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -18.3,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 91.5,
+        "y_cm": 228
+      },
+      {
+        "height_cm": 58,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 120,
+        "throat_cm": 16,
+        "x_cm": 275,
+        "y_cm": 122
+      },
+      {
+        "angle_deg": 0,
+        "id": "saw",
+        "kind": "seesaw",
+        "length_cm": 104,
+        "x_cm": 318,
+        "y_cm": 95
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "return-trip",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792351197,
+  "duration_s": 563.5632057,
+  "cost_usd": 0.19038684000000003,
+  "turns": 18,
+  "tool_calls": 17,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

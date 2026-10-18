@@ -1,0 +1,37 @@
+{
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "name": "Tilted Spring Lob",
+  "prediction": "The ball rolls off the ramp onto a flat beam, drops onto the tilted spring pad near x=262, is lobbed up past the ledge's left end with a slow rightward drift, lands on the ledge around x=300, rolls into the slot and rests on the button.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 73,
+        "x_cm": 178.5,
+        "y_cm": 98
+      },
+      {
+        "angle_deg": 11.5,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 263.6,
+        "y_cm": 68.2
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.9750001,
+    "steps": 357,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "6d3673f0e76a7757",
+    "state_hash": "e5a49d94a2b86320",
+    "rules_version": 1
+  }
+}

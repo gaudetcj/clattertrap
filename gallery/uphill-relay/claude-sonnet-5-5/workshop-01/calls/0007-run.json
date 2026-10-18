@@ -1,0 +1,35 @@
+{
+  "seq": 7,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -12.7,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 75,
+        "x_cm": 68,
+        "y_cm": 253
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "rubber",
+        "x_cm": 125,
+        "y_cm": 238.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 7.2750006,
+    "steps": 873,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "2cde0ff12e28e6d4",
+    "state_hash": "bddb440f32a0e8cb",
+    "rules_version": 1
+  }
+}

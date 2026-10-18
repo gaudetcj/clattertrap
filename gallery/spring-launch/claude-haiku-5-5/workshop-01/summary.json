@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "spring-launch",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792292613,
+  "duration_s": 266.858133,
+  "cost_usd": 0.04699593,
+  "turns": 19,
+  "tool_calls": 18,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

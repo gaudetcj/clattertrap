@@ -1,0 +1,45 @@
+{
+  "seq": 8,
+  "tool": "submit",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "s",
+        "kind": "seesaw",
+        "length_cm": 130,
+        "x_cm": 160,
+        "y_cm": 54
+      },
+      {
+        "angle_deg": 0,
+        "id": "stop",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 205,
+        "y_cm": 49.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d",
+        "kind": "domino",
+        "x_cm": 214,
+        "y_cm": 66.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.8333334,
+    "steps": 100,
+    "parts_used": 3,
+    "chain_length": 4,
+    "event_hash": "cc1bbd4f3993a6b0",
+    "state_hash": "32bdc8a09c0bd4d1",
+    "rules_version": 1
+  },
+  "name": "Seesaw Domino Catapult",
+  "prediction": "The steel ball drops onto the seesaw's left end, the right end flips the domino up through the box's open bottom, and it hits the bell at about 0.83 s, ringing it."
+}

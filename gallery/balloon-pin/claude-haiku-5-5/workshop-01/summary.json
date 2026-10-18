@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "balloon-pin",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792291500,
+  "duration_s": 66.420031,
+  "cost_usd": 0.010737289999999998,
+  "turns": 7,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

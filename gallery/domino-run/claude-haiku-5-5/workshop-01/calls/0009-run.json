@@ -1,0 +1,34 @@
+{
+  "seq": 9,
+  "tool": "run",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 150,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 263,
+        "y_cm": 137.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.9583335,
+    "steps": 235,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "64d88087303b2d27",
+    "state_hash": "edbeaa98852e2d40",
+    "rules_version": 1
+  }
+}

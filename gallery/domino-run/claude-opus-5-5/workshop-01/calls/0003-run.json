@@ -1,0 +1,78 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 149,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 161,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 173,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 185,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 197,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 209,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 221,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 233,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 245,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 255,
+        "y_cm": 137.5
+      },
+      {
+        "id": "d11",
+        "kind": "domino",
+        "x_cm": 264.5,
+        "y_cm": 137.5
+      }
+    ]
+  },
+  "problems": [
+    "parts[10] (domino d11): the inventory allows 10 domino parts and this is number 11; remove one"
+  ]
+}

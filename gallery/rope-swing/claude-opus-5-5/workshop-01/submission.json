@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "workshop",
+  "name": "One Rope Swing",
+  "prediction": "The steel ball drops until the 108 cm rope from the hook goes taut, then swings right along the arc and strikes the bell's lower-left side at about 0.9 s, ringing it.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "hook",
+        "b": "ball0",
+        "id": "r1",
+        "kind": "rope",
+        "max_length_cm": 108
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.90000004,
+    "steps": 108,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "fe641f09518f0aca",
+    "state_hash": "9232d5fa24b62a0e",
+    "rules_version": 1
+  }
+}

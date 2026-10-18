@@ -1,0 +1,38 @@
+{
+  "seq": 15,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 83.7,
+        "y_cm": 249.5
+      },
+      {
+        "angle_deg": -27.6,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 146.7,
+        "x_cm": 235,
+        "y_cm": 190
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 15.858335,
+    "steps": 1903,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "7d10b5ced6f71ed6",
+    "state_hash": "0c1db256e28925f8",
+    "rules_version": 1
+  },
+  "name": "Shelf Slide",
+  "prediction": "Ball0 slides down r1, lands on post a, rolls onto r2 and strikes w1 on the shelf, then bounces off to the right and leaves the world; it never reaches post d or the basket, so the goal will not be met."
+}

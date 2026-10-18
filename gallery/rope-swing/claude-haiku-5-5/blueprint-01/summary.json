@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792292070,
+  "duration_s": 51.2587679,
+  "cost_usd": 0.00822716,
+  "turns": 8,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

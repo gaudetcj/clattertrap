@@ -1,0 +1,68 @@
+{
+  "seq": 8,
+  "tool": "run",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b0",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -25.8,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 136,
+        "x_cm": 235,
+        "y_cm": 183.5
+      },
+      {
+        "angle_deg": 10,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 329,
+        "y_cm": 103.7
+      },
+      {
+        "angle_deg": 7.8,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 63,
+        "x_cm": 249,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 35,
+        "id": "r3",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 150,
+        "y_cm": 64
+      },
+      {
+        "angle_deg": 90,
+        "id": "s1",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 379,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": -30,
+        "id": "s2",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 372,
+        "y_cm": 158
+      }
+    ]
+  },
+  "problems": [
+    "parts[6] (beam s2): the inventory allows 6 beam parts and this is number 7; remove one"
+  ]
+}

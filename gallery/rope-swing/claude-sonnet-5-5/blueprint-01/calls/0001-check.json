@@ -1,0 +1,16 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "r1",
+        "kind": "rope",
+        "max_length_cm": 100
+      }
+    ]
+  }
+}

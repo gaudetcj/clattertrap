@@ -1,0 +1,38 @@
+{
+  "level": "balloon-pin",
+  "arm": "blueprint",
+  "name": "Two-Ramp Balloon Slide",
+  "prediction": "The balloon rises from (50, 30), meets the underside of the 25-degree ramp near x=46, slides up both beams at about 0.6 m/s, leaves the upper end near (315, 164), then rises straight up and touches the pin tip near y=265, popping it.",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 25,
+        "id": "ramp_low",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 106,
+        "y_cm": 79.3
+      },
+      {
+        "angle_deg": 25,
+        "id": "ramp_high",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 242.4,
+        "y_cm": 142.9
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 6.591667,
+    "steps": 791,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "c01d9a7507dc8b37",
+    "state_hash": "0578fba8f805dc4b",
+    "rules_version": 1
+  }
+}

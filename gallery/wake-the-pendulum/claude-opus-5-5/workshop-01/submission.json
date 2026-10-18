@@ -1,0 +1,38 @@
+{
+  "level": "wake-the-pendulum",
+  "arm": "workshop",
+  "name": "Ramp Shot and Chute",
+  "prediction": "The steel ball rolls down the ramp and strikes the pendulum, which swings back and knocks the wood ball onto the post; the wood ball then drops onto the chute and rings the bell at about 3.5 s.",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 127.7,
+        "x_cm": 90,
+        "y_cm": 201.3
+      },
+      {
+        "angle_deg": 48.2,
+        "id": "chute",
+        "kind": "beam",
+        "length_cm": 51,
+        "x_cm": 71,
+        "y_cm": 69
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.5000002,
+    "steps": 420,
+    "parts_used": 2,
+    "chain_length": 4,
+    "event_hash": "5af0fe448f9d43da",
+    "state_hash": "e5296994f2e4a7e0",
+    "rules_version": 1
+  }
+}

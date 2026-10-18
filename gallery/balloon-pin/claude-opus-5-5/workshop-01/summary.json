@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-5-5",
+  "level": "balloon-pin",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792291502,
+  "duration_s": 67.2047293,
+  "cost_usd": 0.20966939999999998,
+  "turns": 8,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

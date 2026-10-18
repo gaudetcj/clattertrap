@@ -1,0 +1,46 @@
+{
+  "level": "basket-fill",
+  "arm": "workshop",
+  "name": "Two ramps and a backstop",
+  "prediction": "Balls land on two stepped ramps sloping down-left, roll off the end, hit the vertical backstop and drop into the basket, all three settling inside by about 3.6 s.",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 10,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 300,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": 10,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 150,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 90,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 24,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.5750003,
+    "steps": 429,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "5bc9758b4fe98ad6",
+    "state_hash": "60a6d0537aadcec8",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-5-5",
+  "level": "basket-fill",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792291579,
+  "duration_s": 45.3951431,
+  "cost_usd": 0.1593486,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

@@ -1,0 +1,47 @@
+{
+  "level": "funnel-basket",
+  "arm": "blueprint",
+  "name": "Gull-Wing Funnel",
+  "prediction": "Ball1 drops straight through the wide funnel, while ball0 and ball2 roll down the two inward-sloping beams, fly into the funnel mouth, and all three funnel through the throat to settle in the basket.",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "height_cm": 80,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 20,
+        "x_cm": 200,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": -15,
+        "id": "left",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 90,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": 15,
+        "id": "right",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 310,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.1166668,
+    "steps": 254,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "ef35fd8c0864e2e4",
+    "state_hash": "743d26974e886b48",
+    "rules_version": 1
+  }
+}

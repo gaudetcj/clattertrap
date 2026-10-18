@@ -1,0 +1,90 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "ledge",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 269,
+        "y_cm": 130
+      },
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 141,
+        "y_cm": 137.3
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 159,
+        "y_cm": 137.3
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 177,
+        "y_cm": 137.3
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 195,
+        "y_cm": 137.3
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 213,
+        "y_cm": 137.3
+      },
+      {
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 231,
+        "y_cm": 137.3
+      },
+      {
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 249,
+        "y_cm": 137.3
+      },
+      {
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 264,
+        "y_cm": 142.3
+      },
+      {
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 270.5,
+        "y_cm": 142.3
+      },
+      {
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 275,
+        "y_cm": 142.3
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 5.7250004,
+    "steps": 687,
+    "parts_used": 11,
+    "chain_length": 11,
+    "event_hash": "2674c738d1e445f1",
+    "state_hash": "498890d8a8832c85",
+    "rules_version": 1
+  },
+  "name": "Ledge Leap Domino Cascade",
+  "prediction": "The ball rolls off the ramp and knocks over the seven shelf dominoes; the last one tips the dominoes on the raised ledge, and the final two (d9, d10) topple off the ledge's edge at x=279 into the basket."
+}

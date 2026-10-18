@@ -1,0 +1,30 @@
+{
+  "level": "pendulum-bell",
+  "arm": "workshop",
+  "name": "Left-Release Pendulum",
+  "prediction": "A 120 cm pendulum pinned at (280, 200) released from -50° swings down to about (285, 80) at roughly 2.9 m/s and strikes the bell's left side, ringing it.",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": -50,
+        "id": "swing",
+        "kind": "pendulum",
+        "length_cm": 120,
+        "x_cm": 280,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.6,
+    "steps": 72,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "29bc8abe0aa5c9b9",
+    "state_hash": "d102c05385cd6a9d",
+    "rules_version": 1
+  }
+}

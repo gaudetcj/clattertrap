@@ -1,0 +1,46 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 30,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 149,
+        "x_cm": 95,
+        "y_cm": 132.5
+      },
+      {
+        "angle_deg": 30,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 149,
+        "x_cm": 225.6,
+        "y_cm": 207.8
+      },
+      {
+        "angle_deg": 30,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 24,
+        "x_cm": 300.6,
+        "y_cm": 251.3
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 5.966667,
+    "steps": 716,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "9420d186040a0ead",
+    "state_hash": "1dafcb7bb2de7712",
+    "rules_version": 1
+  },
+  "name": "Rooftop Ramp",
+  "prediction": "The balloon rises, slides up the underside of the 30-degree beam chain to its end near x=312, then rises into the pin at (320, 290) and pops."
+}

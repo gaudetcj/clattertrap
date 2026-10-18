@@ -1,0 +1,52 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 105,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -8,
+        "id": "rampB",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 235,
+        "y_cm": 205
+      },
+      {
+        "angle_deg": 12,
+        "id": "rampC",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 290,
+        "y_cm": 167.6
+      },
+      {
+        "angle_deg": 90,
+        "id": "wall",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 366.5,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": 25,
+        "id": "chute",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 70,
+        "y_cm": 70
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam rampB): overlaps pend by 30.4 cm at the start; move it up to y_cm = 235.4"
+  ]
+}

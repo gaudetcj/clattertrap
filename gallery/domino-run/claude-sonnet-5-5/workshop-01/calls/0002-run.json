@@ -1,0 +1,32 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 250,
+        "y_cm": 137.2
+      },
+      {
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 262,
+        "y_cm": 137.2
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.1166668,
+    "steps": 374,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "b8e508a0b69a92b2",
+    "state_hash": "90ff9d57d1a60b6c",
+    "rules_version": 1
+  }
+}

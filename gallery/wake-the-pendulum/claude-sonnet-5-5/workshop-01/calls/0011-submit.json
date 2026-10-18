@@ -1,0 +1,38 @@
+{
+  "seq": 11,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 82,
+        "y_cm": 198
+      },
+      {
+        "angle_deg": 20,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 106,
+        "x_cm": 96,
+        "y_cm": 73
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 4.441667,
+    "steps": 533,
+    "parts_used": 2,
+    "chain_length": 4,
+    "event_hash": "d51f81b4c2d64c18",
+    "state_hash": "d8c3dc76f63a9153",
+    "rules_version": 1
+  },
+  "name": "Two Ramps and a Wake-Up Call",
+  "prediction": "Ball0 rolls off the upper ramp into the pendulum, which swings back and knocks the wood ball onto the post, then down the lower ramp into the bell at about 4.4 s."
+}

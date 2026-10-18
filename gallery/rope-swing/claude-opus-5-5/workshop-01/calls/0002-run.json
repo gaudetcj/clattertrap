@@ -1,0 +1,27 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "hook",
+        "b": "ball0",
+        "id": "r1",
+        "kind": "rope",
+        "max_length_cm": 108
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.90000004,
+    "steps": 108,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "fe641f09518f0aca",
+    "state_hash": "9232d5fa24b62a0e",
+    "rules_version": 1
+  }
+}

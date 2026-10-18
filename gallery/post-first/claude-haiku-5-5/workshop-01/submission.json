@@ -1,0 +1,38 @@
+{
+  "level": "post-first",
+  "arm": "workshop",
+  "name": "Two Ramps to the Post",
+  "prediction": "The falling steel ball lands on a 27-degree ramp, rolls to the level post, touches it, then rolls down a second ramp and strikes the bell from above-left, ringing it in about 1.6 s.",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -27,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 110,
+        "y_cm": 165
+      },
+      {
+        "angle_deg": -16.1,
+        "id": "rampB",
+        "kind": "beam",
+        "length_cm": 94,
+        "x_cm": 281,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.5666667,
+    "steps": 188,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "52d3ca3889b64c29",
+    "state_hash": "9d03b70667aa0a67",
+    "rules_version": 1
+  }
+}

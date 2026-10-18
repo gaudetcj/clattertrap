@@ -1,0 +1,38 @@
+{
+  "level": "post-first",
+  "arm": "blueprint",
+  "name": "Two-Ramp Post Relay",
+  "prediction": "The steel ball drops onto the shallow first ramp, rolls down onto the post, rolls off its right end onto the second ramp, and runs off that ramp's end straight into the bell, ringing it after touching the post.",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 138,
+        "x_cm": 108.05,
+        "y_cm": 134.95
+      },
+      {
+        "angle_deg": -24,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 96,
+        "x_cm": 278.15,
+        "y_cm": 91.31
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.3083334,
+    "steps": 277,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "32c7b1e5ad1350d0",
+    "state_hash": "1d8472c80f40f3f5",
+    "rules_version": 1
+  }
+}

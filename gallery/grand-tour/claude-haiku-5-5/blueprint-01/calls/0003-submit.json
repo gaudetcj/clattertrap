@@ -1,0 +1,37 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "id": "catch",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 175,
+        "y_cm": 208.4
+      },
+      {
+        "angle_deg": -90,
+        "id": "swing",
+        "kind": "pendulum",
+        "length_cm": 100,
+        "x_cm": 260.9,
+        "y_cm": 162
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "fbc93002a93a4941",
+    "state_hash": "febd7500387c4692",
+    "rules_version": 1
+  },
+  "name": "Post Sitter and Gap Swinger",
+  "prediction": "A wood ball resting just above the post touches it within about 0.01 s, then a steel pendulum released level to the left swings under the left wall and strikes the bell at about 3 m/s near 0.8 s. Reasoned, not simulated: no runs were available."
+}

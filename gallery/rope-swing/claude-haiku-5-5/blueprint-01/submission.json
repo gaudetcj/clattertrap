@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "name": "Hook Pendulum",
+  "prediction": "The steel ball falls about 20 cm until the 100 cm rope to the hook goes taut, then swings clockwise on a 100 cm arc about the hook at roughly 2 m/s and strikes the bell's upper-left side, well above the 0.2 m/s steel threshold, so it should ring.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "tether",
+        "kind": "rope",
+        "max_length_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.86666673,
+    "steps": 104,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "9a29c480a5beab1a",
+    "state_hash": "bf7940157d049e05",
+    "rules_version": 1
+  }
+}

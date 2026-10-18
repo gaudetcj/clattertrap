@@ -1,0 +1,16 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 5,
+        "id": "spring",
+        "kind": "spring_pad",
+        "x_cm": 170,
+        "y_cm": 95
+      }
+    ]
+  }
+}

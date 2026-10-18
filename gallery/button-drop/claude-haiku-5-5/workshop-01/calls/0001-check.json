@@ -1,0 +1,27 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 130,
+        "y_cm": 160
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 80,
+        "y_cm": 230
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (ball ball1): the inventory allows 0 ball parts and this is number 1; remove one"
+  ]
+}

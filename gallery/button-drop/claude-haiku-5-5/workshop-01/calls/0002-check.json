@@ -1,0 +1,17 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 130,
+        "y_cm": 160
+      }
+    ]
+  }
+}

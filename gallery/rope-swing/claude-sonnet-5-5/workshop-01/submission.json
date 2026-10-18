@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "workshop",
+  "name": "Hook Swing",
+  "prediction": "The ball falls, the 100 cm rope to the hook goes taut, and the ball swings into the bell at about 0.87 s and rings it.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "r",
+        "kind": "rope",
+        "max_length_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.86666673,
+    "steps": 104,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "9a29c480a5beab1a",
+    "state_hash": "bf7940157d049e05",
+    "rules_version": 1
+  }
+}

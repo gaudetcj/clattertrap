@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 99,
+        "x_cm": 83.5,
+        "y_cm": 221
+      },
+      {
+        "angle_deg": 35,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 62,
+        "y_cm": 82
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.5333335,
+    "steps": 304,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "1bf94577aea2598c",
+    "state_hash": "3011e472dc6a3e1a",
+    "rules_version": 1
+  },
+  "name": "Ramp, Swing, Roll",
+  "prediction": "Ball0 rolls down a ramp and hits the pendulum, which swings back and knocks the wood ball off the ledge onto the post, then down a second ramp to ring the bell, though the pendulum hit is uncertain."
+}

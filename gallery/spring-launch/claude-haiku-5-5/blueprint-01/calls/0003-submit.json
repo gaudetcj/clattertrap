@@ -1,0 +1,29 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 5,
+        "id": "spring",
+        "kind": "spring_pad",
+        "x_cm": 170,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.7500002,
+    "steps": 330,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "02d200cbb5c410aa",
+    "state_hash": "3325e54c1d7e7087",
+    "rules_version": 1
+  },
+  "name": "Tilted Pad Lob",
+  "prediction": "The ball rolls off the ramp, drops onto the tilted spring pad, and is kicked up and right to land on the left ledge near x≈290; it should then roll at about 1 m/s into the slot and settle on the button, though the landing speed and spot are estimates I could not test."
+}

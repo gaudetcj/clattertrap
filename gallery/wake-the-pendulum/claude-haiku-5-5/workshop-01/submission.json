@@ -1,0 +1,53 @@
+{
+  "level": "wake-the-pendulum",
+  "arm": "workshop",
+  "name": "Steel Slide Chain",
+  "prediction": "A steel ball rolls down a steep beam on the right, knocks the pendulum weight left into wood ball1, which flies onto the post, rolls down a second ramp onto the bell, and rings it at about 1.9 s.",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "catch0",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 50,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 49,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 257.5,
+        "y_cm": 211
+      },
+      {
+        "id": "trig",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 283.7,
+        "y_cm": 254.4
+      },
+      {
+        "angle_deg": 40,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 52,
+        "x_cm": 67,
+        "y_cm": 86
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.8916668,
+    "steps": 227,
+    "parts_used": 4,
+    "chain_length": 5,
+    "event_hash": "20b4d426692dbdcd",
+    "state_hash": "2d30f2e8aefefee9",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 10,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 300,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 10,
+        "id": "rampB",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 150,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": 75,
+        "id": "backstop",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 40,
+        "y_cm": 140
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.7416668,
+    "steps": 449,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "9fd5f6d50c4fc9da",
+    "state_hash": "eaa583411b3f51b3",
+    "rules_version": 1
+  },
+  "name": "Two-Step Ramp and Overhang Backstop",
+  "prediction": "The three wood balls land on the upper ramp, roll left down both ramps, fly off the end into the tilted backstop, and drop into the basket, where at least two come to rest."
+}

@@ -1,0 +1,25 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 99,
+        "x_cm": 83.5,
+        "y_cm": 221
+      },
+      {
+        "angle_deg": 35,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 62,
+        "y_cm": 82
+      }
+    ]
+  }
+}

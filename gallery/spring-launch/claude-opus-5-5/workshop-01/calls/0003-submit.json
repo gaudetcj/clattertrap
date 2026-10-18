@@ -1,0 +1,29 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 4,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 205,
+        "y_cm": 3
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.3666668,
+    "steps": 284,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "76032494c88a6ae1",
+    "state_hash": "575fc19d06104057",
+    "rules_version": 1
+  },
+  "name": "Tilted Floor Kicker",
+  "prediction": "The wood ball rolls off the ramp onto the floor spring pad, tilted 4 degrees back, which throws it high with reduced forward speed onto the long ledge; it rolls into the slot and presses the button at about 2.37 s."
+}

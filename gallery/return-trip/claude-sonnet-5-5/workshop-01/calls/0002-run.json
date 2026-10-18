@@ -1,0 +1,68 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b0",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -25.8,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 136,
+        "x_cm": 235,
+        "y_cm": 183.5
+      },
+      {
+        "angle_deg": 10,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 329,
+        "y_cm": 103.7
+      },
+      {
+        "angle_deg": 7.8,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 63,
+        "x_cm": 249,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 35,
+        "id": "r3",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 150,
+        "y_cm": 64
+      },
+      {
+        "angle_deg": 90,
+        "id": "s1",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 379,
+        "y_cm": 138
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 10.533334,
+    "steps": 1264,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "ab1c269f75daa3b4",
+    "state_hash": "e4a63fb232b8d75d",
+    "rules_version": 1
+  }
+}

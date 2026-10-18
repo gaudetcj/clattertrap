@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-5-5",
+  "level": "funnel-basket",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792292001,
+  "duration_s": 29.8816194,
+  "cost_usd": 0.00568208,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

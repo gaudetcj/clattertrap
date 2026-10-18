@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-5-5",
+  "level": "seesaw-launch",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792291868,
+  "duration_s": 46.8625305,
+  "cost_usd": 0.1627484,
+  "turns": 7,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

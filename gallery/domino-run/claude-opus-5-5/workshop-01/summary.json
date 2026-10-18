@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-5-5",
+  "level": "domino-run",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792291652,
+  "duration_s": 126.7758658,
+  "cost_usd": 0.4455492,
+  "turns": 11,
+  "tool_calls": 10,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

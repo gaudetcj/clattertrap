@@ -1,0 +1,38 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 141,
+        "x_cm": 108,
+        "y_cm": 146
+      },
+      {
+        "angle_deg": -25.5,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 93,
+        "x_cm": 276,
+        "y_cm": 92
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.9333334,
+    "steps": 232,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "66e7e6e38fa9b428",
+    "state_hash": "224bef90147426d0",
+    "rules_version": 1
+  },
+  "name": "Two-Ramp Post Relay",
+  "prediction": "The steel ball lands on the first ramp, rolls across the post at about 1.36 s, drops onto the second ramp, and hits the bell at about 1.93 s, so the goal is met."
+}

@@ -1,0 +1,67 @@
+{
+  "seq": 2,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 76,
+        "x_cm": 62,
+        "y_cm": 248
+      },
+      {
+        "height_cm": 50,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 120,
+        "throat_cm": 16,
+        "x_cm": 172,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": -30,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 174,
+        "y_cm": 53
+      },
+      {
+        "angle_deg": 0,
+        "id": "ledge",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 244,
+        "y_cm": 40
+      },
+      {
+        "id": "wb",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 252,
+        "y_cm": 48.5
+      },
+      {
+        "angle_deg": -10,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 280,
+        "y_cm": 25
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.516667,
+    "steps": 422,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "05c3372f24b5ef4d",
+    "state_hash": "8bf52c1e3740a97b",
+    "rules_version": 1
+  }
+}

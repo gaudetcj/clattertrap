@@ -1,0 +1,29 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 143,
+        "y_cm": 173
+      },
+      {
+        "height_cm": 40,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 52
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (funnel f1): centre (330, 52) is outside every build zone; move it inside x 20..380, y 60..300"
+  ]
+}

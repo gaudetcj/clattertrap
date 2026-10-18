@@ -1,0 +1,38 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -10,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 250,
+        "y_cm": 120
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.9416667,
+    "steps": 233,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "b98c4cc6f7143c95",
+    "state_hash": "092ba29df78690a3",
+    "rules_version": 1
+  },
+  "name": "Two-ramp bell drop",
+  "prediction": "The ball rolls down the first ramp, drops onto the second, rolls off its end and hits the bell at about 1.9 s."
+}

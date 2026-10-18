@@ -1,0 +1,39 @@
+{
+  "seq": 8,
+  "tool": "submit",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 143,
+        "y_cm": 173
+      },
+      {
+        "height_cm": 40,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 62
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.8750001,
+    "steps": 225,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "6b0aee4280f6bbe0",
+    "state_hash": "9af4001e471e3482",
+    "rules_version": 1
+  },
+  "name": "Beam Chute into Funnel",
+  "prediction": "The fixed steel ball drops onto a 25-degree beam, rolls down it and leaves the right end, falls into the wide funnel, is funnelled through its 14 cm throat, and lands on the button cap to press it."
+}

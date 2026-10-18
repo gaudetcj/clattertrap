@@ -1,0 +1,59 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 82,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 0,
+        "id": "shelf",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 150
+      },
+      {
+        "id": "w",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 248,
+        "y_cm": 158
+      },
+      {
+        "height_cm": 30,
+        "id": "f",
+        "kind": "funnel",
+        "mouth_cm": 44,
+        "throat_cm": 18,
+        "x_cm": 288,
+        "y_cm": 105
+      },
+      {
+        "angle_deg": -20,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 288,
+        "y_cm": 55
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.025,
+    "steps": 363,
+    "parts_used": 5,
+    "chain_length": 3,
+    "event_hash": "38fb2b8c025ed726",
+    "state_hash": "f5ffde18277fcce1",
+    "rules_version": 1
+  }
+}

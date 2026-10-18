@@ -1,0 +1,92 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 175,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 185,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 195,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 205,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 215,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 225,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 235,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 245,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 255,
+        "y_cm": 137.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 262,
+        "y_cm": 137.3
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 7.7250004,
+    "steps": 927,
+    "parts_used": 10,
+    "chain_length": 11,
+    "event_hash": "3de60d8462d33870",
+    "state_hash": "fbb0524f0a26c00d",
+    "rules_version": 1
+  },
+  "name": "Shelf Domino Cascade",
+  "prediction": "The ball rolls off the ramp onto the shelf and topples the 10-domino line, and the last few dominoes tip off the shelf edge, though I expect the ball itself to overshoot the basket and the two dominoes landing in the basket to be marginal."
+}

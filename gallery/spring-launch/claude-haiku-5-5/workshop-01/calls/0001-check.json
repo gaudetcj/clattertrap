@@ -1,0 +1,26 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": -40,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 212,
+        "y_cm": 90
+      },
+      {
+        "id": "drop",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 212,
+        "y_cm": 98
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (ball drop): the inventory allows 0 ball parts and this is number 1; remove one"
+  ]
+}

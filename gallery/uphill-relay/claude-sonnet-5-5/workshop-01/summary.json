@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-5-5",
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792349822,
+  "duration_s": 191.2489283,
+  "cost_usd": 0.36018590000000006,
+  "turns": 12,
+  "tool_calls": 11,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

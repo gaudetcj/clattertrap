@@ -1,0 +1,29 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 167,
+        "y_cm": 90
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.516667,
+    "steps": 302,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "d7849b9c4a9a7166",
+    "state_hash": "f005f9c16a70d4c4",
+    "rules_version": 1
+  },
+  "name": "Single Pad Lob",
+  "prediction": "The ball rolls off the ramp, hits the spring pad near x=167, arcs onto the left ledge around x=300, hops right into the slot and settles on the button, though it is untested."
+}

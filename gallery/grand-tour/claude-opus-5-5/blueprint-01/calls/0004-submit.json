@@ -1,0 +1,47 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 92.5,
+        "y_cm": 219.6
+      },
+      {
+        "height_cm": 75,
+        "id": "hopper",
+        "kind": "funnel",
+        "mouth_cm": 110,
+        "throat_cm": 20,
+        "x_cm": 240,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": 0,
+        "id": "lever",
+        "kind": "seesaw",
+        "length_cm": 150,
+        "x_cm": 300,
+        "y_cm": 85
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.2833335,
+    "steps": 274,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "225a88329a579e39",
+    "state_hash": "7d3c2ef50351a680",
+    "rules_version": 1
+  },
+  "name": "Ramp, Post, Hopper, Catapult Plank",
+  "prediction": "The steel ball lands on the ramp, rolls down onto the post, falls into the funnel, drops onto the seesaw's left end, and the right end swings up through the box's open bottom to strike and ring the bell."
+}

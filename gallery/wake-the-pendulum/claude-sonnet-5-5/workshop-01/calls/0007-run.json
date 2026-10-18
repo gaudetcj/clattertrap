@@ -1,0 +1,28 @@
+{
+  "seq": 7,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 82,
+        "y_cm": 198
+      },
+      {
+        "angle_deg": 15,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 95,
+        "y_cm": 72
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam b2): overlaps bell by 0.6 cm at the start; move it up to y_cm = 72.6"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -21,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 126,
+        "y_cm": 173.2
+      },
+      {
+        "angle_deg": -21,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 268,
+        "y_cm": 118.7
+      }
+    ]
+  }
+}

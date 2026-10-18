@@ -1,0 +1,61 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "shelf",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 60,
+        "y_cm": 250
+      },
+      {
+        "id": "striker",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 355,
+        "y_cm": 196
+      },
+      {
+        "angle_deg": 12,
+        "id": "rampC",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 290,
+        "y_cm": 167.6
+      },
+      {
+        "angle_deg": 20,
+        "id": "lander",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 136.5,
+        "y_cm": 104.5
+      },
+      {
+        "angle_deg": 25,
+        "id": "chute",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 70,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.8083334,
+    "steps": 337,
+    "parts_used": 5,
+    "chain_length": 5,
+    "event_hash": "e770099ad4a95f57",
+    "state_hash": "1096e09c3b8f0061",
+    "rules_version": 1
+  },
+  "name": "Right-Hook Pendulum Relay",
+  "prediction": "The steel striker rolls down the long ramp into the pendulum weight, which swings left and knocks the wood ball off its ledge onto the lander and post, then down the chute into the bell, while ball0 is shelved off the left edge."
+}

@@ -1,0 +1,30 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": -60,
+        "id": "swing",
+        "kind": "pendulum",
+        "length_cm": 120,
+        "x_cm": 287,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.5916667,
+    "steps": 71,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "b614bcc1dea742a3",
+    "state_hash": "f9b2cf6ded993234",
+    "rules_version": 1
+  },
+  "name": "Single Swing into the Bell",
+  "prediction": "The steel pendulum weight, released from rest 60 degrees to the left of vertical on a 120 cm rope pinned at (287, 200), swings down with about 3.4 m/s and strikes the bell's side at its lowest point near (287, 80), well above the 0.2 m/s steel threshold, so the bell rings."
+}

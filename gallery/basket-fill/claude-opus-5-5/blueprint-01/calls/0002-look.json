@@ -1,0 +1,33 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 10,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 300,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 10,
+        "id": "rampB",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 150,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": 75,
+        "id": "backstop",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 40,
+        "y_cm": 140
+      }
+    ]
+  }
+}

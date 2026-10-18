@@ -1,0 +1,46 @@
+{
+  "level": "balloon-pin",
+  "arm": "blueprint",
+  "name": "Stairway to the Needle",
+  "prediction": "The balloon rises into the first 15° ramp, slides up-right along both ramps' undersides, rounds the end of ramp2 into the 23 cm gap beside the vertical stop at x≈320, and floats straight up into the pin, popping within about 4 s.",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 102.55,
+        "y_cm": 183.8
+      },
+      {
+        "angle_deg": 15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 235.55,
+        "y_cm": 225.6
+      },
+      {
+        "angle_deg": 90,
+        "id": "stop",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 334,
+        "y_cm": 225
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 8.566668,
+    "steps": 1028,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "7e7cf197ddb4d861",
+    "state_hash": "ec5cf87d591133dc",
+    "rules_version": 1
+  }
+}
