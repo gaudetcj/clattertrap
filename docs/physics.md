@@ -66,7 +66,7 @@ A balloon has density 1 kg/m², a gravity scale of -0.5 so it rises, and linear 
 
 ### Bell
 
-The bell collider reports contact forces above `bell_min_impulse_ns / dt_s`. The simulator converts the reported force back to an impulse and rings when it reaches 0.2 N·s. A wood ball at 1 m/s or a steel ball at 0.2 m/s is enough.
+The bell collider reports contact forces above `bell_min_impulse_ns / dt_s`. The simulator converts the reported force back to an impulse and rings when it reaches 0.2 N·s. A wood ball at 1 m/s or a steel ball at 0.2 m/s is enough. Only a dynamic part rings it. A beam placed against the bell gets a large impulse from the solver on the first step, and a beam the bell swings into gets one too, but neither is a blow, so a static part never rings the bell.
 
 ### Button
 

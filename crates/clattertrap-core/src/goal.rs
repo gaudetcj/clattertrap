@@ -190,7 +190,7 @@ impl Tracker {
         match self.kind {
             Kind::Ring => step.impulses.iter().any(|&(a, b, imp)| {
                 imp >= rules.bell_min_impulse_ns
-                    && ((a == t && self.complete(b)) || (b == t && self.complete(a)))
+                    && ((a == t && self.rings(world, b)) || (b == t && self.rings(world, a)))
             }),
             Kind::Press {
                 rest_y_m,
@@ -221,6 +221,12 @@ impl Tracker {
             }
             Kind::Pop => step.popped.contains(&t) && self.complete(t),
         }
+    }
+
+    /// Whether a part can ring the bell: a dynamic part whose chain is complete. A static part never
+    /// does, since the push the solver puts on a beam resting against the bell is not a blow.
+    fn rings(&mut self, world: &World, part: PartId) -> bool {
+        world.is_dynamic(part) && self.complete(part)
     }
 
     /// Whether a part's chain has touched every waypoint.

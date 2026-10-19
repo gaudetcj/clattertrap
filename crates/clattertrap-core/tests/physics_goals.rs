@@ -66,6 +66,19 @@ fn a_dropped_steel_ball_rings_the_bell_and_ends_the_run() {
 }
 
 #[test]
+fn a_beam_pushed_into_the_bell_at_the_start_does_not_ring_it() {
+    // The beam's corner sits 2 mm inside the bell, within the overlap tolerance; the solver's push-out
+    // against a static body is a large impulse, but a static part is not a blow.
+    let lv = level_with_goal(vec![bell_at(360.0, 100.0)], ring(&[]));
+    let r = finished(&lv, &scene(vec![beam("drop", 330.0, 128.0, 70.0, -28.0)]));
+    assert!(
+        !r.outcome.goal_met,
+        "a static beam rang the bell at {} s",
+        r.outcome.time_s
+    );
+}
+
+#[test]
 fn a_feather_touch_does_not_ring_the_bell() {
     let r = Rules::V1;
     let y = 100.0 + (r.bell_radius_m + r.ball_radius_m) * 100.0 + 0.5;

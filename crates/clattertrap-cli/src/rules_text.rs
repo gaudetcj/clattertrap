@@ -70,7 +70,7 @@ pub fn rules_text(rules: &Rules) -> String {
         format!("| rope | a, b, max_length_cm ({}) | no body | ties the centres of parts a and b; slack until taut, then keeps them within that length |", range(rules.rope_length)),
         String::new(),
         "Goal objects, which only a level places".to_owned(),
-        format!("| bell | brass disc of radius {} cm hung below its anchor | rings when hit hard enough: a wood ball at {:.1} m/s or a steel ball at {:.1} m/s |", cm(rules.bell_radius_m), rules.bell_min_impulse_ns / wood, rules.bell_min_impulse_ns / steel),
+        format!("| bell | brass disc of radius {} cm hung below its anchor | rings when hit hard enough: a wood ball at {:.1} m/s or a steel ball at {:.1} m/s; only a moving part rings it, never a beam or another fixed part |", cm(rules.bell_radius_m), rules.bell_min_impulse_ns / wood, rules.bell_min_impulse_ns / steel),
         format!("| button | {cap_w} by {cap_h} cm cap on a spring | pressed when pushed down its full travel and held there |"),
         format!("| basket | open box with {} cm walls | counts objects that come to rest inside it |", cm(rules.basket_wall_m)),
         String::new(),
