@@ -13,7 +13,7 @@ Commands:
   check        Validate a scene file against its level; exits 1 with the problems
   look         Write a PNG of a scene at the start of its run
   run          Run a scene to its end and print the outcome as JSON
-  arena        Run a Claude model through the contestant tools and save every run (the pilot)
+  arena        Run a model through the contestant tools and save every run: Claude Code, or a chat endpoint
   report       Summarize a directory of runs: levels solved per model and arm, attempts, and exclusions
   leaderboard  Levels solved per model and arm over the gallery, ranked; --markdown for the README block
   promote      Copy counted pilot runs into the gallery once their stored outcomes still hold

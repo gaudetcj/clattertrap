@@ -1,5 +1,6 @@
 //! What every provider is given for one session and what it hands back.
 
+use crate::mcp::arm::Arm;
 use crate::records::transcript::Record;
 use anyhow::Result;
 use std::future::Future;
@@ -11,6 +12,12 @@ use std::time::Duration;
 pub struct Session<'a> {
     /// The run directory, also the session's working directory.
     pub dir: &'a Path,
+    /// This binary, which serves the MCP tools.
+    pub exe: &'a Path,
+    /// The level id.
+    pub level: &'a str,
+    /// The arm.
+    pub arm: Arm,
     /// The filled contestant prompt.
     pub prompt: &'a str,
     /// The wall clock for the whole session.

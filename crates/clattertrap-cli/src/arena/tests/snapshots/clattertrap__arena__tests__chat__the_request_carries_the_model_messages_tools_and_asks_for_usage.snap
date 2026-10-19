@@ -1,0 +1,52 @@
+---
+source: crates/clattertrap-cli/src/arena/tests/chat.rs
+expression: "serde_json::to_string_pretty(&body).unwrap()"
+---
+{
+  "messages": [
+    {
+      "content": "Build a machine.",
+      "role": "system"
+    },
+    {
+      "content": "Your level is bell-drop.",
+      "role": "user"
+    }
+  ],
+  "model": "openai/gpt-5-mini",
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "function": {
+        "description": "Validate a scene.",
+        "name": "check",
+        "parameters": {
+          "properties": {
+            "scene": {
+              "description": "The scene."
+            }
+          },
+          "required": [
+            "scene"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "function"
+    },
+    {
+      "function": {
+        "description": "Every level.",
+        "name": "levels",
+        "parameters": {
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "function"
+    }
+  ],
+  "usage": {
+    "include": true
+  }
+}

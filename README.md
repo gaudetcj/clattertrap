@@ -46,7 +46,7 @@ clattertrap promote pilot/runs/<model>/<level>/<arm>-01
 just verify
 ```
 
-`just pilot` runs Claude Code headless against `clattertrap mcp`, the contestant's only tools: `rules`, `levels`, `level`, `check`, `look`, `run`, and `submit`. Every call, the submission, and the transcript are saved under `pilot/runs/`, and `promote` copies a counted run into `gallery/` once its outcomes re-simulate. The gallery is maintainer-only: a run can be re-verified but not yet attested to the model that made it, so pull requests of promoted runs are not taken.
+`just pilot` runs Claude Code headless against `clattertrap mcp`, the contestant's only tools: `rules`, `levels`, `level`, `check`, `look`, `run`, and `submit`. With a fifth argument, an OpenAI-compatible chat endpoint such as OpenRouter or a local llama.cpp server plays the same session with the same tools, prompt, and caps, reading its key from `OPENROUTER_API_KEY`; the endpoint has to accept image parts, since every contestant gets the pictures. Every call, the submission, and the transcript are saved under `pilot/runs/`, and `promote` copies a counted run into `gallery/` once its outcomes re-simulate. The gallery is maintainer-only: a run can be re-verified but not yet attested to the model that made it, so pull requests of promoted runs are not taken.
 
 ## How it works
 

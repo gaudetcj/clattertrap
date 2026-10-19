@@ -4,6 +4,7 @@
 use std::path::{Path, PathBuf};
 use std::process::{Command, Output};
 
+pub mod fake_endpoint;
 pub mod mcp;
 
 /// Runs `clattertrap` with `args` from the repository root.

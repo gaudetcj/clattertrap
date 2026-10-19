@@ -1,15 +1,19 @@
 //! The arena runner: drives a contestant through the MCP tools and saves every run. Providers:
 //! Claude Code headless, and a chat endpoint.
 
+mod chat;
 mod claude;
+mod endpoint;
 mod provider;
 mod status;
 mod stream;
+mod tools;
 
 #[cfg(test)]
 mod tests;
 
 pub use claude::ClaudeCode;
+pub use endpoint::Endpoint;
 pub use provider::{Provider, Session};
 
 use crate::catalog;
@@ -169,6 +173,9 @@ async fn one_run<P: Provider>(
     let prompt = fill_prompt(level, opts.arm.run_budget());
     let session = Session {
         dir: &dir,
+        exe: &exe,
+        level,
+        arm: opts.arm,
         prompt: &prompt,
         wall_clock: Duration::from_secs(Arm::WALL_CLOCK_S),
         max_budget_usd: Arm::MAX_BUDGET_USD,

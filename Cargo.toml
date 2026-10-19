@@ -26,7 +26,8 @@ tempfile = "3"
 thiserror = "2"
 tiny-skia = { version = "0.11", features = ["png-format"] }
 tokio = { version = "1", default-features = false, features = ["rt", "macros", "io-std", "io-util", "process", "time"] }
-rmcp = { version = "=3.5.1", default-features = false, features = ["server", "macros", "transport-io", "schemars"] }
+rmcp = { version = "=3.5.1", default-features = false, features = ["server", "macros", "transport-io", "schemars", "client", "transport-child-process"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
 wasm-bindgen = "=0.2.129"
 wasm-bindgen-test = "=0.3.79"
 

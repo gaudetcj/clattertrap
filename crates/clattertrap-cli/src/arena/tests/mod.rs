@@ -4,6 +4,7 @@
 use super::claude::{command_args, is_claude_model};
 use super::next_run_dir;
 
+mod chat;
 mod status;
 mod stream;
 use crate::mcp::arm::Arm;

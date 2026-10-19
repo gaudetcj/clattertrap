@@ -36,9 +36,9 @@ verify:
 hero level="seesaw-launch" arm="blueprint":
     cargo xtask hero {{level}} {{arm}}
 
-# Headless contestant runs against clattertrap mcp, on every level or one.
-pilot model runs arm level="":
-    cargo run --release --package clattertrap-cli -- arena --model {{model}} --runs {{runs}} --arm {{arm}} {{ if level == "" { "" } else { "--level " + level } }}
+# Contestant runs against clattertrap mcp, on every level or one: Claude Code headless, or a chat endpoint.
+pilot model runs arm level="" endpoint="":
+    cargo run --release --package clattertrap-cli -- arena --model {{model}} --runs {{runs}} --arm {{arm}} {{ if level == "" { "" } else { "--level " + level } }} {{ if endpoint == "" { "" } else { "--endpoint " + endpoint } }}
 
 # Criterion benches, including run_level.
 bench:

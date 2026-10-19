@@ -76,9 +76,9 @@ enum Command {
         #[arg(long, value_name = "PATH")]
         png: Option<PathBuf>,
     },
-    /// Run a Claude model through the contestant tools and save every run (the pilot)
+    /// Run a model through the contestant tools and save every run: Claude Code, or a chat endpoint
     Arena {
-        /// Model alias or id; Claude models only
+        /// Model alias or id: a Claude model for Claude Code, or the endpoint's model id
         #[arg(long)]
         model: String,
         /// Sessions per level
@@ -93,6 +93,12 @@ enum Command {
         /// Where run directories go
         #[arg(long, value_name = "DIR", default_value = "pilot/runs")]
         out: PathBuf,
+        /// An OpenAI-compatible chat endpoint base URL, such as openrouter.ai/api/v1 with https, instead of Claude Code
+        #[arg(long, value_name = "URL")]
+        endpoint: Option<String>,
+        /// The environment variable holding the endpoint's API key; unset or empty means no key
+        #[arg(long, value_name = "VAR", default_value = "OPENROUTER_API_KEY")]
+        api_key_env: String,
         /// The claude executable
         #[arg(long, default_value = "claude")]
         claude: String,
@@ -180,19 +186,24 @@ fn dispatch() -> Result<ExitCode> {
             arm,
             level,
             out,
+            endpoint,
+            api_key_env,
             claude,
         } => {
-            let provider = arena::ClaudeCode::new(claude, &model)?;
-            arena::run(
-                &arena::Options {
-                    model,
-                    runs,
-                    arm,
-                    level,
-                    out,
-                },
-                &provider,
-            )?;
+            let options = arena::Options {
+                model: model.clone(),
+                runs,
+                arm,
+                level,
+                out,
+            };
+            match endpoint {
+                Some(url) => {
+                    let key = std::env::var(&api_key_env).ok().filter(|k| !k.is_empty());
+                    arena::run(&options, &arena::Endpoint::new(&url, key, &model))?;
+                }
+                None => arena::run(&options, &arena::ClaudeCode::new(claude, &model)?)?,
+            }
             Ok(ExitCode::SUCCESS)
         }
         Command::Report {
