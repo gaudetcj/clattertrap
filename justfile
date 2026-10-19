@@ -32,9 +32,9 @@ readme:
 verify:
     cargo run --package clattertrap-cli -- verify gallery
 
-# Record the arena grid for one level and arm to docs/hero.gif and docs/hero.mp4.
-hero level="seesaw-launch" arm="blueprint":
-    cargo xtask hero {{level}} {{arm}}
+# Record the arena grid for one level, arm, and lineup to docs/hero.gif and docs/hero.mp4.
+hero level="seesaw-launch" arm="blueprint" lineup="families":
+    cargo xtask hero {{level}} {{arm}} {{lineup}}
 
 # Contestant runs against clattertrap mcp, on every level or one: Claude Code headless, or a chat endpoint.
 pilot model runs arm level="" endpoint="":

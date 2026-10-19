@@ -13,12 +13,13 @@ pub const FPS: u32 = 30;
 /// Frames per second of the GIF, a subset of the recorded frames.
 const GIF_FPS: u32 = 12;
 
-/// The environment the recorder reads: the level, the arm, and where to write.
+/// The environment the recorder reads: the level, the arm, the lineup, and where to write.
 #[must_use]
-pub fn hero_env(level: &str, arm: &str, out: &Path) -> Vec<(String, String)> {
+pub fn hero_env(level: &str, arm: &str, lineup: &str, out: &Path) -> Vec<(String, String)> {
     vec![
         ("HERO_LEVEL".to_owned(), level.to_owned()),
         ("HERO_ARM".to_owned(), arm.to_owned()),
+        ("HERO_LINEUP".to_owned(), lineup.to_owned()),
         ("HERO_OUT".to_owned(), out.display().to_string()),
     ]
 }
@@ -102,11 +103,11 @@ fn require_ffmpeg() -> Result<()> {
     Ok(())
 }
 
-/// Records `level` under `arm` and writes `docs/hero.gif` and `docs/hero.mp4`.
+/// Records `lineup` on `level` under `arm` and writes `docs/hero.gif` and `docs/hero.mp4`.
 ///
 /// # Errors
 /// When ffmpeg is missing, the wasm build fails, the browser recorder fails, or ffmpeg fails.
-pub fn record(root: &Path, level: &str, arm: &str) -> Result<()> {
+pub fn record(root: &Path, level: &str, arm: &str, lineup: &str) -> Result<()> {
     require_ffmpeg()?;
     wasm::build(root)?;
     let out: PathBuf = root.join("target").join("hero");
@@ -120,7 +121,7 @@ pub fn record(root: &Path, level: &str, arm: &str) -> Result<()> {
         root,
         npm,
         &["--prefix", "web", "run", "hero"],
-        &hero_env(level, arm, &out),
+        &hero_env(level, arm, lineup, &out),
     )
     .context("the browser recorder failed; if it reports a missing browser, run: npm --prefix web run playwright:install")?;
     let docs = root.join("docs");
@@ -142,13 +143,19 @@ mod tests {
     use std::path::Path;
 
     #[test]
-    fn the_recorder_gets_the_level_arm_and_output_directory_in_its_environment() {
-        let env = hero_env("seesaw-launch", "blueprint", Path::new("target/hero"));
+    fn the_recorder_gets_the_level_arm_lineup_and_output_directory_in_its_environment() {
+        let env = hero_env(
+            "seesaw-launch",
+            "blueprint",
+            "families",
+            Path::new("target/hero"),
+        );
         assert_eq!(
             env,
             [
                 ("HERO_LEVEL".to_owned(), "seesaw-launch".to_owned()),
                 ("HERO_ARM".to_owned(), "blueprint".to_owned()),
+                ("HERO_LINEUP".to_owned(), "families".to_owned()),
                 (
                     "HERO_OUT".to_owned(),
                     Path::new("target/hero").display().to_string()

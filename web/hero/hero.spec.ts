@@ -10,7 +10,7 @@ import { gifTakes } from '../src/hero_plan';
 // lead-in on frame 0, every frame until the grid ends, a two-second hold on the last, then the
 // soundtrack. `frames/` holds the whole run for the MP4. `gif/` stops after a window of machine
 // time with the still-running lanes stamped by their stored verdicts, so the GIF stays short.
-// Reads HERO_LEVEL, HERO_ARM, HERO_OUT, and HERO_WINDOW_S; `cargo xtask hero` sets the first three.
+// Reads HERO_LEVEL, HERO_ARM, HERO_LINEUP, HERO_OUT, and HERO_WINDOW_S; `cargo xtask hero` sets the first four.
 const FPS = 30;
 const STEPS_PER_FRAME = 4;
 const LEAD_S = 1;
@@ -34,6 +34,7 @@ class Frames {
 test('record the arena page', async ({ page }) => {
   const level = process.env['HERO_LEVEL'] ?? 'seesaw-launch';
   const arm = process.env['HERO_ARM'] ?? 'blueprint';
+  const lineup = process.env['HERO_LINEUP'] ?? 'families';
   const out = process.env['HERO_OUT'] ?? 'hero-out';
   const window_s = Number.parseFloat(process.env['HERO_WINDOW_S'] ?? '6');
   const movie = new Frames(join(out, 'frames'));
@@ -41,7 +42,7 @@ test('record the arena page', async ({ page }) => {
   await page.setViewportSize(VIEWPORT);
   // Reduced motion keeps the marquee readable as still text instead of parked off-screen.
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto(`/arena.html?level=${encodeURIComponent(level)}&arm=${encodeURIComponent(arm)}&record=1`);
+  await page.goto(`/arena.html?level=${encodeURIComponent(level)}&arm=${encodeURIComponent(arm)}&lineup=${encodeURIComponent(lineup)}&record=1`);
   await page.waitForFunction(() => window.clattertrapRecord !== undefined);
   await page.evaluate(() => document.fonts.ready);
   const shot = (): Promise<Buffer> => page.locator('main').screenshot({ animations: 'disabled' });
@@ -70,6 +71,6 @@ test('record the arena page', async ({ page }) => {
   writeFileSync(join(out, 'audio.wav'), Buffer.from(wav, 'base64'));
   writeFileSync(
     join(out, 'meta.json'),
-    `${JSON.stringify({ level, arm, fps: FPS, frames: movie.count, seconds: total_s, gif_frames: gif.count, window_s })}\n`,
+    `${JSON.stringify({ level, arm, lineup, fps: FPS, frames: movie.count, seconds: total_s, gif_frames: gif.count, window_s })}\n`,
   );
 });

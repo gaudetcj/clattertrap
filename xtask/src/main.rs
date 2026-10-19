@@ -25,10 +25,11 @@ fn main() -> Result<()> {
         ["site", base] => site::build(&root, base),
         ["readme"] => readme::run(&root, false),
         ["readme", "--check"] => readme::run(&root, true),
-        ["hero"] => hero::record(&root, "seesaw-launch", "blueprint"),
-        ["hero", level, arm] => hero::record(&root, level, arm),
+        ["hero"] => hero::record(&root, "seesaw-launch", "blueprint", "families"),
+        ["hero", level, arm] => hero::record(&root, level, arm, "families"),
+        ["hero", level, arm, lineup] => hero::record(&root, level, arm, lineup),
         _ => bail!(
-            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | hero [LEVEL ARM] | readme [--check] | site [BASE]>"
+            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | hero [LEVEL ARM [LINEUP]] | readme [--check] | site [BASE]>"
         ),
     }
 }
