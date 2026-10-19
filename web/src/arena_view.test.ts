@@ -6,6 +6,11 @@ import type { Setup } from './decode';
 class FakeCtx {
   calls: string[] = [];
   reads: [number, number, number, number][] = [];
+  // Every filled rect in canvas coordinates, with the translations applied.
+  rects: [number, number, number, number][] = [];
+  private tx = 0;
+  private ty = 0;
+  private stack: [number, number][] = [];
   fillStyle: string | CanvasGradient | CanvasPattern = '#000';
   strokeStyle: string | CanvasGradient | CanvasPattern = '#000';
   lineWidth = 1;
@@ -15,9 +20,9 @@ class FakeCtx {
   private gradient(): CanvasGradient {
     return { addColorStop: () => undefined } as unknown as CanvasGradient;
   }
-  save() { this.calls.push('save'); }
-  restore() { this.calls.push('restore'); }
-  translate() { this.calls.push('translate'); }
+  save() { this.calls.push('save'); this.stack.push([this.tx, this.ty]); }
+  restore() { this.calls.push('restore'); [this.tx, this.ty] = this.stack.pop() ?? [0, 0]; }
+  translate(x: number, y: number) { this.calls.push('translate'); this.tx += x; this.ty += y; }
   rotate() { this.calls.push('rotate'); }
   scale() { this.calls.push('scale'); }
   beginPath() { this.calls.push('beginPath'); }
@@ -30,7 +35,7 @@ class FakeCtx {
   clip() { this.calls.push('clip'); }
   fill() { this.calls.push('fill'); }
   stroke() { this.calls.push('stroke'); }
-  fillRect() { this.calls.push('fillRect'); }
+  fillRect(x: number, y: number, w: number, h: number) { this.calls.push('fillRect'); this.rects.push([this.tx + x, this.ty + y, w, h]); }
   strokeRect() { this.calls.push('strokeRect'); }
   setLineDash() { this.calls.push('setLineDash'); }
   createLinearGradient() { this.calls.push('createLinearGradient'); return this.gradient(); }
@@ -82,6 +87,7 @@ const frame = {
   ],
   time_s: 0.5,
   stamp: null,
+  tucked: false,
 };
 
 describe('ArenaView', () => {
@@ -125,6 +131,31 @@ describe('ArenaView', () => {
     canvas.ctx.calls = [];
     view.draw([{ ...frame, stamp: { text: 'RANG 0.7 s', tone: 'success' } }]);
     expect(canvas.ctx.count('fillRect')).toBeGreaterThan(plain);
+  });
+});
+
+describe('a tucked stamp', () => {
+  const stamp = { text: 'RANG 0.7 s', tone: 'success' as const };
+  const inHeader = (r: [number, number, number, number]): boolean => r[1] >= 0 && r[1] + r[3] <= 40;
+
+  it('is painted in the header band and not over the machine', () => {
+    const canvas = new FakeCanvas();
+    const view = new ArenaView(canvas, [panel('OPUS 5.5')], 400, 300);
+    view.resize(860, 900);
+    view.draw([frame]);
+    canvas.ctx.rects = [];
+    view.draw([{ ...frame, stamp, tucked: false }]);
+    // Landed, the banner sits in the world below the header.
+    expect(canvas.ctx.rects.filter(inHeader)).toEqual([]);
+    canvas.ctx.rects = [];
+    view.draw([{ ...frame, stamp, tucked: true }]);
+    const tucked = canvas.ctx.rects.filter(inHeader);
+    expect(tucked.length).toBeGreaterThan(0);
+    // On the right of the first line, clear of the label.
+    for (const [x, y] of tucked) {
+      expect(x).toBeGreaterThan(200);
+      expect(y).toBeGreaterThanOrEqual(2);
+    }
   });
 });
 

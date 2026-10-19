@@ -17,6 +17,8 @@ export interface PanelFrame {
   poses: Pose[];
   time_s: number;
   stamp: Stamp | null;
+  // Whether the stamp has tucked into the header, leaving the machine clear.
+  tucked: boolean;
 }
 
 export const BACKGROUND = '#1b2233';
@@ -24,7 +26,7 @@ const ZONE_EDGE = '#3d5a80';
 const ZONE_FILL = '#243149';
 const CLOCK = '#dfe6ee';
 const GROUND = '#5b4327';
-const PAPER = '#f6f1e7';
+export const PAPER = '#f6f1e7';
 
 export class PanelView {
   private readonly painter = new PartPainter();
@@ -66,7 +68,7 @@ export class PanelView {
     });
     drawTray(ctx, this.painter, this.items, h - TRAY_H, w);
     drawText(ctx, `${frame.time_s.toFixed(2)} s`, 4, 4, 1, CLOCK);
-    if (frame.stamp !== null) {
+    if (frame.stamp !== null && !frame.tucked) {
       this.stamp(ctx, w, h - TRAY_H, frame.stamp);
     }
     ctx.restore();

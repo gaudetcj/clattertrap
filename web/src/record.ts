@@ -8,7 +8,7 @@ import { encodeWav, toBase64 } from './wav';
 export interface RecordHook {
   width: number;
   height: number;
-  // Steps every running lane and redraws; true once the grid has ended.
+  // Steps every running lane and redraws; true once the grid has ended and every stamp has tucked.
   advance(steps: number): boolean;
   // The whole canvas as a PNG data URL.
   frame(): string;
@@ -29,7 +29,10 @@ export function installRecorder(canvas: HTMLCanvasElement, conductor: Conductor,
   window.clattertrapRecord = {
     width: size.w,
     height: size.h,
-    advance: (steps) => conductor.advance(steps),
+    advance: (steps) => {
+      conductor.advance(steps);
+      return conductor.settled();
+    },
     frame: () => canvas.toDataURL('image/png'),
     stampedFrame: () => {
       conductor.drawStoredVerdicts();

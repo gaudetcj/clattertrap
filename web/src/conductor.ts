@@ -11,6 +11,7 @@ import { Replay } from './replay';
 import { Soundtrack } from './sound';
 import { tray } from './tray';
 import { stampText } from './stamp';
+import { stampPlace } from './tuck';
 import { type Stamp, verdictFor } from './verdict';
 import { VOICES_PER_STEP, voicesAt } from './voices';
 
@@ -33,6 +34,8 @@ interface Lane {
   stored: Outcome | null;
   outcome: Outcome | null;
   stamp: Stamp | null;
+  // The grid clock, in steps, when the lane ended; its stamp tucks a hold later.
+  endedAt: number | null;
 }
 
 export class Conductor {
@@ -45,6 +48,8 @@ export class Conductor {
   private playing = false;
   private anchor_ms = 0;
   private done = 0;
+  // Steps advanced since the load, running on past the last lane's end until its stamp has tucked.
+  private clock = 0;
 
   constructor(
     private readonly canvas: HTMLCanvasElement,
@@ -69,7 +74,9 @@ export class Conductor {
       stored: input.stored,
       outcome: null,
       stamp: input.missing ?? null,
+      endedAt: input.missing ? 0 : null,
     }));
+    this.clock = 0;
     const first = this.lanes[0]?.replay.setup;
     this.view = new ArenaView(
       this.canvas,
@@ -176,6 +183,15 @@ export class Conductor {
     return gridEnded(this.lanes.map((l) => l.stamp !== null));
   }
 
+  // Whether every lane has ended and every stamp has tucked into its header.
+  settled(): boolean {
+    return this.ended() && this.lanes.every((l) => this.tucked(l));
+  }
+
+  private tucked(lane: Lane): boolean {
+    return lane.endedAt !== null && stampPlace((this.clock - lane.endedAt) * this.dt_s) === 'tucked';
+  }
+
   // Each lane's stamp, null while it still runs.
   verdicts(): (Stamp | null)[] {
     return this.lanes.map((l) => l.stamp);
@@ -186,20 +202,26 @@ export class Conductor {
     return this.lanes.map((l) => l.outcome);
   }
 
-  // Steps every running lane `steps` times and redraws the lanes that moved. Returns whether the
-  // grid has ended.
+  // Steps every running lane `steps` times and redraws the lanes that moved or whose stamp tucked.
+  // Returns whether the grid has ended.
   advance(steps: number): boolean {
+    const wasSettled = this.settled();
+    const before = this.lanes.map((l) => this.tucked(l));
     const counts = plan(steps, this.lanes.map((l) => l.stamp !== null));
+    this.clock += steps;
     const moved = this.lanes.map((lane, i) => {
       const n = counts[i] ?? 0;
       for (let k = 0; k < n && lane.stamp === null; k += 1) {
         this.step(lane);
       }
-      return n > 0;
+      if (lane.stamp !== null && lane.endedAt === null) {
+        lane.endedAt = this.clock;
+      }
+      return n > 0 || this.tucked(lane) !== before[i];
     });
     this.draw(moved);
     const ended = this.ended();
-    if (ended && this.playing) {
+    if ((ended && this.playing) || (this.settled() && !wasSettled)) {
       this.playing = false;
       this.onChange(this);
     }
@@ -216,14 +238,18 @@ export class Conductor {
         (stored === null
           ? null
           : { text: stampText(lane.replay.setup.goal.kind, stored), tone: stored.goal_met ? 'success' : 'failure' });
-      return { poses: lane.replay.frame(), time_s: lane.replay.stepIndex() * this.dt_s, stamp };
+      // A stored verdict lands big; a lane's own stamp keeps its place.
+      const tucked = lane.stamp !== null && this.tucked(lane);
+      return { poses: lane.replay.frame(), time_s: lane.replay.stepIndex() * this.dt_s, stamp, tucked };
     });
     this.view?.draw(frames);
   }
 
+  // The clock runs while playing, and on after the end until the last stamp has tucked.
   private frame(): void {
     requestAnimationFrame(() => this.frame());
-    if (!this.playing || this.ended()) {
+    const tucking = this.ended() && !this.settled();
+    if (!this.playing && !tucking) {
       return;
     }
     const n = stepsDue((performance.now() - this.anchor_ms) / 1000, this.done, this.dt_s);
@@ -250,7 +276,7 @@ export class Conductor {
   private draw(moved: boolean[]): void {
     const frames: (PanelFrame | null)[] = this.lanes.map((lane, i) =>
       moved[i]
-        ? { poses: lane.replay.frame(), time_s: lane.replay.stepIndex() * this.dt_s, stamp: lane.stamp }
+        ? { poses: lane.replay.frame(), time_s: lane.replay.stepIndex() * this.dt_s, stamp: lane.stamp, tucked: this.tucked(lane) }
         : null,
     );
     this.view?.draw(frames);

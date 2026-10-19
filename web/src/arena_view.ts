@@ -20,10 +20,12 @@ import {
   type Size,
 } from './layout';
 import type { Link } from './links';
-import { PanelView, type PanelCtx, type PanelFrame } from './panel_view';
+import { PanelView, PAPER, type PanelCtx, type PanelFrame } from './panel_view';
 import { PALETTE, paletteLut, rgbPalette, snapToPalette } from './pixel';
 import { legible, wrapText } from './text';
 import type { TrayItem } from './tray';
+import { tuckedBox } from './tuck';
+import { type Stamp, toneColour } from './verdict';
 
 export interface PanelChrome {
   label: string;
@@ -127,7 +129,9 @@ export class ArenaView {
     }
     frames.forEach((frame, i) => {
       const view = this.views[i];
-      if (!frame || !view) {
+      const rect = this.rects[i];
+      const p = this.panels[i];
+      if (!frame || !view || !rect || !p) {
         return;
       }
       view.draw(ctx, frame);
@@ -135,7 +139,21 @@ export class ArenaView {
       const image = ctx.getImageData(r.x, r.y, r.w, r.h);
       snapToPalette(image.data, RGB, LUT);
       ctx.putImageData(image, r.x, r.y);
+      if (frame.stamp !== null && frame.tucked) {
+        this.tuckedStamp(ctx, headerRect(rect), legible(p.chrome.label), frame.stamp);
+      }
     });
+  }
+
+  // The stamp in small on the header's first line: paper, a border in the verdict's colour, pixel text.
+  private tuckedStamp(ctx: GridCtx, header: Rect, label: string, stamp: Stamp): void {
+    const b = tuckedBox(header, label, stamp.text);
+    const colour = toneColour(stamp.tone);
+    ctx.fillStyle = colour;
+    ctx.fillRect(b.x, b.y, b.w, b.h);
+    ctx.fillStyle = PAPER;
+    ctx.fillRect(b.x + b.px, b.y + b.px, b.w - 2 * b.px, b.h - 2 * b.px);
+    drawText(ctx, stamp.text, b.x + 2 * b.px, b.y + b.px, b.px, colour);
   }
 
   private chrome(ctx: GridCtx, rect: Rect, chrome: PanelChrome): void {

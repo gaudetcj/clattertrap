@@ -18,6 +18,8 @@ test('the arena grid plays the six Claude machines and shows their stamps', asyn
   await expect(status).toHaveAttribute('data-ended', 'true', { timeout: 60_000 });
   const stamps = status.locator('.stamp');
   await expect(stamps).toHaveCount(6);
+  // The last stamp lands, holds, and tucks into its header; then the grid has settled.
+  await expect(status).toHaveAttribute('data-settled', 'true', { timeout: 10_000 });
   // The lanes follow the leaderboard, so only the set is fixed.
   const shown = await stamps.evaluateAll((spans) => spans.map((s) => s.getAttribute('data-model')));
   expect([...shown].sort()).toEqual([...MODELS].sort());

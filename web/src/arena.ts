@@ -185,6 +185,7 @@ class ArenaPage {
   private changed(c: Conductor): void {
     this.playButton.textContent = c.isPlaying() ? 'Pause' : 'Play';
     this.status.dataset['ended'] = String(c.ended());
+    this.status.dataset['settled'] = String(c.settled());
     const models = pickModels(this.entries, this.missed, this.pick, this.ranked);
     const spans = c.verdicts().map((stamp, i) => {
       const span = el('span', stamp?.text ?? '-', 'stamp');
