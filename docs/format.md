@@ -101,7 +101,7 @@ Two providers run sessions. Without `--endpoint`, Claude Code runs headless in p
 | file | written by | holds |
 |---|---|---|
 | `mcp.json` | the runner | the MCP config for this session: this binary serving `mcp --level <id> --arm <arm> --out <dir>` |
-| `transcript.jsonl` | the runner | what the contestant said and called, in the record format under Gallery records, the same for every provider |
+| `transcript.jsonl` | the runner | what the contestant said and called, in the record format under Gallery records, the same for every provider; a session the wall clock stops keeps what it had printed by then |
 | `provider.jsonl` | the runner | the provider's raw output: Claude Code's stream-json, or one chat reply body per line |
 | `stderr.txt` | the runner | whatever the contestant process, or the MCP server, printed on stderr |
 | `calls/NNNN-<tool>.json` | the MCP server | every `check`, `look`, `run`, and `submit` call: `seq`, `tool`, the `scene` as sent, and either `problems` or the `outcome` |

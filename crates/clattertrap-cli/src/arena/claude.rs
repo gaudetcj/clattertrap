@@ -7,8 +7,9 @@ use super::stream;
 use anyhow::{Context, Result, ensure};
 use std::path::Path;
 use std::process::Stdio;
+use std::sync::{Arc, Mutex};
 use std::time::Duration;
-use tokio::io::AsyncWriteExt;
+use tokio::io::{AsyncRead, AsyncReadExt, AsyncWriteExt};
 use tokio::process::Command;
 
 /// Claude Code in print mode, restricted to the clattertrap MCP tools.
@@ -105,7 +106,31 @@ pub struct Output {
     pub exit_code: Option<i32>,
 }
 
-/// Runs `claude` with `args` in `cwd`, feeding `prompt` on stdin, for at most `wall_clock`.
+/// How long after the kill the pipes get to drain before what arrived is taken as the output.
+const DRAIN_GRACE: Duration = Duration::from_secs(5);
+
+/// Copies a pipe into `into` until it closes.
+async fn drain(mut pipe: impl AsyncRead + Unpin, into: Arc<Mutex<Vec<u8>>>) {
+    let mut buf = [0u8; 8192];
+    loop {
+        match pipe.read(&mut buf).await {
+            Ok(0) | Err(_) => return,
+            Ok(n) => {
+                if let Ok(mut bytes) = into.lock() {
+                    bytes.extend_from_slice(&buf[..n]);
+                }
+            }
+        }
+    }
+}
+
+fn taken(bytes: &Arc<Mutex<Vec<u8>>>) -> String {
+    let bytes = bytes.lock().map(|b| b.clone()).unwrap_or_default();
+    String::from_utf8_lossy(&bytes).into_owned()
+}
+
+/// Runs `claude` with `args` in `cwd`, feeding `prompt` on stdin, for at most `wall_clock`. A
+/// session the wall clock kills keeps whatever it had printed by then.
 ///
 /// # Errors
 /// When the process cannot be spawned or its output cannot be read.
@@ -132,23 +157,33 @@ pub async fn run_session(
             .context("writing the prompt")?;
         drop(stdin);
     }
-    let output = tokio::time::timeout(wall_clock, child.wait_with_output()).await;
-    match output {
-        Ok(output) => {
-            let output = output.context("waiting for claude")?;
-            Ok(Output {
-                transcript: String::from_utf8_lossy(&output.stdout).into_owned(),
-                stderr: String::from_utf8_lossy(&output.stderr).into_owned(),
-                timed_out: false,
-                exit_code: output.status.code(),
-            })
+    let stdout = child.stdout.take().context("claude has no stdout pipe")?;
+    let stderr = child.stderr.take().context("claude has no stderr pipe")?;
+    let out = Arc::new(Mutex::new(Vec::new()));
+    let err = Arc::new(Mutex::new(Vec::new()));
+    let readers = tokio::spawn({
+        let (out, err) = (Arc::clone(&out), Arc::clone(&err));
+        async move {
+            tokio::join!(drain(stdout, out), drain(stderr, err));
         }
-        // The child is killed on drop; its partial output is lost with it.
-        Err(_) => Ok(Output {
-            transcript: String::new(),
-            stderr: String::new(),
-            timed_out: true,
-            exit_code: None,
-        }),
+    });
+    let waited = tokio::time::timeout(wall_clock, child.wait()).await;
+    let (timed_out, exit_code) = if let Ok(status) = waited {
+        (false, status.context("waiting for claude")?.code())
+    } else {
+        child.kill().await.context("killing claude")?;
+        (true, None)
+    };
+    // A killed child's grandchildren may hold the pipes open, so the readers get a grace period.
+    if timed_out {
+        let _ = tokio::time::timeout(DRAIN_GRACE, readers).await;
+    } else {
+        readers.await.context("reading claude's output")?;
     }
+    Ok(Output {
+        transcript: taken(&out),
+        stderr: taken(&err),
+        timed_out,
+        exit_code,
+    })
 }
