@@ -29,4 +29,9 @@ export class Camera {
   px(length_m: number): number {
     return length_m * this.scale_px_per_m;
   }
+
+  // The world point under a canvas pixel.
+  toWorld(x_px: number, y_px: number): { x_m: number; y_m: number } {
+    return { x_m: (x_px - this.origin_x_px) / this.scale_px_per_m, y_m: (this.origin_y_px - y_px) / this.scale_px_per_m };
+  }
 }

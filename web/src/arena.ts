@@ -91,6 +91,7 @@ class ArenaPage {
     const hint = el('p', 'Pick a puzzle, an arm, and a lineup. Blueprint: no test runs, the model submitted blind. Workshop: up to 8 test runs first.', 'hint');
     const nav = navLinks([
       ['home', 'index.html'],
+      ['play', 'play.html'],
       ['gallery', 'gallery.html'],
       ['leaderboard', 'leaderboard.html'],
       ['level', 'level.html'],

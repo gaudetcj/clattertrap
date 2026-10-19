@@ -48,6 +48,7 @@ function page(app: HTMLElement): void {
   const rows = leaderboardRows(entries, misses(entries, gallerySummaries()), tiers);
   const nav = navLinks([
     ['home', 'index.html'],
+    ['play', 'play.html'],
     ['arena', 'arena.html'],
     ['gallery', 'gallery.html'],
     ['level', 'level.html'],

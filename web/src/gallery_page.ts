@@ -57,6 +57,7 @@ function page(app: HTMLElement): void {
   const entries = galleryEntries();
   const nav = navLinks([
     ['home', 'index.html'],
+    ['play', 'play.html'],
     ['arena', 'arena.html'],
     ['leaderboard', 'leaderboard.html'],
     ['level', 'level.html'],

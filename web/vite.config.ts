@@ -13,6 +13,7 @@ export default defineConfig({
         index: 'index.html',
         arena: 'arena.html',
         level: 'level.html',
+        play: 'play.html',
         reel: 'reel.html',
         gallery: 'gallery.html',
         leaderboard: 'leaderboard.html',

@@ -1,8 +1,9 @@
 // The typed face of the wasm Replay: JSON and typed arrays in, decoded setup, poses, events, and outcome out.
 
-import init, { Replay as WasmReplay, dt_s, rules_version } from '../pkg/clattertrap_wasm.js';
+import init, { Replay as WasmReplay, dt_s, ranges as wasmRanges, rules_version } from '../pkg/clattertrap_wasm.js';
 import { decodeEvents, decodeFrame, decodeOutcome, decodeSetup } from './decode';
 import type { Outcome, Pose, ReplayEvent, Setup } from './decode';
+import type { Ranges } from './edit_scene';
 import { linksFrom, type Link } from './links';
 
 export interface Wasm {
@@ -13,6 +14,17 @@ export interface Wasm {
 export async function loadWasm(): Promise<Wasm> {
   await init();
   return { dt_s: dt_s(), rules_version: rules_version() };
+}
+
+// The part size ranges of the rules, which the editor offers as its limits.
+export function ranges(): Ranges {
+  return JSON.parse(wasmRanges()) as Ranges;
+}
+
+// A scene built for drawing with its placement problems, which may be empty.
+export interface Preview {
+  replay: Replay;
+  problems: string[];
 }
 
 export class Replay {
@@ -27,6 +39,15 @@ export class Replay {
     const inner = new WasmReplay(levelJson, sceneJson);
     const setup = decodeSetup(inner.setup());
     return new Replay(inner, setup, linksFrom(setup, sceneJson));
+  }
+
+  // Builds a scene even when parts overlap, sit outside the zones, or exceed the inventory, and
+  // lists those problems. Throws, one problem per line, when a part cannot be built at all.
+  static preview(levelJson: string, sceneJson: string): Preview {
+    const inner = WasmReplay.preview(levelJson, sceneJson);
+    const setup = decodeSetup(inner.setup());
+    const problems = inner.problems().split('\n').filter((line) => line.length > 0);
+    return { replay: new Replay(inner, setup, linksFrom(setup, sceneJson)), problems };
   }
 
   step(): ReplayEvent[] {

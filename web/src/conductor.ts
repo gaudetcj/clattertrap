@@ -4,6 +4,7 @@
 
 import { ArenaView, type PanelChrome } from './arena_view';
 import { stepsDue } from './clock';
+import { roomFor } from './fit';
 import type { Outcome } from './decode';
 import { gridEnded, plan } from './lanes';
 import type { PanelFrame } from './panel_view';
@@ -26,8 +27,6 @@ export interface LaneInput {
 
 export type State = 'empty' | 'ready' | 'playing' | 'paused' | 'ended';
 
-// The screens page.css lays out in one column.
-const NARROW = '(max-width: 720px)';
 
 interface Lane {
   replay: Replay;
@@ -104,11 +103,8 @@ export class Conductor {
     if (!this.view) {
       return;
     }
-    const top = this.canvas.getBoundingClientRect().top + window.scrollY;
-    const room_h = window.matchMedia(NARROW).matches
-      ? Number.POSITIVE_INFINITY
-      : Math.max(1, window.innerHeight - top - heightBelow(this.canvas));
-    this.view.resize(widthWithin(this.canvas), room_h);
+    const room = roomFor(this.canvas);
+    this.view.resize(room.w, room.h);
     // Sizing the backing store clears it, so every lane is painted again, ended ones included.
     this.draw(this.lanes.map(() => true));
   }
@@ -168,6 +164,18 @@ export class Conductor {
     if (resume) {
       this.play();
     }
+  }
+
+  // Drops every lane and the view, so another drawer may take the canvas.
+  unload(): void {
+    for (const lane of this.lanes) {
+      lane.replay.free();
+    }
+    this.inputs = [];
+    this.lanes = [];
+    this.view = null;
+    this.playing = false;
+    this.done = 0;
   }
 
   setMuted(muted: boolean): void {
@@ -283,39 +291,3 @@ export class Conductor {
   }
 }
 
-function px(value: string): number {
-  const n = Number.parseFloat(value);
-  return Number.isFinite(n) ? n : 0;
-}
-
-// The height everything after `canvas` in its container takes: the siblings with their margins,
-// the gaps between them, the container's bottom padding, and a little room.
-function heightBelow(canvas: HTMLElement): number {
-  const parent = canvas.parentElement;
-  if (!parent) {
-    return 0;
-  }
-  const style = getComputedStyle(parent);
-  const gap = px(style.rowGap);
-  let total = px(style.paddingBottom) + px(getComputedStyle(canvas).marginBottom) + 12;
-  let after = false;
-  for (const child of Array.from(parent.children)) {
-    if (child === canvas) {
-      after = true;
-    } else if (after) {
-      const cs = getComputedStyle(child);
-      total += child.getBoundingClientRect().height + px(cs.marginTop) + px(cs.marginBottom) + gap;
-    }
-  }
-  return total;
-}
-
-// The width the canvas may take: its container's inner width, without the padding.
-function widthWithin(canvas: HTMLElement): number {
-  const parent = canvas.parentElement;
-  if (!parent) {
-    return canvas.getBoundingClientRect().width;
-  }
-  const style = getComputedStyle(parent);
-  return Math.max(1, parent.clientWidth - px(style.paddingLeft) - px(style.paddingRight));
-}

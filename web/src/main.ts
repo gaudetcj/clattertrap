@@ -76,6 +76,7 @@ async function page(app: HTMLElement): Promise<void> {
   const status = el('p', 'loading', 'status');
   const nav = navLinks([
     ['home', 'index.html'],
+    ['play', 'play.html'],
     ['arena', 'arena.html'],
     ['gallery', 'gallery.html'],
     ['leaderboard', 'leaderboard.html'],

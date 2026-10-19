@@ -29,3 +29,13 @@ describe('Camera.fit', () => {
     expect(Number.isInteger(o.x) && Number.isInteger(o.y)).toBe(true);
   });
 });
+
+describe('Camera.toWorld', () => {
+  it('inverts toPx, so a pixel maps back to the metres it came from', () => {
+    const camera = Camera.fit(400, 300, 400, 300);
+    const px = camera.toPx(1.25, 0.5);
+    expect(camera.toWorld(px.x, px.y)).toEqual({ x_m: 1.25, y_m: 0.5 });
+    // The bottom-left corner of the world is the bottom-left pixel.
+    expect(camera.toWorld(0, 300)).toEqual({ x_m: 0, y_m: 0 });
+  });
+});

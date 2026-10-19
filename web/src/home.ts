@@ -65,6 +65,7 @@ function page(app: HTMLElement): void {
   const levels = fixtures();
   const counts = siteCounts(entries, levels);
   const nav = navLinks([
+    ['play', 'play.html'],
     ['arena', 'arena.html'],
     ['gallery', 'gallery.html'],
     ['leaderboard', 'leaderboard.html'],
