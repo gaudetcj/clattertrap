@@ -97,9 +97,9 @@ enum Command {
         #[arg(long, default_value = "claude")]
         claude: String,
     },
-    /// Summarize a directory of pilot runs: levels solved per model and arm, attempts, and exclusions
+    /// Summarize a directory of runs: levels solved per model and arm, attempts, and exclusions
     Report {
-        /// The runs directory, <model>/<level>/<arm>-NN underneath
+        /// A runs or gallery directory: <a>/<b>/<c>/summary.json three levels down
         dir: PathBuf,
         /// One CSV row per run instead of the tables
         #[arg(long, conflicts_with = "sample")]

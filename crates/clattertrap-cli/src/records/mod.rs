@@ -249,3 +249,34 @@ pub fn read_calls(dir: &Path) -> Result<Vec<(PathBuf, Result<Call>)>> {
         })
         .collect())
 }
+
+/// Every directory three levels under `dir` that holds a `summary.json`, sorted: the pilot layout
+/// `<model>/<level>/<arm>-NN` and the gallery layout `<level>/<model>/<arm>-NN` alike. None when
+/// `dir` is missing.
+#[must_use]
+pub fn run_dirs(dir: &Path) -> Vec<PathBuf> {
+    let mut out = Vec::new();
+    for a in subdirs(dir) {
+        for b in subdirs(&a) {
+            for c in subdirs(&b) {
+                if c.join("summary.json").is_file() {
+                    out.push(c);
+                }
+            }
+        }
+    }
+    out
+}
+
+fn subdirs(dir: &Path) -> Vec<PathBuf> {
+    let Ok(entries) = std::fs::read_dir(dir) else {
+        return vec![];
+    };
+    let mut dirs: Vec<PathBuf> = entries
+        .filter_map(Result::ok)
+        .map(|e| e.path())
+        .filter(|p| p.is_dir())
+        .collect();
+    dirs.sort();
+    dirs
+}

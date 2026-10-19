@@ -3,7 +3,7 @@
 
 mod common;
 
-use common::{clattertrap, stdout};
+use common::{clattertrap, copy_dir, fixtures, stdout};
 use std::path::PathBuf;
 
 fn runs() -> String {
@@ -92,4 +92,46 @@ fn an_empty_or_missing_directory_is_an_error() {
     let out = clattertrap(&["report", dir.path().to_str().unwrap()]);
     assert_eq!(out.status.code(), Some(2));
     assert!(String::from_utf8(out.stderr).unwrap().contains("no runs"));
+}
+
+/// A level-first tree, as `gallery/` is laid out: one Opus and one Haiku entry.
+fn level_first_tree() -> tempfile::TempDir {
+    let dir = tempfile::tempdir().unwrap();
+    copy_dir(
+        &fixtures().join("gallery").join("seesaw-launch"),
+        &dir.path().join("seesaw-launch"),
+    );
+    copy_dir(
+        &fixtures()
+            .join("runs")
+            .join("claude-haiku-5-5")
+            .join("bell-drop")
+            .join("workshop-01"),
+        &dir.path()
+            .join("bell-drop")
+            .join("claude-haiku-5-5")
+            .join("workshop-01"),
+    );
+    dir
+}
+
+#[test]
+fn the_report_reads_the_level_first_gallery_layout_too() {
+    let dir = level_first_tree();
+    let path = dir.path().to_str().unwrap();
+    let out = stdout(&["report", path]);
+    assert!(out.contains("claude-haiku-5-5  workshop    1/15"), "{out}");
+    assert!(
+        out.contains("claude-opus-5-5   blueprint   1/15   1/6"),
+        "{out}"
+    );
+    let csv = stdout(&["report", path, "--csv"]);
+    assert!(
+        csv.contains("claude-haiku-5-5,workshop,bell-drop,workshop-01,submitted,true"),
+        "{csv}"
+    );
+    assert!(
+        csv.contains("claude-opus-5-5,blueprint,seesaw-launch,blueprint-01,submitted,true"),
+        "{csv}"
+    );
 }

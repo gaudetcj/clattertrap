@@ -1,7 +1,7 @@
 //! Runs the built binary and finds the levels directory.
 #![allow(dead_code, clippy::unwrap_used, clippy::expect_used)]
 
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::{Command, Output};
 
 pub mod mcp;
@@ -49,4 +49,25 @@ pub fn level_dirs() -> Vec<String> {
         .collect();
     ids.sort();
     ids
+}
+
+/// The `tests/fixtures/` directory of this crate.
+pub fn fixtures() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("tests")
+        .join("fixtures")
+}
+
+/// Copies a directory tree.
+pub fn copy_dir(from: &Path, to: &Path) {
+    std::fs::create_dir_all(to).unwrap();
+    for entry in std::fs::read_dir(from).unwrap() {
+        let path = entry.unwrap().path();
+        let target = to.join(path.file_name().unwrap());
+        if path.is_dir() {
+            copy_dir(&path, &target);
+        } else {
+            std::fs::copy(&path, &target).unwrap();
+        }
+    }
 }

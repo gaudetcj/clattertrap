@@ -4,7 +4,7 @@
 
 mod common;
 
-use common::clattertrap;
+use common::{clattertrap, copy_dir, fixtures};
 use std::path::{Path, PathBuf};
 
 /// An edit to a copied run before promoting it.
@@ -12,25 +12,6 @@ type Change = dyn Fn(&Path);
 
 const RUN: &str = "claude-opus-5-5/seesaw-launch/blueprint-01";
 const ENTRY: &str = "seesaw-launch/claude-opus-5-5/blueprint-01";
-
-fn fixtures() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("tests")
-        .join("fixtures")
-}
-
-fn copy_dir(from: &Path, to: &Path) {
-    std::fs::create_dir_all(to).unwrap();
-    for entry in std::fs::read_dir(from).unwrap() {
-        let path = entry.unwrap().path();
-        let target = to.join(path.file_name().unwrap());
-        if path.is_dir() {
-            copy_dir(&path, &target);
-        } else {
-            std::fs::copy(&path, &target).unwrap();
-        }
-    }
-}
 
 /// A tempdir holding `pilot/<RUN>` and the path of an empty `gallery/` beside it.
 fn scratch() -> (tempfile::TempDir, PathBuf, PathBuf) {

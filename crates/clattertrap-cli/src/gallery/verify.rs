@@ -2,14 +2,16 @@
 //! each one that no longer holds.
 
 use crate::catalog;
-use crate::records::{Call, Status, Submission, Summary, read_calls, read_json, scene_json};
+use crate::records::{
+    Call, Status, Submission, Summary, read_calls, read_json, run_dirs, scene_json,
+};
 use crate::run;
 use anyhow::{Result, ensure};
 use clattertrap_core::rules::Rules;
 use clattertrap_core::score::Outcome;
 use clattertrap_core::validate::check;
 use serde_json::Value;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 /// One stored result that no longer holds, or a file that cannot be checked.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -62,7 +64,7 @@ fn plural(n: usize, one: &str, many: &str) -> String {
 /// When `dir` holds no run directories.
 pub fn verify(dir: &Path) -> Result<Report> {
     let mut report = Report::default();
-    for entry in entry_dirs(dir) {
+    for entry in run_dirs(dir) {
         let rel = relative(dir, &entry);
         let (runs, mismatches) = check_entry(&entry, &rel);
         report.entries += 1;
@@ -75,34 +77,6 @@ pub fn verify(dir: &Path) -> Result<Report> {
         dir.display()
     );
     Ok(report)
-}
-
-/// Every directory three levels under `dir` that holds a `summary.json`, sorted.
-fn entry_dirs(dir: &Path) -> Vec<PathBuf> {
-    let mut out = Vec::new();
-    for a in subdirs(dir) {
-        for b in subdirs(&a) {
-            for c in subdirs(&b) {
-                if c.join("summary.json").is_file() {
-                    out.push(c);
-                }
-            }
-        }
-    }
-    out
-}
-
-fn subdirs(dir: &Path) -> Vec<PathBuf> {
-    let Ok(entries) = std::fs::read_dir(dir) else {
-        return vec![];
-    };
-    let mut dirs: Vec<PathBuf> = entries
-        .filter_map(Result::ok)
-        .map(|e| e.path())
-        .filter(|p| p.is_dir())
-        .collect();
-    dirs.sort();
-    dirs
 }
 
 fn relative(root: &Path, path: &Path) -> String {

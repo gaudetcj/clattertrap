@@ -14,7 +14,7 @@ Commands:
   look     Write a PNG of a scene at the start of its run
   run      Run a scene to its end and print the outcome as JSON
   arena    Run a Claude model through the contestant tools and save every run (the pilot)
-  report   Summarize a directory of pilot runs: levels solved per model and arm, attempts, and exclusions
+  report   Summarize a directory of runs: levels solved per model and arm, attempts, and exclusions
   promote  Copy counted pilot runs into the gallery once their stored outcomes still hold
   verify   Re-simulate every stored outcome under a directory of runs; exits 1 with the mismatches
   mcp      Serve the contestant tools over stdio as an MCP server

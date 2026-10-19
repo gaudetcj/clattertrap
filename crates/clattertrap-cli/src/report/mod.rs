@@ -3,14 +3,14 @@
 mod text;
 
 use crate::catalog;
-use crate::records::{Status, Submission, Summary, Tool, read_calls, read_json};
+use crate::records::{Status, Submission, Summary, Tool, read_calls, read_json, run_dirs};
 use anyhow::{Result, ensure};
 use std::path::{Path, PathBuf};
 
 /// What one `report` invocation prints.
 #[derive(Debug)]
 pub struct Options {
-    /// The runs directory, `<model>/<level>/<arm>-NN` underneath.
+    /// A runs or gallery directory: `summary.json` three levels down.
     pub dir: PathBuf,
     /// One CSV row per run instead of the tables.
     pub csv: bool,
@@ -43,7 +43,7 @@ pub struct Submitted {
 /// One run directory, read.
 #[derive(Debug)]
 pub struct Run {
-    /// `model/level/arm-NN`, with forward slashes.
+    /// The last three path components, `a/b/arm-NN`, with forward slashes.
     pub rel: String,
     /// Its `summary.json`.
     pub summary: Summary,
@@ -75,7 +75,7 @@ pub fn run(opts: &Options) -> Result<()> {
     let runs = load(&opts.dir)?;
     ensure!(
         !runs.is_empty(),
-        "no runs under {}: expected <model>/<level>/<arm>-NN/summary.json",
+        "no runs under {}: expected <a>/<b>/<c>/summary.json three levels down",
         opts.dir.display()
     );
     let tiers = catalog::levels()?
@@ -93,44 +93,29 @@ pub fn run(opts: &Options) -> Result<()> {
     Ok(())
 }
 
-/// Every run under `dir`, in path order.
+/// Every run under `dir`, in path order, from either layout: the summary names the model, level,
+/// and arm.
 fn load(dir: &Path) -> Result<Vec<Run>> {
-    let mut runs = Vec::new();
-    for model in subdirs(dir) {
-        for level in subdirs(&model) {
-            for run_dir in subdirs(&level) {
-                let summary = run_dir.join("summary.json");
-                if !summary.is_file() {
-                    continue;
-                }
-                runs.push(read_run(&run_dir, &[&model, &level, &run_dir])?);
-            }
-        }
-    }
-    Ok(runs)
-}
-
-/// The directories directly under `dir`, sorted; none when `dir` is missing.
-fn subdirs(dir: &Path) -> Vec<PathBuf> {
-    let Ok(entries) = std::fs::read_dir(dir) else {
-        return vec![];
-    };
-    let mut dirs: Vec<PathBuf> = entries
-        .filter_map(Result::ok)
-        .map(|e| e.path())
-        .filter(|p| p.is_dir())
-        .collect();
-    dirs.sort();
-    dirs
-}
-
-fn read_run(dir: &Path, parts: &[&Path]) -> Result<Run> {
-    let rel = parts
+    run_dirs(dir)
         .iter()
-        .filter_map(|p| p.file_name())
-        .map(|n| n.to_string_lossy().into_owned())
-        .collect::<Vec<_>>()
-        .join("/");
+        .map(|run_dir| read_run(run_dir))
+        .collect()
+}
+
+/// The last three components of `dir`, joined with forward slashes.
+fn relative_name(dir: &Path) -> String {
+    let mut parts: Vec<String> = dir
+        .components()
+        .rev()
+        .take(3)
+        .map(|c| c.as_os_str().to_string_lossy().into_owned())
+        .collect();
+    parts.reverse();
+    parts.join("/")
+}
+
+fn read_run(dir: &Path) -> Result<Run> {
+    let rel = relative_name(dir);
     let summary: Summary = read_json(&dir.join("summary.json"))?;
     let submission = match read_json::<Submission>(&dir.join("submission.json")) {
         Ok(s) => Some(Submitted {
