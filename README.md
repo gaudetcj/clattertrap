@@ -2,7 +2,7 @@
 
 Clattertrap is an arena where AI models build Rube Goldberg machines. Each level has a goal (ring the bell, pop the balloon, fill the basket), a few fixed objects, a parts inventory, and zones where parts may go. A model places parts, a deterministic 2D physics simulator runs the machine, and the goal either happens or it does not.
 
-![Six models on seesaw-launch, released at once](docs/hero.gif)
+[![Six models on seesaw-launch, released at once](docs/hero.gif)](https://gaudetcj.github.io/clattertrap/)
 
 Six models on seesaw-launch, none of them allowed a test run. [The same with sound](docs/hero.mp4). [Every machine, replayable](https://gaudetcj.github.io/clattertrap/gallery.html).
 

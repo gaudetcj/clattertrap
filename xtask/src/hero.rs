@@ -1,5 +1,5 @@
 //! `cargo xtask hero`: records the arena grid in the browser and assembles `docs/hero.gif` and
-//! `docs/hero.mp4` with ffmpeg. The browser side writes `frames/NNNNN.png` for the whole run,
+//! `docs/hero.mp4` with ffmpeg. The browser side screenshots the page and writes `frames/NNNNN.png` for the whole run,
 //! `gif/NNNNN.png` for the shorter GIF, and `audio.wav`.
 
 use crate::{step_env, wasm};
@@ -27,7 +27,8 @@ fn frames_pattern(out: &Path, set: &str) -> String {
     out.join(set).join("%05d.png").display().to_string()
 }
 
-/// ffmpeg arguments for the MP4: H.264 in yuv420p so every player opens it, with the rendered audio.
+/// ffmpeg arguments for the MP4: H.264 in yuv420p so every player opens it, cropped to even
+/// dimensions as that format needs, with the rendered audio.
 #[must_use]
 pub fn mp4_args(out: &Path, wav: &Path, mp4: &Path) -> Vec<String> {
     [
@@ -38,6 +39,8 @@ pub fn mp4_args(out: &Path, wav: &Path, mp4: &Path) -> Vec<String> {
         &frames_pattern(out, "frames"),
         "-i",
         &wav.display().to_string(),
+        "-vf",
+        "scale=trunc(iw/2)*2:trunc(ih/2)*2",
         "-c:v",
         "libx264",
         "-pix_fmt",
@@ -165,6 +168,7 @@ mod tests {
         assert!(text.contains(&format!("-framerate {FPS}")), "{text}");
         assert!(text.contains("-c:v libx264"), "{text}");
         assert!(text.contains("-pix_fmt yuv420p"), "{text}");
+        assert!(text.contains("-vf scale=trunc(iw/2)*2:trunc(ih/2)*2"), "{text}");
         assert!(text.contains("audio.wav"), "{text}");
         assert!(text.contains("-c:a aac"), "{text}");
         assert!(text.ends_with("hero.mp4"), "{text}");
