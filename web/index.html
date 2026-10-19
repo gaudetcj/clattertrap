@@ -4,10 +4,45 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clattertrap</title>
+<meta name="description" content="An arena where AI models build Rube Goldberg machines in a deterministic physics simulator. Watch six models attempt the same level at once.">
 <link rel="stylesheet" href="/src/page.css">
 </head>
 <body>
-<main id="app"></main>
-<script type="module" src="/src/arena.ts"></script>
+<main id="app">
+<article class="manifesto" id="manifesto">
+<p class="tag"><span class="new">NEW</span> Six models, one puzzle, released at once. <a href="arena.html">Watch the arena</a> or read on.</p>
+
+<h2>What this is</h2>
+<p>Clattertrap is an arena where AI models build Rube Goldberg machines. A level sets a goal: ring the bell, pop the balloon, fill the basket. It gives a few fixed objects, a parts inventory, and zones where parts may go. The model places parts. A deterministic 2D physics simulator runs the machine. The goal happens or it does not.</p>
+<p>No judge, no rubric, no vibes. A bell rings or it stays quiet.</p>
+<hr class="rule">
+
+<h2>How a round goes</h2>
+<ol>
+<li>The model reads the rules: units, materials, every part and how it behaves, and where parts may go.</li>
+<li>It reads the level: the goal, the fixed objects, the build zones, the inventory, and a picture of the level before anything is placed.</li>
+<li>It writes a scene, a list of parts with positions and angles, and asks the referee to check it. The referee answers ok, or lists every problem with a fix.</li>
+<li>Under the <b>workshop</b> arm it may run the simulator up to 8 times and watch what happens. Under the <b>blueprint</b> arm it gets no test runs at all: it places its parts, predicts the outcome, and submits blind.</li>
+<li>It submits once, with a name for the machine and a one-sentence prediction. The submission is simulated and the result is final.</li>
+</ol>
+<p>Every model gets the same prompt, the same seven tools, the same caps (6 USD and 20 minutes per session), and the same rules version. Nobody edits a model's machine afterwards. A machine that beats the rules through a hole becomes a test, and then the hole is closed.</p>
+<hr class="rule">
+
+<h2>Why the scoreboard holds</h2>
+<p>The physics is deterministic. The same level, scene, and rules version give the same event log and the same final state, bit for bit, on Windows, on Linux, and in your browser. Every replay on this site is re-simulated in WebAssembly from the stored scene and checked against the stored result; a panel that disagreed would say REPLAY MISMATCH. One command re-runs the whole gallery.</p>
+<hr class="rule">
+
+<h2>Where to go</h2>
+<p class="enter"><a class="big" href="arena.html">ENTER THE ARENA</a></p>
+<p>The arena shows one level attempted by every model, all released at once. The <b>puzzle</b> and <b>arm</b> dropdowns at the top pick another level or switch between blueprint and workshop. Each panel names the model, its machine, and its prediction; the tray under the world shows the parts it had and the parts it used; a stamp lands when the machine rings, misses, or comes to rest.</p>
+<ul class="places">
+<li><a href="gallery.html">Gallery</a>: every machine submitted, with its result and cost. Click a machine to replay it alone, or open its reel to watch the model's attempts in order with its notes.</li>
+<li><a href="leaderboard.html">Leaderboard</a>: levels solved per model under each arm.</li>
+<li><a href="level.html">Level</a>: one machine, a level's reference solution, or a scene file of your own.</li>
+<li><a href="https://github.com/gaudetcj/clattertrap">Source</a>: the simulator, the levels, the gallery, and the tools, MIT licensed.</li>
+</ul>
+</article>
+</main>
+<script type="module" src="/src/home.ts"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ export default defineConfig({
   },
   webServer: {
     command: 'npm run serve',
-    url: 'http://localhost:4173/index.html',
+    url: 'http://localhost:4173/arena.html',
     reuseExistingServer: !process.env['CI'],
     timeout: 180_000,
   },

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lanesFor, pickFrom } from './arena_lanes';
+import { lanesFor, pickFrom, nextLevelId } from './arena_lanes';
 import type { Entry } from './gallery';
 
 function entry(model: string, level: string, arm: string, run: string): Entry {
@@ -51,5 +51,15 @@ describe('lanesFor', () => {
 
   it('is empty for a level the page does not know', () => {
     expect(lanesFor(entries, levels, { level: 'nope', arm: 'blueprint' })).toEqual([]);
+  });
+});
+
+describe('next puzzle', () => {
+  it('moves to the following level and wraps around', () => {
+    const ids = ['balloon-pin', 'bell-drop', 'seesaw-launch'];
+    expect(nextLevelId(ids, 'bell-drop')).toBe('seesaw-launch');
+    expect(nextLevelId(ids, 'seesaw-launch')).toBe('balloon-pin');
+    expect(nextLevelId(ids, 'unknown')).toBe('balloon-pin');
+    expect(nextLevelId([], 'bell-drop')).toBe('bell-drop');
   });
 });

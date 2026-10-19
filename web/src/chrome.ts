@@ -82,6 +82,9 @@ export function footer(counts: Counts): HTMLElement {
   for (const label of labels) {
     badges.append(el('span', label, 'badge'));
   }
-  foot.append(counter, badges);
+  const credit = el('a', undefined, 'credit');
+  credit.href = 'https://github.com/gaudetcj/clattertrap';
+  credit.append('MADE BY ', el('b', 'CHASE GAUDET'), ' ', el('span', 'SOURCE ON GITHUB', 'credit-sub'));
+  foot.append(counter, credit, badges);
   return foot;
 }

@@ -41,7 +41,7 @@ test('record the arena page', async ({ page }) => {
   await page.setViewportSize(VIEWPORT);
   // Reduced motion keeps the marquee readable as still text instead of parked off-screen.
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto(`/index.html?level=${encodeURIComponent(level)}&arm=${encodeURIComponent(arm)}&record=1`);
+  await page.goto(`/arena.html?level=${encodeURIComponent(level)}&arm=${encodeURIComponent(arm)}&record=1`);
   await page.waitForFunction(() => window.clattertrapRecord !== undefined);
   await page.evaluate(() => document.fonts.ready);
   const shot = (): Promise<Buffer> => page.locator('main').screenshot({ animations: 'disabled' });

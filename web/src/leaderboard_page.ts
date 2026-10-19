@@ -47,7 +47,8 @@ function page(app: HTMLElement): void {
   const entries = galleryEntries();
   const rows = leaderboardRows(entries, misses(entries, gallerySummaries()), tiers);
   const nav = navLinks([
-    ['arena', 'index.html'],
+    ['home', 'index.html'],
+    ['arena', 'arena.html'],
     ['gallery', 'gallery.html'],
     ['level', 'level.html'],
   ]);

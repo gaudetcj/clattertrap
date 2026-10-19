@@ -41,7 +41,7 @@ function table(level: string, entries: Entry[], goal: ReturnType<typeof goalKind
   const arms = [...new Set(entries.map((e) => e.arm))].sort();
   const nav = el('p', undefined, 'nav');
   for (const arm of arms) {
-    nav.append(link(`arena ${arm}`, `index.html${search({ level, arm })}`), ' ');
+    nav.append(link(`arena ${arm}`, `arena.html${search({ level, arm })}`), ' ');
   }
   const t = el('table');
   const head = el('tr');
@@ -56,7 +56,8 @@ function page(app: HTMLElement): void {
   const levels = fixtures();
   const entries = galleryEntries();
   const nav = navLinks([
-    ['arena', 'index.html'],
+    ['home', 'index.html'],
+    ['arena', 'arena.html'],
     ['leaderboard', 'leaderboard.html'],
     ['level', 'level.html'],
   ]);

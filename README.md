@@ -25,9 +25,9 @@ Every model plays every level under two arms with the same prompt, tools, and ru
 
 ## Watch
 
-The site at https://gaudetcj.github.io/clattertrap/ serves the gallery:
+The site at https://gaudetcj.github.io/clattertrap/ opens on a write-up of how a round goes, then serves the gallery:
 
-- `index.html?level=<id>&arm=<arm>`: the landing page, one level, every model side by side, released at once.
+- `arena.html?level=<id>&arm=<arm>`: one level, every model side by side, released at once.
 - `reel.html?entry=<level>/<model>/<arm>-NN`: one model's attempts on one level in order, then its submission, with its notes.
 - `gallery.html`: every machine with its name, prediction, result, and cost.
 - `leaderboard.html`: the table above.

@@ -65,7 +65,7 @@ async function page(app: HTMLElement): Promise<void> {
   const openInput = el('input');
   openInput.type = 'file';
   openInput.accept = '.json,application/json';
-  const openLabel = el('label', 'Open scene ');
+  const openLabel = el('label', 'Open scene ', 'open');
   openLabel.append(openInput);
   const controls = el('div', undefined, 'controls');
   controls.append(select, playButton, restartButton, muteButton, openLabel);
@@ -75,7 +75,8 @@ async function page(app: HTMLElement): Promise<void> {
   const canvas = el('canvas');
   const status = el('p', 'loading', 'status');
   const nav = navLinks([
-    ['arena', 'index.html'],
+    ['home', 'index.html'],
+    ['arena', 'arena.html'],
     ['gallery', 'gallery.html'],
     ['leaderboard', 'leaderboard.html'],
   ]);
@@ -100,7 +101,7 @@ async function page(app: HTMLElement): Promise<void> {
     }
     select.value = f.id;
     if (arenaLink) {
-      arenaLink.href = `index.html${search({ level: f.id })}`;
+      arenaLink.href = `arena.html${search({ level: f.id })}`;
     }
     const chrome: PanelChrome = { label: shown.label, name: shown.name ?? titleOf(f.level), prediction: shown.prediction ?? '' };
     try {

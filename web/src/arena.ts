@@ -1,7 +1,7 @@
 // The arena page: one level, one arm, one panel per model, all released at once. The verdicts are
 // mirrored into the DOM so a test can read them without touching the canvas.
 
-import { lanesFor, pickFrom, type Pick } from './arena_lanes';
+import { lanesFor, nextLevelId, pickFrom, type Pick } from './arena_lanes';
 import { Conductor } from './conductor';
 import { band, footer, navLinks, siteCounts } from './chrome';
 import { el } from './dom';
@@ -13,6 +13,13 @@ import { loadWasm } from './replay';
 
 const ARMS = ['blueprint', 'workshop'];
 
+// A select with its name in front, so a visitor knows it picks something.
+function labelled(name: string, select: HTMLSelectElement): HTMLLabelElement {
+  const label = el('label', `${name} `, 'pick');
+  label.append(select);
+  return label;
+}
+
 class ArenaPage {
   readonly conductor: Conductor;
   private readonly status = el('p', 'loading', 'status');
@@ -20,6 +27,7 @@ class ArenaPage {
   private readonly armSelect = el('select');
   private readonly playButton = el('button', 'Play');
   private readonly canvas = el('canvas');
+  private readonly levelIds: string[];
   private muted = false;
 
   constructor(
@@ -32,6 +40,7 @@ class ArenaPage {
     private readonly record: boolean,
   ) {
     const withEntries = levels.filter((f) => entries.some((e) => e.level === f.id));
+    this.levelIds = withEntries.map((f) => f.id);
     for (const f of withEntries) {
       const option = el('option', f.id);
       option.value = f.id;
@@ -44,19 +53,23 @@ class ArenaPage {
     }
     const restartButton = el('button', 'Restart');
     const muteButton = el('button', 'Mute');
+    const nextButton = el('button', 'Next puzzle');
     const controls = el('div', undefined, 'controls');
-    controls.append(this.levelSelect, this.armSelect, this.playButton, restartButton, muteButton);
+    controls.append(labelled('puzzle', this.levelSelect), labelled('arm', this.armSelect), nextButton, this.playButton, restartButton, muteButton);
+    const hint = el('p', 'Pick a puzzle and an arm. Blueprint: no test runs, the model submitted blind. Workshop: up to 8 test runs first.', 'hint');
     const nav = navLinks([
+      ['home', 'index.html'],
       ['gallery', 'gallery.html'],
       ['leaderboard', 'leaderboard.html'],
       ['level', 'level.html'],
     ]);
     const counts = siteCounts(entries, levels);
-    app.replaceChildren(band('Clattertrap', nav, counts), controls, this.canvas, this.status, footer(counts));
+    app.replaceChildren(band('Clattertrap arena', nav, counts), controls, hint, this.canvas, this.status, footer(counts));
     this.conductor = new Conductor(this.canvas, this.dt_s, !record, (c) => this.changed(c));
     this.levelSelect.addEventListener('change', () => this.open({ level: this.levelSelect.value, arm: this.pick.arm }));
     this.armSelect.addEventListener('change', () => this.open({ level: this.pick.level, arm: this.armSelect.value }));
     this.playButton.addEventListener('click', () => this.conductor.toggle());
+    nextButton.addEventListener('click', () => this.open({ level: nextLevelId(this.levelIds, this.pick.level), arm: this.pick.arm }));
     restartButton.addEventListener('click', () => this.conductor.restart());
     muteButton.addEventListener('click', () => {
       this.muted = !this.muted;
@@ -117,11 +130,6 @@ class ArenaPage {
 async function page(app: HTMLElement): Promise<void> {
   // Read before the page rewrites the address to the level and arm it opened.
   const query = location.search;
-  // A machine link from before the arena became the landing page opens on the level page.
-  if (param(query, 'entry') !== undefined) {
-    location.replace(`level.html${query}`);
-    return;
-  }
   const wasm = await loadWasm();
   const record = param(query, 'record') !== undefined;
   const arena = new ArenaPage(app, wasm.dt_s, wasm.rules_version, fixtures(), galleryEntries(), pickFrom(query), record);

@@ -13,7 +13,7 @@ const MODELS = [
 const VERDICT = /^(RANG|PRESSED|FILLED|POPPED) \d+\.\d s$|^MISSED$|^CAME TO REST$/;
 
 test('the arena grid plays six machines and shows their stamps', async ({ page }) => {
-  await page.goto('/index.html?level=seesaw-launch&arm=blueprint&autoplay=1');
+  await page.goto('/arena.html?level=seesaw-launch&arm=blueprint&autoplay=1');
   const status = page.locator('.status');
   await expect(status).toHaveAttribute('data-ended', 'true', { timeout: 60_000 });
   const stamps = status.locator('.stamp');

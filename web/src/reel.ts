@@ -44,7 +44,8 @@ class ReelPage {
     const controls = el('div', undefined, 'controls');
     controls.append(playButton, restartButton, muteButton);
     const nav = navLinks([
-      ['arena', `index.html?level=${encodeURIComponent(entry.level)}&arm=${encodeURIComponent(entry.arm)}`],
+      ['home', 'index.html'],
+      ['arena', `arena.html?level=${encodeURIComponent(entry.level)}&arm=${encodeURIComponent(entry.arm)}`],
       ['gallery', 'gallery.html'],
       ['leaderboard', 'leaderboard.html'],
     ]);

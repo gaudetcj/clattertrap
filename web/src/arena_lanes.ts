@@ -37,3 +37,12 @@ export function lanesFor(entries: Entry[], levels: Fixture[], pick: Pick): LaneI
     stored: e.outcome,
   }));
 }
+
+// The level after `current` in `ids`, wrapping to the first; an unknown current starts over.
+export function nextLevelId(ids: string[], current: string): string {
+  if (ids.length === 0) {
+    return current;
+  }
+  const at = ids.indexOf(current);
+  return ids[(at + 1) % ids.length] ?? current;
+}
