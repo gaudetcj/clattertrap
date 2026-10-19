@@ -25,6 +25,9 @@ export interface LaneInput {
 
 export type State = 'empty' | 'ready' | 'playing' | 'paused' | 'ended';
 
+// The screens page.css lays out in one column.
+const NARROW = '(max-width: 720px)';
+
 interface Lane {
   replay: Replay;
   stored: Outcome | null;
@@ -88,13 +91,17 @@ export class Conductor {
   }
 
   // Sizes the canvas to its container width and to the height left on screen after everything
-  // under it; the view picks the upscale.
+  // under it; the view picks the upscale. A phone fits the width alone, since its viewport height
+  // moves with the address bar and the lines under the grid.
   fit(): void {
     if (!this.view) {
       return;
     }
     const top = this.canvas.getBoundingClientRect().top + window.scrollY;
-    this.view.resize(widthWithin(this.canvas), Math.max(1, window.innerHeight - top - heightBelow(this.canvas)));
+    const room_h = window.matchMedia(NARROW).matches
+      ? Number.POSITIVE_INFINITY
+      : Math.max(1, window.innerHeight - top - heightBelow(this.canvas));
+    this.view.resize(widthWithin(this.canvas), room_h);
     // Sizing the backing store clears it, so every lane is painted again, ended ones included.
     this.draw(this.lanes.map(() => true));
   }

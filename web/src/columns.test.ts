@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { bestColumns, panelSize } from './layout';
+import { bestColumns, fitScale, panelSize } from './layout';
 
 describe('column count', () => {
   const panel = panelSize(400, 300);
@@ -14,5 +14,15 @@ describe('column count', () => {
     expect(bestColumns(2, 3440, 900, panel)).toBe(2);
     expect(bestColumns(1, 500, 500, panel)).toBe(1);
     expect(bestColumns(0, 500, 500, panel)).toBe(1);
+  });
+});
+
+describe('a box with no height limit', () => {
+  // A phone fits the grid to its width alone, so the panels stack in one column.
+  it('takes one column and fills the width', () => {
+    const panel = panelSize(400, 300);
+    expect(bestColumns(6, 370, Number.POSITIVE_INFINITY, panel)).toBe(1);
+    expect(fitScale(370, Number.POSITIVE_INFINITY, { w: 400, h: 2424 })).toBeCloseTo(370 / 400, 6);
+    expect(fitScale(900, Number.POSITIVE_INFINITY, { w: 400, h: 2424 })).toBe(2);
   });
 });

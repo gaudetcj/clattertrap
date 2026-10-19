@@ -41,3 +41,18 @@ test('a model with no submission gets a panel stamped from the start', async ({ 
   await expect(status).toHaveAttribute('data-ended', 'true', { timeout: 60_000 });
   await expect(stamps.nth(0)).toHaveText(VERDICT);
 });
+
+test('a phone fits the grid to its width alone, one panel per row', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 700 });
+  await page.goto('/arena.html?level=seesaw-launch&arm=blueprint&lineup=claude');
+  const canvas = page.locator('canvas');
+  await expect(canvas).toHaveJSProperty('width', 400);
+  await expect(canvas).toHaveJSProperty('height', 2424);
+  const box = await canvas.boundingBox();
+  expect(box?.width).toBeGreaterThan(350);
+  expect(box?.width).toBeLessThanOrEqual(390);
+  // A taller or shorter window changes nothing.
+  await page.setViewportSize({ width: 390, height: 500 });
+  await expect(canvas).toHaveJSProperty('width', 400);
+  expect((await canvas.boundingBox())?.width).toBe(box?.width);
+});
