@@ -158,21 +158,65 @@ pub fn validate(level: &Level, scene: &Scene, rules: &Rules) -> Result<ValidScen
     if !problems.is_empty() {
         return Err(problems);
     }
-    let mut names = names;
-    names.push(FLOOR_NAME.to_owned());
-    let placed = level.fixed.iter().chain(&scene.parts).cloned().collect();
-    let valid = ValidScene {
-        names,
-        placed,
-        fixed_count: level.fixed.len(),
-    };
-    let overlaps = World::build(level, &valid, rules).initial_overlaps();
-    problems.extend(overlaps.into_iter().map(|o| overlap_problem(&valid, o)));
+    let valid = assemble(level, scene, names);
+    problems.extend(overlap_problems(level, &valid, rules));
     if problems.is_empty() {
         Ok(valid)
     } else {
         Err(problems)
     }
+}
+
+/// A scene an editor can draw: built despite inventory, zone, and overlap problems, which come
+/// alongside it. Problems that stop a part from being built refuse it as `validate` does.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Preview {
+    /// The scene with every part placed, fixtures first.
+    pub scene: ValidScene,
+    /// Inventory, zone, and overlap problems, in that order; empty when `validate` would accept it.
+    pub problems: Vec<Problem>,
+}
+
+/// Builds a scene for drawing, reporting the placement problems instead of refusing on them.
+///
+/// # Errors
+/// The problems that make a part unbuildable: the header, ids, ranges, links, and the goal target.
+pub fn preview(level: &Level, scene: &Scene, rules: &Rules) -> Result<Preview, Vec<Problem>> {
+    let mut problems = Vec::new();
+    checks::level_header(level, scene, &mut problems);
+    let names = checks::names(level, scene, &mut problems);
+    ranges::ranges(level, scene, rules, &mut problems);
+    checks::links(level, scene, &names, &mut problems);
+    checks::goal_target(level, &mut problems);
+    if !problems.is_empty() {
+        return Err(problems);
+    }
+    let valid = assemble(level, scene, names);
+    checks::inventory(level, scene, &mut problems);
+    checks::zones(level, scene, &mut problems);
+    problems.extend(overlap_problems(level, &valid, rules));
+    Ok(Preview {
+        scene: valid,
+        problems,
+    })
+}
+
+/// The placed scene: fixtures, then the parts, with the floor named last.
+fn assemble(level: &Level, scene: &Scene, mut names: Vec<String>) -> ValidScene {
+    names.push(FLOOR_NAME.to_owned());
+    ValidScene {
+        names,
+        placed: level.fixed.iter().chain(&scene.parts).cloned().collect(),
+        fixed_count: level.fixed.len(),
+    }
+}
+
+fn overlap_problems(level: &Level, valid: &ValidScene, rules: &Rules) -> Vec<Problem> {
+    World::build(level, valid, rules)
+        .initial_overlaps()
+        .into_iter()
+        .map(|o| overlap_problem(valid, o))
+        .collect()
 }
 
 /// Blames the later-placed part, or the non-floor part, and suggests lifting it clear.

@@ -73,3 +73,42 @@ fn broken_json_is_refused() {
     assert!(Replay::new("{", REFERENCE).is_err());
     assert!(Replay::new(LEVEL, "{").is_err());
 }
+
+#[wasm_bindgen_test]
+fn a_preview_draws_an_overlapping_scene_and_lists_the_problem() {
+    let scene = r#"{ "level": "bell-drop", "parts": [
+      { "id": "d1", "kind": "domino", "x_cm": 200, "y_cm": 0 } ] }"#;
+    assert!(
+        Replay::new(LEVEL, scene).is_err(),
+        "a domino in the floor was accepted"
+    );
+    let replay = Replay::preview(LEVEL, scene).unwrap();
+    let problems = replay.problems();
+    assert!(problems.contains("overlaps floor"), "{problems}");
+    let setup: serde_json::Value = serde_json::from_str(&replay.setup().unwrap()).unwrap();
+    let names = setup["names"].as_array().unwrap();
+    assert!(
+        names.iter().any(|n| n == "d1"),
+        "the domino is placed all the same: {names:?}"
+    );
+    assert!(Replay::new(LEVEL, REFERENCE).unwrap().problems().is_empty());
+}
+
+#[wasm_bindgen_test]
+fn a_preview_refuses_a_part_it_cannot_build() {
+    let scene = r#"{ "level": "bell-drop", "parts": [
+      { "id": "b1", "kind": "beam", "x_cm": 200, "y_cm": 150, "length_cm": 900, "angle_deg": 0 } ] }"#;
+    let Err(err) = Replay::preview(LEVEL, scene) else {
+        panic!("a beam of 900 cm was built")
+    };
+    assert!(err.contains("length_cm 900"), "{err}");
+}
+
+#[wasm_bindgen_test]
+fn the_ranges_come_from_the_rules_in_metres() {
+    let ranges: serde_json::Value = serde_json::from_str(&clattertrap_wasm::ranges()).unwrap();
+    assert_eq!(ranges["beam_length"]["min_m"], 0.2);
+    assert_eq!(ranges["beam_length"]["max_m"], 1.5);
+    assert_eq!(ranges["funnel_throat_min_m"], 0.14);
+    assert_eq!(ranges["rope_length"]["max_m"], 2.0);
+}

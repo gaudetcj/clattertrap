@@ -5,10 +5,10 @@
 use clattertrap_core::events::{Event, EventKind, PartId};
 use clattertrap_core::level::{Goal, Level, Zone};
 use clattertrap_core::parts::Visual;
-use clattertrap_core::rules::{RULES_VERSION, Rules};
+use clattertrap_core::rules::{RULES_VERSION, Range, Rules};
 use clattertrap_core::score::Recorder;
 use clattertrap_core::sim::Simulator;
-use clattertrap_core::validate::{check, parse_level};
+use clattertrap_core::validate::{check, parse_level, parse_scene, preview};
 use serde::Serialize;
 use wasm_bindgen::prelude::wasm_bindgen;
 
@@ -33,6 +33,7 @@ pub struct Replay {
     sim: Simulator,
     recorder: Option<Recorder>,
     outcome: Option<String>,
+    problems: String,
 }
 
 /// What the page needs once, before the first step.
@@ -76,7 +77,34 @@ impl Replay {
             sim,
             recorder: Some(Recorder::new()),
             outcome: None,
+            problems: String::new(),
         })
+    }
+
+    /// Parses a level and a scene and builds the scene for drawing even when parts overlap, sit
+    /// outside the zones, or exceed the inventory; `problems` lists those. The error lists what
+    /// could not be built at all, one problem per line.
+    ///
+    /// # Errors
+    /// When either JSON does not parse or a part cannot be built.
+    pub fn preview(level_json: &str, scene_json: &str) -> Result<Replay, String> {
+        let level = parse_level(level_json).map_err(|p| p.to_string())?;
+        let scene = parse_scene(scene_json).map_err(|p| p.to_string())?;
+        let built = preview(&level, &scene, &Rules::V1).map_err(|problems| lines(&problems))?;
+        let sim = Simulator::new(&level, &built.scene, &Rules::V1);
+        Ok(Self {
+            level,
+            sim,
+            recorder: Some(Recorder::new()),
+            outcome: None,
+            problems: lines(&built.problems),
+        })
+    }
+
+    /// The placement problems a preview carries, one per line; empty for a validated scene.
+    #[must_use]
+    pub fn problems(&self) -> String {
+        self.problems.clone()
     }
 
     /// World size, zones, goal, part names, and one entry per body slot, as JSON.
@@ -152,6 +180,51 @@ impl Replay {
         }
         Ok(self.outcome.clone())
     }
+}
+
+/// Every problem on its own line.
+fn lines(problems: &[clattertrap_core::validate::Problem]) -> String {
+    problems
+        .iter()
+        .map(ToString::to_string)
+        .collect::<Vec<_>>()
+        .join(
+            "
+",
+        )
+}
+
+/// The part size ranges of rules v1 in metres, as JSON, so an editor reads them from the rules.
+#[derive(Serialize)]
+struct Ranges {
+    beam_length: Range,
+    seesaw_length: Range,
+    crate_side: Range,
+    pendulum_length: Range,
+    bucket_size: Range,
+    funnel_mouth: Range,
+    funnel_height: Range,
+    funnel_throat_min_m: f32,
+    rope_length: Range,
+}
+
+/// The part size ranges of rules v1 in metres, as JSON.
+#[wasm_bindgen]
+#[must_use]
+pub fn ranges() -> String {
+    let r = Rules::V1;
+    let ranges = Ranges {
+        beam_length: r.beam_length,
+        seesaw_length: r.seesaw_length,
+        crate_side: r.crate_side,
+        pendulum_length: r.pendulum_length,
+        bucket_size: r.bucket_size,
+        funnel_mouth: r.funnel_mouth,
+        funnel_height: r.funnel_height,
+        funnel_throat_min_m: r.funnel_throat_min_m,
+        rope_length: r.rope_length,
+    };
+    serde_json::to_string(&ranges).unwrap_or_default()
 }
 
 fn encode(e: Event) -> [u16; 3] {

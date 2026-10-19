@@ -6,7 +6,7 @@ mod common;
 use clattertrap_core::level::{Goal, Level, Zone};
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::{Material, PartSpec, Scene};
-use clattertrap_core::validate::{check, parse_level, parse_scene, validate};
+use clattertrap_core::validate::{check, parse_level, parse_scene, preview, validate};
 use common::{ball, beam, level, pendulum, placed, scene};
 
 fn problems(level: &Level, scene: &Scene) -> Vec<String> {
@@ -345,4 +345,65 @@ fn a_pendulum_rod_crossing_a_beam_at_the_start_is_an_overlap() {
         msg.starts_with("parts[0] (pendulum p): overlaps b by"),
         "{msg}"
     );
+}
+
+#[test]
+fn a_preview_keeps_a_scene_whose_parts_overlap_and_reports_the_overlap() {
+    let lv = level(vec![ball("k1", 200.0, 100.0, Material::Steel)]);
+    let sc = scene(vec![beam("b1", 200.0, 100.0, 80.0, 0.0)]);
+    let p = preview(&lv, &sc, &Rules::V1).unwrap();
+    assert_eq!(p.scene.placed().len(), lv.fixed.len() + 1);
+    let msgs: Vec<String> = p.problems.iter().map(ToString::to_string).collect();
+    assert_eq!(msgs.len(), 1, "{msgs:#?}");
+    assert!(
+        msgs[0].starts_with("parts[0] (beam b1): overlaps k1 by"),
+        "{msgs:#?}"
+    );
+}
+
+#[test]
+fn a_preview_keeps_parts_outside_the_zones_or_past_the_inventory_and_names_both() {
+    let mut lv = level(vec![]);
+    lv.inventory.beam = 1;
+    lv.zones = vec![Zone {
+        x_cm: 30.0,
+        y_cm: 0.0,
+        width_cm: 310.0,
+        height_cm: 300.0,
+    }];
+    let sc = scene(vec![
+        beam("b1", 10.0, 290.0, 40.0, 0.0),
+        beam("b2", 200.0, 100.0, 40.0, 0.0),
+    ]);
+    let p = preview(&lv, &sc, &Rules::V1).unwrap();
+    assert_eq!(p.scene.placed().len(), lv.fixed.len() + 2);
+    let msgs: Vec<String> = p.problems.iter().map(ToString::to_string).collect();
+    assert!(
+        msgs.iter()
+            .any(|m| m.contains("the inventory allows 1 beam")),
+        "{msgs:#?}"
+    );
+    assert!(
+        msgs.iter().any(|m| m.contains("outside every build zone")),
+        "{msgs:#?}"
+    );
+}
+
+#[test]
+fn a_preview_refuses_what_cannot_be_built() {
+    let parts = vec![
+        beam("b1", 200.0, 100.0, 500.0, 0.0),
+        beam("b1", 200.0, 150.0, 80.0, 0.0),
+    ];
+    let err = preview(&level(vec![]), &scene(parts), &Rules::V1).unwrap_err();
+    assert!(err.len() >= 2, "{err:#?}");
+}
+
+#[test]
+fn a_preview_without_problems_is_the_validated_scene() {
+    let lv = level(vec![]);
+    let sc = scene(vec![beam("b1", 200.0, 100.0, 80.0, 0.0)]);
+    let p = preview(&lv, &sc, &Rules::V1).unwrap();
+    assert!(p.problems.is_empty());
+    assert_eq!(p.scene, validate(&lv, &sc, &Rules::V1).unwrap());
 }

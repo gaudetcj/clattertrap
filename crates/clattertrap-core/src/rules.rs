@@ -4,6 +4,7 @@
 //! densities are kilograms per square metre. See docs/physics.md.
 
 use crate::scene::Material;
+use serde::Serialize;
 
 /// Version of the physics and scoring rules. A change to physics or scoring bumps it and re-verifies
 /// the gallery in the same change.
@@ -21,7 +22,7 @@ pub struct MaterialProps {
 }
 
 /// An inclusive range of lengths a part parameter may take, in metres.
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize)]
 pub struct Range {
     /// Smallest allowed value.
     pub min_m: f32,
