@@ -1,0 +1,47 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "angle_deg": -6,
+        "id": "rampL",
+        "kind": "beam",
+        "length_cm": 71,
+        "x_cm": 110,
+        "y_cm": 258.3
+      },
+      {
+        "angle_deg": 18,
+        "id": "rampR",
+        "kind": "beam",
+        "length_cm": 66,
+        "x_cm": 297,
+        "y_cm": 252
+      },
+      {
+        "height_cm": 80,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 20,
+        "x_cm": 200,
+        "y_cm": 52
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.8583336,
+    "steps": 343,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "5512bed953bfc56c",
+    "state_hash": "8fe591c50f2bb830",
+    "rules_version": 1
+  },
+  "name": "Twin Ramps into a Steep Chute",
+  "prediction": "Ball1 falls straight through the funnel's steep chute into the basket; balls 0 and 2 roll down their staggered ramps, launch into the same chute, and are squeezed out nearly vertically just above the rim; all three wood balls come to rest inside the basket."
+}

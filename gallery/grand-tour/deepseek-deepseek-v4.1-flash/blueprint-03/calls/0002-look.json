@@ -1,0 +1,40 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -30.3,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 69.5,
+        "x_cm": 130,
+        "y_cm": 222.5
+      },
+      {
+        "angle_deg": -59.1,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 124.7,
+        "x_cm": 226,
+        "y_cm": 142.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 150,
+        "x_cm": 310,
+        "y_cm": 75
+      },
+      {
+        "id": "steelball",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 110,
+        "y_cm": 245
+      }
+    ]
+  }
+}

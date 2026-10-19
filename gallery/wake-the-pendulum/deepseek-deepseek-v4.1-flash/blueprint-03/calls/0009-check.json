@@ -1,0 +1,5 @@
+{
+  "seq": 9,
+  "tool": "check",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"ramp1\", \"kind\": \"beam\", \"x_cm\": 263.1, \"y_cm\": 213.4, \"length_cm\": 120, \"angle_deg\": 45}, {\"id\": \"wball\", \"kind\": \"ball\", \"x_cm\": 291.2, \"y_cm\": 253.2, \"material\": \"steel\"}, {\"id\": \"rampBlow\", \"kind\": \"beam\", \"x_cm\": 69, \"y_cm\": 83, \"length_cm\": 48.1, \"angle_deg\": 45}, {\"id\": \"rampBhigh\", \"kind\": \"beam\", \"x_cm\": 68.5, \"y_cm\": 96, \"length_cm\": 46, \"angle_deg\": 44.1}]}"
+}

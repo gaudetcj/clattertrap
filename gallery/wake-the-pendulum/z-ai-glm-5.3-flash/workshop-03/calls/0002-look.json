@@ -1,0 +1,5 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"ramp1a\", \"kind\": \"beam\", \"x_cm\": 100.95, \"y_cm\": 215.5, \"length_cm\": 150, \"angle_deg\": -30}, {\"id\": \"ramp3a\", \"kind\": \"beam\", \"x_cm\": 136.54, \"y_cm\": 137.11, \"length_cm\": 29, \"angle_deg\": 40}, {\"id\": \"ramp3b\", \"kind\": \"beam\", \"x_cm\": 118.73, \"y_cm\": 117.84, \"length_cm\": 20, \"angle_deg\": 60}, {\"id\": \"ramp4b\", \"kind\": \"beam\", \"x_cm\": 80.1, \"y_cm\": 85.54, \"length_cm\": 27, \"angle_deg\": 50.32}, {\"id\": \"ramp4a\", \"kind\": \"beam\", \"x_cm\": 58.54, \"y_cm\": 59.97, \"length_cm\": 35, \"angle_deg\": 50.32}]}"
+}

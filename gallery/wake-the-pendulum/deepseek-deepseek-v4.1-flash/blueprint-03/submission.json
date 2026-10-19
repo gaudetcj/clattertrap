@@ -1,0 +1,18 @@
+{
+  "level": "wake-the-pendulum",
+  "arm": "blueprint",
+  "name": "Pendulum Wake and Bell Slide",
+  "prediction": "A steel ball rolls down a 45-degree ramp and strikes the pendulum weight so it swings left, freeing the wood ball onto the post and down a guide ramp into the bell, ringing it after pend, ball1 and post are touched in order.",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"ramp1\", \"kind\": \"beam\", \"x_cm\": 263.1, \"y_cm\": 213.4, \"length_cm\": 120, \"angle_deg\": 45}, {\"id\": \"wball\", \"kind\": \"ball\", \"x_cm\": 291.2, \"y_cm\": 253.2, \"material\": \"steel\"}, {\"id\": \"rampBlow\", \"kind\": \"beam\", \"x_cm\": 69, \"y_cm\": 83, \"length_cm\": 48.1, \"angle_deg\": 45}, {\"id\": \"rampBhigh\", \"kind\": \"beam\", \"x_cm\": 68.5, \"y_cm\": 96, \"length_cm\": 46, \"angle_deg\": 44.1}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 4,
+    "chain_length": 5,
+    "event_hash": "b69ebff0a0de35e1",
+    "state_hash": "e8f0af0e1213c4f3",
+    "rules_version": 1
+  }
+}
