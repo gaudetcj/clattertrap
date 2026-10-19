@@ -1,16 +1,59 @@
-//! The Claude Code headless provider: the command line for one session and running it.
+//! The Claude Code headless provider: the command line for one session, running it, and reading
+//! its stream-json output.
 
-use anyhow::{Context, Result};
+use super::SERVER_NAME;
+use super::provider::{Finished, Provider, Session};
+use super::stream;
+use anyhow::{Context, Result, ensure};
 use std::path::Path;
 use std::process::Stdio;
 use std::time::Duration;
 use tokio::io::AsyncWriteExt;
 use tokio::process::Command;
 
-/// The MCP server name in the per-run config; tool names are `mcp__clattertrap__<tool>`.
-pub const SERVER_NAME: &str = "clattertrap";
+/// Claude Code in print mode, restricted to the clattertrap MCP tools.
+#[derive(Debug)]
+pub struct ClaudeCode {
+    claude: String,
+    model: String,
+}
 
-/// Whether the pilot may run this model: a Claude alias or a `claude-` model id.
+impl ClaudeCode {
+    /// A provider running `claude` for `model`.
+    ///
+    /// # Errors
+    /// When the model is not a Claude alias or id.
+    pub fn new(claude: String, model: &str) -> Result<Self> {
+        ensure!(
+            is_claude_model(model),
+            "Claude Code runs Claude models only; {model:?} is not one. Give --endpoint for others"
+        );
+        Ok(Self {
+            claude,
+            model: model.to_owned(),
+        })
+    }
+}
+
+impl Provider for ClaudeCode {
+    async fn run(&self, s: &Session<'_>) -> Result<Finished> {
+        let args = command_args(&self.model, &s.dir.join("mcp.json"), s.max_budget_usd);
+        let output = run_session(&self.claude, &args, s.dir, s.prompt, s.wall_clock).await?;
+        std::fs::write(s.dir.join("stderr.txt"), &output.stderr).context("writing stderr.txt")?;
+        let parsed = stream::parse(&output.transcript);
+        Ok(Finished {
+            records: parsed.records,
+            model: parsed.model,
+            connected: parsed.connected,
+            timed_out: output.timed_out,
+            exit_code: output.exit_code,
+            error: parsed.error,
+            raw: output.transcript,
+        })
+    }
+}
+
+/// Whether Claude Code may run this model: a Claude alias or a `claude-` model id.
 #[must_use]
 pub fn is_claude_model(model: &str) -> bool {
     matches!(model, "haiku" | "sonnet" | "opus" | "fable")
@@ -49,9 +92,9 @@ pub fn command_args(model: &str, mcp_config: &Path, max_budget_usd: f64) -> Vec<
     .collect()
 }
 
-/// What one session left behind.
+/// What one process left behind.
 #[derive(Debug)]
-pub struct Finished {
+pub struct Output {
     /// The stream-json transcript from stdout.
     pub transcript: String,
     /// Everything on stderr.
@@ -72,7 +115,7 @@ pub async fn run_session(
     cwd: &Path,
     prompt: &str,
     wall_clock: Duration,
-) -> Result<Finished> {
+) -> Result<Output> {
     let mut child = Command::new(claude)
         .args(args)
         .current_dir(cwd)
@@ -93,7 +136,7 @@ pub async fn run_session(
     match output {
         Ok(output) => {
             let output = output.context("waiting for claude")?;
-            Ok(Finished {
+            Ok(Output {
                 transcript: String::from_utf8_lossy(&output.stdout).into_owned(),
                 stderr: String::from_utf8_lossy(&output.stderr).into_owned(),
                 timed_out: false,
@@ -101,7 +144,7 @@ pub async fn run_session(
             })
         }
         // The child is killed on drop; its partial output is lost with it.
-        Err(_) => Ok(Finished {
+        Err(_) => Ok(Output {
             transcript: String::new(),
             stderr: String::new(),
             timed_out: true,

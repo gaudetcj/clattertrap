@@ -8,6 +8,9 @@ pub mod session;
 #[cfg(test)]
 mod tests;
 
+/// The contestant tools, as the server lists them.
+pub const TOOL_NAMES: [&str; 7] = ["rules", "levels", "level", "check", "look", "run", "submit"];
+
 use crate::catalog;
 use anyhow::{Context, Result};
 use arm::Arm;

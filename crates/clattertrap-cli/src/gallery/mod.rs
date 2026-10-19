@@ -1,14 +1,11 @@
 //! The gallery: model-made machines promoted from pilot runs, and the checks that keep their stored
 //! results honest. `promote` copies a counted run into `gallery/<level>/<model>/<arm>-NN` once its
-//! stored outcomes still hold; `verify` re-checks every entry.
+//! stored outcomes still hold; `verify` re-checks every entry; `leaderboard` ranks the models.
 
 pub mod leaderboard;
-pub mod transcript;
 pub mod verify;
 
-#[cfg(test)]
-mod tests;
-
+use crate::records::transcript::from_jsonl;
 use crate::records::{Status, Summary, read_json};
 use anyhow::{Context, Result, bail, ensure};
 use std::path::{Path, PathBuf};
@@ -85,9 +82,12 @@ fn admit(run_dir: &Path, summary: &Summary, entry: &Path) -> Result<()> {
             "submission.json is present but the status is not submitted"
         );
     }
+    let transcript = run_dir.join("transcript.jsonl");
+    ensure!(transcript.is_file(), "transcript.jsonl is missing");
+    let text = std::fs::read_to_string(&transcript).context("reading transcript.jsonl")?;
     ensure!(
-        run_dir.join("transcript.jsonl").is_file(),
-        "transcript.jsonl is missing"
+        !from_jsonl(&text).is_empty(),
+        "transcript.jsonl holds no records; an older runner wrote it, run it again"
     );
     ensure!(
         !entry.exists(),
@@ -104,12 +104,12 @@ fn admit(run_dir: &Path, summary: &Summary, entry: &Path) -> Result<()> {
     Ok(())
 }
 
-/// Copies the records and writes the transcript export. The runner's `mcp.json` and `stderr.txt`
-/// stay behind.
+/// Copies the records verbatim. The runner's `mcp.json`, `provider.jsonl`, and `stderr.txt` stay
+/// behind.
 fn copy_entry(run_dir: &Path, entry: &Path) -> Result<()> {
     let calls = entry.join("calls");
     std::fs::create_dir_all(&calls).with_context(|| format!("creating {}", calls.display()))?;
-    for name in ["summary.json", "submission.json"] {
+    for name in ["summary.json", "submission.json", "transcript.jsonl"] {
         let from = run_dir.join(name);
         if from.is_file() {
             std::fs::copy(&from, entry.join(name))
@@ -121,10 +121,7 @@ fn copy_entry(run_dir: &Path, entry: &Path) -> Result<()> {
         std::fs::copy(&path, calls.join(name))
             .with_context(|| format!("copying {}", path.display()))?;
     }
-    let stream = std::fs::read_to_string(run_dir.join("transcript.jsonl"))
-        .context("reading transcript.jsonl")?;
-    let export = transcript::to_jsonl(&transcript::export(&stream));
-    std::fs::write(entry.join("transcript.jsonl"), export).context("writing transcript.jsonl")
+    Ok(())
 }
 
 fn relative(root: &Path, path: &Path) -> String {

@@ -145,3 +145,49 @@ fn a_submission_round_trips() {
     let back: Submission = serde_json::from_str(&text).unwrap();
     assert_eq!(back, submission);
 }
+
+#[test]
+fn transcript_records_round_trip_through_jsonl_and_junk_lines_are_skipped() {
+    use super::transcript::{Content, Record, from_jsonl, to_jsonl};
+    let records = vec![
+        Record::Text {
+            text: "Looking.".to_owned(),
+        },
+        Record::ToolUse {
+            name: "check".to_owned(),
+            input: json!({ "scene": { "level": "bell-drop", "parts": [] } }),
+        },
+        Record::ToolResult {
+            content: vec![
+                Content::Text {
+                    text: "ok: 0 parts placed".to_owned(),
+                },
+                Content::Image { omitted: true },
+            ],
+            is_error: false,
+        },
+        Record::ToolResult {
+            content: vec![Content::Text {
+                text: "refused".to_owned(),
+            }],
+            is_error: true,
+        },
+        Record::Result {
+            subtype: "success".to_owned(),
+            num_turns: Some(3),
+            duration_ms: Some(1200),
+            total_cost_usd: None,
+        },
+    ];
+    let text = to_jsonl(&records);
+    assert_eq!(text.lines().count(), 5);
+    assert!(!text.lines().nth(2).unwrap().contains("is_error"), "{text}");
+    assert!(
+        text.lines().nth(3).unwrap().contains("\"is_error\":true"),
+        "{text}"
+    );
+    assert_eq!(from_jsonl(&text), records);
+    let noisy = format!("not json\n{text}\n{{\"type\":\"picture\"}}\n\n");
+    assert_eq!(from_jsonl(&noisy), records);
+    assert!(from_jsonl("").is_empty());
+}

@@ -254,3 +254,12 @@ fn an_unknown_level_in_a_free_session_is_a_problem_not_a_crash() {
     let text = ok(session.check(&json!({ "level": "nope", "parts": [] }))).text;
     assert!(text.starts_with("level: no level \"nope\";"), "{text}");
 }
+
+#[test]
+fn the_tool_names_match_what_the_router_lists() {
+    let mut listed = super::handler::Handler::listed_tools();
+    listed.sort_unstable();
+    let mut named: Vec<String> = super::TOOL_NAMES.iter().map(|n| (*n).to_owned()).collect();
+    named.sort_unstable();
+    assert_eq!(listed, named);
+}

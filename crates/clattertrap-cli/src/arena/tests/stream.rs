@@ -1,11 +1,15 @@
-//! The transcript export: what a gallery transcript keeps from a contestant session and what it drops.
+//! Reading Claude Code's stream-json into the gallery record format, the model, and whether the
+//! server connected.
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
-use super::transcript::{Content, Record, export, to_jsonl};
+use super::super::stream::parse;
+use crate::records::transcript::{Content, Record, to_jsonl};
 use serde_json::json;
 
+const SMOKE: &str = include_str!("../../../tests/fixtures/transcripts/haiku-smoke.jsonl");
+
 const STREAM: &str = concat!(
-    r#"{"type":"system","subtype":"init","cwd":"C:\Projects\clattertrap\pilot\runs\x","slash_commands":["clear"],"model":"claude-opus-5-5","mcp_servers":[{"name":"clattertrap","status":"connected"}]}"#,
+    r#"{"type":"system","subtype":"init","cwd":"C:\\Projects\\clattertrap\\pilot\\runs\\x","slash_commands":["clear"],"model":"claude-opus-5-5","mcp_servers":[{"name":"clattertrap","status":"connected"}]}"#,
     "\n",
     r#"{"type":"system","subtype":"thinking_tokens","tokens":12}"#,
     "\n",
@@ -23,10 +27,13 @@ const STREAM: &str = concat!(
 );
 
 #[test]
-fn the_export_keeps_text_tool_calls_results_and_the_final_record() {
-    let records = export(STREAM);
+fn the_records_keep_text_tool_calls_results_and_the_final_record() {
+    let parsed = parse(STREAM);
+    assert!(parsed.connected);
+    assert_eq!(parsed.model.as_deref(), Some("claude-opus-5-5"));
+    assert_eq!(parsed.error, None);
     assert_eq!(
-        records,
+        parsed.records,
         [
             Record::Text {
                 text: "Looking at the level.".to_owned()
@@ -62,8 +69,8 @@ fn the_export_keeps_text_tool_calls_results_and_the_final_record() {
 }
 
 #[test]
-fn the_jsonl_holds_no_images_paths_or_thinking_and_round_trips() {
-    let text = to_jsonl(&export(STREAM));
+fn the_jsonl_holds_no_images_paths_or_thinking() {
+    let text = to_jsonl(&parse(STREAM).records);
     for banned in [
         "base64",
         "iVBOR",
@@ -81,36 +88,54 @@ fn the_jsonl_holds_no_images_paths_or_thinking_and_round_trips() {
         text.matches(r#"{"type":"image","omitted":true}"#).count(),
         1
     );
-    assert!(text.ends_with('\n'));
-    let lines: Vec<&str> = text.lines().collect();
-    assert_eq!(lines.len(), 5);
-    assert!(lines[0].starts_with(r#"{"type":"text""#), "{}", lines[0]);
-    let back: Vec<Record> = lines
-        .iter()
-        .map(|l| serde_json::from_str(l).unwrap())
-        .collect();
-    assert_eq!(back, export(STREAM));
-    assert!(!lines[2].contains("is_error"), "{}", lines[2]);
-    assert!(lines[3].contains(r#""is_error":true"#), "{}", lines[3]);
+    assert_eq!(text.lines().count(), 5);
 }
 
 #[test]
-fn the_smoke_transcript_exports_its_tool_calls_and_one_image_marker() {
-    let text = std::fs::read_to_string(
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("tests/fixtures/transcripts/haiku-smoke.jsonl"),
-    )
-    .unwrap();
-    let records = export(&text);
-    let uses = records
+fn the_smoke_transcript_parses_into_calls_and_a_result() {
+    let parsed = parse(SMOKE);
+    assert!(parsed.connected);
+    assert_eq!(parsed.model.as_deref(), Some("claude-haiku-5-5"));
+    let uses: Vec<&str> = parsed
+        .records
         .iter()
-        .filter(|r| matches!(r, Record::ToolUse { .. }))
-        .count();
-    let results = records
-        .iter()
-        .filter(|r| matches!(r, Record::ToolResult { .. }))
-        .count();
-    assert_eq!((uses, results), (2, 2));
-    assert_eq!(to_jsonl(&records).matches("\"omitted\"").count(), 1);
-    assert!(matches!(records.last(), Some(Record::Result { subtype, .. }) if subtype == "success"));
+        .filter_map(|r| match r {
+            Record::ToolUse { name, .. } => Some(name.as_str()),
+            _ => None,
+        })
+        .collect();
+    assert_eq!(uses, ["mcp__clattertrap__rules", "mcp__clattertrap__level"]);
+    assert_eq!(to_jsonl(&parsed.records).matches("\"omitted\"").count(), 1);
+    assert!(matches!(
+        parsed.records.last(),
+        Some(Record::Result { subtype, num_turns: Some(3), total_cost_usd: Some(c), .. })
+            if subtype == "success" && *c > 0.0
+    ));
+    assert_eq!(parsed.error, None);
+}
+
+#[test]
+fn a_failed_result_keeps_its_text_as_the_error() {
+    let failed = r#"{"type":"result","subtype":"error_during_execution","is_error":true,"num_turns":1,"total_cost_usd":0.1,"result":"API Error: 529 overloaded"}"#;
+    let parsed = parse(failed);
+    assert_eq!(parsed.error.as_deref(), Some("API Error: 529 overloaded"));
+    assert!(
+        matches!(parsed.records.as_slice(), [Record::Result { subtype, .. }] if subtype == "error_during_execution")
+    );
+}
+
+#[test]
+fn a_server_that_never_connected_is_read_from_the_init_record() {
+    let init = r#"{"type":"system","subtype":"init","tools":[],"mcp_servers":[{"name":"clattertrap","status":"failed"}]}
+{"type":"result","subtype":"success","is_error":false,"num_turns":1,"total_cost_usd":0.01,"result":"I have no tools."}"#;
+    assert!(!parse(init).connected);
+    assert!(parse("").connected);
+}
+
+#[test]
+fn junk_lines_are_skipped() {
+    let text = "not json\n{\"type\":\"rate_limit_event\"}\n\n{\"type\":\"result\",\"subtype\":\"success\",\"is_error\":false,\"result\":\"x\"}\n";
+    let parsed = parse(text);
+    assert_eq!(parsed.records.len(), 1);
+    assert!(matches!(parsed.records[0], Record::Result { .. }));
 }

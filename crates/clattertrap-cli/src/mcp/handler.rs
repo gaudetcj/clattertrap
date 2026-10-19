@@ -62,6 +62,16 @@ impl Handler {
         }
     }
 
+    /// The tool names the router lists.
+    #[cfg(test)]
+    pub(crate) fn listed_tools() -> Vec<String> {
+        Self::tool_router()
+            .list_all()
+            .into_iter()
+            .map(|t| t.name.into_owned())
+            .collect()
+    }
+
     /// Runs one tool against the session and converts its answer.
     fn answer(
         &self,

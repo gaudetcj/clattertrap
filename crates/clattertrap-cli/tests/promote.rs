@@ -138,7 +138,7 @@ fn an_entry_is_never_overwritten() {
 
 #[test]
 fn runs_that_do_not_count_or_cannot_be_replayed_are_refused() {
-    let cases: [(&str, &Change, &str); 5] = [
+    let cases: [(&str, &Change, &str); 6] = [
         (
             "aborted",
             &|run| {
@@ -186,6 +186,11 @@ fn runs_that_do_not_count_or_cannot_be_replayed_are_refused() {
             "missing transcript",
             &|run| std::fs::remove_file(run.join("transcript.jsonl")).unwrap(),
             "transcript.jsonl is missing",
+        ),
+        (
+            "transcript without records",
+            &|run| std::fs::write(run.join("transcript.jsonl"), "not a record\n").unwrap(),
+            "transcript.jsonl holds no records",
         ),
     ];
     for (name, change, message) in cases {

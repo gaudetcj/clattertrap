@@ -182,14 +182,17 @@ fn dispatch() -> Result<ExitCode> {
             out,
             claude,
         } => {
-            arena::run(&arena::Options {
-                model,
-                runs,
-                arm,
-                level,
-                out,
-                claude,
-            })?;
+            let provider = arena::ClaudeCode::new(claude, &model)?;
+            arena::run(
+                &arena::Options {
+                    model,
+                    runs,
+                    arm,
+                    level,
+                    out,
+                },
+                &provider,
+            )?;
             Ok(ExitCode::SUCCESS)
         }
         Command::Report {

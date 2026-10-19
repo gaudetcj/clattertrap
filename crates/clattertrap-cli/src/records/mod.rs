@@ -4,6 +4,8 @@
 #[cfg(test)]
 mod tests;
 
+pub mod transcript;
+
 use crate::mcp::arm::Arm;
 use anyhow::{Context, Result};
 use clattertrap_core::score::Outcome;

@@ -99,8 +99,9 @@ The overlap check runs only once everything else passes. Two fixed objects that 
 | file | written by | holds |
 |---|---|---|
 | `mcp.json` | the runner | the MCP config for this session: this binary serving `mcp --level <id> --arm <arm> --out <dir>` |
-| `transcript.jsonl` | the runner | Claude Code's stream-json output, one record per line |
-| `stderr.txt` | the runner | whatever Claude Code printed on stderr |
+| `transcript.jsonl` | the runner | what the contestant said and called, in the record format under Gallery records, the same for every provider |
+| `provider.jsonl` | the runner | the provider's raw output: Claude Code's stream-json, or one chat reply body per line |
+| `stderr.txt` | the runner | whatever the contestant process, or the MCP server, printed on stderr |
 | `calls/NNNN-<tool>.json` | the MCP server | every `check`, `look`, `run`, and `submit` call: `seq`, `tool`, the `scene` as sent, and either `problems` or the `outcome` |
 | `submission.json` | the MCP server | the one submission: `level`, `arm`, `name`, `prediction`, `scene`, `outcome` |
 | `summary.json` | the runner | `model`, `level`, `arm`, `status`, `started_unix_s`, `duration_s`, `cost_usd`, `turns`, `tool_calls`, `foreign_tools`, `result_subtype`, `exit_code`, `error` |
@@ -127,18 +128,18 @@ The gallery is the committed record of every counted pilot run: `gallery/<level>
 | `summary.json` | copied verbatim from the pilot run |
 | `submission.json` | copied verbatim, when the run submitted |
 | `calls/NNNN-<tool>.json` | copied verbatim, every one |
-| `transcript.jsonl` | the export below |
+| `transcript.jsonl` | copied verbatim; `promote` refuses one it reads no records from |
 
-The transcript export keeps what the contestant said and called, one JSON object per line, each with a `type`:
+The transcript keeps what the contestant said and called, one JSON object per line, each with a `type`:
 
 | type | fields | from |
 |---|---|---|
 | `text` | `text` | each text block the contestant wrote |
 | `tool_use` | `name`, `input` | each tool call |
 | `tool_result` | `content` (a list of `{"type":"text","text":...}` and `{"type":"image","omitted":true}`), `is_error` when true | each tool answer; a picture becomes the marker |
-| `result` | `subtype`, `num_turns`, `duration_ms`, `total_cost_usd` | the final record |
+| `result` | `subtype`, `num_turns`, `duration_ms`, `total_cost_usd` | how the session ended: `success`, or an error kind such as `error_max_budget_usd` |
 
-Everything else in the runner's stream is dropped: the init record (it names the local directory), thinking blocks, token counts, usage, rate limit events, ids. The runner's `mcp.json` and `stderr.txt` are not copied.
+Everything else a provider produces stays in `provider.jsonl`: the init record (it names the local directory), thinking blocks, token counts, usage, rate limit events, ids. The runner's `mcp.json`, `provider.jsonl`, and `stderr.txt` are not copied.
 
 The viewer bundles the gallery into five pages, served by `just web` locally and at https://gaudetcj.github.io/clattertrap/ by the Pages workflow, which runs `just site` (the wasm build, then the web build under that base path) on every push to `main`. `index.html` replays one entry, `?entry=<level>/<model>/<arm>-NN`, or a level's reference solution. `arena.html?level=<id>&arm=<arm>` plays one entry per model side by side, released at once; `&autoplay=1` starts it muted, and `&record=1` leaves it unpaced for `just hero`. `reel.html?entry=...` plays an entry's accepted `run` calls in order, then its submission, with the text records of its transcript as the model's notes. `gallery.html` lists every entry with links to the three, and `leaderboard.html` ranks the models the way `clattertrap leaderboard` does. Every replay re-simulates the stored scene and stamps `REPLAY MISMATCH` when its outcome differs from the stored one.
 
