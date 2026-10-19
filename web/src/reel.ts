@@ -46,7 +46,9 @@ class ReelPage {
     arenaLink.href = `arena.html?level=${encodeURIComponent(entry.level)}&arm=${encodeURIComponent(entry.arm)}`;
     const galleryLink = el('a', 'gallery');
     galleryLink.href = 'gallery.html';
-    nav.append(arenaLink, ' ', galleryLink);
+    const boardLink = el('a', 'leaderboard');
+    boardLink.href = 'leaderboard.html';
+    nav.append(arenaLink, ' ', galleryLink, ' ', boardLink);
     app.replaceChildren(el('h1', `${modelLabel(entry.model)} on ${entry.level}, ${entry.run}`), nav, controls, this.canvas, this.status, this.notes);
     let muted = false;
     this.conductor = new Conductor(this.canvas, dt_s, true, (c) => {

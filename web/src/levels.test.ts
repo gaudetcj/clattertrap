@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { goalKindOf, indexFixtures, rulesVersionOf, titleOf } from './levels';
+import { goalKindOf, indexFixtures, rulesVersionOf, tierOf, titleOf } from './levels';
 
-const level = JSON.stringify({ id: 'bell-drop', title: 'Ring the bell', rules_version: 1, goal: { kind: 'ring', target: 'bell' } });
+const level = JSON.stringify({ id: 'bell-drop', title: 'Ring the bell', tier: 1, rules_version: 1, goal: { kind: 'ring', target: 'bell' } });
 
 describe('levels', () => {
   it('pairs each level with its reference and sorts by id', () => {
@@ -20,6 +20,8 @@ describe('levels', () => {
     expect(rulesVersionOf(level)).toBe(1);
     expect(titleOf(level)).toBe('Ring the bell');
     expect(goalKindOf(level)).toBe('ring');
+    expect(tierOf(level)).toBe(1);
+    expect(tierOf('{}')).toBe(0);
     expect(rulesVersionOf('{}')).toBe(-1);
     expect(titleOf('[]')).toBe('');
     expect(goalKindOf('{"goal":{"kind":"sing"}}')).toBeUndefined();

@@ -145,7 +145,7 @@ describe('the gallery page index', () => {
 
   it('lists the counted runs that never submitted', () => {
     expect(misses(indexGallery(files, summaries), summaries)).toEqual([
-      { key: 'seesaw-launch/claude-haiku-5-5/workshop-01', level: 'seesaw-launch', model: 'claude-haiku-5-5', run: 'workshop-01', status: 'no_submission' },
+      { key: 'seesaw-launch/claude-haiku-5-5/workshop-01', level: 'seesaw-launch', model: 'claude-haiku-5-5', run: 'workshop-01', arm: 'workshop', status: 'no_submission', cost_usd: 0.24 },
     ]);
   });
 });

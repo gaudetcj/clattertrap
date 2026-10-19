@@ -181,7 +181,9 @@ export interface Miss {
   level: string;
   model: string;
   run: string;
+  arm: string;
   status: string;
+  cost_usd: number | null;
 }
 
 // Counted runs with a summary but no submission: misses the leaderboard must still see.
@@ -194,7 +196,7 @@ export function misses(entries: Entry[], summaries: Record<string, string>): Mis
     if (!key || !summary || known.has(keyString(key))) {
       continue;
     }
-    out.push({ key: keyString(key), ...key, status: summary.status });
+    out.push({ key: keyString(key), ...key, arm: key.run.replace(/-\d+$/, ''), status: summary.status, cost_usd: summary.cost_usd });
   }
   return out.sort((a, b) => a.key.localeCompare(b.key));
 }

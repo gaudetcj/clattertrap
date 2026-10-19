@@ -50,7 +50,9 @@ class ArenaPage {
     levelLink.href = 'index.html';
     const galleryLink = el('a', 'gallery');
     galleryLink.href = 'gallery.html';
-    nav.append(levelLink, ' ', galleryLink);
+    const boardLink = el('a', 'leaderboard');
+    boardLink.href = 'leaderboard.html';
+    nav.append(levelLink, ' ', galleryLink, ' ', boardLink);
     app.replaceChildren(el('h1', 'Clattertrap arena'), nav, controls, this.canvas, this.status);
     this.conductor = new Conductor(this.canvas, this.dt_s, !record, (c) => this.changed(c));
     this.levelSelect.addEventListener('change', () => this.open({ level: this.levelSelect.value, arm: this.pick.arm }));

@@ -77,7 +77,9 @@ async function page(app: HTMLElement): Promise<void> {
   const arenaLink = el('a', 'arena');
   const galleryLink = el('a', 'gallery');
   galleryLink.href = 'gallery.html';
-  nav.append(arenaLink, ' ', galleryLink);
+  const boardLink = el('a', 'leaderboard');
+  boardLink.href = 'leaderboard.html';
+  nav.append(arenaLink, ' ', galleryLink, ' ', boardLink);
   app.replaceChildren(el('h1', 'Clattertrap'), nav, controls, canvas, status);
 
   const player = new Conductor(canvas, wasm.dt_s, true, (c) => {

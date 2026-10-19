@@ -14,6 +14,7 @@ export default defineConfig({
         arena: 'arena.html',
         reel: 'reel.html',
         gallery: 'gallery.html',
+        leaderboard: 'leaderboard.html',
       },
     },
   },

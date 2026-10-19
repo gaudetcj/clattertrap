@@ -65,3 +65,8 @@ export function goalKindOf(levelJson: string): GoalKind | undefined {
   const kind = typeof goal === 'object' && goal !== null ? (goal as { kind?: unknown }).kind : undefined;
   return GOAL_KINDS.find((k) => k === kind);
 }
+
+export function tierOf(levelJson: string): number {
+  const v = field(levelJson, 'tier');
+  return typeof v === 'number' ? v : 0;
+}

@@ -55,7 +55,7 @@ function page(app: HTMLElement): void {
   const levels = fixtures();
   const entries = galleryEntries();
   const nav = el('p', undefined, 'nav');
-  nav.append(link('level', 'index.html'), ' ', link('arena', 'arena.html'));
+  nav.append(link('level', 'index.html'), ' ', link('arena', 'arena.html'), ' ', link('leaderboard', 'leaderboard.html'));
   app.replaceChildren(el('h1', `Clattertrap gallery: ${entries.length} machines`), nav);
   for (const [level, mine] of byLevel(entries)) {
     const f = levels.find((x) => x.id === level);
