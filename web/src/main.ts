@@ -3,6 +3,7 @@
 
 import type { PanelChrome } from './arena_view';
 import type { Outcome } from './decode';
+import { band, footer, navLinks, siteCounts } from './chrome';
 import { el } from './dom';
 import { galleryEntries, modelLabel, type Entry } from './gallery';
 import { fixtures, goalKindOf, rulesVersionOf, titleOf } from './levels';
@@ -73,14 +74,14 @@ async function page(app: HTMLElement): Promise<void> {
   }
   const canvas = el('canvas');
   const status = el('p', 'loading', 'status');
-  const nav = el('p', undefined, 'nav');
-  const arenaLink = el('a', 'arena');
-  const galleryLink = el('a', 'gallery');
-  galleryLink.href = 'gallery.html';
-  const boardLink = el('a', 'leaderboard');
-  boardLink.href = 'leaderboard.html';
-  nav.append(arenaLink, ' ', galleryLink, ' ', boardLink);
-  app.replaceChildren(el('h1', 'Clattertrap'), nav, controls, canvas, status);
+  const nav = navLinks([
+    ['arena', 'arena.html'],
+    ['gallery', 'gallery.html'],
+    ['leaderboard', 'leaderboard.html'],
+  ]);
+  const arenaLink = nav.querySelector('a');
+  const counts = siteCounts(entries, levels);
+  app.replaceChildren(band('Clattertrap', nav, counts), controls, canvas, status, footer(counts));
 
   const player = new Conductor(canvas, wasm.dt_s, true, (c) => {
     status.textContent = statusLine(c);
@@ -98,7 +99,9 @@ async function page(app: HTMLElement): Promise<void> {
       return;
     }
     select.value = f.id;
-    arenaLink.href = `arena.html${search({ level: f.id })}`;
+    if (arenaLink) {
+      arenaLink.href = `arena.html${search({ level: f.id })}`;
+    }
     const chrome: PanelChrome = { label: shown.label, name: shown.name ?? titleOf(f.level), prediction: shown.prediction ?? '' };
     try {
       player.load([{ chrome, levelJson: f.level, sceneJson: sceneJson ?? f.reference, stored: shown.outcome ?? null }]);

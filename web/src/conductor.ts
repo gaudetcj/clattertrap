@@ -85,9 +85,16 @@ export class Conductor {
     this.onChange(this);
   }
 
-  // Sizes the canvas to its container; the view picks the whole-number upscale.
+  // Sizes the canvas to its container width and to the height left on screen after everything
+  // under it; the view picks the upscale.
   fit(): void {
-    this.view?.resize(this.canvas.parentElement?.clientWidth ?? this.view.grid.w);
+    if (!this.view) {
+      return;
+    }
+    const top = this.canvas.getBoundingClientRect().top + window.scrollY;
+    this.view.resize(widthWithin(this.canvas), Math.max(1, window.innerHeight - top - heightBelow(this.canvas)));
+    // Sizing the backing store clears it, so every lane is painted again, ended ones included.
+    this.draw(this.lanes.map(() => true));
   }
 
   // The low-res size of the grid, for a recorder.
@@ -238,4 +245,41 @@ export class Conductor {
     );
     this.view?.draw(frames);
   }
+}
+
+function px(value: string): number {
+  const n = Number.parseFloat(value);
+  return Number.isFinite(n) ? n : 0;
+}
+
+// The height everything after `canvas` in its container takes: the siblings with their margins,
+// the gaps between them, the container's bottom padding, and a little room.
+function heightBelow(canvas: HTMLElement): number {
+  const parent = canvas.parentElement;
+  if (!parent) {
+    return 0;
+  }
+  const style = getComputedStyle(parent);
+  const gap = px(style.rowGap);
+  let total = px(style.paddingBottom) + px(getComputedStyle(canvas).marginBottom) + 12;
+  let after = false;
+  for (const child of Array.from(parent.children)) {
+    if (child === canvas) {
+      after = true;
+    } else if (after) {
+      const cs = getComputedStyle(child);
+      total += child.getBoundingClientRect().height + px(cs.marginTop) + px(cs.marginBottom) + gap;
+    }
+  }
+  return total;
+}
+
+// The width the canvas may take: its container's inner width, without the padding.
+function widthWithin(canvas: HTMLElement): number {
+  const parent = canvas.parentElement;
+  if (!parent) {
+    return canvas.getBoundingClientRect().width;
+  }
+  const style = getComputedStyle(parent);
+  return Math.max(1, parent.clientWidth - px(style.paddingLeft) - px(style.paddingRight));
 }

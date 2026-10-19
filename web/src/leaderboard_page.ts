@@ -1,6 +1,7 @@
 // The leaderboard page: one row per model, ranked as `clattertrap leaderboard` ranks them, with
 // the counting rules in one line under the table.
 
+import { band, footer, navLinks, siteCounts } from './chrome';
 import { el } from './dom';
 import { galleryEntries, gallerySummaries, misses, modelLabel } from './gallery';
 import { fixtures, rulesVersionOf, tierOf } from './levels';
@@ -45,8 +46,12 @@ function page(app: HTMLElement): void {
   const tiers = new Map(levels.map((f) => [f.id, tierOf(f.level)]));
   const entries = galleryEntries();
   const rows = leaderboardRows(entries, misses(entries, gallerySummaries()), tiers);
-  const nav = el('p', undefined, 'nav');
-  nav.append(link('level', 'index.html'), ' ', link('arena', 'arena.html'), ' ', link('gallery', 'gallery.html'));
+  const nav = navLinks([
+    ['level', 'index.html'],
+    ['arena', 'arena.html'],
+    ['gallery', 'gallery.html'],
+  ]);
+  const counts = siteCounts(entries, levels);
   const t = el('table');
   const head = el('tr');
   for (const name of ['model', 'blueprint', 'workshop', 'hard blueprint', 'hard workshop', 'mean USD', 'runs']) {
@@ -61,7 +66,7 @@ function page(app: HTMLElement): void {
       `A level counts once however many runs solved it, over the levels the model attempted in that arm, of ${tiers.size}; ` +
       `hard levels are tiers ${HARD_TIER} and 5. Every row rests on stored outcomes that clattertrap verify re-simulates.`,
   );
-  app.replaceChildren(el('h1', 'Clattertrap leaderboard'), nav, t, rules);
+  app.replaceChildren(band('Clattertrap leaderboard', nav, counts), t, rules, footer(counts));
 }
 
 const app = document.getElementById('app');

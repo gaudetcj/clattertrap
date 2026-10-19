@@ -9,7 +9,7 @@ import {
   FOOTER_CHARS,
   FOOTER_LINES,
   footerRect,
-  gridScale,
+  fitScale,
   gridSize,
   headerRect,
   panelRects,
@@ -78,9 +78,9 @@ export class ArenaView {
     });
   }
 
-  // Sizes the backing store to the grid and the element to a whole-number multiple of it.
-  resize(css_w: number): number {
-    const scale = gridScale(css_w, this.grid.w);
+  // Sizes the backing store to the grid and the element to the upscale that fits the box.
+  resize(css_w: number, css_h: number): number {
+    const scale = fitScale(css_w, css_h, this.grid);
     this.canvas.width = this.grid.w;
     this.canvas.height = this.grid.h;
     this.canvas.style.width = `${this.grid.w * scale}px`;

@@ -2,6 +2,7 @@
 // submission, each held on its stamp before the next, with the model's notes beside them.
 
 import { Conductor } from './conductor';
+import { band, footer, navLinks, siteCounts, type Counts } from './chrome';
 import { el } from './dom';
 import {
   callKey,
@@ -35,21 +36,20 @@ class ReelPage {
     dt_s: number,
     private readonly level: Fixture,
     private readonly entry: Entry,
+    counts: Counts,
   ) {
     const playButton = el('button', 'Play');
     const restartButton = el('button', 'Restart');
     const muteButton = el('button', 'Mute');
     const controls = el('div', undefined, 'controls');
     controls.append(playButton, restartButton, muteButton);
-    const nav = el('p', undefined, 'nav');
-    const arenaLink = el('a', 'arena');
-    arenaLink.href = `arena.html?level=${encodeURIComponent(entry.level)}&arm=${encodeURIComponent(entry.arm)}`;
-    const galleryLink = el('a', 'gallery');
-    galleryLink.href = 'gallery.html';
-    const boardLink = el('a', 'leaderboard');
-    boardLink.href = 'leaderboard.html';
-    nav.append(arenaLink, ' ', galleryLink, ' ', boardLink);
-    app.replaceChildren(el('h1', `${modelLabel(entry.model)} on ${entry.level}, ${entry.run}`), nav, controls, this.canvas, this.status, this.notes);
+    const nav = navLinks([
+      ['arena', `arena.html?level=${encodeURIComponent(entry.level)}&arm=${encodeURIComponent(entry.arm)}`],
+      ['gallery', 'gallery.html'],
+      ['leaderboard', 'leaderboard.html'],
+    ]);
+    const title = `${modelLabel(entry.model)} on ${entry.level}, ${entry.run}`;
+    app.replaceChildren(band(title, nav, counts), controls, this.canvas, this.status, this.notes, footer(counts));
     let muted = false;
     this.conductor = new Conductor(this.canvas, dt_s, true, (c) => {
       playButton.textContent = c.isPlaying() ? 'Pause' : 'Play';
@@ -124,13 +124,14 @@ async function page(app: HTMLElement): Promise<void> {
   const key = param(location.search, 'entry');
   const entries = galleryEntries();
   const entry = entries.find((e) => e.key === key);
-  const level = entry ? fixtures().find((f) => f.id === entry.level) : undefined;
+  const levels = fixtures();
+  const level = entry ? levels.find((f) => f.id === entry.level) : undefined;
   if (!entry || !level) {
     app.textContent = key === undefined ? 'open ?entry=<level>/<model>/<arm>-NN' : `no gallery entry ${key}`;
     return;
   }
   const wasm = await loadWasm();
-  const reel = new ReelPage(app, wasm.dt_s, level, entry);
+  const reel = new ReelPage(app, wasm.dt_s, level, entry, siteCounts(entries, levels));
   const calls = await Promise.all(loadersFor(callLoaders(), entry.key, (p) => callKey(p)?.key).map(([, load]) => load()));
   const transcripts = await Promise.all(loadersFor(transcriptLoaders(), entry.key, transcriptKey).map(([, load]) => load()));
   reel.start(

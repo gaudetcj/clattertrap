@@ -3,6 +3,7 @@
 
 import { lanesFor, pickFrom, type Pick } from './arena_lanes';
 import { Conductor } from './conductor';
+import { band, footer, navLinks, siteCounts } from './chrome';
 import { el } from './dom';
 import { galleryEntries, lineup, type Entry } from './gallery';
 import { fixtures, rulesVersionOf, type Fixture } from './levels';
@@ -45,15 +46,13 @@ class ArenaPage {
     const muteButton = el('button', 'Mute');
     const controls = el('div', undefined, 'controls');
     controls.append(this.levelSelect, this.armSelect, this.playButton, restartButton, muteButton);
-    const nav = el('p', undefined, 'nav');
-    const levelLink = el('a', 'level');
-    levelLink.href = 'index.html';
-    const galleryLink = el('a', 'gallery');
-    galleryLink.href = 'gallery.html';
-    const boardLink = el('a', 'leaderboard');
-    boardLink.href = 'leaderboard.html';
-    nav.append(levelLink, ' ', galleryLink, ' ', boardLink);
-    app.replaceChildren(el('h1', 'Clattertrap arena'), nav, controls, this.canvas, this.status);
+    const nav = navLinks([
+      ['level', 'index.html'],
+      ['gallery', 'gallery.html'],
+      ['leaderboard', 'leaderboard.html'],
+    ]);
+    const counts = siteCounts(entries, levels);
+    app.replaceChildren(band('Clattertrap arena', nav, counts), controls, this.canvas, this.status, footer(counts));
     this.conductor = new Conductor(this.canvas, this.dt_s, !record, (c) => this.changed(c));
     this.levelSelect.addEventListener('change', () => this.open({ level: this.levelSelect.value, arm: this.pick.arm }));
     this.armSelect.addEventListener('change', () => this.open({ level: this.pick.level, arm: this.armSelect.value }));

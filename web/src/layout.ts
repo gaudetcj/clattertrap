@@ -59,7 +59,9 @@ export function footerRect(panel: Rect): Rect {
   return { x: panel.x, y: panel.y + panel.h - FOOTER_H, w: panel.w, h: FOOTER_H };
 }
 
-// The whole-number upscale that fits a grid into a page width, never below one.
-export function gridScale(css_w: number, grid_w: number): number {
-  return Math.max(1, Math.floor(css_w / grid_w));
+// The upscale that fits a grid into a box: a whole number when one fits, else the fraction that
+// does, so the grid never overflows the screen.
+export function fitScale(css_w: number, css_h: number, grid: Size): number {
+  const whole = Math.min(Math.floor(css_w / grid.w), Math.floor(css_h / grid.h));
+  return whole >= 1 ? whole : Math.min(css_w / grid.w, css_h / grid.h);
 }

@@ -1,6 +1,7 @@
 // The gallery page: every entry, one table per level, with the model, the run, the machine name,
 // the stored verdict, the cost, and links to replay it alone, in the arena, or as a reel.
 
+import { band, footer, navLinks, siteCounts } from './chrome';
 import { el } from './dom';
 import { byLevel, galleryEntries, gallerySummaries, misses, modelLabel, type Entry } from './gallery';
 import { fixtures, goalKindOf } from './levels';
@@ -54,9 +55,13 @@ function table(level: string, entries: Entry[], goal: ReturnType<typeof goalKind
 function page(app: HTMLElement): void {
   const levels = fixtures();
   const entries = galleryEntries();
-  const nav = el('p', undefined, 'nav');
-  nav.append(link('level', 'index.html'), ' ', link('arena', 'arena.html'), ' ', link('leaderboard', 'leaderboard.html'));
-  app.replaceChildren(el('h1', `Clattertrap gallery: ${entries.length} machines`), nav);
+  const nav = navLinks([
+    ['level', 'index.html'],
+    ['arena', 'arena.html'],
+    ['leaderboard', 'leaderboard.html'],
+  ]);
+  const counts = siteCounts(entries, levels);
+  app.replaceChildren(band(`Clattertrap gallery: ${entries.length} machines`, nav, counts));
   for (const [level, mine] of byLevel(entries)) {
     const f = levels.find((x) => x.id === level);
     app.append(...table(level, mine, f ? goalKindOf(f.level) : undefined));
@@ -70,6 +75,7 @@ function page(app: HTMLElement): void {
     }
     app.append(list);
   }
+  app.append(footer(counts));
 }
 
 const app = document.getElementById('app');
