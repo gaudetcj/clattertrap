@@ -11,7 +11,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: 'index.html',
-        arena: 'arena.html',
+        level: 'level.html',
         reel: 'reel.html',
         gallery: 'gallery.html',
         leaderboard: 'leaderboard.html',

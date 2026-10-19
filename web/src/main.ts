@@ -75,13 +75,13 @@ async function page(app: HTMLElement): Promise<void> {
   const canvas = el('canvas');
   const status = el('p', 'loading', 'status');
   const nav = navLinks([
-    ['arena', 'arena.html'],
+    ['arena', 'index.html'],
     ['gallery', 'gallery.html'],
     ['leaderboard', 'leaderboard.html'],
   ]);
   const arenaLink = nav.querySelector('a');
   const counts = siteCounts(entries, levels);
-  app.replaceChildren(band('Clattertrap', nav, counts), controls, canvas, status, footer(counts));
+  app.replaceChildren(band('Clattertrap level', nav, counts), controls, canvas, status, footer(counts));
 
   const player = new Conductor(canvas, wasm.dt_s, true, (c) => {
     status.textContent = statusLine(c);
@@ -100,7 +100,7 @@ async function page(app: HTMLElement): Promise<void> {
     }
     select.value = f.id;
     if (arenaLink) {
-      arenaLink.href = `arena.html${search({ level: f.id })}`;
+      arenaLink.href = `index.html${search({ level: f.id })}`;
     }
     const chrome: PanelChrome = { label: shown.label, name: shown.name ?? titleOf(f.level), prediction: shown.prediction ?? '' };
     try {

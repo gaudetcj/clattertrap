@@ -27,7 +27,7 @@ function row(entry: Entry, goal: ReturnType<typeof goalKindOf>): HTMLTableRowEle
   tr.append(
     cell(modelLabel(entry.model)),
     cell(entry.run),
-    cell(link(entry.name, `index.html${search({ entry: entry.key })}`)),
+    cell(link(entry.name, `level.html${search({ entry: entry.key })}`)),
     cell(goal === undefined ? '' : stampText(goal, entry.outcome)),
     cell(cost === undefined || cost === null ? '' : `${cost.toFixed(2)} USD`),
     cell(seconds === undefined ? '' : `${seconds.toFixed(0)} s`),
@@ -41,7 +41,7 @@ function table(level: string, entries: Entry[], goal: ReturnType<typeof goalKind
   const arms = [...new Set(entries.map((e) => e.arm))].sort();
   const nav = el('p', undefined, 'nav');
   for (const arm of arms) {
-    nav.append(link(`arena ${arm}`, `arena.html${search({ level, arm })}`), ' ');
+    nav.append(link(`arena ${arm}`, `index.html${search({ level, arm })}`), ' ');
   }
   const t = el('table');
   const head = el('tr');
@@ -56,9 +56,9 @@ function page(app: HTMLElement): void {
   const levels = fixtures();
   const entries = galleryEntries();
   const nav = navLinks([
-    ['level', 'index.html'],
-    ['arena', 'arena.html'],
+    ['arena', 'index.html'],
     ['leaderboard', 'leaderboard.html'],
+    ['level', 'level.html'],
   ]);
   const counts = siteCounts(entries, levels);
   app.replaceChildren(band(`Clattertrap gallery: ${entries.length} machines`, nav, counts));

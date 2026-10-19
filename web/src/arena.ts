@@ -47,12 +47,12 @@ class ArenaPage {
     const controls = el('div', undefined, 'controls');
     controls.append(this.levelSelect, this.armSelect, this.playButton, restartButton, muteButton);
     const nav = navLinks([
-      ['level', 'index.html'],
       ['gallery', 'gallery.html'],
       ['leaderboard', 'leaderboard.html'],
+      ['level', 'level.html'],
     ]);
     const counts = siteCounts(entries, levels);
-    app.replaceChildren(band('Clattertrap arena', nav, counts), controls, this.canvas, this.status, footer(counts));
+    app.replaceChildren(band('Clattertrap', nav, counts), controls, this.canvas, this.status, footer(counts));
     this.conductor = new Conductor(this.canvas, this.dt_s, !record, (c) => this.changed(c));
     this.levelSelect.addEventListener('change', () => this.open({ level: this.levelSelect.value, arm: this.pick.arm }));
     this.armSelect.addEventListener('change', () => this.open({ level: this.pick.level, arm: this.armSelect.value }));
@@ -117,10 +117,16 @@ class ArenaPage {
 async function page(app: HTMLElement): Promise<void> {
   // Read before the page rewrites the address to the level and arm it opened.
   const query = location.search;
+  // A machine link from before the arena became the landing page opens on the level page.
+  if (param(query, 'entry') !== undefined) {
+    location.replace(`level.html${query}`);
+    return;
+  }
   const wasm = await loadWasm();
   const record = param(query, 'record') !== undefined;
   const arena = new ArenaPage(app, wasm.dt_s, wasm.rules_version, fixtures(), galleryEntries(), pickFrom(query), record);
-  if (param(query, 'autoplay') !== undefined) {
+  // The landing page plays on arrival, muted; a recorder drives the clock itself.
+  if (!record) {
     arena.autoplay();
   }
 }

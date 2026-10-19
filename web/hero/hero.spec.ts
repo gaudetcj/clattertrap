@@ -36,7 +36,7 @@ test('record the arena grid', async ({ page }) => {
   const window_s = Number.parseFloat(process.env['HERO_WINDOW_S'] ?? '6');
   const movie = new Frames(join(out, 'frames'));
   const gif = new Frames(join(out, 'gif'));
-  await page.goto(`/arena.html?level=${encodeURIComponent(level)}&arm=${encodeURIComponent(arm)}&record=1`);
+  await page.goto(`/index.html?level=${encodeURIComponent(level)}&arm=${encodeURIComponent(arm)}&record=1`);
   await page.waitForFunction(() => window.clattertrapRecord !== undefined);
   const first = await page.evaluate(() => window.clattertrapRecord?.frame() ?? '');
   movie.write(first, LEAD_S * FPS);

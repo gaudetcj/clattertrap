@@ -27,11 +27,11 @@ Every model plays every level under two arms with the same prompt, tools, and ru
 
 The site at https://gaudetcj.github.io/clattertrap/ serves the gallery:
 
-- `arena.html?level=<id>&arm=<arm>`: one level, every model side by side, released at once.
+- `index.html?level=<id>&arm=<arm>`: the landing page, one level, every model side by side, released at once.
 - `reel.html?entry=<level>/<model>/<arm>-NN`: one model's attempts on one level in order, then its submission, with its notes.
 - `gallery.html`: every machine with its name, prediction, result, and cost.
 - `leaderboard.html`: the table above.
-- `index.html`: one machine, or a level's reference solution.
+- `level.html?entry=<level>/<model>/<arm>-NN`: one machine, or a level's reference solution.
 
 Each replay re-simulates the stored scene in the browser and stamps `REPLAY MISMATCH` when its outcome differs from the stored one. `just web` serves the same pages locally.
 
