@@ -155,7 +155,7 @@ tr:nth-child(even) td { background: #1f2739; }
 }
 .badge:nth-child(2) { background: var(--wood-dark); border-color: var(--wood); color: var(--wood-light); }
 .badge:nth-child(3) { background: var(--brass-dark); border-color: var(--brass); }
-.badge:nth-child(4) { background: var(--green); border-color: #4fb36b; }
+.badge:nth-child(4) { background: var(--green); border-color: #4fb36b; font-size: 6px; }
 .badge:nth-child(5) { background: #8f1414; border-color: var(--red); color: #ffb3b3; }
 .badge:nth-child(6) { background: var(--black); border-color: var(--dim); }
 
