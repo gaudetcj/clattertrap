@@ -121,7 +121,8 @@ function readEntry(key: EntryKey, text: string, summary: string | undefined): En
       run: key.run,
       name: v['name'],
       prediction: v['prediction'],
-      sceneJson: JSON.stringify(v['scene']),
+      // The MCP tools take a scene as an object or as JSON text, and the record keeps what was sent.
+      sceneJson: typeof v['scene'] === 'string' ? v['scene'] : JSON.stringify(v['scene']),
       outcome: decodeOutcome(JSON.stringify(v['outcome'])),
     };
     const read = readSummary(summary);

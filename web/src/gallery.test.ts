@@ -149,3 +149,19 @@ describe('the gallery page index', () => {
     ]);
   });
 });
+
+describe('a submission whose scene is JSON text', () => {
+  it('is taken as that text, since the MCP tools accept a scene given as a string', () => {
+    const scene = '{"level": "bell-drop", "parts": [{"id": "b1", "kind": "beam", "x_cm": 100, "y_cm": 50, "length_cm": 80, "angle_deg": 0}]}';
+    const text = JSON.stringify({
+      level: 'bell-drop',
+      arm: 'blueprint',
+      name: 'Plank',
+      prediction: 'It rings.',
+      scene,
+      outcome: JSON.parse(submission('bell-drop', 'Plank', true))['outcome'],
+    });
+    const entries = indexGallery({ '../../gallery/bell-drop/qwen-qwen3.6-35b-a3b/blueprint-01/submission.json': text }, {});
+    expect(entries[0]?.sceneJson).toBe(scene);
+  });
+});
