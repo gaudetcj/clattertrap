@@ -20,6 +20,10 @@ wasm-test:
 web:
     npm --prefix web run dev
 
+# Build web/dist for hosting under a base path, as the Pages workflow does.
+site base="/clattertrap/":
+    cargo xtask site {{base}}
+
 # Rewrite the README leaderboard from gallery/.
 readme:
     cargo xtask readme

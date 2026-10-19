@@ -4,7 +4,7 @@
 
 use anyhow::{Result, bail};
 use std::path::{Path, PathBuf};
-use xtask::{cargo, fuzz, hero, readme, step, wasm};
+use xtask::{cargo, fuzz, hero, readme, site, step, wasm};
 
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -21,12 +21,14 @@ fn main() -> Result<()> {
         ["wasm-test"] => wasm::test(&root),
         ["fuzz", target] => fuzz(&root, target, 60),
         ["fuzz", target, secs] => fuzz(&root, target, secs.parse()?),
+        ["site"] => site::build(&root, site::DEFAULT_BASE),
+        ["site", base] => site::build(&root, base),
         ["readme"] => readme::run(&root, false),
         ["readme", "--check"] => readme::run(&root, true),
         ["hero"] => hero::record(&root, "seesaw-launch", "blueprint"),
         ["hero", level, arm] => hero::record(&root, level, arm),
         _ => bail!(
-            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | hero [LEVEL ARM] | readme [--check]>"
+            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | hero [LEVEL ARM] | readme [--check] | site [BASE]>"
         ),
     }
 }

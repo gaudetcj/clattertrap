@@ -5,6 +5,7 @@
 pub mod hero;
 pub mod prose;
 pub mod readme;
+pub mod site;
 pub mod wasm;
 
 use anyhow::{Context, Result};
