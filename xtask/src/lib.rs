@@ -1,9 +1,10 @@
-//! Project automation for Clattertrap: the `ci` driver, the prose lint, the wasm recipes, the fuzz runner,
+//! Project automation for Clattertrap: the `ci` driver, the prose lint, the README leaderboard, the wasm recipes, the fuzz runner,
 //! and the hero recording.
 #![forbid(unsafe_code)]
 
 pub mod hero;
 pub mod prose;
+pub mod readme;
 pub mod wasm;
 
 use anyhow::{Context, Result};

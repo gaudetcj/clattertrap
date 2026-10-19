@@ -1,10 +1,10 @@
-//! Entry point for `cargo xtask <command>`: the ci driver, the prose lint, the wasm recipes, the fuzz
+//! Entry point for `cargo xtask <command>`: the ci driver, the prose lint, the README leaderboard, the wasm recipes, the fuzz
 //! runner, and the hero recording.
 #![forbid(unsafe_code)]
 
 use anyhow::{Result, bail};
 use std::path::{Path, PathBuf};
-use xtask::{cargo, fuzz, hero, step, wasm};
+use xtask::{cargo, fuzz, hero, readme, step, wasm};
 
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -21,10 +21,12 @@ fn main() -> Result<()> {
         ["wasm-test"] => wasm::test(&root),
         ["fuzz", target] => fuzz(&root, target, 60),
         ["fuzz", target, secs] => fuzz(&root, target, secs.parse()?),
+        ["readme"] => readme::run(&root, false),
+        ["readme", "--check"] => readme::run(&root, true),
         ["hero"] => hero::record(&root, "seesaw-launch", "blueprint"),
         ["hero", level, arm] => hero::record(&root, level, arm),
         _ => bail!(
-            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | hero [LEVEL ARM]>"
+            "usage: cargo xtask <ci | prose | wasm | wasm-test | fuzz TARGET [SECS] | hero [LEVEL ARM] | readme [--check]>"
         ),
     }
 }
@@ -36,7 +38,7 @@ fn repo_root() -> PathBuf {
 }
 
 /// Runs the merge gate: fmt, clippy on native and wasm32, prose, nextest, doc tests, wasm tests, the wasm
-/// build, web lint, unit tests, and the browser test, gallery verify.
+/// build, web lint, unit tests, and the browser test, gallery verify, and the README check.
 fn ci(root: &Path) -> Result<()> {
     let cargo = cargo();
     step(root, &cargo, &["fmt", "--all", "--check"])?;
@@ -86,6 +88,7 @@ fn ci(root: &Path) -> Result<()> {
         &cargo,
         &["run", "-p", "clattertrap-cli", "--", "verify", "gallery"],
     )?;
+    readme::run(root, true)?;
     println!("ci: all green");
     Ok(())
 }

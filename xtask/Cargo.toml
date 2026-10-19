@@ -1,6 +1,6 @@
 [package]
 name = "xtask"
-description = "Project automation: the ci driver, the prose lint, the wasm recipes, the fuzz runner, and the hero recording"
+description = "Project automation: the ci driver, the prose lint, the README leaderboard, the wasm recipes, the fuzz runner, and the hero recording"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

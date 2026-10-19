@@ -20,6 +20,10 @@ wasm-test:
 web:
     npm --prefix web run dev
 
+# Rewrite the README leaderboard from gallery/.
+readme:
+    cargo xtask readme
+
 # Re-simulate every gallery entry and compare stored results.
 verify:
     cargo run --package clattertrap-cli -- verify gallery
