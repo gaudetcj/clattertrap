@@ -42,7 +42,7 @@ pub fn next_run_dir(out: &Path, model: &str, level: &str, arm: Arm) -> Result<Pa
 /// What one `arena` invocation runs.
 #[derive(Debug)]
 pub struct Options {
-    /// The contestant id, which names the run directories.
+    /// The model id as the provider knows it; `model_slug` of it names the run directories.
     pub model: String,
     /// Sessions per level.
     pub runs: u32,
@@ -52,6 +52,21 @@ pub struct Options {
     pub level: Option<String>,
     /// Where run directories go.
     pub out: PathBuf,
+}
+
+/// A model id as a directory name: lowercase, every run of characters outside `[a-z0-9.]` becomes
+/// one `-`, and the ends are trimmed of `-`. Claude ids come through unchanged.
+#[must_use]
+pub fn model_slug(id: &str) -> String {
+    let mut out = String::new();
+    for c in id.chars().flat_map(char::to_lowercase) {
+        if c.is_ascii_alphanumeric() || c == '.' {
+            out.push(c);
+        } else if !out.ends_with('-') {
+            out.push('-');
+        }
+    }
+    out.trim_matches('-').to_owned()
 }
 
 /// `out` as an absolute path, so the per-run MCP config and the server's `--out` stay valid from any
@@ -141,7 +156,8 @@ async fn one_run<P: Provider>(
     out: &Path,
     level: &str,
 ) -> Result<(PathBuf, Summary)> {
-    let dir = next_run_dir(out, &opts.model, level, opts.arm)?;
+    let slug = model_slug(&opts.model);
+    let dir = next_run_dir(out, &slug, level, opts.arm)?;
     std::fs::create_dir_all(&dir).with_context(|| format!("creating {}", dir.display()))?;
     let exe = std::env::current_exe().context("finding this executable")?;
     let config_path = dir.join("mcp.json");
@@ -169,7 +185,7 @@ async fn one_run<P: Provider>(
     let submitted = dir.join("submission.json").is_file();
     let (status, error) = status::status(&finished, submitted);
     let summary = Summary {
-        model: finished.model.clone().unwrap_or_else(|| opts.model.clone()),
+        model: finished.model.clone().unwrap_or(slug),
         level: level.to_owned(),
         arm: opts.arm,
         status,

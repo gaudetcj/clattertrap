@@ -94,7 +94,7 @@ The overlap check runs only once everything else passes. Two fixed objects that 
 
 ## Pilot records
 
-`clattertrap arena` writes one directory per session under `pilot/runs/<model>/<level>/<arm>-NN`, numbered from 01. The arms are `blueprint`, with no simulator runs, and `workshop`, with 8. Every session has the same prompt (`pilot/prompt.txt` with the level id and the run budget filled in), the same 6 USD cap, and the same 20 minute wall clock.
+`clattertrap arena` writes one directory per session under `pilot/runs/<model>/<level>/<arm>-NN`, numbered from 01, where `<model>` is the model id lowercased with every run of characters outside letters, digits, and dots replaced by one `-` (`openai/gpt-5-mini` becomes `openai-gpt-5-mini`; Claude ids are unchanged). The arms are `blueprint`, with no simulator runs, and `workshop`, with 8. Every session has the same prompt (`pilot/prompt.txt` with the level id and the run budget filled in), the same 6 USD cap, and the same 20 minute wall clock.
 
 | file | written by | holds |
 |---|---|---|

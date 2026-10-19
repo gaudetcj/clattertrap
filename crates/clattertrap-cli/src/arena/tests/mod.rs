@@ -133,3 +133,14 @@ fn the_output_directory_is_made_absolute_before_any_session_starts() {
         out.display()
     );
 }
+
+#[test]
+fn model_ids_become_directory_safe_slugs() {
+    use super::model_slug;
+    assert_eq!(model_slug("claude-opus-5-5"), "claude-opus-5-5");
+    assert_eq!(model_slug("openai/gpt-5-mini"), "openai-gpt-5-mini");
+    assert_eq!(model_slug("qwen/qwen3:free"), "qwen-qwen3-free");
+    assert_eq!(model_slug("Meta Llama 3.1"), "meta-llama-3.1");
+    assert_eq!(model_slug("--x__y--"), "x-y");
+    assert_eq!(model_slug("///"), "");
+}
