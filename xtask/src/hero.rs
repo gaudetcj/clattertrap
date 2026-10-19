@@ -168,7 +168,10 @@ mod tests {
         assert!(text.contains(&format!("-framerate {FPS}")), "{text}");
         assert!(text.contains("-c:v libx264"), "{text}");
         assert!(text.contains("-pix_fmt yuv420p"), "{text}");
-        assert!(text.contains("-vf scale=trunc(iw/2)*2:trunc(ih/2)*2"), "{text}");
+        assert!(
+            text.contains("-vf scale=trunc(iw/2)*2:trunc(ih/2)*2"),
+            "{text}"
+        );
         assert!(text.contains("audio.wav"), "{text}");
         assert!(text.contains("-c:a aac"), "{text}");
         assert!(text.ends_with("hero.mp4"), "{text}");
