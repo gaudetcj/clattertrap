@@ -163,3 +163,20 @@ fn only_rate_limits_and_server_errors_are_retried_three_times() {
     assert_eq!(retry_after(401, 0), None);
     assert_eq!(retry_after(200, 0), None);
 }
+
+#[test]
+fn a_reply_the_provider_cut_short_carries_its_error_and_finish_reason() {
+    let body = json!({
+        "choices": [{
+            "finish_reason": "error",
+            "error": { "message": "upstream timed out", "code": 502 },
+            "message": { "role": "assistant", "content": "" }
+        }],
+        "usage": { "cost": 0.0 }
+    });
+    let reply = parse_reply(&body).unwrap();
+    assert_eq!(reply.finish_reason.as_deref(), Some("error"));
+    assert_eq!(reply.error.as_deref(), Some("upstream timed out"));
+    let fine = parse_reply(&json!({ "choices": [{ "finish_reason": "stop", "message": { "role": "assistant", "content": "ok" } }] })).unwrap();
+    assert_eq!(fine.error, None);
+}

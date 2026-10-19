@@ -170,6 +170,14 @@ impl Chat<'_> {
             if self.cost.is_some_and(|c| c >= self.cap) {
                 return End::new("error_max_budget_usd");
             }
+            // A reply the provider cut short is the endpoint's failure, not the model stopping.
+            if reply.finish_reason.as_deref() == Some("error") {
+                let why = reply.error.unwrap_or_else(|| "no message".to_owned());
+                return End::failed(
+                    "error_api",
+                    format!("the endpoint cut the reply short: {why}"),
+                );
+            }
             if reply.tool_calls.is_empty() {
                 return End::new(match reply.finish_reason.as_deref() {
                     Some("length") => "error_length",

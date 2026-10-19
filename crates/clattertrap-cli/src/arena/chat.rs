@@ -40,6 +40,8 @@ pub struct Reply {
     pub finish_reason: Option<String>,
     /// The cost the endpoint reported, when it did.
     pub cost_usd: Option<f64>,
+    /// The message of an error the endpoint attached to the choice, when it cut the reply short.
+    pub error: Option<String>,
 }
 
 /// Function definitions from the tools. `$schema` is dropped: some endpoints reject it.
@@ -95,6 +97,7 @@ pub fn parse_reply(body: &Value) -> Result<Reply, String> {
         tool_calls,
         finish_reason: choice["finish_reason"].as_str().map(ToOwned::to_owned),
         cost_usd: body["usage"]["cost"].as_f64(),
+        error: choice["error"]["message"].as_str().map(ToOwned::to_owned),
     })
 }
 

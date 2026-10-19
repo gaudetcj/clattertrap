@@ -318,3 +318,22 @@ fn a_rejected_request_aborts_the_run_with_the_endpoint_message() {
     assert!(error.starts_with("error_api: HTTP 400"), "{error}");
     assert!(error.contains("images are not supported"), "{error}");
 }
+
+#[test]
+fn a_reply_the_provider_cut_short_aborts_the_run_instead_of_counting_a_miss() {
+    let cut = json!({ "choices": [{ "finish_reason": "error", "error": { "message": "upstream timed out" },
+        "message": { "role": "assistant", "content": "" } }], "usage": { "cost": 0.01 } });
+    let fake = serve(vec![
+        (200, calls("Reading.", &[("rules", json!({}))], 0.01)),
+        (200, cut),
+    ]);
+    let dir = tempfile::tempdir().unwrap();
+    assert!(arena(&fake, dir.path(), None).status.success());
+    let s = summary(dir.path());
+    assert_eq!(s["status"], "aborted");
+    assert_eq!(s["result_subtype"], "error_api");
+    assert_eq!(
+        s["error"],
+        "error_api: the endpoint cut the reply short: upstream timed out"
+    );
+}
