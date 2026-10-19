@@ -56,6 +56,8 @@ fn the_request_carries_the_model_messages_tools_and_asks_for_usage() {
     assert_eq!(body["messages"], Value::Array(messages));
     assert_eq!(body["tool_choice"], "auto");
     assert_eq!(body["usage"]["include"], true);
+    // OpenRouter routes only to providers that honour every parameter, tools included.
+    assert_eq!(body["provider"]["require_parameters"], true);
     insta::assert_snapshot!(serde_json::to_string_pretty(&body).unwrap());
 }
 

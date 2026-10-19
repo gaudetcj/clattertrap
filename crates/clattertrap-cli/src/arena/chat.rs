@@ -60,7 +60,8 @@ pub fn function_tools(tools: &[ToolDef]) -> Vec<Value> {
         .collect()
 }
 
-/// The request body; `usage.include` asks an OpenRouter-style endpoint for the cost.
+/// The request body; `usage.include` asks an OpenRouter-style endpoint for the cost, and
+/// `provider.require_parameters` keeps it off providers that would drop the tools.
 #[must_use]
 pub fn request(model: &str, messages: &[Value], tools: &[Value]) -> Value {
     json!({
@@ -68,7 +69,8 @@ pub fn request(model: &str, messages: &[Value], tools: &[Value]) -> Value {
         "messages": messages,
         "tools": tools,
         "tool_choice": "auto",
-        "usage": { "include": true }
+        "usage": { "include": true },
+        "provider": { "require_parameters": true }
     })
 }
 
