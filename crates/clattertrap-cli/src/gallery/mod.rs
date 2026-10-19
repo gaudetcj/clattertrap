@@ -2,6 +2,7 @@
 //! results honest. `promote` copies a counted run into `gallery/<level>/<model>/<arm>-NN` once its
 //! stored outcomes still hold; `verify` re-checks every entry.
 
+pub mod leaderboard;
 pub mod transcript;
 pub mod verify;
 

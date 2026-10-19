@@ -156,6 +156,10 @@ verified 2 entries, 4 runs, 2 mismatches
 
 The last line counts the run directories seen and the outcomes re-simulated. A file that does not parse, a scene that no longer validates, or a stored `rules_version` other than the current one is a mismatch, never a crash. `just verify` runs it over `gallery/`, and so does `just ci`.
 
+## Leaderboard
+
+`clattertrap leaderboard [DIR] [--markdown]` reads a gallery or runs directory (`gallery/` by default) and prints one row per model: levels solved over levels attempted under each arm, the same for the hard levels (tiers 4 and 5), and the mean cost of its counted runs. A level counts once however many runs solved it, and only counted runs take part, so an aborted or flagged run changes nothing. Rows rank by blueprint levels solved, then workshop, then mean cost, then id; a model that did not attempt every level under both arms ranks below those that did. `--markdown` prints the table and a count line naming the rules version, which `cargo xtask readme` splices into the README. Every row is reproducible: `clattertrap verify gallery` re-simulates each stored outcome the counts rest on.
+
 ## Exit codes
 
 0 when the command did its job, including a run whose goal was missed. 1 when `check`, `look`, or `run` rejected the scene, or when `verify` found a mismatch; the problems or mismatches are on stdout. 2 for a usage error, an unknown level, or a file that could not be read; the reason is on stderr.

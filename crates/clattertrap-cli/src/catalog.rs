@@ -68,3 +68,12 @@ pub fn levels() -> Result<Vec<Level>> {
     levels.sort_by(|a, b| a.tier.cmp(&b.tier).then_with(|| a.id.cmp(&b.id)));
     Ok(levels)
 }
+
+/// Tiers 4 and 5 are hard; see docs/levels.md.
+pub const HARD_TIER: u8 = 4;
+
+/// Whether the level with this id is hard, given `(id, tier)` pairs.
+#[must_use]
+pub fn is_hard(id: &str, tiers: &[(String, u8)]) -> bool {
+    tiers.iter().any(|(l, t)| l == id && *t >= HARD_TIER)
+}

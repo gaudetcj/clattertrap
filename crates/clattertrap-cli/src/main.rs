@@ -1,5 +1,5 @@
 //! The `clattertrap` command line: `rules`, `levels`, `level`, `check`, `look`, `run`, `mcp`, `arena`,
-//! `report`, `promote`, and `verify`.
+//! `report`, `leaderboard`, `promote`, and `verify`.
 #![forbid(unsafe_code)]
 
 mod arena;
@@ -111,6 +111,15 @@ enum Command {
         #[arg(long, default_value_t = 1)]
         seed: u64,
     },
+    /// Levels solved per model and arm over the gallery, ranked; --markdown for the README block
+    Leaderboard {
+        /// A runs or gallery directory: <a>/<b>/<c>/summary.json three levels down
+        #[arg(default_value = "gallery")]
+        dir: PathBuf,
+        /// Print a Markdown table and a count line instead of the text table
+        #[arg(long)]
+        markdown: bool,
+    },
     /// Copy counted pilot runs into the gallery once their stored outcomes still hold
     Promote {
         /// Pilot run directories, <model>/<level>/<arm>-NN each
@@ -195,6 +204,10 @@ fn dispatch() -> Result<ExitCode> {
                 sample,
                 seed,
             })?;
+            Ok(ExitCode::SUCCESS)
+        }
+        Command::Leaderboard { dir, markdown } => {
+            gallery::leaderboard::run(&gallery::leaderboard::Options { dir, markdown })?;
             Ok(ExitCode::SUCCESS)
         }
         Command::Promote { runs, gallery } => {

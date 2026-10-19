@@ -95,7 +95,10 @@ pub fn run(opts: &Options) -> Result<()> {
 
 /// Every run under `dir`, in path order, from either layout: the summary names the model, level,
 /// and arm.
-fn load(dir: &Path) -> Result<Vec<Run>> {
+///
+/// # Errors
+/// When a record cannot be read.
+pub fn load(dir: &Path) -> Result<Vec<Run>> {
     run_dirs(dir)
         .iter()
         .map(|run_dir| read_run(run_dir))
@@ -147,4 +150,12 @@ fn count_calls(dir: &Path) -> Result<Calls> {
         }
     }
     Ok(counts)
+}
+
+/// The mean of `values`, 0 when there are none.
+#[must_use]
+#[allow(clippy::cast_precision_loss)] // run counts are small
+pub fn mean(values: impl Iterator<Item = f64>) -> f64 {
+    let (sum, n) = values.fold((0.0, 0usize), |(s, n), v| (s + v, n + 1));
+    if n == 0 { 0.0 } else { sum / n as f64 }
 }

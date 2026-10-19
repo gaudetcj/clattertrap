@@ -1,0 +1,7 @@
+---
+source: crates/clattertrap-cli/tests/leaderboard.rs
+expression: out
+---
+model             blueprint  workshop  hard blueprint  hard workshop  mean USD
+claude-opus-5-5         2/2       0/1            1/1           0/1      2.73
+claude-haiku-5-5        0/1       1/1            0/0           0/0      0.38

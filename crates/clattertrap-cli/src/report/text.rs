@@ -1,12 +1,10 @@
 //! The report's three outputs: the two tables, the CSV, and the sample.
 
-use super::Run;
+use super::{Run, mean};
+use crate::catalog::{HARD_TIER, is_hard};
 use crate::mcp::arm::Arm;
 use std::collections::BTreeSet;
 use std::fmt::Write;
-
-/// Tiers 4 and 5 are hard; see docs/levels.md.
-const HARD_TIER: u8 = 4;
 
 /// The per-model-and-arm table, the per-level table, and the excluded runs.
 #[must_use]
@@ -34,10 +32,7 @@ pub fn tables(runs: &[Run], tiers: &[(String, u8)]) -> String {
             .filter(|r| r.solved())
             .map(|r| r.summary.level.as_str())
             .collect();
-        let hard = solved
-            .iter()
-            .filter(|id| tiers.iter().any(|(l, t)| l == *id && *t >= HARD_TIER))
-            .count();
+        let hard = solved.iter().filter(|id| is_hard(id, tiers)).count();
         let aborted = mine
             .iter()
             .filter(|r| r.summary.status == super::Status::Aborted)
@@ -109,12 +104,6 @@ fn per_level(runs: &[Run], tiers: &[(String, u8)], groups: &BTreeSet<(&str, Arm)
         }
     }
     out
-}
-
-#[allow(clippy::cast_precision_loss)] // run counts are small
-fn mean(values: impl Iterator<Item = f64>) -> f64 {
-    let (sum, n) = values.fold((0.0, 0usize), |(s, n), v| (s + v, n + 1));
-    if n == 0 { 0.0 } else { sum / n as f64 }
 }
 
 /// One row per run, every run included, with its status.
