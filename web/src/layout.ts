@@ -59,6 +59,23 @@ export function footerRect(panel: Rect): Rect {
   return { x: panel.x, y: panel.y + panel.h - FOOTER_H, w: panel.w, h: FOOTER_H };
 }
 
+// The column count that shows `n` panels biggest in a box: the layout whose grid fits with the
+// largest scale, the narrower one on ties. Never more columns than panels, and at least one.
+export function bestColumns(n: number, css_w: number, css_h: number, panel: Size): number {
+  const count = Math.max(1, n);
+  let best = 1;
+  let bestFit = -1;
+  for (let cols = 1; cols <= count; cols += 1) {
+    const grid = gridSize(count, cols, panel);
+    const fit = Math.min(css_w / grid.w, css_h / grid.h);
+    if (fit > bestFit) {
+      best = cols;
+      bestFit = fit;
+    }
+  }
+  return best;
+}
+
 // The upscale that fits a grid into a box: a whole number when one fits, else the fraction that
 // does, so the grid never overflows the screen.
 export function fitScale(css_w: number, css_h: number, grid: Size): number {

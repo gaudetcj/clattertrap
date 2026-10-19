@@ -65,11 +65,22 @@ export function callKey(path: string): { key: EntryKey; seq: number; tool: strin
   return key && seq !== undefined && tool !== undefined ? { key, seq: Number.parseInt(seq, 10), tool } : undefined;
 }
 
-// `claude-opus-5-5` reads `OPUS 5.5`: the family in capitals, the rest joined by dots.
+// The vendors an id may start with; the label drops the vendor and the family is named by it.
+const VENDORS = ['claude', 'openai', 'x-ai', 'deepseek', 'z-ai', 'xiaomi', 'qwen', 'google', 'meta-llama', 'mistralai', 'nvidia'];
+
+// The family of a model: its vendor, or the whole id when no vendor is known.
+export function familyOf(id: string): string {
+  return VENDORS.find((v) => id === v || id.startsWith(`${v}-`)) ?? id;
+}
+
+// `claude-opus-5-5` reads `OPUS 5.5` and `openai-gpt-5.6-luna` reads `GPT 5.6 LUNA`: the vendor
+// dropped, the rest in capitals, bare numbers joined by dots.
 export function modelLabel(id: string): string {
-  const [family, ...rest] = id.replace(/^claude-/, '').split('-');
-  const version = rest.join('.');
-  return version.length === 0 ? (family ?? id).toUpperCase() : `${(family ?? id).toUpperCase()} ${version}`;
+  const family = familyOf(id);
+  const rest = id.startsWith(`${family}-`) ? id.slice(family.length + 1) : id;
+  const tokens = rest.split('-').filter((t) => t.length > 0);
+  const digits = (t: string | undefined): boolean => t !== undefined && /^[0-9]+$/.test(t);
+  return tokens.map((t, i) => (i === 0 ? '' : digits(tokens[i - 1]) && digits(t) ? '.' : ' ') + t.toUpperCase()).join('');
 }
 
 export function modelRank(id: string): number {

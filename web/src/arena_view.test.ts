@@ -127,3 +127,18 @@ describe('ArenaView', () => {
     expect(canvas.ctx.count('fillRect')).toBeGreaterThan(plain);
   });
 });
+
+describe('ArenaView columns', () => {
+  it('lays twelve lanes out four across on a desktop and six across on an ultrawide', () => {
+    const canvas = new FakeCanvas();
+    const lanes = Array.from({ length: 12 }, (_, i) => panel(`M${i}`));
+    const view = new ArenaView(canvas, lanes, 400, 300);
+    view.resize(1920, 1000);
+    expect(view.grid).toEqual({ w: 1600, h: 1212 });
+    expect([canvas.width, canvas.height]).toEqual([1600, 1212]);
+    view.resize(3440, 900);
+    expect(view.grid).toEqual({ w: 2400, h: 808 });
+    view.draw(lanes.map(() => null));
+    expect(canvas.ctx.count('putImageData')).toBe(0);
+  });
+});

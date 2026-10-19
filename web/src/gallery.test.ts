@@ -52,7 +52,7 @@ describe('models', () => {
   it('are labelled by family and version', () => {
     expect(modelLabel('claude-opus-5-5')).toBe('OPUS 5.5');
     expect(modelLabel('claude-haiku-4-5')).toBe('HAIKU 4.5');
-    expect(modelLabel('gpt-5-mini')).toBe('GPT 5.mini');
+    expect(modelLabel('gpt-5-mini')).toBe('GPT 5 MINI');
     expect(modelLabel('llama3')).toBe('LLAMA3');
   });
 

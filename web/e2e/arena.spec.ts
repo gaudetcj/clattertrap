@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-// The six models of the first arena, in panel order; the page's MODEL_ORDER says the same.
+// The six Claude models, the lineup the test asks for.
 const MODELS = [
   'claude-haiku-4-5',
   'claude-sonnet-4-5',
@@ -12,14 +12,16 @@ const MODELS = [
 
 const VERDICT = /^(RANG|PRESSED|FILLED|POPPED) \d+\.\d s$|^MISSED$|^CAME TO REST$/;
 
-test('the arena grid plays six machines and shows their stamps', async ({ page }) => {
-  await page.goto('/arena.html?level=seesaw-launch&arm=blueprint&autoplay=1');
+test('the arena grid plays the six Claude machines and shows their stamps', async ({ page }) => {
+  await page.goto('/arena.html?level=seesaw-launch&arm=blueprint&lineup=claude&autoplay=1');
   const status = page.locator('.status');
   await expect(status).toHaveAttribute('data-ended', 'true', { timeout: 60_000 });
   const stamps = status.locator('.stamp');
   await expect(stamps).toHaveCount(6);
+  // The lanes follow the leaderboard, so only the set is fixed.
+  const shown = await stamps.evaluateAll((spans) => spans.map((s) => s.getAttribute('data-model')));
+  expect([...shown].sort()).toEqual([...MODELS].sort());
   for (let i = 0; i < MODELS.length; i += 1) {
-    await expect(stamps.nth(i)).toHaveAttribute('data-model', MODELS[i] ?? '');
     // A replay that disagrees with its stored result stamps REPLAY MISMATCH, which this refuses.
     await expect(stamps.nth(i)).toHaveText(VERDICT);
   }

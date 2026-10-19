@@ -5,6 +5,7 @@
 import type { Setup } from './decode';
 import { drawText, GLYPH_H } from './font';
 import {
+  bestColumns,
   COLS,
   FOOTER_CHARS,
   FOOTER_LINES,
@@ -58,9 +59,11 @@ const RGB = rgbPalette(PALETTE);
 const LUT = paletteLut(RGB);
 
 export class ArenaView {
-  readonly grid: Size;
-  private readonly rects: Rect[];
-  private readonly views: PanelView[];
+  grid: Size;
+  private readonly panel: Size;
+  private cols = COLS;
+  private rects: Rect[];
+  private views: PanelView[];
   private chromeDrawn = false;
 
   constructor(
@@ -69,17 +72,34 @@ export class ArenaView {
     world_w: number,
     world_h: number,
   ) {
-    const panel = panelSize(world_w, world_h);
-    this.rects = panelRects(panels.length, COLS, panel);
-    this.grid = gridSize(panels.length, COLS, panel);
-    this.views = panels.map((p, i) => {
-      const rect = this.rects[i] ?? { x: 0, y: 0, w: panel.w, h: panel.h };
+    this.panel = panelSize(world_w, world_h);
+    this.rects = panelRects(panels.length, this.cols, this.panel);
+    this.grid = gridSize(panels.length, this.cols, this.panel);
+    this.views = this.makeViews();
+  }
+
+  private makeViews(): PanelView[] {
+    return this.panels.map((p, i) => {
+      const rect = this.rects[i] ?? { x: 0, y: 0, w: this.panel.w, h: this.panel.h };
       return new PanelView(p.setup, p.links, p.items, worldRect(rect));
     });
   }
 
-  // Sizes the backing store to the grid and the element to the upscale that fits the box.
+  // Lays the panels out in `cols` columns, when that differs from the current layout.
+  private relayout(cols: number): void {
+    if (cols === this.cols) {
+      return;
+    }
+    this.cols = cols;
+    this.rects = panelRects(this.panels.length, cols, this.panel);
+    this.grid = gridSize(this.panels.length, cols, this.panel);
+    this.views = this.makeViews();
+  }
+
+  // Picks the columns that show the grid biggest in the box, then sizes the backing store to the
+  // grid and the element to the upscale that fits.
   resize(css_w: number, css_h: number): number {
+    this.relayout(bestColumns(this.panels.length, css_w, css_h, this.panel));
     const scale = fitScale(css_w, css_h, this.grid);
     this.canvas.width = this.grid.w;
     this.canvas.height = this.grid.h;

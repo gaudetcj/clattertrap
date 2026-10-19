@@ -41,16 +41,16 @@ describe('lanesFor', () => {
     entry('claude-sonnet-5-5', 'seesaw-launch', 'workshop', 'workshop-01'),
   ];
 
-  it('builds one lane per model in model order with the level JSON and the stored outcome', () => {
-    const lanes = lanesFor(entries, levels, pickFrom(''));
-    expect(lanes.map((l) => l.chrome.label)).toEqual(['HAIKU 4.5', 'OPUS 5.5']);
+  it('builds one lane per model in leaderboard order with the level JSON and the stored outcome', () => {
+    const lanes = lanesFor(entries, levels, pickFrom(''), ['claude-opus-5-5', 'claude-haiku-4-5']);
+    expect(lanes.map((l) => l.chrome.label)).toEqual(['OPUS 5.5', 'HAIKU 4.5']);
     expect(lanes[0]?.levelJson).toBe('{"id":"seesaw-launch"}');
-    expect(lanes[0]?.chrome.name).toBe('claude-haiku-4-5 machine');
+    expect(lanes[0]?.chrome.name).toBe('claude-opus-5-5 machine');
     expect(lanes[0]?.stored?.goal_met).toBe(true);
   });
 
   it('is empty for a level the page does not know', () => {
-    expect(lanesFor(entries, levels, { level: 'nope', arm: 'blueprint' })).toEqual([]);
+    expect(lanesFor(entries, levels, { level: 'nope', arm: 'blueprint' }, [])).toEqual([]);
   });
 });
 
