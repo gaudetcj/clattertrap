@@ -118,3 +118,14 @@ export function nextLevelId(ids: string[], current: string): string {
   const at = ids.indexOf(current);
   return ids[(at + 1) % ids.length] ?? current;
 }
+
+// What the lineup dropdown calls each kind, with how many of the models present it plays.
+export function lineupNames(ranked: string[], present: string[]): Record<LineupKind, string> {
+  const count = (kind: LineupKind): number => lineupModels(kind, ranked, present).length;
+  return {
+    families: `one per family (${count('families')})`,
+    all: `all models (${count('all')})`,
+    claude: `Claude (${count('claude')})`,
+    open: `open weights (${count('open')})`,
+  };
+}

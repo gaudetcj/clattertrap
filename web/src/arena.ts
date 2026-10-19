@@ -1,7 +1,7 @@
 // The arena page: one level, one arm, one panel per model, all released at once. The verdicts are
 // mirrored into the DOM so a test can read them without touching the canvas.
 
-import { defaultLineup, lanesFor, LINEUPS, nextLevelId, pickFrom, pickModels, type LineupKind, type Pick } from './arena_lanes';
+import { defaultLineup, lanesFor, LINEUPS, lineupNames, nextLevelId, pickFrom, pickModels, type LineupKind, type Pick } from './arena_lanes';
 import { Conductor } from './conductor';
 import { band, footer, navLinks, siteCounts } from './chrome';
 import { el } from './dom';
@@ -14,13 +14,7 @@ import { loadWasm } from './replay';
 
 const ARMS = ['blueprint', 'workshop'];
 
-// What the lineup dropdown calls each kind, plus the custom list a `?models=` link carries.
-const LINEUP_NAMES: Record<LineupKind, string> = {
-  families: 'one per family',
-  all: 'all models',
-  claude: 'Claude',
-  open: 'open weights',
-};
+// The lineup dropdown's extra entry for the custom list a `?models=` link carries.
 const CUSTOM = 'custom';
 
 // The models in leaderboard order, which every lineup follows.
@@ -70,7 +64,7 @@ class ArenaPage {
       this.armSelect.append(option);
     }
     for (const kind of LINEUPS) {
-      const option = el('option', LINEUP_NAMES[kind]);
+      const option = el('option', kind);
       option.value = kind;
       this.lineupSelect.append(option);
     }
@@ -142,8 +136,14 @@ class ArenaPage {
     this.pick = pick;
     this.levelSelect.value = pick.level;
     this.armSelect.value = pick.arm;
-    const present = lineup(this.entries, pick.level, pick.arm, pick.run).length;
-    this.lineupSelect.value = pick.models ? CUSTOM : (pick.lineup ?? defaultLineup(present));
+    const present = lineup(this.entries, pick.level, pick.arm, pick.run).map((e) => e.model);
+    const names = lineupNames(this.ranked, present);
+    for (const option of this.lineupSelect.options) {
+      if (option.value !== CUSTOM) {
+        option.textContent = names[option.value as LineupKind];
+      }
+    }
+    this.lineupSelect.value = pick.models ? CUSTOM : (pick.lineup ?? defaultLineup(present.length));
     const address: Record<string, string> = { level: pick.level, arm: pick.arm };
     if (pick.lineup) {
       address['lineup'] = pick.lineup;

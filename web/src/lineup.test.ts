@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defaultLineup, lanesFor, lineupModels, pickFrom } from './arena_lanes';
+import { defaultLineup, lanesFor, lineupModels, lineupNames, pickFrom } from './arena_lanes';
 import type { Entry } from './gallery';
 
 function entry(model: string, level: string, arm: string): Entry {
@@ -90,5 +90,17 @@ describe('lineups', () => {
     expect(lanesFor(entries, levels, pick, ranked).map((l) => l.chrome.label)).toEqual(['HAIKU 4.5', 'OPUS 5.5']);
     // Without a list, the lanes follow the leaderboard.
     expect(lanesFor(entries, levels, { level: 'bell-drop', arm: 'blueprint' }, ranked).map((l) => l.chrome.label)).toEqual(['OPUS 5.5', 'HAIKU 4.5']);
+  });
+});
+
+describe('lineup names', () => {
+  it('say how many of the models present each lineup plays', () => {
+    const present = ['claude-opus-5-5', 'claude-haiku-5-5', 'x-ai-grok-4.3', 'qwen-qwen3.6-35b-a3b'];
+    expect(lineupNames(ranked, present)).toEqual({
+      families: 'one per family (3)',
+      all: 'all models (4)',
+      claude: 'Claude (2)',
+      open: 'open weights (1)',
+    });
   });
 });
