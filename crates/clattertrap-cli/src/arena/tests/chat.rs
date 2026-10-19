@@ -51,7 +51,12 @@ fn the_request_carries_the_model_messages_tools_and_asks_for_usage() {
         json!({ "role": "system", "content": "Build a machine." }),
         json!({ "role": "user", "content": "Your level is bell-drop." }),
     ];
-    let body = request("openai/gpt-5-mini", &messages, &function_tools(&defs()));
+    let body = request(
+        "openai/gpt-5-mini",
+        &messages,
+        &function_tools(&defs()),
+        None,
+    );
     assert_eq!(body["model"], "openai/gpt-5-mini");
     assert_eq!(body["messages"], Value::Array(messages));
     assert_eq!(body["tool_choice"], "auto");
@@ -179,4 +184,17 @@ fn a_reply_the_provider_cut_short_carries_its_error_and_finish_reason() {
     assert_eq!(reply.error.as_deref(), Some("upstream timed out"));
     let fine = parse_reply(&json!({ "choices": [{ "finish_reason": "stop", "message": { "role": "assistant", "content": "ok" } }] })).unwrap();
     assert_eq!(fine.error, None);
+}
+
+#[test]
+fn the_request_carries_a_reply_cap_only_when_one_is_given() {
+    let messages = vec![json!({ "role": "user", "content": "Build a machine." })];
+    let tools = function_tools(&defs());
+    let capped = request("z-ai/glm-5.3-flash", &messages, &tools, Some(800_000));
+    assert_eq!(capped["max_tokens"], 800_000);
+    // Without one, the endpoint's own default applies.
+    assert_eq!(
+        request("z-ai/glm-5.3-flash", &messages, &tools, None).get("max_tokens"),
+        None
+    );
 }

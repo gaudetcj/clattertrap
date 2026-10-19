@@ -21,17 +21,24 @@ pub struct Endpoint {
     base_url: String,
     api_key: Option<String>,
     model: String,
+    max_reply_tokens: Option<u32>,
 }
 
 impl Endpoint {
     /// A provider posting to `base_url/chat/completions` for `model`, with `api_key` as a bearer
-    /// token when there is one.
+    /// token when there is one, asking for replies of at most `max_reply_tokens` when given.
     #[must_use]
-    pub fn new(base_url: &str, api_key: Option<String>, model: &str) -> Self {
+    pub fn new(
+        base_url: &str,
+        api_key: Option<String>,
+        model: &str,
+        max_reply_tokens: Option<u32>,
+    ) -> Self {
         Self {
             base_url: base_url.trim_end_matches('/').to_owned(),
             api_key,
             model: model.to_owned(),
+            max_reply_tokens,
         }
     }
 }
@@ -193,7 +200,12 @@ impl Chat<'_> {
 
     /// Posts the history and reads the reply, trying again after rate limits and server errors.
     async fn next_reply(&mut self) -> Result<Reply, End> {
-        let body = request(&self.endpoint.model, &self.messages, &self.tools);
+        let body = request(
+            &self.endpoint.model,
+            &self.messages,
+            &self.tools,
+            self.endpoint.max_reply_tokens,
+        );
         let mut attempt = 0;
         loop {
             let remaining = self.deadline.saturating_duration_since(Instant::now());

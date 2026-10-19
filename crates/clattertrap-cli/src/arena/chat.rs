@@ -62,18 +62,28 @@ pub fn function_tools(tools: &[ToolDef]) -> Vec<Value> {
         .collect()
 }
 
-/// The request body; `usage.include` asks an OpenRouter-style endpoint for the cost, and
-/// `provider.require_parameters` keeps it off providers that would drop the tools.
+/// The request body; `usage.include` asks an OpenRouter-style endpoint for the cost,
+/// `provider.require_parameters` keeps it off providers that would drop the tools, and
+/// `max_reply_tokens` caps one reply, or leaves the endpoint's own default when `None`.
 #[must_use]
-pub fn request(model: &str, messages: &[Value], tools: &[Value]) -> Value {
-    json!({
+pub fn request(
+    model: &str,
+    messages: &[Value],
+    tools: &[Value],
+    max_reply_tokens: Option<u32>,
+) -> Value {
+    let mut body = json!({
         "model": model,
         "messages": messages,
         "tools": tools,
         "tool_choice": "auto",
         "usage": { "include": true },
         "provider": { "require_parameters": true }
-    })
+    });
+    if let (Some(cap), Some(obj)) = (max_reply_tokens, body.as_object_mut()) {
+        obj.insert("max_tokens".to_owned(), json!(cap));
+    }
+    body
 }
 
 /// The parts of a reply body.

@@ -99,6 +99,9 @@ enum Command {
         /// The environment variable holding the endpoint's API key; unset or empty means no key
         #[arg(long, value_name = "VAR", default_value = "OPENROUTER_API_KEY")]
         api_key_env: String,
+        /// The largest reply to ask the endpoint for, in tokens; without it the endpoint's default applies
+        #[arg(long, value_name = "N", requires = "endpoint")]
+        max_reply_tokens: Option<u32>,
         /// The claude executable
         #[arg(long, default_value = "claude")]
         claude: String,
@@ -188,6 +191,7 @@ fn dispatch() -> Result<ExitCode> {
             out,
             endpoint,
             api_key_env,
+            max_reply_tokens,
             claude,
         } => {
             let options = arena::Options {
@@ -200,7 +204,10 @@ fn dispatch() -> Result<ExitCode> {
             match endpoint {
                 Some(url) => {
                     let key = std::env::var(&api_key_env).ok().filter(|k| !k.is_empty());
-                    arena::run(&options, &arena::Endpoint::new(&url, key, &model))?;
+                    arena::run(
+                        &options,
+                        &arena::Endpoint::new(&url, key, &model, max_reply_tokens),
+                    )?;
                 }
                 None => arena::run(&options, &arena::ClaudeCode::new(claude, &model)?)?,
             }
