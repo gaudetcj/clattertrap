@@ -1,0 +1,18 @@
+{
+  "level": "seesaw-launch",
+  "arm": "workshop",
+  "name": "Single Seesaw Bell Ringer",
+  "prediction": "The falling steel ball lands on the seesaw's left arm, swinging the right tip up through the box's open bottom to strike the bell and ring it.",
+  "scene": "{\"level\": \"seesaw-launch\", \"parts\": [{\"id\": \"see\", \"kind\": \"seesaw\", \"x_cm\": 150, \"y_cm\": 100, \"length_cm\": 120, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.65833336,
+    "steps": 79,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "397625ceb8227246",
+    "state_hash": "6244c715de2b36b3",
+    "rules_version": 1
+  }
+}

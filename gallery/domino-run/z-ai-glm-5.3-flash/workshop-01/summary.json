@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "domino-run",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792393738,
+  "duration_s": 227.5253575,
+  "cost_usd": 0.007362713599999999,
+  "turns": 6,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

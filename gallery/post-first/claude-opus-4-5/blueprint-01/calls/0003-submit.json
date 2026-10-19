@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 100,
+        "y_cm": 205
+      },
+      {
+        "angle_deg": 5,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 270,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.7250001,
+    "steps": 207,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "1d6b0235ee118ad1",
+    "state_hash": "607237dbc639ad23",
+    "rules_version": 1
+  },
+  "name": "Post-First Express",
+  "prediction": "Ball rolls down ramp B1, arcs onto the post as waypoint, then falls to ramp B2 which directs it upward into the bell."
+}

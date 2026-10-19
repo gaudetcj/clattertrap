@@ -1,0 +1,41 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 75,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -34,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 150,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": 29,
+        "id": "ballpath",
+        "kind": "beam",
+        "length_cm": 62,
+        "x_cm": 132.5,
+        "y_cm": 125
+      },
+      {
+        "angle_deg": 20,
+        "id": "bellpath",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 70,
+        "y_cm": 75
+      }
+    ]
+  }
+}

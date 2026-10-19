@@ -1,0 +1,51 @@
+{
+  "seq": 20,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 85,
+        "y_cm": 264
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 150,
+        "y_cm": 264
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 215,
+        "y_cm": 264
+      },
+      {
+        "angle_deg": -90,
+        "id": "drop",
+        "kind": "beam",
+        "length_cm": 108,
+        "x_cm": 265,
+        "y_cm": 210
+      },
+      {
+        "id": "pusher",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 210,
+        "y_cm": 172
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam ramp1): overlaps ball0 by 2.0 cm at the start; move it up to y_cm = 266.0"
+  ]
+}

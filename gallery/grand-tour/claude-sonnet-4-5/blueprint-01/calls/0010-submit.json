@@ -1,0 +1,69 @@
+{
+  "seq": 10,
+  "tool": "submit",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -5,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 80,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 180,
+        "y_cm": 197
+      },
+      {
+        "angle_deg": -35,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 240,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": -15,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 280,
+        "y_cm": 57
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 60,
+        "x_cm": 290,
+        "y_cm": 40
+      },
+      {
+        "id": "ball_wood",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 320,
+        "y_cm": 48
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.516667,
+    "steps": 422,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "db02b9331764a993",
+    "state_hash": "36f09632e272802e",
+    "rules_version": 1
+  },
+  "name": "Cascading Seesaw Launch",
+  "prediction": "The steel ball will roll down ramps, touch the post, land on a seesaw, and catapult a wood ball upward into the bell."
+}

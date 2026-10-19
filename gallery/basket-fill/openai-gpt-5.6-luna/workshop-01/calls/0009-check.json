@@ -1,0 +1,44 @@
+{
+  "seq": 9,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 15,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 300,
+        "y_cm": 263
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 220,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 150,
+        "y_cm": 186
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 152
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam beam1): overlaps ball0 by 4.5 cm at the start; move it up to y_cm = 267.5"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "seq": 20,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 60,
+        "y_cm": 270
+      },
+      {
+        "angle_deg": 30,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 80,
+        "y_cm": 240
+      },
+      {
+        "id": "pusher",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 200,
+        "y_cm": 155
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam ramp1): overlaps ball0 by 2.8 cm at the start; move it up to y_cm = 272.8",
+    "parts[2] (ball pusher): overlaps pend by 6.0 cm at the start; move it up to y_cm = 161.0",
+    "parts[2] (ball pusher): overlaps pend by 1.8 cm at the start; move it up to y_cm = 156.8",
+    "parts[1] (seesaw launcher): overlaps ramp1 by 2.8 cm at the start; move it up to y_cm = 242.8"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "seq": 15,
+  "tool": "run",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 285,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 220,
+        "y_cm": 90
+      },
+      {
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 160,
+        "y_cm": 120
+      },
+      {
+        "height_cm": 40,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 40,
+        "x_cm": 110,
+        "y_cm": 50
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.2166667,
+    "steps": 266,
+    "parts_used": 5,
+    "chain_length": 2,
+    "event_hash": "d2a4b6fcdb60f3e4",
+    "state_hash": "f805ad1fdcf90d23",
+    "rules_version": 1
+  }
+}

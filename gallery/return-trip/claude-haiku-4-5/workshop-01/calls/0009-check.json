@@ -1,0 +1,56 @@
+{
+  "seq": 9,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 20,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 220,
+        "y_cm": 170
+      },
+      {
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 300,
+        "y_cm": 160
+      },
+      {
+        "id": "domino2",
+        "kind": "domino",
+        "x_cm": 250,
+        "y_cm": 120
+      },
+      {
+        "id": "domino3",
+        "kind": "domino",
+        "x_cm": 200,
+        "y_cm": 90
+      },
+      {
+        "height_cm": 40,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 40,
+        "x_cm": 110,
+        "y_cm": 50
+      }
+    ]
+  },
+  "problems": [
+    "parts[2] (domino domino1): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 162.0",
+    "parts[4] (domino domino3): overlaps d by 2.0 cm at the start; move it up to y_cm = 92.0"
+  ]
+}

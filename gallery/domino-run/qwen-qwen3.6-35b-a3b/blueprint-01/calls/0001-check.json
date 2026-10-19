@@ -1,0 +1,5 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": "{\"level\": \"domino-run\", \"parts\": [{\"id\": \"dom1\", \"kind\": \"domino\", \"x_cm\": 130, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom2\", \"kind\": \"domino\", \"x_cm\": 145, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom3\", \"kind\": \"domino\", \"x_cm\": 160, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom4\", \"kind\": \"domino\", \"x_cm\": 175, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom5\", \"kind\": \"domino\", \"x_cm\": 190, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom6\", \"kind\": \"domino\", \"x_cm\": 205, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom7\", \"kind\": \"domino\", \"x_cm\": 220, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom8\", \"kind\": \"domino\", \"x_cm\": 235, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom9\", \"kind\": \"domino\", \"x_cm\": 250, \"y_cm\": 137, \"angle_deg\": 0}]}"
+}

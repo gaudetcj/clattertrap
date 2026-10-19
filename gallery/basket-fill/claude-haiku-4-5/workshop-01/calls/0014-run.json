@@ -1,0 +1,44 @@
+{
+  "seq": 14,
+  "tool": "run",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 300,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 170,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 0,
+        "id": "dumper",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 60,
+        "y_cm": 120
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.8583335,
+    "steps": 223,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "86bd7d31b4522717",
+    "state_hash": "89a114d844f735a3",
+    "rules_version": 1
+  }
+}

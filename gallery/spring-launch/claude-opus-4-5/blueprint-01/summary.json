@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792377729,
+  "duration_s": 766.1069621,
+  "cost_usd": 2.0120085000000003,
+  "turns": 20,
+  "tool_calls": 19,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

@@ -1,0 +1,38 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 20.8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 133.7,
+        "x_cm": 297.5,
+        "y_cm": 131.25
+      },
+      {
+        "angle_deg": 20.8,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 133.7,
+        "x_cm": 172.5,
+        "y_cm": 83.75
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.7166667,
+    "steps": 326,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "b1fa3ca911570b4d",
+    "state_hash": "bb86ec5f0c40ab16",
+    "rules_version": 1
+  },
+  "name": "Two-Beam Ramp Slide",
+  "prediction": "The three wood balls drop onto a two-beam ramp beneath them, roll down-left and fall off its low end into the basket, where they come to rest, filling it."
+}

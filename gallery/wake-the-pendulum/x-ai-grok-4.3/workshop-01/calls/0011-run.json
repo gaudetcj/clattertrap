@@ -1,0 +1,29 @@
+{
+  "seq": 11,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "height_cm": 50,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 40,
+        "throat_cm": 20,
+        "x_cm": 40,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "ff3702e71717d03f",
+    "state_hash": "1d6f303675d74a96",
+    "rules_version": 1
+  }
+}

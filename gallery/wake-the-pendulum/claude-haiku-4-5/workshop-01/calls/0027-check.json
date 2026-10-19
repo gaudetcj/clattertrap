@@ -1,0 +1,24 @@
+{
+  "seq": 27,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -28,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 80,
+        "y_cm": 275
+      },
+      {
+        "id": "relay",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 180,
+        "y_cm": 180
+      }
+    ]
+  }
+}

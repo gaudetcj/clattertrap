@@ -1,0 +1,37 @@
+{
+  "seq": 29,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -28,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 80,
+        "y_cm": 275
+      },
+      {
+        "id": "relay",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 190,
+        "y_cm": 165
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 4,
+    "event_hash": "a02de0d455c49a77",
+    "state_hash": "619db192ce4611ff",
+    "rules_version": 1
+  },
+  "name": "Pendulum Relay Machine",
+  "prediction": "Ball0 rolls down the steep ramp, launches toward the relay ball, which collides with the pendulum weight to trigger the required waypoint chain."
+}

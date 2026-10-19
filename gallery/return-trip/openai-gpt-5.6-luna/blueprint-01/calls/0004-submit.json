@@ -1,0 +1,76 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 90,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -15,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 235,
+        "y_cm": 205
+      },
+      {
+        "angle_deg": 15,
+        "id": "w1r",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 255,
+        "y_cm": 128
+      },
+      {
+        "angle_deg": 10,
+        "id": "w2r",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 330,
+        "y_cm": 112
+      },
+      {
+        "angle_deg": 12,
+        "id": "br",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 190,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 365,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino2",
+        "kind": "domino",
+        "x_cm": 355,
+        "y_cm": 175
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 6.3583336,
+    "steps": 763,
+    "parts_used": 7,
+    "chain_length": 4,
+    "event_hash": "1ba0fbd37260c34f",
+    "state_hash": "9d1dc5fbcb2c7a47",
+    "rules_version": 1
+  },
+  "name": "Return Trip Cascade",
+  "prediction": "The falling steel ball rolls through a, crosses the right shelf to activate w1, then the returning balls descend through d and cascade left along the lower ramp so ball0, w1, and w2 settle in the basket."
+}

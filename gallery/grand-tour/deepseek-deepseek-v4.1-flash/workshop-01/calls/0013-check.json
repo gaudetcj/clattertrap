@@ -1,0 +1,54 @@
+{
+  "seq": 13,
+  "tool": "check",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -24.04,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 142.4,
+        "x_cm": 90,
+        "y_cm": 233
+      },
+      {
+        "angle_deg": -62.5,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 114.9,
+        "x_cm": 276.5,
+        "y_cm": 129
+      },
+      {
+        "angle_deg": 0,
+        "id": "ledge",
+        "kind": "beam",
+        "length_cm": 36,
+        "x_cm": 303,
+        "y_cm": 74
+      },
+      {
+        "id": "crate1",
+        "kind": "crate",
+        "side_cm": 16,
+        "x_cm": 313,
+        "y_cm": 84
+      },
+      {
+        "id": "wball",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 313,
+        "y_cm": 98
+      },
+      {
+        "angle_deg": -25.1,
+        "id": "pad1",
+        "kind": "spring_pad",
+        "x_cm": 310,
+        "y_cm": 55
+      }
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "seq": 5,
+  "tool": "check",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 122,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 132,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 142,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 152,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 162,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 172,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 182,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 192,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 5,
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 264,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 5,
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 272,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": -30,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 265,
+        "y_cm": 145
+      }
+    ]
+  },
+  "problems": [
+    "parts[10] (beam b1): overlaps d9 by 3.9 cm at the start; move it up to y_cm = 148.9",
+    "parts[10] (beam b1): overlaps d10 by 7.9 cm at the start; move it up to y_cm = 152.9"
+  ]
+}

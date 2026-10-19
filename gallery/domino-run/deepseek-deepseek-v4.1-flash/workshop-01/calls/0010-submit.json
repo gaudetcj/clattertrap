@@ -1,0 +1,100 @@
+{
+  "seq": 10,
+  "tool": "submit",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 187,
+        "y_cm": 129
+      },
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 128,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 144,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 160,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 176,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 192,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 208,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 224,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 240,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 252,
+        "y_cm": 141.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 260,
+        "y_cm": 141.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.2583334,
+    "steps": 391,
+    "parts_used": 11,
+    "chain_length": 11,
+    "event_hash": "aabc2885f8865eee",
+    "state_hash": "d9ca78556a29c062",
+    "rules_version": 1
+  },
+  "name": "Raised-Beam Domino Cascade",
+  "prediction": "The ball rolls down the ramp onto the raised beam, topples the ten-domino chain, and the last two dominoes fall off the beam's right end into the basket, leaving two objects at rest inside."
+}

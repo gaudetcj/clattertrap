@@ -1,0 +1,41 @@
+{
+  "seq": 7,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -22.2,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 105.9,
+        "x_cm": 80.2,
+        "y_cm": 248.2
+      },
+      {
+        "angle_deg": -23.1,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 127.2,
+        "x_cm": 225.7,
+        "y_cm": 189.2
+      },
+      {
+        "angle_deg": 19.6,
+        "id": "chute",
+        "kind": "beam",
+        "length_cm": 140.1,
+        "x_cm": 316.7,
+        "y_cm": 128.6
+      },
+      {
+        "angle_deg": 28.6,
+        "id": "r5",
+        "kind": "beam",
+        "length_cm": 62.6,
+        "x_cm": 155.5,
+        "y_cm": 61.2
+      }
+    ]
+  }
+}

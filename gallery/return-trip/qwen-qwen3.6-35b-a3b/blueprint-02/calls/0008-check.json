@@ -1,0 +1,8 @@
+{
+  "seq": 8,
+  "tool": "check",
+  "scene": "{\"level\": \"return-trip\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 70, \"y_cm\": 270, \"length_cm\": 80, \"angle_deg\": -30}]}",
+  "problems": [
+    "parts[0] (beam beam1): overlaps ball0 by 1.7 cm at the start; move it up to y_cm = 271.7"
+  ]
+}

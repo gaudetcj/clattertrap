@@ -1,0 +1,30 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 45,
+        "id": "p1",
+        "kind": "pendulum",
+        "length_cm": 70,
+        "x_cm": 240,
+        "y_cm": 140
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.6750001,
+    "steps": 201,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "e29d90c343af6e29",
+    "state_hash": "b557b08487ec1f25",
+    "rules_version": 1
+  },
+  "name": "Pendulum swings into bell",
+  "prediction": "The pendulum, released at 45 degrees from its pin 60 cm left of the bell anchor, swings down and strikes the bell hard enough to ring it."
+}

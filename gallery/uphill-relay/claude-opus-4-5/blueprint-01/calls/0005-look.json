@@ -1,0 +1,56 @@
+{
+  "seq": 5,
+  "tool": "look",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 80,
+        "y_cm": 265
+      },
+      {
+        "height_cm": 50,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 20,
+        "x_cm": 150,
+        "y_cm": 170
+      },
+      {
+        "angle_deg": -50,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 175,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 110,
+        "x_cm": 280,
+        "y_cm": 22
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 332,
+        "y_cm": 30
+      },
+      {
+        "angle_deg": -65,
+        "id": "spring1",
+        "kind": "spring_pad",
+        "x_cm": 268,
+        "y_cm": 50
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 55,
+        "y_cm": 252
+      },
+      {
+        "angle_deg": -33,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 142,
+        "x_cm": 140,
+        "y_cm": 198
+      },
+      {
+        "angle_deg": -18,
+        "id": "guide1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 135,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": -145,
+        "id": "guide2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 70,
+        "y_cm": 75
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam ramp2): overlaps pend by 5.0 cm at the start; move it up to y_cm = 203.0",
+    "parts[1] (beam ramp2): overlaps pend by 1.4 cm at the start; move it up to y_cm = 199.4",
+    "parts[3] (beam guide2): overlaps bell by 11.6 cm at the start; move it up to y_cm = 86.6"
+  ]
+}

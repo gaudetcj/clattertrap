@@ -1,0 +1,5 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": "{\"level\": \"return-trip\", \"parts\": [{\"id\": \"funnel1\", \"kind\": \"funnel\", \"x_cm\": 150, \"y_cm\": 235, \"mouth_cm\": 40, \"throat_cm\": 20, \"height_cm\": 50}]}"
+}

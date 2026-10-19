@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792377335,
+  "duration_s": 240.50183379999999,
+  "cost_usd": 0.596432,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

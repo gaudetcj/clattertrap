@@ -1,0 +1,28 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 160,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": -35,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 120,
+        "y_cm": 140
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam beam1): centre (120, 140) is outside every build zone; move it inside x 20..380, y 10..120"
+  ]
+}

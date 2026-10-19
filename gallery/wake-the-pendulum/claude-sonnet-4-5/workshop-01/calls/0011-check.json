@@ -1,0 +1,58 @@
+{
+  "seq": 11,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "height_cm": 50,
+        "id": "catch",
+        "kind": "funnel",
+        "mouth_cm": 30,
+        "throat_cm": 14,
+        "x_cm": 40,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 55,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 90,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -2,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 140,
+        "y_cm": 212
+      },
+      {
+        "angle_deg": 90,
+        "id": "wall",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 190,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": -18,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 75
+      }
+    ]
+  }
+}

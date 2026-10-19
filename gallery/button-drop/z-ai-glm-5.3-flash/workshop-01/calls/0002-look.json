@@ -1,0 +1,34 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 140,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": -30,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 260,
+        "y_cm": 130
+      },
+      {
+        "height_cm": 40,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 62
+      }
+    ]
+  }
+}

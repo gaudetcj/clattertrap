@@ -1,0 +1,76 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "height_cm": 35,
+        "id": "catch",
+        "kind": "funnel",
+        "mouth_cm": 40,
+        "throat_cm": 16,
+        "x_cm": 50,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": 0,
+        "id": "guide_a",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 90,
+        "y_cm": 232
+      },
+      {
+        "angle_deg": -35,
+        "id": "down1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 155,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": -30,
+        "id": "down2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 210,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 0,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 270,
+        "y_cm": 46
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 230,
+        "y_cm": 54
+      },
+      {
+        "angle_deg": 0,
+        "id": "catch_c",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 320,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": -30,
+        "id": "to_bell",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 340,
+        "y_cm": 94
+      }
+    ]
+  },
+  "problems": [
+    "parts[7] (beam to_bell): overlaps bell by 0.5 cm at the start; move it up to y_cm = 94.5"
+  ]
+}

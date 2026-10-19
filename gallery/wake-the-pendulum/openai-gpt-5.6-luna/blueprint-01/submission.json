@@ -1,0 +1,54 @@
+{
+  "level": "wake-the-pendulum",
+  "arm": "blueprint",
+  "name": "Pendulum Relay",
+  "prediction": "The falling steel ball rolls down two ramps into the pendulum, whose swing knocks ball1 onto the descending path to the post; ball1 then drops onto the bell path and strikes the bell.",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 75,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -34,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 150,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": 29,
+        "id": "ballpath",
+        "kind": "beam",
+        "length_cm": 62,
+        "x_cm": 132.5,
+        "y_cm": 125
+      },
+      {
+        "angle_deg": 20,
+        "id": "bellpath",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 70,
+        "y_cm": 75
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "0a5f9049e9fda4b5",
+    "state_hash": "458941908e4d6697",
+    "rules_version": 1
+  }
+}

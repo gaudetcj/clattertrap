@@ -1,0 +1,23 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "catapult",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 130,
+        "y_cm": 60
+      },
+      {
+        "id": "ammo",
+        "kind": "domino",
+        "x_cm": 180,
+        "y_cm": 73
+      }
+    ]
+  }
+}

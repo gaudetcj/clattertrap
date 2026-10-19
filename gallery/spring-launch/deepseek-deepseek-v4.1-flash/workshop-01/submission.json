@@ -1,0 +1,29 @@
+{
+  "level": "spring-launch",
+  "arm": "workshop",
+  "name": "Spring Pad Slot Drop",
+  "prediction": "The wood ball rolls down the fixed ramp, lands on the spring pad tilted -3°, and is kicked up and right in an arc that descends into the 14 cm slot and presses the button.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": -3,
+        "id": "pad1",
+        "kind": "spring_pad",
+        "x_cm": 160,
+        "y_cm": 97
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.8666668,
+    "steps": 224,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "5cabee22a8f2d9cb",
+    "state_hash": "f2f554f03a20e039",
+    "rules_version": 1
+  }
+}

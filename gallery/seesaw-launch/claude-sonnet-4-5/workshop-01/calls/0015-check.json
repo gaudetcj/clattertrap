@@ -1,0 +1,17 @@
+{
+  "seq": 15,
+  "tool": "check",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 150,
+        "x_cm": 145,
+        "y_cm": 100
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792385586,
+  "duration_s": 227.7129988,
+  "cost_usd": 0.03213207479999999,
+  "turns": 6,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

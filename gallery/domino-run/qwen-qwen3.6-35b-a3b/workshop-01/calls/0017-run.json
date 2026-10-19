@@ -1,0 +1,16 @@
+{
+  "seq": 17,
+  "tool": "run",
+  "scene": "{\"level\": \"domino-run\", \"parts\": [{\"id\": \"dom1\", \"kind\": \"domino\", \"x_cm\": 130, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom2\", \"kind\": \"domino\", \"x_cm\": 140, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom3\", \"kind\": \"domino\", \"x_cm\": 150, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom4\", \"kind\": \"domino\", \"x_cm\": 160, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom5\", \"kind\": \"domino\", \"x_cm\": 170, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom6\", \"kind\": \"domino\", \"x_cm\": 180, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom7\", \"kind\": \"domino\", \"x_cm\": 190, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom8\", \"kind\": \"domino\", \"x_cm\": 200, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom9\", \"kind\": \"domino\", \"x_cm\": 210, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom10\", \"kind\": \"domino\", \"x_cm\": 220, \"y_cm\": 137.5, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.3583336,
+    "steps": 403,
+    "parts_used": 10,
+    "chain_length": 11,
+    "event_hash": "3cad69114aee55c8",
+    "state_hash": "12a150f05f20c63c",
+    "rules_version": 1
+  }
+}

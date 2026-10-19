@@ -1,0 +1,15 @@
+{
+  "model": "qwen-qwen3.6-35b-a3b",
+  "level": "balloon-pin",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792387773,
+  "duration_s": 363.0416163,
+  "cost_usd": 0.06663266200000002,
+  "turns": 26,
+  "tool_calls": 26,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

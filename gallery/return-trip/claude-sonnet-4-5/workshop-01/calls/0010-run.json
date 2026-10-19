@@ -1,0 +1,68 @@
+{
+  "seq": 10,
+  "tool": "run",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -5,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 60,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 110,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 45,
+        "id": "bounce_to_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 145,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -10,
+        "id": "guide_right",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 220,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": -5,
+        "id": "hit_w1",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 300,
+        "y_cm": 168
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw_return",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 350,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "a1692ce448e03760",
+    "state_hash": "76a4640ba0e6b8ba",
+    "rules_version": 1
+  }
+}

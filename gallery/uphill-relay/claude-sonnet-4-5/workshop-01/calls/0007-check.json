@@ -1,0 +1,75 @@
+{
+  "seq": 7,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 70,
+        "y_cm": 255
+      },
+      {
+        "angle_deg": 0,
+        "id": "guide_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 120,
+        "y_cm": 234
+      },
+      {
+        "angle_deg": -30,
+        "id": "down1",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 160,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -35,
+        "id": "down2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": -10,
+        "id": "to_seesaw",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 265,
+        "y_cm": 54
+      },
+      {
+        "angle_deg": 0,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 295,
+        "y_cm": 48
+      },
+      {
+        "id": "holder",
+        "kind": "crate",
+        "side_cm": 10,
+        "x_cm": 250,
+        "y_cm": 57
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 250,
+        "y_cm": 68
+      }
+    ]
+  },
+  "problems": [
+    "parts[5] (seesaw launcher): overlaps to_seesaw by 4.0 cm at the start; move it up to y_cm = 52.0",
+    "parts[6] (crate holder): overlaps to_seesaw by 7.4 cm at the start; move it up to y_cm = 64.4"
+  ]
+}

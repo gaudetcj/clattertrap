@@ -1,0 +1,47 @@
+{
+  "seq": 6,
+  "tool": "submit",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "left_ramp",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 120,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 22,
+        "id": "right_ramp",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 280,
+        "y_cm": 220
+      },
+      {
+        "height_cm": 80,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 40,
+        "x_cm": 200,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.8583336,
+    "steps": 343,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "30164dd13c408317",
+    "state_hash": "b6f4236d0747ee37",
+    "rules_version": 1
+  },
+  "name": "Wide-Throat Triple Funnel",
+  "prediction": "The two ramps will roll the outer balls inward while the center ball drops through the wide funnel throat, bringing all three balls to rest in the basket."
+}

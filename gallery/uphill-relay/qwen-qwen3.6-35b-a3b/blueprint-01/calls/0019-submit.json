@@ -1,0 +1,18 @@
+{
+  "seq": 19,
+  "tool": "submit",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"redirect\", \"kind\": \"beam\", \"x_cm\": 50, \"y_cm\": 255, \"length_cm\": 40, \"angle_deg\": -60}, {\"id\": \"seesaw\", \"kind\": \"seesaw\", \"x_cm\": 210, \"y_cm\": 25, \"length_cm\": 80, \"angle_deg\": -30}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 245, \"y_cm\": 15, \"material\": \"wood\"}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 5.141667,
+    "steps": 617,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "2f3b1ea868895b7f",
+    "state_hash": "a24db2df228a672a",
+    "rules_version": 1
+  },
+  "name": "uphill-steel-relay-seesaw",
+  "prediction": "Ball0 falls, hits redirect beam, deflects to hit a then b. Bounces up to strike seesaw, launching wood ball1 toward c. ball1 hits c and bounces toward the bell, ringing it."
+}

@@ -1,0 +1,18 @@
+{
+  "level": "seesaw-launch",
+  "arm": "blueprint",
+  "name": "Seesaw Windmill Smash",
+  "prediction": "The steel ball drops onto the seesaw's left arm 40 cm left of the pivot, whipping the 150 cm plank counterclockwise so its right arm sweeps up through the box's open bottom and smacks the bell at (180,150) within a second.",
+  "scene": "{\"level\": \"seesaw-launch\", \"parts\": [{\"id\": \"seesaw1\", \"kind\": \"seesaw\", \"x_cm\": 140, \"y_cm\": 95, \"length_cm\": 150, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.675,
+    "steps": 81,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "e6d12370cb7c4cc5",
+    "state_hash": "f65be043f3ebffa3",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "seq": 19,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -40,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -12,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 285,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.5416667,
+    "steps": 305,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "47fa8bfd4ae01cbe",
+    "state_hash": "2cc367b62d329e55",
+    "rules_version": 1
+  },
+  "name": "Post-Haste Bell Ringer",
+  "prediction": "The steel ball rolls down the steep first ramp, lands on the post checkpoint, continues across it, drops onto the second ramp, and rolls into the bell with enough speed to ring it."
+}

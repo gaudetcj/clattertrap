@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "spring-launch",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792380997,
+  "duration_s": 263.4545857,
+  "cost_usd": 0.49886909999999995,
+  "turns": 24,
+  "tool_calls": 23,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

@@ -1,0 +1,58 @@
+{
+  "seq": 22,
+  "tool": "look",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -12,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": 50,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 375,
+        "y_cm": 125
+      },
+      {
+        "height_cm": 40,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 20,
+        "x_cm": 300,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": 20,
+        "id": "b4",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 246,
+        "y_cm": 94
+      },
+      {
+        "angle_deg": 18,
+        "id": "b5",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 158,
+        "y_cm": 48
+      }
+    ]
+  }
+}

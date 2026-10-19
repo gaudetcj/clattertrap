@@ -1,0 +1,50 @@
+{
+  "seq": 4,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 80,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 160,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 80,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 200,
+        "y_cm": 100
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 200,
+        "y_cm": 140
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 4.2166667,
+    "steps": 506,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "9b0eae3c76a7b917",
+    "state_hash": "2d48ffe2ad8f678d",
+    "rules_version": 1
+  }
+}

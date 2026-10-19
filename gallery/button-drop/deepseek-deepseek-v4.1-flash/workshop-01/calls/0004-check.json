@@ -1,0 +1,5 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": "{\"level\": \"button-drop\", \"parts\": [{\"id\": \"ramp\", \"kind\": \"beam\", \"x_cm\": 140.5, \"y_cm\": 213, \"length_cm\": 150, \"angle_deg\": -20}, {\"id\": \"funnel\", \"kind\": \"funnel\", \"x_cm\": 330, \"y_cm\": 62, \"mouth_cm\": 150, \"throat_cm\": 14, \"height_cm\": 80}, {\"id\": \"postL\", \"kind\": \"beam\", \"x_cm\": 318, \"y_cm\": 61, \"length_cm\": 40, \"angle_deg\": 90}, {\"id\": \"postR\", \"kind\": \"beam\", \"x_cm\": 342, \"y_cm\": 61, \"length_cm\": 40, \"angle_deg\": 90}]}"
+}

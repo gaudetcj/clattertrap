@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "funnel-basket",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792385169,
+  "duration_s": 107.3201536,
+  "cost_usd": 0.046562832,
+  "turns": 8,
+  "tool_calls": 8,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

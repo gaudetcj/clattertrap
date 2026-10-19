@@ -1,0 +1,52 @@
+{
+  "level": "grand-tour",
+  "arm": "workshop",
+  "name": "Ball to Post to Spring Launch",
+  "prediction": "The falling steel ball rolls down ramps, touches the post, falls onto the spring pad which launches the second ball up into the bell box to ring it.",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 80,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 160,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 60,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 280,
+        "y_cm": 100
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 280,
+        "y_cm": 140
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.8666668,
+    "steps": 344,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "e83f66239a19f49a",
+    "state_hash": "05cf10073ec575bf",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "seq": 17,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "catch1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 345,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -10,
+        "id": "catch2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 280,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 215,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 150,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -15,
+        "id": "drop",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 70,
+        "y_cm": 80
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam catch1): overlaps ball1 by 5.2 cm at the start; move it up to y_cm = 265.2"
+  ]
+}

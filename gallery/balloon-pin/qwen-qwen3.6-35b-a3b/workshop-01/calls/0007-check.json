@@ -1,0 +1,5 @@
+{
+  "seq": 7,
+  "tool": "check",
+  "scene": "{\"level\": \"balloon-pin\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 40, \"y_cm\": 70, \"length_cm\": 60, \"angle_deg\": -15}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 25, \"y_cm\": 83, \"material\": \"wood\"}]}"
+}

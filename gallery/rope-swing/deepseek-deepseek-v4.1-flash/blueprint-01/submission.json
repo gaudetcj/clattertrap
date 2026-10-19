@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "name": "Hook Swing Snaps the Rope",
+  "prediction": "The steel ball free-falls until its slack 100 cm rope to the hook snaps taut, then swings up and to the right, striking the bell at about 2 m/s and ringing it.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "rope1",
+        "kind": "rope",
+        "max_length_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.86666673,
+    "steps": 104,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "9a29c480a5beab1a",
+    "state_hash": "bf7940157d049e05",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 30,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 120,
+        "x_cm": 160,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 0,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 100,
+        "y_cm": 60
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam beam1): overlaps seesaw1 by 6.1 cm at the start; move it up to y_cm = 66.1"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "level": "post-first",
+  "arm": "blueprint",
+  "name": "Cascading Ramp to Victory",
+  "prediction": "The ball will fall onto the first ramp, roll down through all four beams, touch the post, and ring the bell.",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "catch_beam",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -30,
+        "id": "to_post_beam",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 175,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -20,
+        "id": "past_post_beam",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 102
+      },
+      {
+        "angle_deg": -10,
+        "id": "to_bell_beam",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 315,
+        "y_cm": 97
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.3166668,
+    "steps": 278,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "3abea934abf42476",
+    "state_hash": "ea8b89c646b8769e",
+    "rules_version": 1
+  }
+}

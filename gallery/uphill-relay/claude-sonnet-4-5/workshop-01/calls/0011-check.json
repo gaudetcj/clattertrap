@@ -1,0 +1,75 @@
+{
+  "seq": 11,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "to_a",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 75,
+        "y_cm": 256
+      },
+      {
+        "angle_deg": 0,
+        "id": "over_a",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 130,
+        "y_cm": 238
+      },
+      {
+        "angle_deg": -45,
+        "id": "to_b",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 170,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": 0,
+        "id": "over_b",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 215,
+        "y_cm": 48
+      },
+      {
+        "angle_deg": 0,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 60,
+        "x_cm": 260,
+        "y_cm": 50
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "rubber",
+        "x_cm": 230,
+        "y_cm": 58
+      },
+      {
+        "angle_deg": 20,
+        "id": "to_c",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 290,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": -10,
+        "id": "over_c",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 330,
+        "y_cm": 116
+      }
+    ]
+  },
+  "problems": [
+    "parts[4] (seesaw launcher): overlaps over_b by 2.0 cm at the start; move it up to y_cm = 52.0"
+  ]
+}

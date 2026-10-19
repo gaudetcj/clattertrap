@@ -1,0 +1,49 @@
+{
+  "seq": 8,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 95,
+        "y_cm": 239
+      },
+      {
+        "angle_deg": -24,
+        "id": "to_w1",
+        "kind": "beam",
+        "length_cm": 145,
+        "x_cm": 237,
+        "y_cm": 188
+      },
+      {
+        "angle_deg": 0,
+        "id": "shelfcatch",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": 35,
+        "id": "return",
+        "kind": "beam",
+        "length_cm": 115,
+        "x_cm": 252,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": 25,
+        "id": "to_basket",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 155,
+        "y_cm": 75
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "seq": 19,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 120,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": -45,
+        "id": "path_b",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 165,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 5,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 90,
+        "x_cm": 210,
+        "y_cm": 50
+      },
+      {
+        "angle_deg": 20,
+        "id": "guide_c",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 300,
+        "y_cm": 90
+      }
+    ]
+  }
+}

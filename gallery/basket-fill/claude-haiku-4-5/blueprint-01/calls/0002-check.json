@@ -1,0 +1,41 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 160,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 310,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 165,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 180,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": 0,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 90,
+        "y_cm": 75
+      },
+      {
+        "angle_deg": 0,
+        "id": "ss1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 70
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "level": "funnel-basket",
+  "arm": "blueprint",
+  "name": "Triple Funnel Collector",
+  "prediction": "Two angled beams redirect the left and right balls inward while the center ball falls straight; all three enter the funnel and slide through its throat into the waiting basket below.",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "left_beam",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 25,
+        "id": "right_beam",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 300,
+        "y_cm": 220
+      },
+      {
+        "height_cm": 80,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 40,
+        "x_cm": 200,
+        "y_cm": 55
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.5666667,
+    "steps": 188,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "ca6f79ef00f07364",
+    "state_hash": "8c86cf135137e12f",
+    "rules_version": 1
+  }
+}

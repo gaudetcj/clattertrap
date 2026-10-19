@@ -1,0 +1,15 @@
+{
+  "model": "openai-gpt-5.6-luna",
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792383463,
+  "duration_s": 37.2626961,
+  "cost_usd": 0.00543136,
+  "turns": 6,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

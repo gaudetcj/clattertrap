@@ -1,0 +1,16 @@
+{
+  "seq": 7,
+  "tool": "run",
+  "scene": "{\"level\": \"seesaw-launch\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 100, \"y_cm\": 50, \"length_cm\": 80, \"angle_deg\": 60}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.225,
+    "steps": 147,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "9f9c90c6720c8889",
+    "state_hash": "38e6b53474969ea5",
+    "rules_version": 1
+  }
+}

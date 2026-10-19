@@ -1,0 +1,28 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 30,
+        "id": "p1",
+        "kind": "pendulum",
+        "length_cm": 120,
+        "x_cm": 240,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.10000001,
+    "steps": 12,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "848fdc39685db351",
+    "state_hash": "ff2528fe7821a5a9",
+    "rules_version": 1
+  }
+}

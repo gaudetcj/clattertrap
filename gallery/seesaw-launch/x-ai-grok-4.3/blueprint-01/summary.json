@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "seesaw-launch",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792383420,
+  "duration_s": 29.8744012,
+  "cost_usd": 0.0165534,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

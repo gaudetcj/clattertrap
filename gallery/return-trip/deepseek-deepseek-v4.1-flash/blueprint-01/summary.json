@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "return-trip",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792387296,
+  "duration_s": 561.5233942,
+  "cost_usd": 0.27295938,
+  "turns": 10,
+  "tool_calls": 10,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

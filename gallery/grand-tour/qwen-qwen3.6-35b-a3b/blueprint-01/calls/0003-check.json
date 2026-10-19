@@ -1,0 +1,5 @@
+{
+  "seq": 3,
+  "tool": "check",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 100, \"y_cm\": 240, \"length_cm\": 80, \"angle_deg\": -30}, {\"id\": \"seesaw1\", \"kind\": \"seesaw\", \"x_cm\": 250, \"y_cm\": 140, \"length_cm\": 80, \"angle_deg\": 0}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 270, \"y_cm\": 148, \"material\": \"steel\"}]}"
+}

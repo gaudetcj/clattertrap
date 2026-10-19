@@ -1,0 +1,41 @@
+{
+  "seq": 18,
+  "tool": "check",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 40,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 130,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 10,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 290,
+        "y_cm": 110
+      },
+      {
+        "angle_deg": 50,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 315,
+        "y_cm": 95
+      }
+    ]
+  }
+}

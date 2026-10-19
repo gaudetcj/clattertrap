@@ -1,0 +1,65 @@
+{
+  "seq": 14,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -24.04,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 142.4,
+        "x_cm": 90,
+        "y_cm": 233
+      },
+      {
+        "angle_deg": -62.5,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 114.9,
+        "x_cm": 276.5,
+        "y_cm": 129
+      },
+      {
+        "angle_deg": 0,
+        "id": "ledge",
+        "kind": "beam",
+        "length_cm": 36,
+        "x_cm": 303,
+        "y_cm": 74
+      },
+      {
+        "id": "crate1",
+        "kind": "crate",
+        "side_cm": 16,
+        "x_cm": 313,
+        "y_cm": 84
+      },
+      {
+        "id": "wball",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 313,
+        "y_cm": 98
+      },
+      {
+        "angle_deg": -25.1,
+        "id": "pad1",
+        "kind": "spring_pad",
+        "x_cm": 310,
+        "y_cm": 55
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 6.441667,
+    "steps": 773,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "ea6559d6c05f6b1d",
+    "state_hash": "4ecac47ca915bdf0",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "level": "grand-tour",
+  "arm": "workshop",
+  "name": "Ramp System to Post and Bell",
+  "prediction": "The steel ball falls from the top, rolls down a series of ramps, touches the post, and launches upward toward the bell box but hits the left wall.",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 40,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 130,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 280,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 45,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 305,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.7833335,
+    "steps": 334,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "86bb85a2a4786774",
+    "state_hash": "c9215c3cff5dfd50",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792381235,
+  "duration_s": 366.3413191,
+  "cost_usd": 0.045550004,
+  "turns": 6,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

@@ -1,0 +1,18 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": "{\"level\": \"seesaw-launch\", \"parts\": [{\"id\": \"seesaw1\", \"kind\": \"seesaw\", \"x_cm\": 140, \"y_cm\": 50, \"length_cm\": 80, \"angle_deg\": 0}, {\"id\": \"domino1\", \"kind\": \"domino\", \"x_cm\": 170, \"y_cm\": 63, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "49db4962e6615069",
+    "state_hash": "0016dee8d55ec131",
+    "rules_version": 1
+  },
+  "name": "Seesaw Launch to Bell",
+  "prediction": "The falling steel ball hits the left end of the seesaw, launching the domino upward on the right end through the bell box opening to ring the bell."
+}

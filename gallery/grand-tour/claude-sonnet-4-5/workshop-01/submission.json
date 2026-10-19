@@ -1,0 +1,84 @@
+{
+  "level": "grand-tour",
+  "arm": "workshop",
+  "name": "The Grand Tour Express",
+  "prediction": "The steel ball rolls down ramps, knocks over a domino near the post, continues down to hit a seesaw that catapults a wood ball upward toward the bell.",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 45,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -15,
+        "id": "slope1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 80,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -15,
+        "id": "slope2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 130,
+        "y_cm": 232
+      },
+      {
+        "angle_deg": 0,
+        "id": "marker",
+        "kind": "domino",
+        "x_cm": 175,
+        "y_cm": 216
+      },
+      {
+        "angle_deg": -18,
+        "id": "slope3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 220,
+        "y_cm": 205
+      },
+      {
+        "angle_deg": -28,
+        "id": "slope4",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 285,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": 15,
+        "id": "see1",
+        "kind": "seesaw",
+        "length_cm": 120,
+        "x_cm": 260,
+        "y_cm": 65
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 308,
+        "y_cm": 86
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 8,
+    "chain_length": 3,
+    "event_hash": "fe899614e9003298",
+    "state_hash": "541db6e5c6ab3ad2",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 331.1,
+        "y_cm": 219
+      },
+      {
+        "angle_deg": 32,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 192.9,
+        "y_cm": 127.6
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.5333335,
+    "steps": 304,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "b9c848bb58773da5",
+    "state_hash": "099dfd579306530f",
+    "rules_version": 1
+  },
+  "name": "Twin Plank Cascade",
+  "prediction": "The two down-left sloped beams catch the three falling balls at x=350 and shunt them downhill; all three roll off ramp2 and land in the basket, coming to rest by about 2.5 seconds and meeting the goal of 2 objects inside."
+}

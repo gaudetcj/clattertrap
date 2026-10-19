@@ -1,0 +1,53 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 15,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 330,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": 18,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 220,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": 25,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 130,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 40,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 85
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 50,
+        "x_cm": 60,
+        "y_cm": 60
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam beam1): overlaps ball2 by 1.9 cm at the start; move it up to y_cm = 246.9",
+    "parts[4] (seesaw seesaw1): overlaps beam4 by 4.2 cm at the start; move it up to y_cm = 64.2"
+  ]
+}

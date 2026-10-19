@@ -1,0 +1,18 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": "{\"level\": \"domino-run\", \"parts\": [{\"id\": \"d1\", \"kind\": \"domino\", \"x_cm\": 134, \"y_cm\": 137}, {\"id\": \"d2\", \"kind\": \"domino\", \"x_cm\": 149, \"y_cm\": 137}, {\"id\": \"d3\", \"kind\": \"domino\", \"x_cm\": 164, \"y_cm\": 137}, {\"id\": \"d4\", \"kind\": \"domino\", \"x_cm\": 179, \"y_cm\": 137}, {\"id\": \"d5\", \"kind\": \"domino\", \"x_cm\": 194, \"y_cm\": 137}, {\"id\": \"d6\", \"kind\": \"domino\", \"x_cm\": 209, \"y_cm\": 137}, {\"id\": \"d7\", \"kind\": \"domino\", \"x_cm\": 224, \"y_cm\": 137}, {\"id\": \"d8\", \"kind\": \"domino\", \"x_cm\": 239, \"y_cm\": 137}, {\"id\": \"d9\", \"kind\": \"domino\", \"x_cm\": 254, \"y_cm\": 137}, {\"id\": \"d10\", \"kind\": \"domino\", \"x_cm\": 262, \"y_cm\": 137}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.1666667,
+    "steps": 380,
+    "parts_used": 10,
+    "chain_length": 11,
+    "event_hash": "633c9aab5db24fee",
+    "state_hash": "cd62ace2e47c3d39",
+    "rules_version": 1
+  },
+  "name": "Domino Edge-Drop Twofer",
+  "prediction": "The wood ball rolls down the ramp, topples a 9-domino chain along the shelf, and the last two dominoes fall off the shelf edge into the basket, bringing 2 objects to rest inside it."
+}

@@ -1,0 +1,38 @@
+{
+  "seq": 23,
+  "tool": "submit",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 45,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 160,
+        "y_cm": 80
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.4250001,
+    "steps": 171,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "d34941e751c4a008",
+    "state_hash": "90056b452b91fe51",
+    "rules_version": 1
+  },
+  "name": "Angled Ramp Launch",
+  "prediction": "The falling steel ball hits the upward-sloping beam, bounces rightward, but fails to engage the seesaw with sufficient energy to launch toward the bell."
+}

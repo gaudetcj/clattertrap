@@ -1,0 +1,45 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "height_cm": 50,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 180,
+        "throat_cm": 30,
+        "x_cm": 200,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": -30,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 80,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": 30,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 320,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": 0,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 200,
+        "y_cm": 220
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (funnel f1): mouth_cm 180 is outside 30..150; set mouth_cm within that range"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "level": "button-drop",
+  "arm": "blueprint",
+  "name": "Descending Funnel Button Press",
+  "prediction": "The falling steel ball will roll down three descending beams, enter the funnel, and drop vertically onto the button where it will remain and hold the button pressed.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 130,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 205,
+        "y_cm": 165
+      },
+      {
+        "angle_deg": -5,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 260,
+        "y_cm": 125
+      },
+      {
+        "height_cm": 60,
+        "id": "guide",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 75
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.2333336,
+    "steps": 388,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "d2c55d2da4e1cf9e",
+    "state_hash": "a9b32b20b4b15e9a",
+    "rules_version": 1
+  }
+}

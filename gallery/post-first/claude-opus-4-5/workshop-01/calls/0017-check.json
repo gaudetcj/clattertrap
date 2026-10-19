@@ -1,0 +1,25 @@
+{
+  "seq": 17,
+  "tool": "check",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -40,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -12,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 285,
+        "y_cm": 100
+      }
+    ]
+  }
+}

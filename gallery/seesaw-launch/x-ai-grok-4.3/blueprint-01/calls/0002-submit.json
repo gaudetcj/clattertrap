@@ -1,0 +1,30 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "s1",
+        "kind": "seesaw",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 120
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.5833334,
+    "steps": 70,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "1acd96abbaf5f5b5",
+    "state_hash": "f5c30983e5dab33f",
+    "rules_version": 1
+  },
+  "name": "seesaw launch to bell",
+  "prediction": "The falling steel ball hits the left side of the seesaw, pivoting the right side upward to strike the bell from below."
+}

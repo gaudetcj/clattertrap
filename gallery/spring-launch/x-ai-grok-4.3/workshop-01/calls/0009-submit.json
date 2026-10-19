@@ -1,0 +1,53 @@
+{
+  "seq": 9,
+  "tool": "submit",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 50,
+        "id": "sp1",
+        "kind": "spring_pad",
+        "x_cm": 320,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": -5,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 5,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 180,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 25,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 260,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 4.8333335,
+    "steps": 580,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "5e136dd9672b59b3",
+    "state_hash": "60d3c0dece99279a",
+    "rules_version": 1
+  },
+  "name": "Spring Launch Button Press",
+  "prediction": "The ball rolls down the ramp, across beams, lands on the spring pad angled upward, gets launched into the button slot, pressing it."
+}

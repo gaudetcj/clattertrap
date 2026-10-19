@@ -1,0 +1,56 @@
+{
+  "seq": 8,
+  "tool": "check",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 160,
+        "y_cm": 145
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 185,
+        "y_cm": 145
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 210,
+        "y_cm": 145
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 235,
+        "y_cm": 145
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 255,
+        "y_cm": 145
+      },
+      {
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 265,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 285,
+        "y_cm": 90
+      }
+    ]
+  },
+  "problems": [
+    "parts[6] (beam ramp1): centre (285, 90) is outside every build zone; move it inside x 115..275, y 125..185"
+  ]
+}

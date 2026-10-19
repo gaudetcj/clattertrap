@@ -1,0 +1,18 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": "{\"level\": \"post-first\", \"parts\": [{\"id\": \"ramp1\", \"kind\": \"beam\", \"x_cm\": 95, \"y_cm\": 230, \"length_cm\": 100, \"angle_deg\": -35}, {\"id\": \"bridge\", \"kind\": \"beam\", \"x_cm\": 270.59, \"y_cm\": 105.32, \"length_cm\": 80, \"angle_deg\": -20}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.5000001,
+    "steps": 180,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "acc25262da2abcc1",
+    "state_hash": "08a47285e4acc881",
+    "rules_version": 1
+  },
+  "name": "Postman's Descent",
+  "prediction": "The steel ball falls onto the tilted ramp, accelerates down and launches onto the post's top (touching it first), rolls across onto the second steeper beam, and flies off its end to strike the bell hard enough to ring it at about 1.5 s."
+}

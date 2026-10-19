@@ -1,0 +1,46 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 278,
+        "y_cm": 205
+      },
+      {
+        "angle_deg": 15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 150,
+        "y_cm": 150
+      },
+      {
+        "angle_deg": 20,
+        "id": "dropguide",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 100,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "8d5019e1fb696b69",
+    "state_hash": "05390e1a92ef48ed",
+    "rules_version": 1
+  },
+  "name": "Three-Ramp Basket Cascade",
+  "prediction": "The three descending beams will catch the falling wood balls, guide them leftward, and drop at least two into the basket to come to rest."
+}

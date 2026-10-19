@@ -1,0 +1,31 @@
+{
+  "level": "funnel-basket",
+  "arm": "blueprint",
+  "name": "Funnel catches all three balls",
+  "prediction": "The funnel catches the three falling wood balls and directs them into the basket where they come to rest.",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 30,
+        "x_cm": 200,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.8416668,
+    "steps": 221,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "e9ce49dec5871993",
+    "state_hash": "1b6702f6aa856e41",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "seq": 27,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 55,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -45,
+        "id": "ramp_to_b",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 175,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 15,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 260,
+        "y_cm": 15
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 225,
+        "y_cm": 42
+      },
+      {
+        "height_cm": 50,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 20,
+        "x_cm": 320,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp_c",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 340,
+        "y_cm": 95
+      }
+    ]
+  },
+  "problems": [
+    "parts[3] (ball ball1): overlaps b by 6.0 cm at the start; move it up to y_cm = 48.0"
+  ]
+}

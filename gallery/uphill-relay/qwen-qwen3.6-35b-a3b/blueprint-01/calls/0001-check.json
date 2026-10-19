@@ -1,0 +1,5 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"redirect\", \"kind\": \"beam\", \"x_cm\": 70, \"y_cm\": 255, \"length_cm\": 50, \"angle_deg\": -30}]}"
+}

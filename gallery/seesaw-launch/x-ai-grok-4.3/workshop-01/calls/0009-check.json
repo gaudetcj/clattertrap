@@ -1,0 +1,43 @@
+{
+  "seq": 9,
+  "tool": "check",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "s1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 180,
+        "y_cm": 30
+      },
+      {
+        "angle_deg": 10,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 30
+      },
+      {
+        "angle_deg": 0,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 140,
+        "y_cm": 45
+      },
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 160,
+        "y_cm": 55
+      }
+    ]
+  },
+  "problems": [
+    "parts[3] (domino d1): overlaps b2 by 2.0 cm at the start; move it up to y_cm = 57.0"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "seq": 5,
+  "tool": "check",
+  "scene": "{\"level\": \"button-drop\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 114, \"y_cm\": 183, \"length_cm\": 100, \"angle_deg\": -30}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 199.3, \"y_cm\": 132.7, \"length_cm\": 100, \"angle_deg\": -30}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 287, \"y_cm\": 76, \"length_cm\": 107, \"angle_deg\": -36}]}"
+}

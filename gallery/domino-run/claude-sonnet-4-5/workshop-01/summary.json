@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "domino-run",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792379835,
+  "duration_s": 422.9776734,
+  "cost_usd": 0.8331453,
+  "turns": 25,
+  "tool_calls": 24,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

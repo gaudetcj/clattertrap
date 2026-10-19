@@ -1,0 +1,45 @@
+{
+  "level": "grand-tour",
+  "arm": "blueprint",
+  "name": "Post-to-Bell Seesaw Launch",
+  "prediction": "The falling steel ball rolls down a ramp, touches the post, lands on a tilted seesaw and launches a wood ball upward through the bell box opening to ring the bell.",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "guide1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 205
+      },
+      {
+        "angle_deg": -20,
+        "id": "seesaw",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 260,
+        "y_cm": 150
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 310,
+        "y_cm": 155
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "e760135a20d4af27",
+    "state_hash": "02b4f3a902a0d477",
+    "rules_version": 1
+  }
+}

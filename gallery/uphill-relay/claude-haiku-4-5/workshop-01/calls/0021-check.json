@@ -1,0 +1,39 @@
+{
+  "seq": 21,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 120,
+        "y_cm": 275
+      },
+      {
+        "angle_deg": -48,
+        "id": "ramp_down",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 165,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 10,
+        "id": "bounce_b",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 55
+      },
+      {
+        "angle_deg": 35,
+        "id": "spring_up",
+        "kind": "spring_pad",
+        "x_cm": 290,
+        "y_cm": 105
+      }
+    ]
+  }
+}

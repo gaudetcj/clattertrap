@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "balloon-pin",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792383262,
+  "duration_s": 19.1943294,
+  "cost_usd": 0.015461599999999999,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

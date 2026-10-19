@@ -1,0 +1,39 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -45,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 45,
+        "x_cm": 84.1,
+        "y_cm": 257.9
+      },
+      {
+        "id": "w1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 88.8,
+        "y_cm": 265.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "track",
+        "kind": "beam",
+        "length_cm": 78,
+        "x_cm": 265,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 0,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 320,
+        "y_cm": 40
+      }
+    ]
+  }
+}

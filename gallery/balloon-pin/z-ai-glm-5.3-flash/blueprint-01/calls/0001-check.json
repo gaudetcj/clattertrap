@@ -1,0 +1,33 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 40,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 76.85,
+        "y_cm": 81.72
+      },
+      {
+        "angle_deg": 40,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 161.42,
+        "y_cm": 152.68
+      },
+      {
+        "angle_deg": 40,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 148,
+        "x_cm": 260.54,
+        "y_cm": 235.86
+      }
+    ]
+  }
+}

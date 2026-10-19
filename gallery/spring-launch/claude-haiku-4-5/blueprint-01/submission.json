@@ -1,0 +1,45 @@
+{
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "name": "Spring Launch Cascade",
+  "prediction": "Ball rolls down the fixed ramp, slides through the angled chute beam, hits the spring pad launcher which kicks it upward at 60 degrees, landing on a ledge and dropping into the button slot to press the button.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "chute1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 160,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": 60,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 200,
+        "y_cm": 35
+      },
+      {
+        "angle_deg": 30,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 300,
+        "y_cm": 50
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 5.1833334,
+    "steps": 622,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "900b142f8191a7c7",
+    "state_hash": "cbda01565691328d",
+    "rules_version": 1
+  }
+}

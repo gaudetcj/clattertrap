@@ -1,0 +1,24 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "saw",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 140,
+        "y_cm": 20
+      },
+      {
+        "angle_deg": 0,
+        "id": "dom",
+        "kind": "domino",
+        "x_cm": 175,
+        "y_cm": 33
+      }
+    ]
+  }
+}

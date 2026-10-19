@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-4-5",
+  "level": "seesaw-launch",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792378279,
+  "duration_s": 183.0394791,
+  "cost_usd": 0.23097269999999998,
+  "turns": 26,
+  "tool_calls": 25,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

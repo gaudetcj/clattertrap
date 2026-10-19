@@ -1,0 +1,46 @@
+{
+  "level": "balloon-pin",
+  "arm": "workshop",
+  "name": "Ramp to the Pin",
+  "prediction": "The rising balloon meets the three-beam ramp's underside and slides up it, reaching the pin near the top right and popping at about 4.7 seconds.",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 33.6,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 85.8,
+        "y_cm": 130.5
+      },
+      {
+        "angle_deg": 33.6,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 177.4,
+        "y_cm": 191.4
+      },
+      {
+        "angle_deg": 33.6,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 268.9,
+        "y_cm": 252.4
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 4.675,
+    "steps": 561,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "3239869911de0bc3",
+    "state_hash": "38c76e7ba34eba14",
+    "rules_version": 1
+  }
+}

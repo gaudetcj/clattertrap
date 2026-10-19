@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "seesaw-launch",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792385814,
+  "duration_s": 129.7185184,
+  "cost_usd": 0.037916810999999995,
+  "turns": 5,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

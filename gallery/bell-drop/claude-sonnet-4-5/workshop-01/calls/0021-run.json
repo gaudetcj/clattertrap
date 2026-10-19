@@ -1,0 +1,52 @@
+{
+  "seq": 21,
+  "tool": "run",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 115,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 190,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 260,
+        "y_cm": 160
+      },
+      {
+        "angle_deg": -25,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 325,
+        "y_cm": 135
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.9833335,
+    "steps": 238,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "aa134160b8fadef4",
+    "state_hash": "85ee0c499d89a771",
+    "rules_version": 1
+  }
+}

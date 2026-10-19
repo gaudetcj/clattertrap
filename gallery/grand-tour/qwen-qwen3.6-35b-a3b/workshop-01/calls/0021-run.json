@@ -1,0 +1,16 @@
+{
+  "seq": 21,
+  "tool": "run",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 80, \"y_cm\": 240, \"length_cm\": 80, \"angle_deg\": -20}, {\"id\": \"d1\", \"kind\": \"domino\", \"x_cm\": 210, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d2\", \"kind\": \"domino\", \"x_cm\": 230, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d3\", \"kind\": \"domino\", \"x_cm\": 250, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d4\", \"kind\": \"domino\", \"x_cm\": 270, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d5\", \"kind\": \"domino\", \"x_cm\": 290, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"s1\", \"kind\": \"seesaw\", \"x_cm\": 340, \"y_cm\": 165, \"length_cm\": 100, \"angle_deg\": 0}, {\"id\": \"b2\", \"kind\": \"ball\", \"x_cm\": 370, \"y_cm\": 173, \"material\": \"wood\"}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.0833335,
+    "steps": 250,
+    "parts_used": 8,
+    "chain_length": 8,
+    "event_hash": "def4311269b9bb3f",
+    "state_hash": "905b0d06387b341b",
+    "rules_version": 1
+  }
+}

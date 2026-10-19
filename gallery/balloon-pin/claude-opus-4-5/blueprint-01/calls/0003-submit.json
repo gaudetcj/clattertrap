@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 100,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 20,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 240,
+        "y_cm": 210
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 7.016667,
+    "steps": 842,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "8cf4381291cc49e5",
+    "state_hash": "d77204184400f80f",
+    "rules_version": 1
+  },
+  "name": "Skyway to the Needle",
+  "prediction": "The balloon rises, slides rightward along two angled beams, exits at x=310, then ascends directly into the pin at x=320 and pops."
+}

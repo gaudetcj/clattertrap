@@ -1,0 +1,8 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": "{\"level\": \"balloon-pin\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 40, \"y_cm\": 70, \"length_cm\": 60, \"angle_deg\": -15}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 25, \"y_cm\": 78, \"material\": \"wood\"}]}",
+  "problems": [
+    "parts[1] (ball ball1): overlaps beam1 by 4.2 cm at the start; move it up to y_cm = 82.2"
+  ]
+}

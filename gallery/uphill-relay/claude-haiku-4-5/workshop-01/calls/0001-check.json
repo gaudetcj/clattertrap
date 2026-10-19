@@ -1,0 +1,32 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": 28,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 265,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 28,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 300,
+        "y_cm": 105
+      },
+      {
+        "angle_deg": 15,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 310,
+        "y_cm": 75
+      }
+    ]
+  }
+}

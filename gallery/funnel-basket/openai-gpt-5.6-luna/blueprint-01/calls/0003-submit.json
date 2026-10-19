@@ -1,0 +1,47 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "height_cm": 80,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 14,
+        "x_cm": 200,
+        "y_cm": 70
+      },
+      {
+        "angle_deg": -25,
+        "id": "left_ramp",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 110,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 25,
+        "id": "right_ramp",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 290,
+        "y_cm": 220
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.6583335,
+    "steps": 439,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "335cb8dfd49d63f9",
+    "state_hash": "1973a641f04756c5",
+    "rules_version": 1
+  },
+  "name": "Twin Ramps Funnel",
+  "prediction": "The two inward-sloping ramps redirect the outer falling balls into the wide funnel, while the middle ball enters directly; the funnel guides all three through its throat into the basket to settle there."
+}

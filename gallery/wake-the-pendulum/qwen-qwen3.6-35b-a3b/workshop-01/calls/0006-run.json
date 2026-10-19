@@ -1,0 +1,16 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"seesaw1\", \"kind\": \"seesaw\", \"x_cm\": 100, \"y_cm\": 200, \"length_cm\": 120, \"angle_deg\": 0}, {\"id\": \"ball1_placement\", \"kind\": \"ball\", \"x_cm\": 145, \"y_cm\": 210, \"material\": \"steel\"}, {\"id\": \"redirect_beam\", \"kind\": \"beam\", \"x_cm\": 70, \"y_cm\": 75, \"length_cm\": 60, \"angle_deg\": 45}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "1e4118bfd0713278",
+    "state_hash": "ee305d69c268f668",
+    "rules_version": 1
+  }
+}

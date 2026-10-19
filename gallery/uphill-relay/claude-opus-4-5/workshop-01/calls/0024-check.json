@@ -1,0 +1,55 @@
+{
+  "seq": 24,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 55,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -45,
+        "id": "ramp_to_b",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 175,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 0,
+        "id": "platform",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 260,
+        "y_cm": 30
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 285,
+        "y_cm": 42
+      },
+      {
+        "angle_deg": 75,
+        "id": "spring1",
+        "kind": "spring_pad",
+        "x_cm": 310,
+        "y_cm": 42
+      },
+      {
+        "angle_deg": -50,
+        "id": "ramp_c",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 340,
+        "y_cm": 130
+      }
+    ]
+  }
+}

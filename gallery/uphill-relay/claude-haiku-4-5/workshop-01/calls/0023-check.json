@@ -1,0 +1,39 @@
+{
+  "seq": 23,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "rubber",
+        "x_cm": 120,
+        "y_cm": 280
+      },
+      {
+        "angle_deg": -47,
+        "id": "slide1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 165,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 40,
+        "id": "pad1",
+        "kind": "spring_pad",
+        "x_cm": 280,
+        "y_cm": 110
+      }
+    ]
+  }
+}

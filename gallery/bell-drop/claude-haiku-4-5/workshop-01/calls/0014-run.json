@@ -1,0 +1,20 @@
+{
+  "seq": 14,
+  "tool": "run",
+  "scene": {
+    "level": "ball-drop",
+    "parts": [
+      {
+        "angle_deg": -45,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 80,
+        "y_cm": 210
+      }
+    ]
+  },
+  "problems": [
+    "level: is \"ball-drop\" but this level is \"bell-drop\"; set level to \"bell-drop\""
+  ]
+}

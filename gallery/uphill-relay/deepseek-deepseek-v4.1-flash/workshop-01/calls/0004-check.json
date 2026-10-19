@@ -1,0 +1,55 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 90,
+        "y_cm": 20
+      },
+      {
+        "id": "w1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 90,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 0,
+        "id": "probe",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 90,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": -23.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 85.1,
+        "x_cm": 61,
+        "y_cm": 257
+      },
+      {
+        "angle_deg": -67.6,
+        "id": "chute1",
+        "kind": "beam",
+        "length_cm": 86.5,
+        "x_cm": 155.5,
+        "y_cm": 188
+      },
+      {
+        "angle_deg": -71.8,
+        "id": "chute2",
+        "kind": "beam",
+        "length_cm": 89.5,
+        "x_cm": 188,
+        "y_cm": 100.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "seq": 23,
+  "tool": "check",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 40, \"y_cm\": 220, \"length_cm\": 80, \"angle_deg\": 30}, {\"id\": \"b3\", \"kind\": \"beam\", \"x_cm\": 220, \"y_cm\": 190, \"length_cm\": 60, \"angle_deg\": -20}, {\"id\": \"d1\", \"kind\": \"domino\", \"x_cm\": 270, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d2\", \"kind\": \"domino\", \"x_cm\": 290, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"s1\", \"kind\": \"seesaw\", \"x_cm\": 340, \"y_cm\": 165, \"length_cm\": 100, \"angle_deg\": 0}, {\"id\": \"b2\", \"kind\": \"ball\", \"x_cm\": 370, \"y_cm\": 173, \"material\": \"wood\"}]}"
+}

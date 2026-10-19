@@ -1,0 +1,30 @@
+{
+  "level": "pendulum-bell",
+  "arm": "blueprint",
+  "name": "Dead-Aim Pendulum",
+  "prediction": "Released horizontally from (180,200), the 120 cm steel pendulum swings down and strikes the bell at roughly 4.8 m/s near the bottom of its arc, ringing it well above the 0.2 m/s threshold.",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": -90,
+        "id": "p1",
+        "kind": "pendulum",
+        "length_cm": 120,
+        "x_cm": 300,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.62500006,
+    "steps": 75,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "9466ee403ded189b",
+    "state_hash": "ae34026ab28f8dee",
+    "rules_version": 1
+  }
+}

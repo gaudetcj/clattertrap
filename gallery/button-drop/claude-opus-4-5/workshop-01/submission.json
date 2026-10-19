@@ -1,0 +1,47 @@
+{
+  "level": "button-drop",
+  "arm": "workshop",
+  "name": "The Funnel Drop",
+  "prediction": "The steel ball rolls down two angled beams into a funnel, which guides it precisely onto the button to press and hold it down.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 115,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 230,
+        "y_cm": 150
+      },
+      {
+        "height_cm": 50,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 20,
+        "x_cm": 330,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.2083335,
+    "steps": 265,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "a9ec2409720d59ef",
+    "state_hash": "25824f9eef0777d5",
+    "rules_version": 1
+  }
+}

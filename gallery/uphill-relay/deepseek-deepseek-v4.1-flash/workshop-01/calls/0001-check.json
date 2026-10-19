@@ -1,0 +1,25 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -23.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 85.1,
+        "x_cm": 61,
+        "y_cm": 257
+      },
+      {
+        "angle_deg": 0,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 176,
+        "y_cm": 210
+      }
+    ]
+  }
+}

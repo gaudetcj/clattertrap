@@ -1,0 +1,16 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": "{\"level\": \"pendulum-bell\", \"parts\": [{\"id\": \"pend1\", \"kind\": \"pendulum\", \"x_cm\": 300, \"y_cm\": 160, \"length_cm\": 80, \"angle_deg\": 60}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.43333337,
+    "steps": 52,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "a96c845f84c22164",
+    "state_hash": "5a086bfb6f43d76f",
+    "rules_version": 1
+  }
+}

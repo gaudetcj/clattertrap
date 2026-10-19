@@ -1,0 +1,15 @@
+{
+  "model": "qwen-qwen3.6-35b-a3b",
+  "level": "funnel-basket",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792384420,
+  "duration_s": 222.0903985,
+  "cost_usd": 0.021350800000000003,
+  "turns": 7,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

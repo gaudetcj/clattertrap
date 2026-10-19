@@ -1,0 +1,49 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 330,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 25,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 275,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": 25,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 210,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 25,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 145,
+        "y_cm": 85
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam5",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 80,
+        "y_cm": 60
+      }
+    ]
+  }
+}

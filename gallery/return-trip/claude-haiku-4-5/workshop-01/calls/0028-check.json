@@ -1,0 +1,50 @@
+{
+  "seq": 28,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 95,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 30,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 280,
+        "y_cm": 140
+      },
+      {
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 250,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 180,
+        "y_cm": 75
+      },
+      {
+        "height_cm": 40,
+        "id": "bucket1",
+        "kind": "bucket",
+        "width_cm": 50,
+        "x_cm": 270,
+        "y_cm": 25
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam ramp2): overlaps w1 by 6.1 cm at the start; move it up to y_cm = 146.1"
+  ]
+}

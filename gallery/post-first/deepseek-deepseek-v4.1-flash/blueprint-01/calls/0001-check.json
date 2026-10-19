@@ -1,0 +1,25 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -30.6,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 121.9,
+        "x_cm": 97.5,
+        "y_cm": 221.0
+      },
+      {
+        "angle_deg": -23.4,
+        "id": "chute",
+        "kind": "beam",
+        "length_cm": 95.9,
+        "x_cm": 280.0,
+        "y_cm": 105.0
+      }
+    ]
+  }
+}

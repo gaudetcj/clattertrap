@@ -1,0 +1,54 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 90,
+        "y_cm": 255
+      },
+      {
+        "angle_deg": -24,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 235,
+        "y_cm": 188
+      },
+      {
+        "angle_deg": 36,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 259,
+        "y_cm": 122
+      },
+      {
+        "angle_deg": 17,
+        "id": "b4",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 140,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.2250001,
+    "steps": 267,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "d333e3815a4ec81e",
+    "state_hash": "8583e43f89caf993",
+    "rules_version": 1
+  },
+  "name": "The Return Rollercoaster",
+  "prediction": "Steel ball rolls via B1/B2 to hit post a then w1 on shelf, balls bounce off wall and roll left onto B3, land on post d, then roll down B4 into the basket with all three balls."
+}

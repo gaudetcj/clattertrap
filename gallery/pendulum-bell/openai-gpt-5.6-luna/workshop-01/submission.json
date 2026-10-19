@@ -1,0 +1,30 @@
+{
+  "level": "pendulum-bell",
+  "arm": "workshop",
+  "name": "Pendulum Bellringer",
+  "prediction": "The pendulum weight will swing down from the right and strike the bell hard enough to ring it.",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 35,
+        "id": "p1",
+        "kind": "pendulum",
+        "length_cm": 120,
+        "x_cm": 300,
+        "y_cm": 200
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.4916667,
+    "steps": 59,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "bda787dcfca24b6e",
+    "state_hash": "b52151cca14a1ad8",
+    "rules_version": 1
+  }
+}

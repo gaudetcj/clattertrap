@@ -1,0 +1,54 @@
+{
+  "seq": 14,
+  "tool": "submit",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 15,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 195,
+        "y_cm": 150
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 245,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 300,
+        "y_cm": 235
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 9.066668,
+    "steps": 1088,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "1b2fe19cfb59bd2f",
+    "state_hash": "96adaa7ad9d55a75",
+    "rules_version": 1
+  },
+  "name": "Four-Ramp Balloon Guide",
+  "prediction": "The rising balloon will climb the staggered ramps, be redirected toward the upper-right, and contact the fixed pin to pop."
+}

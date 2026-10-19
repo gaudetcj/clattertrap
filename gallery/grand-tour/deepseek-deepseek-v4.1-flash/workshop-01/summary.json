@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "grand-tour",
+  "arm": "workshop",
+  "status": "timed_out",
+  "started_unix_s": 1792392454,
+  "duration_s": 1200.0203884,
+  "cost_usd": 0.140720638,
+  "turns": 14,
+  "tool_calls": 16,
+  "foreign_tools": [],
+  "result_subtype": "timed_out",
+  "exit_code": null,
+  "error": "the wall clock ran out"
+}

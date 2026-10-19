@@ -1,0 +1,47 @@
+{
+  "seq": 7,
+  "tool": "submit",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 150,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 240,
+        "y_cm": 165
+      },
+      {
+        "height_cm": 60,
+        "id": "guide",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.5333335,
+    "steps": 304,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "a1fff3542249ff1b",
+    "state_hash": "1b0b579e6bca523b",
+    "rules_version": 1
+  },
+  "name": "Twin Ramp Funnel Drop",
+  "prediction": "The steel ball will roll down the two descending beams, enter the funnel, and drop onto the button to hold it fully pressed."
+}

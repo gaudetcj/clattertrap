@@ -1,0 +1,18 @@
+{
+  "level": "spring-launch",
+  "arm": "workshop",
+  "name": "Spring-loaded Ramp Ball to Button",
+  "prediction": "The wood ball rolls down the ramp, hits an angled spring pad which launches it upward and rightward toward the ledges; after bouncing off ledge2 into the 14cm slot between the ledges, it lands on the button and presses it to meet the goal.",
+  "scene": "{\"level\": \"spring-launch\", \"parts\": [{\"id\": \"spring1\", \"kind\": \"spring_pad\", \"x_cm\": 190, \"y_cm\": 75, \"angle_deg\": -45}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.3083334,
+    "steps": 277,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "f481525d5f606ac3",
+    "state_hash": "af08c56c9d4abbce",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "rope-swing",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792380500,
+  "duration_s": 126.7934841,
+  "cost_usd": 0.2016537,
+  "turns": 7,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

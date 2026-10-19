@@ -1,0 +1,54 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 210,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 290,
+        "y_cm": 224.9
+      },
+      {
+        "angle_deg": 210,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 180,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": 210,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 220,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 65,
+        "y_cm": 65
+      },
+      {
+        "angle_deg": 0,
+        "id": "safety",
+        "kind": "seesaw",
+        "length_cm": 50,
+        "x_cm": 60,
+        "y_cm": 85.4
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam ramp1): overlaps ball1 by 5.5 cm at the start; move it up to y_cm = 230.4",
+    "parts[4] (seesaw safety): overlaps ramp3 by 0.2 cm at the start; move it up to y_cm = 85.6",
+    "parts[4] (seesaw safety): overlaps ramp4 by 0.8 cm at the start; move it up to y_cm = 86.2"
+  ]
+}

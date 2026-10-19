@@ -1,0 +1,94 @@
+{
+  "seq": 22,
+  "tool": "look",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -5,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 60,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -12,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 115,
+        "y_cm": 238
+      },
+      {
+        "angle_deg": 20,
+        "id": "to_a",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 150,
+        "y_cm": 208
+      },
+      {
+        "angle_deg": -8,
+        "id": "after_a",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 190,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -12,
+        "id": "approach_w1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 260,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": 10,
+        "id": "seesaw_redirect",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 330,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": -15,
+        "id": "to_d",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 240,
+        "y_cm": 75
+      },
+      {
+        "angle_deg": -30,
+        "id": "dom1",
+        "kind": "domino",
+        "x_cm": 155,
+        "y_cm": 12
+      },
+      {
+        "angle_deg": 0,
+        "id": "dom2",
+        "kind": "domino",
+        "x_cm": 165,
+        "y_cm": 12
+      },
+      {
+        "angle_deg": 30,
+        "id": "dom3",
+        "kind": "domino",
+        "x_cm": 175,
+        "y_cm": 12
+      },
+      {
+        "height_cm": 20,
+        "id": "bucket1",
+        "kind": "bucket",
+        "width_cm": 20,
+        "x_cm": 190,
+        "y_cm": 12
+      }
+    ]
+  }
+}

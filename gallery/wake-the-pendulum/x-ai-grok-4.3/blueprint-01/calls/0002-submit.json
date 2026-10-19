@@ -1,0 +1,51 @@
+{
+  "seq": 2,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 80,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 10,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 150,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 0,
+        "id": "dom1",
+        "kind": "domino",
+        "x_cm": 120,
+        "y_cm": 110
+      },
+      {
+        "angle_deg": 0,
+        "id": "dom2",
+        "kind": "domino",
+        "x_cm": 80,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 0,
+        "id": "dom3",
+        "kind": "domino",
+        "x_cm": 50,
+        "y_cm": 60
+      }
+    ]
+  },
+  "problems": [
+    "parts[2] (domino dom1): overlaps post by 2.0 cm at the start; move it up to y_cm = 112.0"
+  ],
+  "name": "pend-hit-ball-post-ring",
+  "prediction": "Falling steel ball guided by beam to hit pendulum, which swings to knock wood ball into post, dislodging a domino chain that hits the bell."
+}

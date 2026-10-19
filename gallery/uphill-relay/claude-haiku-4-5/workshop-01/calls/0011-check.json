@@ -1,0 +1,35 @@
+{
+  "seq": 11,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -32,
+        "id": "dropper",
+        "kind": "beam",
+        "length_cm": 94,
+        "x_cm": 80,
+        "y_cm": 255
+      },
+      {
+        "angle_deg": 28,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 265,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 28,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 300,
+        "y_cm": 105
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam dropper): overlaps ball0 by 5.8 cm at the start; move it up to y_cm = 260.8"
+  ]
+}

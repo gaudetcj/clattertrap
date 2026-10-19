@@ -1,0 +1,44 @@
+{
+  "seq": 5,
+  "tool": "run",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 220,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 5,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 320,
+        "y_cm": 180
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 13.966667,
+    "steps": 1676,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "398121e0fb7c1a8c",
+    "state_hash": "757315c79a401230",
+    "rules_version": 1
+  }
+}

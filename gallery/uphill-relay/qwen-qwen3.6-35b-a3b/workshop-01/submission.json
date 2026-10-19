@@ -1,0 +1,18 @@
+{
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "name": "uphill-steel-chain-reaction",
+  "prediction": "Steel ball falls from upper left, rolls across beam1 to a, then down beam2, across beam3, and triggers seesaw to launch wood ball upward to c and then to ring the bell.",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 60, \"y_cm\": 250, \"length_cm\": 60, \"angle_deg\": -25}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 160, \"y_cm\": 140, \"length_cm\": 150, \"angle_deg\": -50}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 230, \"y_cm\": 45, \"length_cm\": 40, \"angle_deg\": 10}, {\"id\": \"seesaw\", \"kind\": \"seesaw\", \"x_cm\": 260, \"y_cm\": 52.4, \"length_cm\": 100, \"angle_deg\": 0}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 310, \"y_cm\": 60.4, \"material\": \"wood\"}, {\"id\": \"beam4\", \"kind\": \"beam\", \"x_cm\": 320, \"y_cm\": 90, \"length_cm\": 30, \"angle_deg\": -20}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 14.316668,
+    "steps": 1718,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "bad707db48e936f3",
+    "state_hash": "a6ecaab6d913da79",
+    "rules_version": 1
+  }
+}

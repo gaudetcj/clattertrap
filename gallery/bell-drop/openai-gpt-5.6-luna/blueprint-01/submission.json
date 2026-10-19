@@ -1,0 +1,54 @@
+{
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "name": "Four-Beam Bell Cascade",
+  "prediction": "The falling steel ball will roll down the three sloped beams, drop onto the horizontal beam, and roll into the bell hard enough to ring it.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 120,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -15,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 210,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": -15,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 275,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 0,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 280,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.1916668,
+    "steps": 263,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "7f7861cc803578a7",
+    "state_hash": "d8b25c75991e0b33",
+    "rules_version": 1
+  }
+}

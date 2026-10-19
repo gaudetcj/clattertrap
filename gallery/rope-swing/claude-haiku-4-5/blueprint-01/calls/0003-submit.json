@@ -1,0 +1,29 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "rope1",
+        "kind": "rope",
+        "max_length_cm": 120
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.0083334,
+    "steps": 121,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "e0507c8f2a9a62bd",
+    "state_hash": "b32eb0028af6e787",
+    "rules_version": 1
+  },
+  "name": "Simple Rope Swing",
+  "prediction": "The steel ball falls and swings on the 120cm rope attached to the hook, converting its gravitational potential energy into kinetic energy as it arcs toward the bell at sufficient speed to ring it."
+}

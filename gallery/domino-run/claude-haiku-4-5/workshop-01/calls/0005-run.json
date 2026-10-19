@@ -1,0 +1,50 @@
+{
+  "seq": 5,
+  "tool": "run",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 160,
+        "y_cm": 145
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 185,
+        "y_cm": 145
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 210,
+        "y_cm": 145
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 235,
+        "y_cm": 145
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 260,
+        "y_cm": 145
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 9.383334,
+    "steps": 1126,
+    "parts_used": 5,
+    "chain_length": 6,
+    "event_hash": "457424eff2ba828f",
+    "state_hash": "0344644f5e8b029f",
+    "rules_version": 1
+  }
+}

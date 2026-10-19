@@ -1,0 +1,51 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 75,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 140,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 230,
+        "y_cm": 165
+      },
+      {
+        "angle_deg": -15,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 300,
+        "y_cm": 60
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 337,
+        "y_cm": 57
+      }
+    ]
+  },
+  "problems": [
+    "parts[4] (ball ball1): centre (337, 57) is outside every build zone; move it inside x 20..320, y 10..280 or x 320..380, y 160..280"
+  ]
+}

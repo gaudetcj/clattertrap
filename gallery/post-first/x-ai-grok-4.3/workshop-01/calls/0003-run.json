@@ -1,0 +1,44 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 200,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 280,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.3583333,
+    "steps": 283,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "a0420a9c17730c6f",
+    "state_hash": "e64e803054c51e62",
+    "rules_version": 1
+  }
+}

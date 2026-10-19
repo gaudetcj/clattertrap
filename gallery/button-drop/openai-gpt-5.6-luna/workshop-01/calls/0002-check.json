@@ -1,0 +1,37 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 150,
+        "y_cm": 224
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 240,
+        "y_cm": 165
+      },
+      {
+        "height_cm": 60,
+        "id": "guide",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 70
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam ramp1): overlaps ball0 by 6.3 cm at the start; move it up to y_cm = 230.3"
+  ]
+}

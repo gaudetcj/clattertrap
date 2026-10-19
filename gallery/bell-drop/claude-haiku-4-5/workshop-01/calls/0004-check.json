@@ -1,0 +1,25 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -10,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 230,
+        "y_cm": 120
+      }
+    ]
+  }
+}

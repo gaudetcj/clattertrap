@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "funnel-basket",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792393966,
+  "duration_s": 551.2350329,
+  "cost_usd": 0.04396094800000001,
+  "turns": 6,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

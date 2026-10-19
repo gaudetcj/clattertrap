@@ -1,0 +1,46 @@
+{
+  "level": "balloon-pin",
+  "arm": "workshop",
+  "name": "Three-Beam Balloon Guide",
+  "prediction": "The balloon rises and slides along three beams angled at 45-45-50 degrees, creating a diagonal path that guides it from the starting position toward the pin at (320,290) where it pops.",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 45,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 103,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": 45,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 209,
+        "y_cm": 201
+      },
+      {
+        "angle_deg": 50,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 310,
+        "y_cm": 260
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.0500002,
+    "steps": 366,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "95c1ef704fad5f15",
+    "state_hash": "85d182f9a1daa9a0",
+    "rules_version": 1
+  }
+}

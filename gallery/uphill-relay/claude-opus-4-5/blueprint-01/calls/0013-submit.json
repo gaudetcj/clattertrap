@@ -1,0 +1,77 @@
+{
+  "seq": 13,
+  "tool": "submit",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 80,
+        "y_cm": 265
+      },
+      {
+        "height_cm": 50,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 20,
+        "x_cm": 150,
+        "y_cm": 170
+      },
+      {
+        "angle_deg": -50,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 175,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 110,
+        "x_cm": 280,
+        "y_cm": 22
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 318,
+        "y_cm": 30
+      },
+      {
+        "angle_deg": -25,
+        "id": "spring1",
+        "kind": "spring_pad",
+        "x_cm": 275,
+        "y_cm": 38
+      },
+      {
+        "angle_deg": -35,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 340,
+        "y_cm": 98
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.8166668,
+    "steps": 338,
+    "parts_used": 7,
+    "chain_length": 3,
+    "event_hash": "5c3679f8564a9fa5",
+    "state_hash": "9ba0e9b4165dee98",
+    "rules_version": 1
+  },
+  "name": "Uphill Express",
+  "prediction": "Steel ball rolls through funnel via A and B, hits seesaw to launch wood ball onto spring pad, which boosts it to C, then down beam3 to ring the bell."
+}

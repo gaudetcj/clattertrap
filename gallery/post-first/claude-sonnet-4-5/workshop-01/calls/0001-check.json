@@ -1,0 +1,45 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 80,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -38,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 170,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 275,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 340,
+        "y_cm": 85
+      }
+    ]
+  },
+  "problems": [
+    "parts[2] (beam ramp3): overlaps bell by 3.2 cm at the start; move it up to y_cm = 98.2",
+    "parts[3] (beam ramp4): overlaps bell by 7.2 cm at the start; move it up to y_cm = 92.2"
+  ]
+}

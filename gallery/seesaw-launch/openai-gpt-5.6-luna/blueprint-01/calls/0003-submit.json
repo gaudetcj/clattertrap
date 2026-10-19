@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "launch_seesaw",
+        "kind": "seesaw",
+        "length_cm": 150,
+        "x_cm": 50,
+        "y_cm": 110
+      },
+      {
+        "angle_deg": 45,
+        "id": "redirect",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 155,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "ff1e357fddf99551",
+    "state_hash": "1682d16a2567d9c2",
+    "rules_version": 1
+  },
+  "name": "Twin-Ramp Bell Launcher",
+  "prediction": "The falling steel ball strikes the right arm of the seesaw, is thrown upward and right, then deflects from the angled beam through the open bottom to ring the bell."
+}

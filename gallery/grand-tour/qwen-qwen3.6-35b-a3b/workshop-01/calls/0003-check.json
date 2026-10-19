@@ -1,0 +1,9 @@
+{
+  "seq": 3,
+  "tool": "check",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 100, \"y_cm\": 230, \"length_cm\": 60, \"angle_deg\": -20}, {\"id\": \"d1\", \"kind\": \"domino\", \"x_cm\": 190, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d2\", \"kind\": \"domino\", \"x_cm\": 210, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d3\", \"kind\": \"domino\", \"x_cm\": 230, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"b_chain\", \"kind\": \"beam\", \"x_cm\": 260, \"y_cm\": 190, \"length_cm\": 80, \"angle_deg\": 0}, {\"id\": \"b3\", \"kind\": \"ball\", \"x_cm\": 350, \"y_cm\": 178, \"material\": \"wood\"}, {\"id\": \"sp1\", \"kind\": \"spring_pad\", \"x_cm\": 350, \"y_cm\": 170, \"angle_deg\": 180}]}",
+  "problems": [
+    "parts[1] (domino d1): overlaps post by 2.0 cm at the start; move it up to y_cm = 197.0",
+    "parts[4] (beam b_chain): overlaps d3 by 7.0 cm at the start; move it up to y_cm = 197.0"
+  ]
+}

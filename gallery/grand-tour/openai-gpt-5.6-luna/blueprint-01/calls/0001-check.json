@@ -1,0 +1,87 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -18,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 110,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": -34,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 300,
+        "y_cm": 30
+      },
+      {
+        "id": "target_ball",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 300,
+        "y_cm": 42
+      },
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 175,
+        "y_cm": 24
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 190,
+        "y_cm": 24
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 205,
+        "y_cm": 24
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 220,
+        "y_cm": 24
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 235,
+        "y_cm": 24
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 250,
+        "y_cm": 24
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 265,
+        "y_cm": 24
+      },
+      {
+        "angle_deg": 0,
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 280,
+        "y_cm": 24
+      }
+    ]
+  }
+}

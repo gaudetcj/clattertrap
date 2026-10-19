@@ -1,0 +1,46 @@
+{
+  "level": "button-drop",
+  "arm": "workshop",
+  "name": "Funnel & Domino Button Press",
+  "prediction": "The ball falls straight down, is caught and funneled by the funnel at the left, rolls across the beam toward the button, hits the domino which falls and presses the button, achieving the goal.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "height_cm": 80,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 50,
+        "x_cm": 80,
+        "y_cm": 150
+      },
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 200,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 330,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.18333334,
+    "steps": 22,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "bf1ff509f82d824e",
+    "state_hash": "599608fbd2b2320c",
+    "rules_version": 1
+  }
+}

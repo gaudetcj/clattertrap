@@ -1,0 +1,30 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": -70,
+        "id": "pend",
+        "kind": "pendulum",
+        "length_cm": 100,
+        "x_cm": 240,
+        "y_cm": 160
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.70000005,
+    "steps": 84,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "ca2eb191ca6cca91",
+    "state_hash": "b9fce317289abc3a",
+    "rules_version": 1
+  },
+  "name": "One-Swing Bell Ringer",
+  "prediction": "The steel pendulum weight, released 70° left of vertical from a pin at (240,160), swings down and strikes the bell at (300,80) near 3 m/s, ringing it at 0.7 s."
+}

@@ -1,0 +1,68 @@
+{
+  "seq": 18,
+  "tool": "submit",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 80,
+        "y_cm": 246
+      },
+      {
+        "angle_deg": -70,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 160,
+        "y_cm": 172
+      },
+      {
+        "angle_deg": -75,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 190,
+        "y_cm": 77
+      },
+      {
+        "angle_deg": 0,
+        "id": "handoff",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 235,
+        "y_cm": 56
+      },
+      {
+        "angle_deg": -20,
+        "id": "launch",
+        "kind": "spring_pad",
+        "x_cm": 250,
+        "y_cm": 25
+      },
+      {
+        "id": "relay",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 220,
+        "y_cm": 64
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.6333334,
+    "steps": 316,
+    "parts_used": 6,
+    "chain_length": 1,
+    "event_hash": "45fcb8ab24348850",
+    "state_hash": "f05754bcf85a67ee",
+    "rules_version": 1
+  },
+  "name": "Uphill Relay Handoff",
+  "prediction": "The falling steel ball will touch posts a and b, knock the waiting wood relay onto the spring, send it uphill to touch c, and then ring the bell."
+}

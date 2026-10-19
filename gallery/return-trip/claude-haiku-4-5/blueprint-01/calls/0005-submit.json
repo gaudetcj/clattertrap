@@ -1,0 +1,70 @@
+{
+  "seq": 5,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "catch_slope",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 85,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -20,
+        "id": "mid_slope",
+        "kind": "beam",
+        "length_cm": 85,
+        "x_cm": 200,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": -15,
+        "id": "approach_shelf",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 280,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -160,
+        "id": "return_slope",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 330,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": -140,
+        "id": "down_to_d",
+        "kind": "beam",
+        "length_cm": 75,
+        "x_cm": 180,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": -90,
+        "id": "basket_guide",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 150,
+        "y_cm": 35
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 6,
+    "chain_length": 1,
+    "event_hash": "f0cba9be268efe6f",
+    "state_hash": "a77b9740e47f03fa",
+    "rules_version": 1
+  },
+  "name": "Return Trip Cascade",
+  "prediction": "The falling steel ball rolls down cascading slopes, touches post a then wood ball w1 on the shelf, returns via slopes to touch post d, and guides ball0, w1, and w2 into the basket below."
+}

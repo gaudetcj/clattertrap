@@ -1,0 +1,16 @@
+{
+  "seq": 10,
+  "tool": "run",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 80, \"y_cm\": 250, \"length_cm\": 80, \"angle_deg\": -20}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 155, \"y_cm\": 140, \"length_cm\": 150, \"angle_deg\": -50}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 208, \"y_cm\": 50, \"length_cm\": 30, \"angle_deg\": 0}, {\"id\": \"beam4\", \"kind\": \"beam\", \"x_cm\": 225, \"y_cm\": 45, \"length_cm\": 20, \"angle_deg\": 0}, {\"id\": \"beam5\", \"kind\": \"beam\", \"x_cm\": 245, \"y_cm\": 50, \"length_cm\": 20, \"angle_deg\": 10}, {\"id\": \"seesaw\", \"kind\": \"seesaw\", \"x_cm\": 270, \"y_cm\": 60, \"length_cm\": 100, \"angle_deg\": 0}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 310, \"y_cm\": 68, \"material\": \"wood\"}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 14.516667,
+    "steps": 1742,
+    "parts_used": 7,
+    "chain_length": 2,
+    "event_hash": "b1e5555ad911de22",
+    "state_hash": "37b13ef3f294fac8",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "seq": 16,
+  "tool": "run",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 340,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -20,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 190,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": -15,
+        "id": "drop",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 60,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.4250001,
+    "steps": 171,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "d43940709f6bff07",
+    "state_hash": "85ec01983b1b89a0",
+    "rules_version": 1
+  }
+}

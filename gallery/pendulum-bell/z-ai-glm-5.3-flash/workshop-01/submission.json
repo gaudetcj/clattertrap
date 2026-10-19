@@ -1,0 +1,18 @@
+{
+  "level": "pendulum-bell",
+  "arm": "workshop",
+  "name": "Simple Swinging Striker",
+  "prediction": "The pendulum swings down from -60 degrees and strikes the bell at about 0.53 seconds, ringing it and meeting the goal.",
+  "scene": "{\"level\": \"pendulum-bell\", \"parts\": [{\"id\": \"swing\", \"kind\": \"pendulum\", \"x_cm\": 260, \"y_cm\": 140, \"length_cm\": 60, \"angle_deg\": -60}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.53333336,
+    "steps": 64,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "9abfaa90ba915799",
+    "state_hash": "f1f55394893e0d69",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "seq": 4,
+  "tool": "look",
+  "scene": "{\"level\": \"seesaw-launch\", \"parts\": [{\"angle_deg\": 0, \"id\": \"whip\", \"kind\": \"seesaw\", \"length_cm\": 100, \"x_cm\": 135, \"y_cm\": 115}]}"
+}

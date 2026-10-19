@@ -1,0 +1,56 @@
+{
+  "seq": 33,
+  "tool": "look",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -35,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 73,
+        "y_cm": 248
+      },
+      {
+        "angle_deg": -18,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 145,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -32,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 65,
+        "x_cm": 205,
+        "y_cm": 168
+      },
+      {
+        "angle_deg": -55,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 245,
+        "y_cm": 128
+      },
+      {
+        "angle_deg": -25,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 55,
+        "x_cm": 280,
+        "y_cm": 72
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 302,
+        "y_cm": 71
+      }
+    ]
+  }
+}

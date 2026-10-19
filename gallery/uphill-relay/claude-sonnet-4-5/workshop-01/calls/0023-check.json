@@ -1,0 +1,83 @@
+{
+  "seq": 23,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "catch_ball",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 75,
+        "y_cm": 254
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_a",
+        "kind": "beam",
+        "length_cm": 35,
+        "x_cm": 135,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -32,
+        "id": "ramp_down",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 175,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_b",
+        "kind": "beam",
+        "length_cm": 46,
+        "x_cm": 223,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw",
+        "kind": "seesaw",
+        "length_cm": 70,
+        "x_cm": 265,
+        "y_cm": 46
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 230,
+        "y_cm": 54
+      },
+      {
+        "angle_deg": 20,
+        "id": "catch_up",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 295,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_c",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 330,
+        "y_cm": 110
+      },
+      {
+        "angle_deg": -40,
+        "id": "finale",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 352,
+        "y_cm": 90
+      }
+    ]
+  },
+  "problems": [
+    "parts[8] (beam finale): the inventory allows 6 beam parts and this is number 7; remove one"
+  ]
+}

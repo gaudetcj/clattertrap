@@ -1,0 +1,18 @@
+{
+  "seq": 5,
+  "tool": "submit",
+  "scene": "{\"level\": \"basket-fill\", \"parts\": [{\"id\": \"ramp1\", \"kind\": \"beam\", \"x_cm\": 309.9, \"y_cm\": 197.2, \"length_cm\": 149.5, \"angle_deg\": 32.4}, {\"id\": \"ramp2\", \"kind\": \"beam\", \"x_cm\": 183.2, \"y_cm\": 116.8, \"length_cm\": 149.5, \"angle_deg\": 32.4}, {\"id\": \"ramp3\", \"kind\": \"beam\", \"x_cm\": 98.9, \"y_cm\": 63.2, \"length_cm\": 49.4, \"angle_deg\": 32.4}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.5083334,
+    "steps": 301,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "5c6f630ee935bce9",
+    "state_hash": "ef9f0cbc4d8d6396",
+    "rules_version": 1
+  },
+  "name": "Three-Beam Slide Into the Basket",
+  "prediction": "The three falling wood balls land on a 32-degree three-beam ramp that carries them down-left, dropping them just over the basket rim so at least two come to rest inside."
+}

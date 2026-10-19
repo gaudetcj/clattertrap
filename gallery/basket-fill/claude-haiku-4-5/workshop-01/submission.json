@@ -1,0 +1,46 @@
+{
+  "level": "basket-fill",
+  "arm": "workshop",
+  "name": "Gravity Funnel",
+  "prediction": "Two angled ramps redirect the falling balls left and downward, then a horizontal seesaw positioned just above the basket catches them and allows them to settle into the basket.",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 300,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 170,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 0,
+        "id": "bin",
+        "kind": "seesaw",
+        "length_cm": 90,
+        "x_cm": 60,
+        "y_cm": 50
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 15.291668,
+    "steps": 1835,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "9e4499d6b57cfd55",
+    "state_hash": "0b3b61556066ac1c",
+    "rules_version": 1
+  }
+}

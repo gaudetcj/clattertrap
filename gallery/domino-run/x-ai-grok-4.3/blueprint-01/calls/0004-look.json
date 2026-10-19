@@ -1,0 +1,66 @@
+{
+  "seq": 4,
+  "tool": "look",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 130,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 150,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 170,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 190,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 210,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 230,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 250,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 265,
+        "y_cm": 145
+      }
+    ]
+  }
+}

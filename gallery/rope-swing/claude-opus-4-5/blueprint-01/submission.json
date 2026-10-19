@@ -1,0 +1,37 @@
+{
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "name": "Pendulum Strike",
+  "prediction": "The steel ball swings from its starting position around the beam pivot, arcing down then up to strike the bell at approximately 2 m/s.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 210,
+        "y_cm": 258
+      },
+      {
+        "a": "ball0",
+        "b": "beam1",
+        "id": "rope1",
+        "kind": "rope",
+        "max_length_cm": 92
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.7916667,
+    "steps": 95,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "e9728b08ac5674a0",
+    "state_hash": "df22881603062e13",
+    "rules_version": 1
+  }
+}

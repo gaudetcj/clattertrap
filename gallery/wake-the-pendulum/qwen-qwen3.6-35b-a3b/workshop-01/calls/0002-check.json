@@ -1,0 +1,10 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"seesaw1\", \"kind\": \"seesaw\", \"x_cm\": 100, \"y_cm\": 153, \"length_cm\": 120, \"angle_deg\": 0}, {\"id\": \"ball1_placement\", \"kind\": \"ball\", \"x_cm\": 145, \"y_cm\": 160, \"material\": \"steel\"}, {\"id\": \"redirect_beam\", \"kind\": \"beam\", \"x_cm\": 70, \"y_cm\": 75, \"length_cm\": 60, \"angle_deg\": 45}]}",
+  "problems": [
+    "parts[0] (seesaw seesaw1): overlaps ledge by 2.0 cm at the start; move it up to y_cm = 155.0",
+    "parts[0] (seesaw seesaw1): overlaps ball1 by 2.0 cm at the start; move it up to y_cm = 155.0",
+    "parts[1] (ball ball1_placement): overlaps seesaw1 by 1.0 cm at the start; move it up to y_cm = 161.0"
+  ]
+}

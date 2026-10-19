@@ -1,0 +1,37 @@
+{
+  "level": "rope-swing",
+  "arm": "workshop",
+  "name": "Anchor-and-Rope Pendulum Swing",
+  "prediction": "The steel ball falls, the rope tied to the beam anchor goes taut, and the ball swings down and right like a pendulum, striking the bell hard enough to ring it at about 0.8 s.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "anchor",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 208.3,
+        "y_cm": 250
+      },
+      {
+        "a": "ball0",
+        "b": "anchor",
+        "id": "rope1",
+        "kind": "rope",
+        "max_length_cm": 88.9
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.8000001,
+    "steps": 96,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "1485e70c2cd8fa0a",
+    "state_hash": "eba2cf358051d215",
+    "rules_version": 1
+  }
+}

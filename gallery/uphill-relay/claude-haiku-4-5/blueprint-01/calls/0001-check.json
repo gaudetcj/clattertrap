@@ -1,0 +1,49 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "height_cm": 50,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 20,
+        "x_cm": 80,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 110,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 200,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 260,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 85,
+        "id": "spring_pad1",
+        "kind": "spring_pad",
+        "x_cm": 280,
+        "y_cm": 45
+      }
+    ]
+  }
+}

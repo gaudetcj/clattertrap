@@ -1,0 +1,44 @@
+{
+  "seq": 7,
+  "tool": "run",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -40,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 85,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -20,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 200,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": -15,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 290,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.1583335,
+    "steps": 259,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "3fb055259da9cae9",
+    "state_hash": "86e698b1567cc742",
+    "rules_version": 1
+  }
+}

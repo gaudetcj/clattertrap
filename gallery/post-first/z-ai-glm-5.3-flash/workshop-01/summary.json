@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "post-first",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792394517,
+  "duration_s": 661.6598754,
+  "cost_usd": 0.014684240000000001,
+  "turns": 6,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

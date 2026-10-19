@@ -1,0 +1,47 @@
+{
+  "level": "funnel-basket",
+  "arm": "workshop",
+  "name": "Three-Way Funnel Cascade into the Basket",
+  "prediction": "Ball1 drops straight through the funnel throat into the basket, while rampL and rampR catch ball0 and ball2, slide them into the funnel mouth, and all three wood balls come to rest in the basket by about 3.3 s, meeting the fill-3 goal.",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "height_cm": 80,
+        "id": "funnelC",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 20,
+        "x_cm": 200,
+        "y_cm": 52
+      },
+      {
+        "angle_deg": -39,
+        "id": "rampL",
+        "kind": "beam",
+        "length_cm": 119,
+        "x_cm": 94,
+        "y_cm": 205.5
+      },
+      {
+        "angle_deg": 33,
+        "id": "rampR",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 273.7,
+        "y_cm": 190.2
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.3000002,
+    "steps": 396,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "17b210b6fe3733dc",
+    "state_hash": "b62957a8e802457c",
+    "rules_version": 1
+  }
+}

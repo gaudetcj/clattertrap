@@ -1,0 +1,18 @@
+{
+  "level": "balloon-pin",
+  "arm": "blueprint",
+  "name": "Balloon Pin Popper",
+  "prediction": "The balloon rises and slides along three angled beams forming a staircase, reaching x=320 at y=180, then continues rising straight up to pop the pin at (320, 290).",
+  "scene": "{\"level\": \"balloon-pin\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 100, \"y_cm\": 80, \"length_cm\": 108, \"angle_deg\": 22}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 200, \"y_cm\": 120, \"length_cm\": 108, \"angle_deg\": 22}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 285, \"y_cm\": 160, \"length_cm\": 81, \"angle_deg\": 30}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 0.8333334,
+    "steps": 100,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "2b71b6e9e96e7974",
+    "state_hash": "aabee5e93258e7a1",
+    "rules_version": 1
+  }
+}

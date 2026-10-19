@@ -1,0 +1,75 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 130,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 150,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 170,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 190,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 210,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 230,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 250,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 5,
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 270,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 10,
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 290,
+        "y_cm": 135
+      }
+    ]
+  },
+  "problems": [
+    "parts[8] (domino d9): centre (290, 135) is outside every build zone; move it inside x 115..275, y 125..185"
+  ]
+}

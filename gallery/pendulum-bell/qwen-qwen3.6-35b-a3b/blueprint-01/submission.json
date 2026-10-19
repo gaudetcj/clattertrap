@@ -1,0 +1,18 @@
+{
+  "level": "pendulum-bell",
+  "arm": "blueprint",
+  "name": "Pendulum Bell Ringer",
+  "prediction": "A single pendulum is released from horizontal (90 degrees) and swings down, hitting the bell at high speed to ring it.",
+  "scene": "{\"level\": \"pendulum-bell\", \"parts\": [{\"id\": \"pend1\", \"kind\": \"pendulum\", \"x_cm\": 250, \"y_cm\": 140, \"length_cm\": 80, \"angle_deg\": 90}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.3416667,
+    "steps": 41,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "52e6a4e464f1e852",
+    "state_hash": "19e6a1124e4fde7f",
+    "rules_version": 1
+  }
+}

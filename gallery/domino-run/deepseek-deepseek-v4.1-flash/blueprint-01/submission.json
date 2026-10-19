@@ -1,0 +1,92 @@
+{
+  "level": "domino-run",
+  "arm": "blueprint",
+  "name": "Ten-Domino Cascade",
+  "prediction": "The wood ball rolls down the ramp onto the shelf, topples a ten-domino cascade, and the last two dominoes tumble off the shelf's right end into the basket (the slowed ball may follow).",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 150,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 163,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 176,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 189,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 202,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 215,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 228,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 241,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 254,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 259,
+        "y_cm": 137.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.0500002,
+    "steps": 366,
+    "parts_used": 10,
+    "chain_length": 11,
+    "event_hash": "771488cb109c9fa0",
+    "state_hash": "5911a3d68b535d92",
+    "rules_version": 1
+  }
+}

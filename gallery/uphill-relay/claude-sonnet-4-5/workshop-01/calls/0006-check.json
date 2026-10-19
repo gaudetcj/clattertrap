@@ -1,0 +1,77 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 70,
+        "y_cm": 255
+      },
+      {
+        "angle_deg": 0,
+        "id": "guide_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 120,
+        "y_cm": 234
+      },
+      {
+        "angle_deg": -30,
+        "id": "down1",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 160,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -35,
+        "id": "down2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": -15,
+        "id": "to_seesaw",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 250,
+        "y_cm": 55
+      },
+      {
+        "angle_deg": -5,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 280,
+        "y_cm": 48
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 245,
+        "y_cm": 56
+      },
+      {
+        "angle_deg": 0,
+        "id": "catch_c",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 320,
+        "y_cm": 114
+      }
+    ]
+  },
+  "problems": [
+    "parts[5] (seesaw launcher): overlaps to_seesaw by 4.8 cm at the start; move it up to y_cm = 52.8",
+    "parts[6] (ball projectile): overlaps to_seesaw by 7.7 cm at the start; move it up to y_cm = 63.7",
+    "parts[6] (ball projectile): overlaps launcher by 3.1 cm at the start; move it up to y_cm = 59.1"
+  ]
+}

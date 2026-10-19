@@ -1,0 +1,60 @@
+{
+  "seq": 15,
+  "tool": "run",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 5,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 340,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": 7,
+        "id": "slide1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 255,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 9,
+        "id": "slide2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 175,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": 14,
+        "id": "drop",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 170
+      },
+      {
+        "angle_deg": 0,
+        "id": "tipper",
+        "kind": "seesaw",
+        "length_cm": 60,
+        "x_cm": 60,
+        "y_cm": 110
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 4.5,
+    "steps": 540,
+    "parts_used": 5,
+    "chain_length": 3,
+    "event_hash": "199be2b8acb050bb",
+    "state_hash": "c48ce06954a086dd",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "seq": 7,
+  "tool": "check",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 275,
+        "y_cm": 127
+      },
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 270,
+        "y_cm": 139
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 275,
+        "y_cm": 139
+      }
+    ]
+  }
+}

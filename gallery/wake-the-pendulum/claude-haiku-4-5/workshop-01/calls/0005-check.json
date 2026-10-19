@@ -1,0 +1,28 @@
+{
+  "seq": 5,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 60,
+        "y_cm": 271.5
+      },
+      {
+        "angle_deg": -35,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 160,
+        "y_cm": 238
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam ramp2): overlaps pend by 11.0 cm at the start; move it up to y_cm = 249.0"
+  ]
+}

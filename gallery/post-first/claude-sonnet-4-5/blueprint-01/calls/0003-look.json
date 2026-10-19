@@ -1,0 +1,41 @@
+{
+  "seq": 3,
+  "tool": "look",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "catch_beam",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -30,
+        "id": "to_post_beam",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 175,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -20,
+        "id": "past_post_beam",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 102
+      },
+      {
+        "angle_deg": -10,
+        "id": "to_bell_beam",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 315,
+        "y_cm": 97
+      }
+    ]
+  }
+}

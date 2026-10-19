@@ -1,0 +1,45 @@
+{
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "name": "Slot Shot",
+  "prediction": "The ball rolls down from the ramp, is caught by the downward beam, transfers to the upward launcher to slow down, hits the spring pad which kicks it up-left toward ledge1, lands and rolls right into the slot, then falls onto the button and presses it.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catcher",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 175,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": 15,
+        "id": "launcher",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 230,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 15,
+        "id": "spring1",
+        "kind": "spring_pad",
+        "x_cm": 265,
+        "y_cm": 72
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 5.0750003,
+    "steps": 609,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "d5654042ae60029f",
+    "state_hash": "21018d14ded63773",
+    "rules_version": 1
+  }
+}

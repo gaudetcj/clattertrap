@@ -1,0 +1,8 @@
+{
+  "seq": 35,
+  "tool": "check",
+  "scene": "{\"level\": \"domino-run\", \"parts\": [{\"id\": \"dom1\", \"kind\": \"domino\", \"x_cm\": 140, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom2\", \"kind\": \"domino\", \"x_cm\": 148, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom3\", \"kind\": \"domino\", \"x_cm\": 156, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom4\", \"kind\": \"domino\", \"x_cm\": 164, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom5\", \"kind\": \"domino\", \"x_cm\": 172, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom6\", \"kind\": \"domino\", \"x_cm\": 180, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom7\", \"kind\": \"domino\", \"x_cm\": 188, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom8\", \"kind\": \"domino\", \"x_cm\": 196, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom9\", \"kind\": \"domino\", \"x_cm\": 204, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom10\", \"kind\": \"domino\", \"x_cm\": 256, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 220, \"y_cm\": 127, \"length_cm\": 40, \"angle_deg\": -30}]}",
+  "problems": [
+    "parts[10] (beam beam1): overlaps dom9 by 4.3 cm at the start; move it up to y_cm = 131.3"
+  ]
+}

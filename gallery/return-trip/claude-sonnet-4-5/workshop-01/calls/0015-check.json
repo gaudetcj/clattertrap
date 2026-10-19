@@ -1,0 +1,60 @@
+{
+  "seq": 15,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -5,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 60,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -12,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 115,
+        "y_cm": 238
+      },
+      {
+        "angle_deg": 20,
+        "id": "to_a",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 150,
+        "y_cm": 208
+      },
+      {
+        "angle_deg": -8,
+        "id": "after_a",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 190,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -12,
+        "id": "approach_w1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 260,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": -20,
+        "id": "seesaw_redirect",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 360,
+        "y_cm": 140
+      }
+    ]
+  },
+  "problems": [
+    "parts[5] (seesaw seesaw_redirect): overlaps shelf by 7.6 cm at the start; move it up to y_cm = 147.6"
+  ]
+}

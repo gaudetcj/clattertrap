@@ -1,0 +1,15 @@
+{
+  "model": "qwen-qwen3.6-35b-a3b",
+  "level": "basket-fill",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792388136,
+  "duration_s": 401.6150213,
+  "cost_usd": 0.04579684999999999,
+  "turns": 23,
+  "tool_calls": 22,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

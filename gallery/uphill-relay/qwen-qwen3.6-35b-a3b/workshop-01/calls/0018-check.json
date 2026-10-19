@@ -1,0 +1,8 @@
+{
+  "seq": 18,
+  "tool": "check",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 60, \"y_cm\": 250, \"length_cm\": 60, \"angle_deg\": -25}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 165, \"y_cm\": 135, \"length_cm\": 150, \"angle_deg\": -60}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 235, \"y_cm\": 45, \"length_cm\": 40, \"angle_deg\": 5}, {\"id\": \"seesaw\", \"kind\": \"seesaw\", \"x_cm\": 270, \"y_cm\": 45, \"length_cm\": 100, \"angle_deg\": 0}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 320, \"y_cm\": 53, \"material\": \"wood\"}, {\"id\": \"beam4\", \"kind\": \"beam\", \"x_cm\": 320, \"y_cm\": 90, \"length_cm\": 30, \"angle_deg\": -20}]}",
+  "problems": [
+    "parts[3] (seesaw seesaw): overlaps beam3 by 5.3 cm at the start; move it up to y_cm = 50.3"
+  ]
+}

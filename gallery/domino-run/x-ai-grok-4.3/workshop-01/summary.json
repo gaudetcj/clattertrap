@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "domino-run",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792383715,
+  "duration_s": 24.1056538,
+  "cost_usd": 0.02704195,
+  "turns": 9,
+  "tool_calls": 8,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

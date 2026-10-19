@@ -1,0 +1,28 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 110,
+        "y_cm": 70
+      },
+      {
+        "angle_deg": 30,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 180,
+        "y_cm": 100
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam ramp): overlaps launcher by 3.6 cm at the start; move it up to y_cm = 103.6"
+  ]
+}

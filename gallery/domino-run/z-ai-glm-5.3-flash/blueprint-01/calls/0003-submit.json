@@ -1,0 +1,43 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 228,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 245,
+        "y_cm": 137
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 262,
+        "y_cm": 137
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 9.008334,
+    "steps": 1081,
+    "parts_used": 3,
+    "chain_length": 4,
+    "event_hash": "480c7a349ed3b56e",
+    "state_hash": "88cced634f68de3a",
+    "rules_version": 1
+  },
+  "name": "Domino Dumper",
+  "prediction": "The wood ball rolls down the ramp, crosses the shelf, and topples the dominoes; the last domino falls off the shelf's right edge into the basket, delivering one of the two required objects, though likely not enough alone to meet the count."
+}

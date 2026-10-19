@@ -1,0 +1,52 @@
+{
+  "seq": 30,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": 12,
+        "id": "launcher",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 110,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -70,
+        "id": "deflector",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 185,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -18,
+        "id": "post_guide",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 130,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": -25,
+        "id": "bell_guide",
+        "kind": "beam",
+        "length_cm": 65,
+        "x_cm": 70,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.0,
+    "steps": 120,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "b7f1282b902426ed",
+    "state_hash": "818ea77cf55aa417",
+    "rules_version": 1
+  }
+}

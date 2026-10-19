@@ -1,0 +1,52 @@
+{
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "name": "Uphill Relay: Ramp, Post Relay, Spring Pad Arc",
+  "prediction": "The falling steel ball rolls a shallow ramp across post a, drops onto post b, and knocks a wood ball along a ledge into a tilted spring pad that arcs it up over post c and down onto the bell.",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -11.3,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 81.6,
+        "x_cm": 62,
+        "y_cm": 256
+      },
+      {
+        "angle_deg": 0,
+        "id": "plat",
+        "kind": "beam",
+        "length_cm": 47.5,
+        "x_cm": 249.75,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 8,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 290.1,
+        "y_cm": 42.1
+      },
+      {
+        "id": "w1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 232,
+        "y_cm": 48.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.5666668,
+    "steps": 428,
+    "parts_used": 4,
+    "chain_length": 3,
+    "event_hash": "7d4c7b3d8c845f06",
+    "state_hash": "08358f039bfda346",
+    "rules_version": 1
+  }
+}

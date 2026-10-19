@@ -1,0 +1,29 @@
+{
+  "seq": 4,
+  "tool": "run",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 50,
+        "x_cm": 200,
+        "y_cm": 80
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.8416668,
+    "steps": 221,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "e9ce49dec5871993",
+    "state_hash": "1010b2ca3a52470a",
+    "rules_version": 1
+  }
+}

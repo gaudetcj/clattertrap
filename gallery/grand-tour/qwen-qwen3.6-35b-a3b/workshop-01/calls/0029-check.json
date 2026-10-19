@@ -1,0 +1,5 @@
+{
+  "seq": 29,
+  "tool": "check",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 115, \"y_cm\": 215, \"length_cm\": 80, \"angle_deg\": -20}, {\"id\": \"sp1\", \"kind\": \"spring_pad\", \"x_cm\": 250, \"y_cm\": 180, \"angle_deg\": 0}]}"
+}

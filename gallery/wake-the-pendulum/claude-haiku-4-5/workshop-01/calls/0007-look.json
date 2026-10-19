@@ -1,0 +1,24 @@
+{
+  "seq": 7,
+  "tool": "look",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 70,
+        "y_cm": 270
+      },
+      {
+        "id": "catcher",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 170,
+        "y_cm": 210
+      }
+    ]
+  }
+}

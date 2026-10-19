@@ -1,0 +1,84 @@
+{
+  "level": "return-trip",
+  "arm": "blueprint",
+  "name": "The Zigzag Return",
+  "prediction": "The steel ball falls through the funnel, hits post a, rolls down to knock w1 on the shelf, both balls return left to hit post d and knock dominoes and crate into the basket.",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "guide",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 18,
+        "x_cm": 90,
+        "y_cm": 238
+      },
+      {
+        "angle_deg": -8,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 120,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -15,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 228,
+        "y_cm": 182
+      },
+      {
+        "angle_deg": 155,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 112,
+        "x_cm": 262,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": 155,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 78,
+        "x_cm": 152,
+        "y_cm": 50
+      },
+      {
+        "id": "crate1",
+        "kind": "crate",
+        "side_cm": 20,
+        "x_cm": 192,
+        "y_cm": 94
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 173,
+        "y_cm": 87
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino2",
+        "kind": "domino",
+        "x_cm": 158,
+        "y_cm": 87
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6583334,
+    "steps": 199,
+    "parts_used": 8,
+    "chain_length": 4,
+    "event_hash": "52aa23d54425dc6d",
+    "state_hash": "053acd115a3e1ba5",
+    "rules_version": 1
+  }
+}

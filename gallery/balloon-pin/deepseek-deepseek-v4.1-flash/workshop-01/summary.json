@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "balloon-pin",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792389556,
+  "duration_s": 117.2668199,
+  "cost_usd": 0.014220617999999999,
+  "turns": 5,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

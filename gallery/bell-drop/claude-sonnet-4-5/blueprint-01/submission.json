@@ -1,0 +1,54 @@
+{
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "name": "Cascade Bell Ringer",
+  "prediction": "The steel ball falls, rolls down four cascading ramps gaining speed, then drops steeply onto the bell from directly above, ringing it with impact.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 95,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -14,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 185,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -19,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 290,
+        "y_cm": 168
+      },
+      {
+        "angle_deg": -28,
+        "id": "drop",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 330,
+        "y_cm": 128
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.008333334,
+    "steps": 1,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "51fea2d99a137919",
+    "state_hash": "502e6b890fff54bf",
+    "rules_version": 1
+  }
+}

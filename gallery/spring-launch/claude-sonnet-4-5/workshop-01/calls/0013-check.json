@@ -1,0 +1,32 @@
+{
+  "seq": 13,
+  "tool": "check",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "platform",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 240,
+        "y_cm": 50
+      },
+      {
+        "angle_deg": 60,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 260,
+        "y_cm": 52
+      },
+      {
+        "angle_deg": -15,
+        "id": "guide_ramp",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 180,
+        "y_cm": 70
+      }
+    ]
+  }
+}

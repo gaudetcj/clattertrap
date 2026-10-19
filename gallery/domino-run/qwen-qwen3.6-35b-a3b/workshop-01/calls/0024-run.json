@@ -1,0 +1,16 @@
+{
+  "seq": 24,
+  "tool": "run",
+  "scene": "{\"level\": \"domino-run\", \"parts\": [{\"id\": \"dom1\", \"kind\": \"domino\", \"x_cm\": 130, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom2\", \"kind\": \"domino\", \"x_cm\": 138, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom3\", \"kind\": \"domino\", \"x_cm\": 146, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom4\", \"kind\": \"domino\", \"x_cm\": 154, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom5\", \"kind\": \"domino\", \"x_cm\": 162, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom6\", \"kind\": \"domino\", \"x_cm\": 170, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom7\", \"kind\": \"domino\", \"x_cm\": 178, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom8\", \"kind\": \"domino\", \"x_cm\": 186, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom9\", \"kind\": \"domino\", \"x_cm\": 194, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom10\", \"kind\": \"domino\", \"x_cm\": 202, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 230, \"y_cm\": 128, \"length_cm\": 50, \"angle_deg\": -25}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.391667,
+    "steps": 407,
+    "parts_used": 11,
+    "chain_length": 11,
+    "event_hash": "4f6e642bcfe24e2a",
+    "state_hash": "536f4a39db380235",
+    "rules_version": 1
+  }
+}

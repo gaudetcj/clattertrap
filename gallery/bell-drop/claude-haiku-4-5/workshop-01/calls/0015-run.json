@@ -1,0 +1,28 @@
+{
+  "seq": 15,
+  "tool": "run",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -45,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 80,
+        "y_cm": 210
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.9250001,
+    "steps": 231,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "48be54a98fc96174",
+    "state_hash": "1aee4b2a49644857",
+    "rules_version": 1
+  }
+}

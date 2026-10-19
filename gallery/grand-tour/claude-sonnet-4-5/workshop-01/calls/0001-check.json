@@ -1,0 +1,60 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "height_cm": 30,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 35,
+        "throat_cm": 16,
+        "x_cm": 50,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": -4,
+        "id": "slope1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 100,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -8,
+        "id": "slope2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 180,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -20,
+        "id": "slope3",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 250,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": 0,
+        "id": "see1",
+        "kind": "seesaw",
+        "length_cm": 120,
+        "x_cm": 280,
+        "y_cm": 95
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 335,
+        "y_cm": 99
+      }
+    ]
+  },
+  "problems": [
+    "parts[5] (ball ball1): centre (335, 99) is outside every build zone; move it inside x 20..320, y 10..280 or x 320..380, y 160..280"
+  ]
+}

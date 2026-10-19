@@ -1,0 +1,41 @@
+{
+  "seq": 7,
+  "tool": "look",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 85,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 170,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -22,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 275,
+        "y_cm": 165
+      },
+      {
+        "angle_deg": 10,
+        "id": "launcher",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 335,
+        "y_cm": 108
+      }
+    ]
+  }
+}

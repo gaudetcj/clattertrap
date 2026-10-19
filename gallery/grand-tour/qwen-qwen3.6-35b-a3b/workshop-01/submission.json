@@ -1,0 +1,18 @@
+{
+  "level": "grand-tour",
+  "arm": "workshop",
+  "name": "grand-tour-post-spring-bell",
+  "prediction": "Ball0 falls onto b1, bounces rightward, hits the post, continues to spring_pad which launches it upward through the bell box opening to ring the bell.",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 100, \"y_cm\": 220, \"length_cm\": 80, \"angle_deg\": -20}, {\"id\": \"sp1\", \"kind\": \"spring_pad\", \"x_cm\": 240, \"y_cm\": 180, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "8834a113e67a133b",
+    "state_hash": "95e162b6d545998c",
+    "rules_version": 1
+  }
+}

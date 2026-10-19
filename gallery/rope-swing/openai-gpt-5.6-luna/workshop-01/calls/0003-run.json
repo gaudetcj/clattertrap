@@ -1,0 +1,27 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "tether",
+        "kind": "rope",
+        "max_length_cm": 112
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.9250001,
+    "steps": 111,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "04f4fc078a990680",
+    "state_hash": "d3125756b2eed5ca",
+    "rules_version": 1
+  }
+}

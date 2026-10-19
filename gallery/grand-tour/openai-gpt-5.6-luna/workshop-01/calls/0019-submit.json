@@ -1,0 +1,38 @@
+{
+  "seq": 19,
+  "tool": "submit",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 95,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -80,
+        "id": "swing",
+        "kind": "pendulum",
+        "length_cm": 120,
+        "x_cm": 318,
+        "y_cm": 231
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.6250002,
+    "steps": 435,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "6cfe9872e0e71c68",
+    "state_hash": "988f222f26433591",
+    "rules_version": 1
+  },
+  "name": "Postbound Pendulum Tour",
+  "prediction": "The falling steel ball rolls down the ramp onto the post, then transfers its motion to the pendulum, whose swinging steel weight rises through the open box and rings the bell."
+}

@@ -1,0 +1,18 @@
+{
+  "seq": 24,
+  "tool": "submit",
+  "scene": "{\"level\": \"button-drop\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 120, \"y_cm\": 180, \"length_cm\": 100, \"angle_deg\": -30}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 210, \"y_cm\": 130, \"length_cm\": 100, \"angle_deg\": -25}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.4916668,
+    "steps": 179,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "f6501065b17e10f4",
+    "state_hash": "c33bfc0aae5bfb83",
+    "rules_version": 1
+  },
+  "name": "Double-Beam Steel Ball Drop",
+  "prediction": "A steel ball falls from (80, 250), bounces off two angled beams that redirect it rightward and downward, and lands on the button at (330, 40) to press it."
+}

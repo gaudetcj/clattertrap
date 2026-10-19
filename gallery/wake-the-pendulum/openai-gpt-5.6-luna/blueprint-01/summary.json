@@ -1,0 +1,15 @@
+{
+  "model": "openai-gpt-5.6-luna",
+  "level": "wake-the-pendulum",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792383761,
+  "duration_s": 59.0872412,
+  "cost_usd": 0.009189699999999999,
+  "turns": 10,
+  "tool_calls": 11,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

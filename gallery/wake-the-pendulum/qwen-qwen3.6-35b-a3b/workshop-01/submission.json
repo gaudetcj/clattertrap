@@ -1,0 +1,18 @@
+{
+  "level": "wake-the-pendulum",
+  "arm": "workshop",
+  "name": "ClatterTrap Pendulum Rube",
+  "prediction": "A steel beam angled at -18 degrees catches falling ball0 and redirects it rightward; ball0 rolls along the beam and strikes the pendulum, swinging it to hit ball1, which then bounces off the post and strikes the bell to ring it.",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"redirect_beam1\", \"kind\": \"beam\", \"x_cm\": 95, \"y_cm\": 200, \"length_cm\": 150, \"angle_deg\": -18}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.3000002,
+    "steps": 396,
+    "parts_used": 1,
+    "chain_length": 4,
+    "event_hash": "3fed95063734ad19",
+    "state_hash": "97c5520660c86d64",
+    "rules_version": 1
+  }
+}

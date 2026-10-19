@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "bell-drop",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792382021,
+  "duration_s": 58.6005565,
+  "cost_usd": 0.2021,
+  "turns": 7,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

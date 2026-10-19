@@ -1,0 +1,17 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 60,
+        "id": "p1",
+        "kind": "pendulum",
+        "length_cm": 100,
+        "x_cm": 240,
+        "y_cm": 160
+      }
+    ]
+  }
+}

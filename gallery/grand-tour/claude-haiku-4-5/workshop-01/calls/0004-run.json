@@ -1,0 +1,44 @@
+{
+  "seq": 4,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -20,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 260,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 20,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 300,
+        "y_cm": 120
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.3750002,
+    "steps": 285,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "c2d03a2ca9dd0a43",
+    "state_hash": "9a23b10fb6edc700",
+    "rules_version": 1
+  }
+}

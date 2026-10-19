@@ -1,0 +1,46 @@
+{
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "name": "Three-Chute Steel Skylaunch",
+  "prediction": "The steel ball drops onto a 30-degree ramp and rolls down a three-beam descending chute, leaving the last beam's end at about (343,113) moving 4-5 m/s, and strikes the brass bell's upper edge within ~2 seconds, ringing it.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 120,
+        "y_cm": 232
+      },
+      {
+        "angle_deg": -30,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 239.2,
+        "y_cm": 158.3
+      },
+      {
+        "angle_deg": -20,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 46,
+        "x_cm": 319.9,
+        "y_cm": 112.7
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.4083334,
+    "steps": 169,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "f0003c49e317c472",
+    "state_hash": "e666ccd7bb261948",
+    "rules_version": 1
+  }
+}

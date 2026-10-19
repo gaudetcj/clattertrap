@@ -1,0 +1,17 @@
+{
+  "seq": 3,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 240
+      }
+    ]
+  }
+}

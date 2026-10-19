@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "pendulum-bell",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792378993,
+  "duration_s": 93.2441575,
+  "cost_usd": 0.1523178,
+  "turns": 7,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

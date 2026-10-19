@@ -1,0 +1,60 @@
+{
+  "seq": 9,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -5,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 60,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 110,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 45,
+        "id": "bounce_to_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 145,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -10,
+        "id": "guide_right",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 220,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": -5,
+        "id": "hit_w1",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 300,
+        "y_cm": 165
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw_return",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 350,
+        "y_cm": 100
+      }
+    ]
+  },
+  "problems": [
+    "parts[4] (beam hit_w1): overlaps w1 by 2.3 cm at the start; move it up to y_cm = 167.3"
+  ]
+}

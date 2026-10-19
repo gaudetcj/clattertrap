@@ -1,0 +1,56 @@
+{
+  "seq": 35,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 55,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -50,
+        "id": "ramp_to_b",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 170,
+        "y_cm": 75
+      },
+      {
+        "angle_deg": -15,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 275,
+        "y_cm": 22
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 243,
+        "y_cm": 42
+      },
+      {
+        "angle_deg": 5,
+        "id": "guide1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 310,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": -55,
+        "id": "guide2",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 355,
+        "y_cm": 95
+      }
+    ]
+  }
+}

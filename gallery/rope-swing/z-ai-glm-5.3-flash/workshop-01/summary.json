@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "rope-swing",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792395179,
+  "duration_s": 114.342506,
+  "cost_usd": 0.013703983749999999,
+  "turns": 6,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

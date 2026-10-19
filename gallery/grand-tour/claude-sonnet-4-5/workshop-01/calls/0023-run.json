@@ -1,0 +1,66 @@
+{
+  "seq": 23,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "pend1",
+        "kind": "pendulum",
+        "length_cm": 70,
+        "x_cm": 90,
+        "y_cm": 270
+      },
+      {
+        "angle_deg": 90,
+        "id": "stopper",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 175,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 0,
+        "id": "platform",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": 5,
+        "id": "see1",
+        "kind": "seesaw",
+        "length_cm": 120,
+        "x_cm": 260,
+        "y_cm": 60
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 310,
+        "y_cm": 73
+      },
+      {
+        "id": "ball2",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 285,
+        "y_cm": 188
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 6,
+    "chain_length": 4,
+    "event_hash": "0217dd4b5c412e8a",
+    "state_hash": "1cc1aa060762c71a",
+    "rules_version": 1
+  }
+}

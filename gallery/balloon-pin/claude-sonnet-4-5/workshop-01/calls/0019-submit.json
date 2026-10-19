@@ -1,0 +1,54 @@
+{
+  "seq": 19,
+  "tool": "submit",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 32,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 85,
+        "x_cm": 85,
+        "y_cm": 82
+      },
+      {
+        "angle_deg": 36,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 105,
+        "x_cm": 175,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": 42,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 275,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 78,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 55,
+        "x_cm": 350,
+        "y_cm": 255
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 0.8333334,
+    "steps": 100,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "2b71b6e9e96e7974",
+    "state_hash": "14b7e792b6327150",
+    "rules_version": 1
+  },
+  "name": "Balloon Stairway to Pin",
+  "prediction": "The balloon will rise and slide along four angled beams like stepping stones, gradually moving right and upward until it reaches the pin at x=320 and pops."
+}

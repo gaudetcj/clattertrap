@@ -1,0 +1,58 @@
+{
+  "seq": 7,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "catch_funnel",
+        "kind": "funnel",
+        "mouth_cm": 110,
+        "throat_cm": 20,
+        "x_cm": 95,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": 5,
+        "id": "to_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 125,
+        "y_cm": 218
+      },
+      {
+        "angle_deg": -8,
+        "id": "after_a",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 200,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -12,
+        "id": "to_shelf",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 280,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": -20,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 360,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": -8,
+        "id": "back_to_d",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 90
+      }
+    ]
+  }
+}

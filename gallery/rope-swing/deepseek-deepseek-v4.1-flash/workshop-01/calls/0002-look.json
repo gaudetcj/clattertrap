@@ -1,0 +1,26 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "anchor",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 208.3,
+        "y_cm": 250
+      },
+      {
+        "a": "ball0",
+        "b": "anchor",
+        "kind": "rope",
+        "max_length_cm": 88.9
+      }
+    ]
+  },
+  "problems": [
+    "parts[1]: missing field `id` at line 1 column 175; write what the format asks for there"
+  ]
+}

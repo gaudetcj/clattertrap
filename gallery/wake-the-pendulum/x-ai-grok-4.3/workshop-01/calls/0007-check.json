@@ -1,0 +1,20 @@
+{
+  "seq": 7,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 150,
+        "y_cm": 220
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam guide): overlaps pend by 0.3 cm at the start; move it up to y_cm = 220.3"
+  ]
+}

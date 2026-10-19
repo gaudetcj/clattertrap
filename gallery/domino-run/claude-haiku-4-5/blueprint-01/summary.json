@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-4-5",
+  "level": "domino-run",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792375533,
+  "duration_s": 81.0665217,
+  "cost_usd": 0.08705829999999999,
+  "turns": 10,
+  "tool_calls": 9,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

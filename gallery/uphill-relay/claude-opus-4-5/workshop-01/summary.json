@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792387085,
+  "duration_s": 1108.119622,
+  "cost_usd": 3.271678000000001,
+  "turns": 40,
+  "tool_calls": 39,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

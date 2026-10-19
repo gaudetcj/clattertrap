@@ -1,0 +1,15 @@
+{
+  "model": "claude-haiku-4-5",
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792379281,
+  "duration_s": 209.9995516,
+  "cost_usd": 0.26013099999999995,
+  "turns": 28,
+  "tool_calls": 27,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

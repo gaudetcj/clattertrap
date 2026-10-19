@@ -1,0 +1,69 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -12,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": 25,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 365,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 18,
+        "id": "b4",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 290,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": 12,
+        "id": "b5",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 165,
+        "y_cm": 55
+      },
+      {
+        "height_cm": 25,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 20,
+        "x_cm": 205,
+        "y_cm": 85
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 4.158334,
+    "steps": 499,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "71961f7fe8a9f4c9",
+    "state_hash": "50e7147f75591e95",
+    "rules_version": 1
+  }
+}

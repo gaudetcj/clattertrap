@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "basket-fill",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792382561,
+  "duration_s": 634.5853392,
+  "cost_usd": 1.8274529999999998,
+  "turns": 29,
+  "tool_calls": 28,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

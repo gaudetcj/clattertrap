@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "grand-tour",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792383472,
+  "duration_s": 24.7221224,
+  "cost_usd": 0.02144715,
+  "turns": 8,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

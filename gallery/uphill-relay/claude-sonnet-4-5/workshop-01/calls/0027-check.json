@@ -1,0 +1,72 @@
+{
+  "seq": 27,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "start",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 75,
+        "y_cm": 254
+      },
+      {
+        "angle_deg": 0,
+        "id": "over_a",
+        "kind": "beam",
+        "length_cm": 35,
+        "x_cm": 135,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -30,
+        "id": "to_b",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 178,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "over_b",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 230,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 0,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 280,
+        "y_cm": 46
+      },
+      {
+        "id": "wood_ball",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 240,
+        "y_cm": 54
+      },
+      {
+        "angle_deg": 8,
+        "id": "arc_catch",
+        "kind": "beam",
+        "length_cm": 75,
+        "x_cm": 308,
+        "y_cm": 128
+      },
+      {
+        "angle_deg": -15,
+        "id": "over_c",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 335,
+        "y_cm": 110
+      }
+    ]
+  }
+}

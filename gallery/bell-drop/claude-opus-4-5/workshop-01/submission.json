@@ -1,0 +1,54 @@
+{
+  "level": "bell-drop",
+  "arm": "workshop",
+  "name": "The Stairway to Ding",
+  "prediction": "The steel ball falls onto four descending beams, rolling rightward and gaining speed, before launching off the final ramp to strike the bell.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 100,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 180,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": -15,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 260,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": -5,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 320,
+        "y_cm": 90
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.5416667,
+    "steps": 185,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "c6c6d3ff849f42e9",
+    "state_hash": "6fceca5e62e93c33",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "level": "bell-drop",
+  "arm": "workshop",
+  "name": "Falling Steel Ramp-and-Shelf Bellringer",
+  "prediction": "The steel ball drops onto the tilted ramp, rolls down gaining speed, sails off its end, lands on the long shelf at bell height, and rolls straight into the bell, ringing it about two seconds in.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 136,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": 0,
+        "id": "shelf",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 271,
+        "y_cm": 88
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.9333334,
+    "steps": 232,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "bc3a554c6e8a7cd6",
+    "state_hash": "2aaed0b797d0fa8b",
+    "rules_version": 1
+  }
+}

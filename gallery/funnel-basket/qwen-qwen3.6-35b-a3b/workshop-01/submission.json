@@ -1,0 +1,18 @@
+{
+  "level": "funnel-basket",
+  "arm": "workshop",
+  "name": "Triple Funnel Basket Drop",
+  "prediction": "Three wood balls fall from the top; the two outer balls hit angled beams that redirect them inward toward the basket while the middle ball drops straight in, all three coming to rest inside the basket.",
+  "scene": "{\"level\": \"funnel-basket\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 80, \"y_cm\": 180, \"length_cm\": 120, \"angle_deg\": -15}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 320, \"y_cm\": 180, \"length_cm\": 120, \"angle_deg\": 15}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.575,
+    "steps": 309,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "b6f8aaeee48afc68",
+    "state_hash": "f8973481bb7f7c62",
+    "rules_version": 1
+  }
+}

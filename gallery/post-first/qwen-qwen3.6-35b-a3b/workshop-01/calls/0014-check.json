@@ -1,0 +1,5 @@
+{
+  "seq": 14,
+  "tool": "check",
+  "scene": "{\"level\": \"post-first\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 90, \"y_cm\": 120, \"length_cm\": 60, \"angle_deg\": -30}]}"
+}

@@ -1,0 +1,52 @@
+{
+  "seq": 14,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "height_cm": 70,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 70,
+        "throat_cm": 35,
+        "x_cm": 50,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -5,
+        "id": "drop2",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 110,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 28,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 265,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 28,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 300,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "93f491c53fe5744d",
+    "state_hash": "5208608d694ea5b2",
+    "rules_version": 1
+  }
+}

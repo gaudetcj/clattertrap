@@ -1,0 +1,29 @@
+{
+  "level": "spring-launch",
+  "arm": "workshop",
+  "name": "Straight Spring Launch",
+  "prediction": "The wood ball rolls down the fixed ramp onto the horizontal spring pad, launches upward onto the main ledge, then crosses the slot and presses the button.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 145,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.516667,
+    "steps": 302,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "7136f85447688403",
+    "state_hash": "62a0407a0e64f562",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "domino-run",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792390015,
+  "duration_s": 1143.172469,
+  "cost_usd": 0.12750582799999996,
+  "turns": 12,
+  "tool_calls": 12,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

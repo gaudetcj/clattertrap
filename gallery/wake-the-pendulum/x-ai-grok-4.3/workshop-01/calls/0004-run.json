@@ -1,0 +1,28 @@
+{
+  "seq": 4,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 240
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "dde796cc11f6e5b5",
+    "state_hash": "f19056b50a62d022",
+    "rules_version": 1
+  }
+}

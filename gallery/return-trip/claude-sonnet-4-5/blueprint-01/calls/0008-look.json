@@ -1,0 +1,57 @@
+{
+  "seq": 8,
+  "tool": "look",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "guide",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 18,
+        "x_cm": 90,
+        "y_cm": 238
+      },
+      {
+        "angle_deg": -8,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 120,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -15,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 228,
+        "y_cm": 182
+      },
+      {
+        "angle_deg": 155,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 112,
+        "x_cm": 262,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": 155,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 78,
+        "x_cm": 152,
+        "y_cm": 50
+      },
+      {
+        "id": "crate1",
+        "kind": "crate",
+        "side_cm": 20,
+        "x_cm": 192,
+        "y_cm": 94
+      }
+    ]
+  }
+}

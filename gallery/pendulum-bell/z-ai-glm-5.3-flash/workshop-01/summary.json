@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "pendulum-bell",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792392120,
+  "duration_s": 119.57144,
+  "cost_usd": 0.0022499919999999997,
+  "turns": 6,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

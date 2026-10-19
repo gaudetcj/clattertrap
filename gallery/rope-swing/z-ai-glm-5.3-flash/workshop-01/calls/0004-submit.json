@@ -1,0 +1,18 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": "{\"level\": \"rope-swing\", \"parts\": [{\"a\": \"ball0\", \"b\": \"hook\", \"id\": \"rope1\", \"kind\": \"rope\", \"max_length_cm\": 105}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.87500006,
+    "steps": 105,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "30b9aee61b2b1800",
+    "state_hash": "192549e31f74debd",
+    "rules_version": 1
+  },
+  "name": "Hook-Rope Pendulum Bell Ringer",
+  "prediction": "The steel ball free-falls until the 105 cm rope to the hook pulls taut, then swings down through the bottom of its arc and up into the hanging bell, ringing it about 0.9 s in."
+}

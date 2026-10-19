@@ -1,0 +1,46 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 40,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 76.85,
+        "y_cm": 81.72
+      },
+      {
+        "angle_deg": 40,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 161.42,
+        "y_cm": 152.68
+      },
+      {
+        "angle_deg": 40,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 148,
+        "x_cm": 260.54,
+        "y_cm": 235.86
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 4.1000004,
+    "steps": 492,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "77fe76237654f911",
+    "state_hash": "e1b67c002242ba72",
+    "rules_version": 1
+  },
+  "name": "Balloon Escalator: ceiling ramp to the pin",
+  "prediction": "The balloon rises from (50,30), catches the underside of the three-beam 40° ceiling ramp, slides up-slope along it toward the top right, and its flank reaches the fixed pin's tip near (320,274), popping the balloon roughly 3 seconds into the run."
+}

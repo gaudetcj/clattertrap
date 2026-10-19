@@ -1,0 +1,59 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -25,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 135,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 200,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": -35,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 255,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 15,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 70,
+        "x_cm": 295,
+        "y_cm": 55
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 265,
+        "y_cm": 72
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam beam1): overlaps ball0 by 2.6 cm at the start; move it up to y_cm = 262.6"
+  ]
+}

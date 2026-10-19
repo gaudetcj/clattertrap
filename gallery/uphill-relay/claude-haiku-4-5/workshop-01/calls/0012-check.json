@@ -1,0 +1,41 @@
+{
+  "seq": 12,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "height_cm": 70,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 70,
+        "throat_cm": 35,
+        "x_cm": 50,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -5,
+        "id": "drop2",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 110,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 28,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 265,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 28,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 300,
+        "y_cm": 105
+      }
+    ]
+  }
+}

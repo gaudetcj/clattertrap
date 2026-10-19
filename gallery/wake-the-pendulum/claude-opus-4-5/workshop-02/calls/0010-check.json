@@ -1,0 +1,25 @@
+{
+  "seq": 10,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -18,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 90,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -20,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 60,
+        "y_cm": 65
+      }
+    ]
+  }
+}

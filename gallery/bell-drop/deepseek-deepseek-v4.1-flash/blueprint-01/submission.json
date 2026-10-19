@@ -1,0 +1,38 @@
+{
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "name": "Twin-Ramp Steel Slide",
+  "prediction": "The steel ball drops onto the two-beam -25 degree ramp, rolls down, and flies off the lower end to strike the bell at (360,100), ringing it.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 107.97,
+        "y_cm": 218.3
+      },
+      {
+        "angle_deg": -25,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 241.81,
+        "y_cm": 150.38
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.5083334,
+    "steps": 181,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "14de987b6e643fae",
+    "state_hash": "cc800fe3564ab42f",
+    "rules_version": 1
+  }
+}

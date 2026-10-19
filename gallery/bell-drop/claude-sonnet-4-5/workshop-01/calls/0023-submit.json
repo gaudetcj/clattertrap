@@ -1,0 +1,54 @@
+{
+  "seq": 23,
+  "tool": "submit",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 115,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 190,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -10,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 260,
+        "y_cm": 160
+      },
+      {
+        "angle_deg": -30,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 330,
+        "y_cm": 126
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.9833335,
+    "steps": 238,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "3f41d0688959c5e3",
+    "state_hash": "535bb0a0ab75a02a",
+    "rules_version": 1
+  },
+  "name": "Cascade to Victory",
+  "prediction": "The steel ball will roll down a series of cascading ramps and strike the bell with sufficient force to ring it."
+}

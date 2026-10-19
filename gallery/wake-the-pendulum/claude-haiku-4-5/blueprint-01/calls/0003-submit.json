@@ -1,0 +1,31 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 30,
+        "x_cm": 100,
+        "y_cm": 160
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.2333333,
+    "steps": 268,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "fdbaa6b446f6af03",
+    "state_hash": "7cd8ccf16a10cad6",
+    "rules_version": 1
+  },
+  "name": "Funnel Drop",
+  "prediction": "Ball0 falls through the funnel and exits toward the pendulum weight, which swings and knocks ball1 off the ledge, creating a chain that reaches the post and rings the bell."
+}

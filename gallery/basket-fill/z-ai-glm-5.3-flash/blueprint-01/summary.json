@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "basket-fill",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792384019,
+  "duration_s": 592.2761095,
+  "cost_usd": 0.06098792,
+  "turns": 4,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

@@ -1,0 +1,18 @@
+{
+  "seq": 5,
+  "tool": "submit",
+  "scene": "{\"level\": \"seesaw-launch\", \"parts\": [{\"angle_deg\": 0, \"id\": \"whip\", \"kind\": \"seesaw\", \"length_cm\": 100, \"x_cm\": 135, \"y_cm\": 115}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.5916667,
+    "steps": 71,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "d0442a91aad71449",
+    "state_hash": "0668defdb17a40b9",
+    "rules_version": 1
+  },
+  "name": "High-pivot seesaw whip",
+  "prediction": "The steel ball falls 147 cm onto the whip's left arm, rotating the seesaw so its right tip sweeps up through the bell and rings it, still driven by the ball rolling down the left arm."
+}

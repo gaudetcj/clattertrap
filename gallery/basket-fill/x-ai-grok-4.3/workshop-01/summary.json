@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "basket-fill",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792383649,
+  "duration_s": 39.958768,
+  "cost_usd": 0.03929225,
+  "turns": 15,
+  "tool_calls": 14,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

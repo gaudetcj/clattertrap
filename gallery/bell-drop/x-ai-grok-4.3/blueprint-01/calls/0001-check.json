@@ -1,0 +1,20 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 200,
+        "x_cm": 200,
+        "y_cm": 200
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam b1): length_cm 200 is outside 20..150; set length_cm within that range"
+  ]
+}

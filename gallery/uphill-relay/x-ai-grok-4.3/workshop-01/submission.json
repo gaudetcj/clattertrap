@@ -1,0 +1,60 @@
+{
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "name": "Uphill spring relay",
+  "prediction": "The falling steel ball rolls over post a, down the long beam to post b, the spring launches the second ball up to post c then down to ring the bell.",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": 10,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 70,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -50,
+        "id": "toB",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 150,
+        "y_cm": 150
+      },
+      {
+        "angle_deg": 50,
+        "id": "sp",
+        "kind": "spring_pad",
+        "x_cm": 230,
+        "y_cm": 50
+      },
+      {
+        "id": "b2",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 280,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": -20,
+        "id": "toBell",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 340,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.2916667,
+    "steps": 275,
+    "parts_used": 5,
+    "chain_length": 2,
+    "event_hash": "d01275c6cb0209a3",
+    "state_hash": "222ce4a9056dbbd8",
+    "rules_version": 1
+  }
+}

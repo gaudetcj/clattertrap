@@ -1,0 +1,29 @@
+{
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "name": "Spring Arc to Victory",
+  "prediction": "The ball rolls off the ramp, hits the spring pad, arcs up to land on the first ledge, rolls into the gap, and presses the button.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 62,
+        "id": "spring1",
+        "kind": "spring_pad",
+        "x_cm": 200,
+        "y_cm": 63
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6583334,
+    "steps": 199,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "85c3f04a84d854a1",
+    "state_hash": "5e2529b708064690",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 252
+      },
+      {
+        "angle_deg": -65,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 172.5,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -20,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 45,
+        "x_cm": 247,
+        "y_cm": 33
+      },
+      {
+        "angle_deg": -25,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 285,
+        "y_cm": 18
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 70,
+        "y_cm": 280
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.15,
+    "steps": 258,
+    "parts_used": 5,
+    "chain_length": 2,
+    "event_hash": "e8704501c62418ee",
+    "state_hash": "6f21a49672967bc3",
+    "rules_version": 1
+  },
+  "name": "Uphill Spring Relay",
+  "prediction": "The falling balls roll down ramp1 to touch a, descend ramp2 to touch b, then a wood ball rolls over ramp3 onto the angled spring pad, launches up and right to touch c, and continues into the bell."
+}

@@ -1,0 +1,24 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 210,
+        "y_cm": 258
+      },
+      {
+        "a": "ball0",
+        "b": "beam1",
+        "id": "rope1",
+        "kind": "rope",
+        "max_length_cm": 92
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 60,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -35,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 160,
+        "y_cm": 195
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam ramp1): overlaps ball0 by 5.9 cm at the start; move it up to y_cm = 270.9",
+    "parts[1] (beam ramp2): overlaps pend by 1.3 cm at the start; move it up to y_cm = 196.3",
+    "parts[1] (beam ramp2): overlaps pend by 8.5 cm at the start; move it up to y_cm = 203.5"
+  ]
+}

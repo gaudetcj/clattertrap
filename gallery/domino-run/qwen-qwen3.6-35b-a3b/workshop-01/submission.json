@@ -1,0 +1,18 @@
+{
+  "level": "domino-run",
+  "arm": "workshop",
+  "name": "domino-bell-cascade",
+  "prediction": "Wood ball rolls down ramp, knocks over 10 dominoes in a chain; last domino tips off shelf edge into basket.",
+  "scene": "{\"level\": \"domino-run\", \"parts\": [{\"id\": \"dom1\", \"kind\": \"domino\", \"x_cm\": 130, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom2\", \"kind\": \"domino\", \"x_cm\": 138, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom3\", \"kind\": \"domino\", \"x_cm\": 146, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom4\", \"kind\": \"domino\", \"x_cm\": 154, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom5\", \"kind\": \"domino\", \"x_cm\": 162, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom6\", \"kind\": \"domino\", \"x_cm\": 170, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom7\", \"kind\": \"domino\", \"x_cm\": 178, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom8\", \"kind\": \"domino\", \"x_cm\": 186, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom9\", \"kind\": \"domino\", \"x_cm\": 194, \"y_cm\": 137.5, \"angle_deg\": 0}, {\"id\": \"dom10\", \"kind\": \"domino\", \"x_cm\": 258, \"y_cm\": 137.5, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.2250001,
+    "steps": 387,
+    "parts_used": 10,
+    "chain_length": 11,
+    "event_hash": "0c9ce53ab11222ba",
+    "state_hash": "c4a3b4a2afe9cc7a",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "seq": 18,
+  "tool": "check",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 80, \"y_cm\": 240, \"length_cm\": 80, \"angle_deg\": -20}, {\"id\": \"d1\", \"kind\": \"domino\", \"x_cm\": 210, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d2\", \"kind\": \"domino\", \"x_cm\": 230, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d3\", \"kind\": \"domino\", \"x_cm\": 250, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d4\", \"kind\": \"domino\", \"x_cm\": 270, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d5\", \"kind\": \"domino\", \"x_cm\": 290, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"s1\", \"kind\": \"seesaw\", \"x_cm\": 340, \"y_cm\": 140, \"length_cm\": 100, \"angle_deg\": 0}, {\"id\": \"b2\", \"kind\": \"ball\", \"x_cm\": 370, \"y_cm\": 146, \"material\": \"wood\"}]}",
+  "problems": [
+    "parts[6] (seesaw s1): centre (340, 140) is outside every build zone; move it inside x 20..320, y 10..280 or x 320..380, y 160..280",
+    "parts[7] (ball b2): centre (370, 146) is outside every build zone; move it inside x 20..320, y 10..280 or x 320..380, y 160..280"
+  ]
+}

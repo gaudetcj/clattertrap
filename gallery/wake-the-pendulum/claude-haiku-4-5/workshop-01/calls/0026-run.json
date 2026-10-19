@@ -1,0 +1,35 @@
+{
+  "seq": 26,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -28,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 80,
+        "y_cm": 275
+      },
+      {
+        "id": "relay",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 150,
+        "y_cm": 195
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 4,
+    "event_hash": "e14220aadf0dab2e",
+    "state_hash": "84f1bc8d2ac7fb3e",
+    "rules_version": 1
+  }
+}

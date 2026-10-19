@@ -1,0 +1,18 @@
+{
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "name": "SpringLaunch to Button",
+  "prediction": "Wood ball rolls down ramp, slides along beam to spring pad angled at -30° which launches it upward-right into the button slot between the ledges.",
+  "scene": "{\"level\": \"spring-launch\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 170, \"y_cm\": 92, \"length_cm\": 80, \"angle_deg\": -15}, {\"id\": \"spring1\", \"kind\": \"spring_pad\", \"x_cm\": 210, \"y_cm\": 82, \"angle_deg\": -30}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.4916668,
+    "steps": 299,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "fe97e2473e57050a",
+    "state_hash": "2edd4ba0857b4363",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "seq": 9,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 80,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 0,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 140,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 10,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 280,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": 0,
+        "id": "dom1",
+        "kind": "domino",
+        "x_cm": 310,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": 5,
+        "id": "see1",
+        "kind": "seesaw",
+        "length_cm": 50,
+        "x_cm": 330,
+        "y_cm": 155
+      },
+      {
+        "height_cm": 40,
+        "id": "fun1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 20,
+        "x_cm": 120,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": 0,
+        "id": "b4",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 200,
+        "y_cm": 50
+      },
+      {
+        "id": "crate1",
+        "kind": "crate",
+        "side_cm": 20,
+        "x_cm": 350,
+        "y_cm": 100
+      }
+    ]
+  },
+  "problems": [
+    "parts[4] (seesaw see1): overlaps shelf by 1.2 cm at the start; move it up to y_cm = 156.2",
+    "parts[4] (seesaw see1): overlaps w1 by 3.7 cm at the start; move it up to y_cm = 158.7",
+    "parts[4] (seesaw see1): overlaps w2 by 6.3 cm at the start; move it up to y_cm = 161.3",
+    "parts[3] (domino dom1): overlaps b3 by 11.7 cm at the start; move it up to y_cm = 196.7"
+  ],
+  "name": "Return Trip Rube",
+  "prediction": "The steel ball rolls down beams to hit post a, domino knocks w1 left onto seesaw which launches it to hit d, then w1 w2 and crate fall into basket via funnel."
+}

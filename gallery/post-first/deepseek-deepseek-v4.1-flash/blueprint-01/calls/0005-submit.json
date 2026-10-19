@@ -1,0 +1,38 @@
+{
+  "seq": 5,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -36.3,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 130.2,
+        "x_cm": 97.5,
+        "y_cm": 213.5
+      },
+      {
+        "angle_deg": -21.1,
+        "id": "chute",
+        "kind": "beam",
+        "length_cm": 94.3,
+        "x_cm": 278,
+        "y_cm": 97
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.4333334,
+    "steps": 172,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "8529028291379a11",
+    "state_hash": "b99327563ced5a09",
+    "rules_version": 1
+  },
+  "name": "Post Bounce Ramp to Bell",
+  "prediction": "The steel ball falls onto the first ramp, rolls off, drops onto the post to touch it, bounces, lands on the chute and rolls off into the bell, ringing it."
+}

@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "name": "Slack-Rope Pendulum Swing",
+  "prediction": "The steel ball free-falls, the 115 cm rope to the hook goes taut, and the ball swings around the hook, arriving at the bell's height with enough speed to ring it.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "tie",
+        "kind": "rope",
+        "max_length_cm": 115
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.9583334,
+    "steps": 115,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "84f3e4ea2ce13c48",
+    "state_hash": "c7bcc3a57ed78271",
+    "rules_version": 1
+  }
+}

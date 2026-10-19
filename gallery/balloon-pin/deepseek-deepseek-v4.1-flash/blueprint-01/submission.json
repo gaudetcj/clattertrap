@@ -1,0 +1,54 @@
+{
+  "level": "balloon-pin",
+  "arm": "blueprint",
+  "name": "Chute-and-Pin Balloon Popper",
+  "prediction": "The rising balloon meets the beam chute, slides up-right along the 20, 35 and 60 degree beams to the pin at (320,290), and pops.",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 102,
+        "y_cm": 92
+      },
+      {
+        "angle_deg": 35,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 206,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": 60,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 278,
+        "y_cm": 224
+      },
+      {
+        "angle_deg": 90,
+        "id": "b4",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 332,
+        "y_cm": 230
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 5.925,
+    "steps": 711,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "92967baa56559302",
+    "state_hash": "9b9f7f6c512f4430",
+    "rules_version": 1
+  }
+}

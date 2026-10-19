@@ -1,0 +1,5 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": "{\"level\": \"return-trip\", \"parts\": [{\"id\": \"funnel1\", \"kind\": \"funnel\", \"x_cm\": 150, \"y_cm\": 235, \"mouth_cm\": 40, \"throat_cm\": 20, \"height_cm\": 50}, {\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 175, \"y_cm\": 210, \"length_cm\": 50, \"angle_deg\": -20}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 230, \"y_cm\": 190, \"length_cm\": 50, \"angle_deg\": -20}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 285, \"y_cm\": 170, \"length_cm\": 50, \"angle_deg\": -20}, {\"id\": \"beam4\", \"kind\": \"beam\", \"x_cm\": 180, \"y_cm\": 70, \"length_cm\": 60, \"angle_deg\": 15}, {\"id\": \"domino1\", \"kind\": \"domino\", \"x_cm\": 175, \"y_cm\": 81.2, \"angle_deg\": 0}, {\"id\": \"domino2\", \"kind\": \"domino\", \"x_cm\": 155, \"y_cm\": 80, \"angle_deg\": 0}]}"
+}

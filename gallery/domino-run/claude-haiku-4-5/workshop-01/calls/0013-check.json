@@ -1,0 +1,57 @@
+{
+  "seq": 13,
+  "tool": "check",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 145,
+        "y_cm": 145
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 165,
+        "y_cm": 145
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 185,
+        "y_cm": 145
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 205,
+        "y_cm": 145
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 225,
+        "y_cm": 145
+      },
+      {
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 245,
+        "y_cm": 145
+      },
+      {
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 262,
+        "y_cm": 145
+      },
+      {
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 272,
+        "y_cm": 150
+      }
+    ]
+  }
+}

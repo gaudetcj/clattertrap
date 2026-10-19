@@ -1,0 +1,90 @@
+{
+  "seq": 22,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "catch_ball",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 75,
+        "y_cm": 254
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_a",
+        "kind": "beam",
+        "length_cm": 35,
+        "x_cm": 135,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -40,
+        "id": "ramp_down",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 170,
+        "y_cm": 150
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_b",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 220,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw",
+        "kind": "seesaw",
+        "length_cm": 60,
+        "x_cm": 260,
+        "y_cm": 44
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 230,
+        "y_cm": 52
+      },
+      {
+        "angle_deg": 25,
+        "id": "guide_up",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 280,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": -5,
+        "id": "at_c",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 330,
+        "y_cm": 110
+      },
+      {
+        "angle_deg": -45,
+        "id": "to_bell",
+        "kind": "spring_pad",
+        "x_cm": 355,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 4.6833334,
+    "steps": 562,
+    "parts_used": 9,
+    "chain_length": 1,
+    "event_hash": "84136c47f6ace84c",
+    "state_hash": "2dce2e6569993729",
+    "rules_version": 1
+  }
+}

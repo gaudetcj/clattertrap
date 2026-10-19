@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "button-drop",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792376434,
+  "duration_s": 228.5627554,
+  "cost_usd": 0.56242,
+  "turns": 8,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

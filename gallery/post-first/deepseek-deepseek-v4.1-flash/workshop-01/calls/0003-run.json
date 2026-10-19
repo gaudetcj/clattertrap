@@ -1,0 +1,36 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -35,
+        "id": "ramp_a",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 110.55,
+        "y_cm": 171
+      },
+      {
+        "angle_deg": -17,
+        "id": "ramp_b",
+        "kind": "beam",
+        "length_cm": 95,
+        "x_cm": 277.4,
+        "y_cm": 104.1
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.4250001,
+    "steps": 171,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "da256b7628fbe305",
+    "state_hash": "7a8afa635af32711",
+    "rules_version": 1
+  }
+}

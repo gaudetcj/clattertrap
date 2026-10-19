@@ -1,0 +1,46 @@
+{
+  "seq": 10,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -35,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 80,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -15,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 190,
+        "y_cm": 128
+      },
+      {
+        "angle_deg": -10,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 270,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.4250001,
+    "steps": 171,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "e92d062b21e72605",
+    "state_hash": "506cc7cc3b4a3350",
+    "rules_version": 1
+  },
+  "name": "Post-First Bell Ringer",
+  "prediction": "A falling steel ball bounces off three angled beams to hit the post, then continues to strike the bell."
+}

@@ -1,0 +1,53 @@
+{
+  "seq": 10,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -12,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": 28,
+        "id": "b4",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 280,
+        "y_cm": 108
+      },
+      {
+        "angle_deg": 15,
+        "id": "b5",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 150,
+        "y_cm": 48
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 200,
+        "y_cm": 80
+      }
+    ]
+  },
+  "problems": [
+    "parts[4] (seesaw seesaw1): overlaps d by 4.0 cm at the start; move it up to y_cm = 84.0",
+    "parts[4] (seesaw seesaw1): overlaps b4 by 9.7 cm at the start; move it up to y_cm = 89.7"
+  ]
+}

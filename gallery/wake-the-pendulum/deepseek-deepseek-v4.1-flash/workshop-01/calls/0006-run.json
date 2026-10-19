@@ -1,0 +1,16 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"wakeramp\", \"kind\": \"beam\", \"x_cm\": 248, \"y_cm\": 187.5, \"length_cm\": 92, \"angle_deg\": 36.6}, {\"id\": \"wake\", \"kind\": \"ball\", \"x_cm\": 280, \"y_cm\": 222, \"material\": \"steel\"}, {\"id\": \"catch\", \"kind\": \"beam\", \"x_cm\": 50, \"y_cm\": 150, \"length_cm\": 60, \"angle_deg\": -20}, {\"id\": \"postramp\", \"kind\": \"beam\", \"x_cm\": 66.5, \"y_cm\": 75, \"length_cm\": 52, \"angle_deg\": 35}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.5416667,
+    "steps": 305,
+    "parts_used": 4,
+    "chain_length": 5,
+    "event_hash": "793fa0c6090cd395",
+    "state_hash": "b8bbf307639c9f3d",
+    "rules_version": 1
+  }
+}

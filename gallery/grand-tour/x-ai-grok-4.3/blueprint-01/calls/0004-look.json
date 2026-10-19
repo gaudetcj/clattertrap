@@ -1,0 +1,74 @@
+{
+  "seq": 4,
+  "tool": "look",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 80,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 170,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 200,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 230,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 260,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 290,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 320,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 0,
+        "id": "launch",
+        "kind": "seesaw",
+        "length_cm": 60,
+        "x_cm": 340,
+        "y_cm": 180
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 340,
+        "y_cm": 200
+      }
+    ]
+  }
+}

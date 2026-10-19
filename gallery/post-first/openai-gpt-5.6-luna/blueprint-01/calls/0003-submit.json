@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 125,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -12,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 260,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "bf8d14b977815099",
+    "state_hash": "3657e32d4c65e1d1",
+    "rules_version": 1
+  },
+  "name": "Post-to-Bell Twin Ramp",
+  "prediction": "The falling steel ball will roll down the first ramp into the post, then transfer onto the descending second ramp and strike the bell hard enough to ring it."
+}

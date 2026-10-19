@@ -1,0 +1,8 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": "{\"level\": \"return-trip\", \"parts\": [{\"id\": \"ramp1\", \"kind\": \"beam\", \"x_cm\": 90, \"y_cm\": 200, \"length_cm\": 40, \"angle_deg\": -20}, {\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 175, \"y_cm\": 130, \"length_cm\": 60, \"angle_deg\": -10}, {\"id\": \"dom1\", \"kind\": \"domino\", \"x_cm\": 250, \"y_cm\": 100}, {\"id\": \"dom2\", \"kind\": \"domino\", \"x_cm\": 270, \"y_cm\": 100}, {\"id\": \"crate1\", \"kind\": \"crate\", \"x_cm\": 200, \"y_cm\": 25}]}",
+  "problems": [
+    "parts[4]: missing field `side_cm` at line 1 column 400; write what the format asks for there"
+  ]
+}

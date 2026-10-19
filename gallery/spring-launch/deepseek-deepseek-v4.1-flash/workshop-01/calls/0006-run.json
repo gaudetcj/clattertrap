@@ -1,0 +1,27 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": -3,
+        "id": "pad1",
+        "kind": "spring_pad",
+        "x_cm": 160,
+        "y_cm": 97
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.8666668,
+    "steps": 224,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "5cabee22a8f2d9cb",
+    "state_hash": "f2f554f03a20e039",
+    "rules_version": 1
+  }
+}

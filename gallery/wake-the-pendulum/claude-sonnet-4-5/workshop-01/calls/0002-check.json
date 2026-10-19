@@ -1,0 +1,37 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -1,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 110,
+        "y_cm": 270
+      },
+      {
+        "angle_deg": -130,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 220,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -18,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 75
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam catch): overlaps ball0 by 6.0 cm at the start; move it up to y_cm = 276.0",
+    "parts[1] (beam ramp): overlaps pend by 14.4 cm at the start; move it up to y_cm = 239.4"
+  ]
+}

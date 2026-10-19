@@ -1,0 +1,38 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -35,
+        "id": "ramp_a",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 110.55,
+        "y_cm": 171
+      },
+      {
+        "angle_deg": -17,
+        "id": "ramp_b",
+        "kind": "beam",
+        "length_cm": 95,
+        "x_cm": 277.4,
+        "y_cm": 104.1
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.4250001,
+    "steps": 171,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "da256b7628fbe305",
+    "state_hash": "7a8afa635af32711",
+    "rules_version": 1
+  },
+  "name": "Two-Ramp Post Relay",
+  "prediction": "The falling steel ball lands on the upper ramp, slides down across the post to register the waypoint, then rolls down the lower ramp and strikes the bell, ringing it at about 1.4 s."
+}

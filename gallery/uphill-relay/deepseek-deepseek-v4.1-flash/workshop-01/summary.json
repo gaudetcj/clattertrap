@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792394548,
+  "duration_s": 1044.2142175,
+  "cost_usd": 0.11609376200000002,
+  "turns": 12,
+  "tool_calls": 12,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

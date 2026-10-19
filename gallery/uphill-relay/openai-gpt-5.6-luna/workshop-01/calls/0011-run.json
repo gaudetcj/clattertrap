@@ -1,0 +1,74 @@
+{
+  "seq": 11,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 80,
+        "y_cm": 246
+      },
+      {
+        "angle_deg": -70,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 160,
+        "y_cm": 172
+      },
+      {
+        "angle_deg": -75,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 190,
+        "y_cm": 77
+      },
+      {
+        "angle_deg": 50,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 245,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": 0,
+        "id": "shelf",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 285,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -20,
+        "id": "launch",
+        "kind": "spring_pad",
+        "x_cm": 300,
+        "y_cm": 25
+      },
+      {
+        "id": "relay",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 285,
+        "y_cm": 150
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 6.391667,
+    "steps": 767,
+    "parts_used": 7,
+    "chain_length": 2,
+    "event_hash": "834c12d94b744c93",
+    "state_hash": "cb9acdcc7227d9d5",
+    "rules_version": 1
+  }
+}

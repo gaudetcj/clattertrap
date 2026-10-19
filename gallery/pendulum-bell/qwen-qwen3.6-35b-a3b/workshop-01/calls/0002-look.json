@@ -1,0 +1,5 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": "{\"level\": \"pendulum-bell\", \"parts\": [{\"id\": \"pend1\", \"kind\": \"pendulum\", \"x_cm\": 300, \"y_cm\": 160, \"length_cm\": 80, \"angle_deg\": 60}]}"
+}

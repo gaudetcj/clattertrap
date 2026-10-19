@@ -1,0 +1,29 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 200,
+        "x_cm": 200,
+        "y_cm": 200
+      },
+      {
+        "height_cm": 50,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 20,
+        "x_cm": 330,
+        "y_cm": 120
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam ramp): length_cm 200 is outside 20..150; set length_cm within that range"
+  ]
+}

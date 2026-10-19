@@ -1,0 +1,54 @@
+{
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "name": "Four-Beam Bell Ringer",
+  "prediction": "The steel ball falls onto beam1, cascades down through all four beams gaining speed, and launches from the final upward-angled beam to strike the bell.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 95,
+        "y_cm": 255
+      },
+      {
+        "angle_deg": -25,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 170,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": 10,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 315,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.0500002,
+    "steps": 246,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "1780f1c9242300d9",
+    "state_hash": "d0ecaa9a20f6a033",
+    "rules_version": 1
+  }
+}

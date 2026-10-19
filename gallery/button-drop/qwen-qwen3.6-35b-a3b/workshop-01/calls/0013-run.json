@@ -1,0 +1,16 @@
+{
+  "seq": 13,
+  "tool": "run",
+  "scene": "{\"level\": \"button-drop\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 200, \"y_cm\": 150, \"length_cm\": 140, \"angle_deg\": -35}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.5583334,
+    "steps": 187,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "d06f443ee322b199",
+    "state_hash": "9a72b0839a7156c2",
+    "rules_version": 1
+  }
+}

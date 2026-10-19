@@ -1,0 +1,76 @@
+{
+  "level": "domino-run",
+  "arm": "workshop",
+  "name": "Domino Chain Topple",
+  "prediction": "The ball rolls down the ramp, hits the domino chain, and causes d8 and d9 to tip and fall into the basket.",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 145,
+        "y_cm": 145
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 165,
+        "y_cm": 145
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 185,
+        "y_cm": 145
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 205,
+        "y_cm": 145
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 230,
+        "y_cm": 145
+      },
+      {
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 255,
+        "y_cm": 145
+      },
+      {
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 265,
+        "y_cm": 150
+      },
+      {
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 275,
+        "y_cm": 155
+      },
+      {
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 270,
+        "y_cm": 165
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 7.166667,
+    "steps": 860,
+    "parts_used": 9,
+    "chain_length": 10,
+    "event_hash": "a7a1c48697e5e7b4",
+    "state_hash": "2ec5eae7415f4db0",
+    "rules_version": 1
+  }
+}

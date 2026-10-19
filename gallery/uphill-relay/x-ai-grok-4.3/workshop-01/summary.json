@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "uphill-relay",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792383993,
+  "duration_s": 53.4939854,
+  "cost_usd": 0.04311765,
+  "turns": 14,
+  "tool_calls": 13,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

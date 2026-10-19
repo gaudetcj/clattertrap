@@ -1,0 +1,47 @@
+{
+  "level": "funnel-basket",
+  "arm": "workshop",
+  "name": "Triple Funnel Redirect",
+  "prediction": "Two angled beams redirect the left and right falling balls toward center while a central funnel channels all three balls down into the basket.",
+  "scene": {
+    "level": "funnel-basket",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "beam_left",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 110,
+        "y_cm": 160
+      },
+      {
+        "angle_deg": 20,
+        "id": "beam_right",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 290,
+        "y_cm": 160
+      },
+      {
+        "height_cm": 60,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 50,
+        "x_cm": 200,
+        "y_cm": 80
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.7833334,
+    "steps": 214,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "ebb77b785e429b8f",
+    "state_hash": "65a7f15b4a739b84",
+    "rules_version": 1
+  }
+}

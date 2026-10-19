@@ -1,0 +1,46 @@
+{
+  "seq": 8,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 80,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": -38,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 170,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -18,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 260,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.5250001,
+    "steps": 183,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "bbd7f9a2d2a68d18",
+    "state_hash": "236298a401051bd0",
+    "rules_version": 1
+  },
+  "name": "Three-Ramp Cascade",
+  "prediction": "The steel ball will roll down three connected ramps, touch the post midway, then ring the bell at the end."
+}

@@ -1,0 +1,37 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "seesaw-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 140,
+        "y_cm": 30
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 175,
+        "y_cm": 43
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.8083336,
+    "steps": 457,
+    "parts_used": 2,
+    "chain_length": 3,
+    "event_hash": "90901a136514689d",
+    "state_hash": "bf7fc9d14c5ac658",
+    "rules_version": 1
+  },
+  "name": "Catapult Domino",
+  "prediction": "The steel ball lands on the left end of the seesaw, launching the domino upward through the box opening to ring the bell."
+}

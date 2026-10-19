@@ -1,0 +1,82 @@
+{
+  "seq": 10,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 70,
+        "y_cm": 255
+      },
+      {
+        "angle_deg": 0,
+        "id": "guide_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 120,
+        "y_cm": 234
+      },
+      {
+        "angle_deg": -30,
+        "id": "down1",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 160,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -30,
+        "id": "down2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 210,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": 0,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 300,
+        "y_cm": 48
+      },
+      {
+        "id": "holder",
+        "kind": "crate",
+        "side_cm": 10,
+        "x_cm": 255,
+        "y_cm": 57
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 255,
+        "y_cm": 68
+      },
+      {
+        "angle_deg": 0,
+        "id": "catch_c",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 320,
+        "y_cm": 114
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 7.2750006,
+    "steps": 873,
+    "parts_used": 8,
+    "chain_length": 5,
+    "event_hash": "f96d27d785e61811",
+    "state_hash": "d2c552810cb9d8b7",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "return-trip",
+  "arm": "blueprint",
+  "status": "timed_out",
+  "started_unix_s": 1792391115,
+  "duration_s": 1200.0161489,
+  "cost_usd": 0.000180204,
+  "turns": 2,
+  "tool_calls": 2,
+  "foreign_tools": [],
+  "result_subtype": "timed_out",
+  "exit_code": null,
+  "error": "the wall clock ran out"
+}

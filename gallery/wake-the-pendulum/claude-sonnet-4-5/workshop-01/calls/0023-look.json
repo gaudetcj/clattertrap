@@ -1,0 +1,47 @@
+{
+  "seq": 23,
+  "tool": "look",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "main_ramp",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 230
+      },
+      {
+        "id": "catcher",
+        "kind": "crate",
+        "side_cm": 15,
+        "x_cm": 185,
+        "y_cm": 177
+      },
+      {
+        "id": "pusher",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 210,
+        "y_cm": 169
+      },
+      {
+        "angle_deg": -10,
+        "id": "post_guide",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 120,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": -15,
+        "id": "bell_guide",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 70,
+        "y_cm": 70
+      }
+    ]
+  }
+}

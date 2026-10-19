@@ -1,0 +1,40 @@
+{
+  "seq": 26,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "main_ramp",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 240
+      },
+      {
+        "id": "pusher",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 218,
+        "y_cm": 167
+      },
+      {
+        "angle_deg": -15,
+        "id": "post_ramp",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 130,
+        "y_cm": 118
+      },
+      {
+        "angle_deg": -22,
+        "id": "bell_ramp",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 65,
+        "y_cm": 72
+      }
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "level": "return-trip",
+  "arm": "workshop",
+  "name": "Return Trip Rube",
+  "prediction": "Steel ball guided by beams hits a then domino and seesaw chain moves w1 to hit d; funnel and beams direct w1, w2, crate into basket.",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 80,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 0,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 140,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": 10,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 280,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": 0,
+        "id": "dom1",
+        "kind": "domino",
+        "x_cm": 310,
+        "y_cm": 198
+      },
+      {
+        "angle_deg": 5,
+        "id": "see1",
+        "kind": "seesaw",
+        "length_cm": 50,
+        "x_cm": 330,
+        "y_cm": 168
+      },
+      {
+        "height_cm": 40,
+        "id": "fun1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 20,
+        "x_cm": 120,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": 0,
+        "id": "b4",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 200,
+        "y_cm": 50
+      },
+      {
+        "id": "crate1",
+        "kind": "crate",
+        "side_cm": 20,
+        "x_cm": 350,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 8,
+    "chain_length": 3,
+    "event_hash": "42a7d3582ebcec50",
+    "state_hash": "43da37d72bd4dd27",
+    "rules_version": 1
+  }
+}

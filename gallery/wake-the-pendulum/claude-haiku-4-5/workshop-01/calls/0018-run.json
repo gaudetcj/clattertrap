@@ -1,0 +1,28 @@
+{
+  "seq": 18,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 250
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "b8cc222b2e6e7aec",
+    "state_hash": "e890f854444124f9",
+    "rules_version": 1
+  }
+}

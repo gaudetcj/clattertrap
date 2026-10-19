@@ -1,0 +1,25 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 20.8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 133.7,
+        "x_cm": 297.5,
+        "y_cm": 131.25
+      },
+      {
+        "angle_deg": 20.8,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 133.7,
+        "x_cm": 172.5,
+        "y_cm": 83.75
+      }
+    ]
+  }
+}

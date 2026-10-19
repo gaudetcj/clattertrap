@@ -1,0 +1,5 @@
+{
+  "seq": 3,
+  "tool": "check",
+  "scene": "{\"level\": \"basket-fill\", \"parts\": [{\"id\": \"ramp1\", \"kind\": \"beam\", \"x_cm\": 309.9, \"y_cm\": 197.2, \"length_cm\": 149.5, \"angle_deg\": 32.4}, {\"id\": \"ramp2\", \"kind\": \"beam\", \"x_cm\": 183.2, \"y_cm\": 116.8, \"length_cm\": 149.5, \"angle_deg\": 32.4}, {\"id\": \"ramp3\", \"kind\": \"beam\", \"x_cm\": 98.9, \"y_cm\": 63.2, \"length_cm\": 49.4, \"angle_deg\": 32.4}]}"
+}

@@ -1,0 +1,36 @@
+{
+  "seq": 12,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 95,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -70,
+        "id": "swing",
+        "kind": "pendulum",
+        "length_cm": 120,
+        "x_cm": 310,
+        "y_cm": 242
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "b828efb345da31dc",
+    "state_hash": "ffa47ec6288c39bf",
+    "rules_version": 1
+  }
+}

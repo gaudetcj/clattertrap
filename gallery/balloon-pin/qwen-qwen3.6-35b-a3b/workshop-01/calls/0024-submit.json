@@ -1,0 +1,18 @@
+{
+  "seq": 24,
+  "tool": "submit",
+  "scene": "{\"level\": \"balloon-pin\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 75, \"y_cm\": 100, \"length_cm\": 80, \"angle_deg\": -25}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.9583335,
+    "steps": 355,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "1ec295e22385d6d8",
+    "state_hash": "8d3fc18593b51bae",
+    "rules_version": 1
+  },
+  "name": "Balloon redirection machine",
+  "prediction": "A sloped beam intercepts the rising balloon near (70,100) and redirects it rightward toward the pin at (320,290), where the pin pops the balloon."
+}

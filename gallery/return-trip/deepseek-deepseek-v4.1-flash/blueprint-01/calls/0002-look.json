@@ -1,0 +1,63 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -21.8,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 104.5,
+        "x_cm": 83.8,
+        "y_cm": 240.7
+      },
+      {
+        "angle_deg": -28.2,
+        "id": "r2",
+        "kind": "beam",
+        "length_cm": 112.3,
+        "x_cm": 248.6,
+        "y_cm": 176.7
+      },
+      {
+        "angle_deg": 16.8,
+        "id": "r3a",
+        "kind": "beam",
+        "length_cm": 99.2,
+        "x_cm": 263.1,
+        "y_cm": 100.1
+      },
+      {
+        "angle_deg": 16.7,
+        "id": "r3b",
+        "kind": "beam",
+        "length_cm": 83.5,
+        "x_cm": 350.6,
+        "y_cm": 126.1
+      },
+      {
+        "angle_deg": -7.1,
+        "id": "wallext",
+        "kind": "beam",
+        "length_cm": 30.3,
+        "x_cm": 377.3,
+        "y_cm": 147.0
+      },
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 189,
+        "y_cm": 92.3
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 195,
+        "y_cm": 92.3
+      }
+    ]
+  }
+}

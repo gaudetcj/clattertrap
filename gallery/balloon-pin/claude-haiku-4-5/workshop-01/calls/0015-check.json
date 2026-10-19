@@ -1,0 +1,43 @@
+{
+  "seq": 15,
+  "tool": "check",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 45,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 103,
+        "y_cm": 83
+      },
+      {
+        "angle_deg": 45,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 209,
+        "y_cm": 189
+      },
+      {
+        "angle_deg": 20,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 310,
+        "y_cm": 260
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 330,
+        "y_cm": 250
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam beam1): overlaps balloon by 10.0 cm at the start; move it up to y_cm = 93.0"
+  ]
+}

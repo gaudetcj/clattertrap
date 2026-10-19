@@ -1,0 +1,18 @@
+{
+  "level": "bell-drop",
+  "arm": "workshop",
+  "name": "Two-beam redirection toward bell",
+  "prediction": "Steel ball falls and hits first beam angled upward, bouncing rightward toward second beam which redirects it further right to hit the bell.",
+  "scene": "{\"level\": \"bell-drop\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 100, \"y_cm\": 150, \"length_cm\": 80, \"angle_deg\": 20}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 250, \"y_cm\": 120, \"length_cm\": 100, \"angle_deg\": 10}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.3583333,
+    "steps": 163,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "4f22d412e636f6f3",
+    "state_hash": "b20de4fdcbfe45a3",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 85,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 240,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 80
+      },
+      {
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 180,
+        "y_cm": 110
+      },
+      {
+        "height_cm": 40,
+        "id": "bucket1",
+        "kind": "bucket",
+        "width_cm": 50,
+        "x_cm": 110,
+        "y_cm": 40
+      }
+    ]
+  },
+  "problems": [
+    "parts[4] (bucket bucket1): centre (110, 40) is outside every build zone; move it inside x 20..380, y 45..290 or x 150..380, y 2..45"
+  ]
+}

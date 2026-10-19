@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "name": "Rope Swing to Bell",
+  "prediction": "The falling steel ball catches on the rope from the hook and swings right to hit the bell.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "r1",
+        "kind": "rope",
+        "max_length_cm": 90
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "a85ca1ad758ef86a",
+    "state_hash": "a6d1cd59064f885c",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "balloon-pin",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792375488,
+  "duration_s": 135.6359336,
+  "cost_usd": 0.2036709,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

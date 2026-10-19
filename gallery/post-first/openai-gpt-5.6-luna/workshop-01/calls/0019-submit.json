@@ -1,0 +1,54 @@
+{
+  "seq": 19,
+  "tool": "submit",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 105,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 0,
+        "id": "shelf",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 150,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -20,
+        "id": "bellramp",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 300,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": 0,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 260,
+        "y_cm": 190
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "f06f5b5f2ddad1ab",
+    "state_hash": "501c79b701f757af",
+    "rules_version": 1
+  },
+  "name": "Post-to-Bell Cascade",
+  "prediction": "The steel ball will roll down the catch beam, cross the shelf to touch the post, then descend the final ramp into the bell hard enough to ring it."
+}

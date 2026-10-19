@@ -1,0 +1,9 @@
+{
+  "seq": 9,
+  "tool": "check",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"redirect\", \"kind\": \"beam\", \"x_cm\": 50, \"y_cm\": 255, \"length_cm\": 40, \"angle_deg\": -60}, {\"id\": \"seesaw\", \"kind\": \"seesaw\", \"x_cm\": 210, \"y_cm\": 50, \"length_cm\": 80, \"angle_deg\": -30}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 245, \"y_cm\": 35, \"material\": \"wood\"}]}",
+  "problems": [
+    "parts[1] (seesaw seesaw): overlaps b by 2.6 cm at the start; move it up to y_cm = 52.6",
+    "parts[2] (ball ball1): overlaps seesaw by 3.5 cm at the start; move it up to y_cm = 38.5"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "seq": 8,
+  "tool": "run",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 70,
+        "y_cm": 270
+      },
+      {
+        "id": "catcher",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 170,
+        "y_cm": 210
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 4,
+    "event_hash": "6c9e2f0f477534e5",
+    "state_hash": "257d56b781942321",
+    "rules_version": 1
+  }
+}

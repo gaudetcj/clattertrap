@@ -1,0 +1,44 @@
+{
+  "seq": 28,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "launcher",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 120,
+        "y_cm": 215
+      },
+      {
+        "id": "strike",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 205,
+        "y_cm": 165
+      },
+      {
+        "angle_deg": -18,
+        "id": "post_guide",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 130,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": -25,
+        "id": "bell_guide",
+        "kind": "beam",
+        "length_cm": 65,
+        "x_cm": 70,
+        "y_cm": 70
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (ball strike): overlaps pend by 3.9 cm at the start; move it up to y_cm = 168.9",
+    "parts[1] (ball strike): overlaps pend by 1.8 cm at the start; move it up to y_cm = 166.8"
+  ]
+}

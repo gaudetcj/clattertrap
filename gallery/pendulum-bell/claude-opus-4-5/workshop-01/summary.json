@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "pendulum-bell",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792382080,
+  "duration_s": 187.4846986,
+  "cost_usd": 0.48062600000000005,
+  "turns": 8,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

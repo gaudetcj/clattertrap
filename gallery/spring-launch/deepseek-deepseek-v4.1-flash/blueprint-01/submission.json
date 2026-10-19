@@ -1,0 +1,29 @@
+{
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "name": "Pad Pitch Onto the Ledge",
+  "prediction": "The wood ball rolls off the fixed ramp, lands on the spring pad at (158,99), is kicked up and right, lands on the left ledge, bounces/rolls along it into the 14 cm slot and comes to rest on the button, pressing it down its full travel.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "pad",
+        "kind": "spring_pad",
+        "x_cm": 158,
+        "y_cm": 99
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.5083334,
+    "steps": 301,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "2e03577a437a5c8a",
+    "state_hash": "c04a780ef6817c81",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "level": "rope-swing",
+  "arm": "workshop",
+  "name": "Tarzan Swing",
+  "prediction": "The steel ball falls, swings on the rope like a pendulum around the hook, and strikes the bell on its upward arc.",
+  "scene": {
+    "level": "rope-swing",
+    "parts": [
+      {
+        "a": "ball0",
+        "b": "hook",
+        "id": "rope1",
+        "kind": "rope",
+        "max_length_cm": 111
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.9250001,
+    "steps": 111,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "04f4fc078a990680",
+    "state_hash": "95eed225973a4ec8",
+    "rules_version": 1
+  }
+}

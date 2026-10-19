@@ -1,0 +1,41 @@
+{
+  "seq": 8,
+  "tool": "look",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 15,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 65,
+        "y_cm": 75
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 140,
+        "y_cm": 105
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 215,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 15,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 290,
+        "y_cm": 165
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "level": "button-drop",
+  "arm": "blueprint",
+  "name": "Twin Ramp Funnel Drop",
+  "prediction": "The falling steel ball is caught by two right-sloping ramps that roll it into a steep funnel above the button, which funnels it down onto the cap so it lands and presses the button's full travel.",
+  "scene": "{\"level\": \"button-drop\", \"parts\": [{\"id\": \"ramp1\", \"kind\": \"beam\", \"x_cm\": 97.5, \"y_cm\": 222.0, \"length_cm\": 148.5, \"angle_deg\": -12.4}, {\"id\": \"ramp2\", \"kind\": \"beam\", \"x_cm\": 222.5, \"y_cm\": 188.5, \"length_cm\": 103.6, \"angle_deg\": -12.8}, {\"id\": \"funnel1\", \"kind\": \"funnel\", \"x_cm\": 330.0, \"y_cm\": 64.0, \"mouth_cm\": 44.0, \"throat_cm\": 16.0, \"height_cm\": 80.0}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.2833335,
+    "steps": 274,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "e8f2dbdb12e0ca77",
+    "state_hash": "3d4f7c2d4375bd7d",
+    "rules_version": 1
+  }
+}

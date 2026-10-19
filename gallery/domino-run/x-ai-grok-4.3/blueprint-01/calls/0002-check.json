@@ -1,0 +1,76 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 130,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 150,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 170,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 190,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 210,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 230,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 250,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": -20,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 260,
+        "y_cm": 140
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (domino d1): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 137.0",
+    "parts[1] (domino d2): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 137.0",
+    "parts[2] (domino d3): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 137.0",
+    "parts[3] (domino d4): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 137.0",
+    "parts[4] (domino d5): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 137.0",
+    "parts[5] (domino d6): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 137.0",
+    "parts[6] (domino d7): overlaps shelf by 2.0 cm at the start; move it up to y_cm = 137.0",
+    "parts[7] (beam ramp2): overlaps d7 by 4.0 cm at the start; move it up to y_cm = 144.0"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "catch_beam",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -30,
+        "id": "to_post_beam",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 175,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -20,
+        "id": "past_post_beam",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 102
+      },
+      {
+        "angle_deg": -10,
+        "id": "to_bell_beam",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 315,
+        "y_cm": 85
+      }
+    ]
+  },
+  "problems": [
+    "parts[3] (beam to_bell_beam): overlaps bell by 11.4 cm at the start; move it up to y_cm = 96.4"
+  ]
+}

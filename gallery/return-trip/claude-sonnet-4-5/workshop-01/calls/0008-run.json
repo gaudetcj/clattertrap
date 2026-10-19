@@ -1,0 +1,69 @@
+{
+  "seq": 8,
+  "tool": "run",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "catch_funnel",
+        "kind": "funnel",
+        "mouth_cm": 110,
+        "throat_cm": 20,
+        "x_cm": 95,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": 5,
+        "id": "to_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 125,
+        "y_cm": 218
+      },
+      {
+        "angle_deg": -8,
+        "id": "after_a",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 200,
+        "y_cm": 195
+      },
+      {
+        "angle_deg": -12,
+        "id": "to_shelf",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 280,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": -20,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 360,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": -8,
+        "id": "back_to_d",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 90
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 6,
+    "chain_length": 1,
+    "event_hash": "828b6b54d81843bd",
+    "state_hash": "26eb691ef44a1117",
+    "rules_version": 1
+  }
+}

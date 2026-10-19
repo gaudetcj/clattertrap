@@ -1,0 +1,43 @@
+{
+  "seq": 10,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -32,
+        "id": "dropper",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 75,
+        "y_cm": 268
+      },
+      {
+        "angle_deg": 28,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 265,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": 28,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 300,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "1582e004788a4b08",
+    "state_hash": "09f50c30390a4da6",
+    "rules_version": 1
+  }
+}

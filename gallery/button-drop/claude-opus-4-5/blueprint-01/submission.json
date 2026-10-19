@@ -1,0 +1,55 @@
+{
+  "level": "button-drop",
+  "arm": "blueprint",
+  "name": "Cascade Funnel Press",
+  "prediction": "The steel ball cascades down three angled beams, drops into the funnel, slides through the throat centered over the button, and lands with enough weight to press and hold the button down.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 105,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -18,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 195,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -12,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 295,
+        "y_cm": 110
+      },
+      {
+        "height_cm": 35,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.4416668,
+    "steps": 293,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "6e2d4eecc537aa37",
+    "state_hash": "5f4a781d89c07262",
+    "rules_version": 1
+  }
+}

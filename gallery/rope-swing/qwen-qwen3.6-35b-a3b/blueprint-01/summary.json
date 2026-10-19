@@ -1,0 +1,15 @@
+{
+  "model": "qwen-qwen3.6-35b-a3b",
+  "level": "rope-swing",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792384907,
+  "duration_s": 432.1099712,
+  "cost_usd": 0.0686757,
+  "turns": 8,
+  "tool_calls": 8,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

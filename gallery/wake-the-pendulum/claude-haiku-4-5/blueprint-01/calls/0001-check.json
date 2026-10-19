@@ -1,0 +1,18 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "height_cm": 60,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 30,
+        "x_cm": 100,
+        "y_cm": 160
+      }
+    ]
+  }
+}

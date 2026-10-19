@@ -1,0 +1,18 @@
+{
+  "level": "post-first",
+  "arm": "blueprint",
+  "name": "post-first cascade redirect",
+  "prediction": "Steel ball falls from top, hits angled beam1 redirecting it right to beam2, which guides it onto the post; ball then falls across beam4 onto upward-angled beam3, which sends it into the bell to ring it.",
+  "scene": "{\"level\": \"post-first\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 50, \"y_cm\": 220, \"length_cm\": 60, \"angle_deg\": -15}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 140, \"y_cm\": 136, \"length_cm\": 80, \"angle_deg\": -10}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 290, \"y_cm\": 85, \"length_cm\": 80, \"angle_deg\": 10}, {\"id\": \"beam4\", \"kind\": \"beam\", \"x_cm\": 230, \"y_cm\": 100, \"length_cm\": 80, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.3166668,
+    "steps": 278,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "654c7efcd726afe0",
+    "state_hash": "cfec0ab735c8ffbf",
+    "rules_version": 1
+  }
+}

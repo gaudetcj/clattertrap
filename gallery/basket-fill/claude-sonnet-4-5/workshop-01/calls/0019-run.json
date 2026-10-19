@@ -1,0 +1,60 @@
+{
+  "seq": 19,
+  "tool": "run",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 2,
+        "id": "upper",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 330,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": 3,
+        "id": "middle",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 220,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 4,
+        "id": "lower",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 115,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -60,
+        "id": "left_wall",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 45,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": 60,
+        "id": "right_wall",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 75,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 7.9750004,
+    "steps": 957,
+    "parts_used": 5,
+    "chain_length": 3,
+    "event_hash": "3fdc44504b4e33fb",
+    "state_hash": "a7328b31c448822b",
+    "rules_version": 1
+  }
+}

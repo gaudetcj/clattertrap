@@ -1,0 +1,18 @@
+{
+  "level": "wake-the-pendulum",
+  "arm": "blueprint",
+  "name": "PendulumWakeChains",
+  "prediction": "Steel ball2 falls and strikes the pendulum from the right, swinging it left to hit wood ball1, which then hits the post and is redirected by an angled beam to ring the bell, while a funnel and beam redirect the other steel ball away from the bell.",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"funnel1\", \"kind\": \"funnel\", \"x_cm\": 40, \"y_cm\": 250, \"mouth_cm\": 60, \"throat_cm\": 20, \"height_cm\": 30}, {\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 60, \"y_cm\": 200, \"length_cm\": 60, \"angle_deg\": -45}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 70, \"y_cm\": 60, \"length_cm\": 60, \"angle_deg\": 45}, {\"id\": \"ball2\", \"kind\": \"ball\", \"x_cm\": 210, \"y_cm\": 270, \"material\": \"steel\"}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 4,
+    "chain_length": 4,
+    "event_hash": "ae26697d78339e19",
+    "state_hash": "f6b52bae48ce977f",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "seq": 22,
+  "tool": "run",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 120,
+        "y_cm": 275
+      },
+      {
+        "angle_deg": -48,
+        "id": "ramp_down",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 165,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 10,
+        "id": "bounce_b",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 210,
+        "y_cm": 55
+      },
+      {
+        "angle_deg": 35,
+        "id": "spring_up",
+        "kind": "spring_pad",
+        "x_cm": 290,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "ea9d8d828b909e71",
+    "state_hash": "ffd012f09ef11afc",
+    "rules_version": 1
+  }
+}

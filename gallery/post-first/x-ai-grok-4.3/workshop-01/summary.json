@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "post-first",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792383764,
+  "duration_s": 22.5551193,
+  "cost_usd": 0.021559599999999998,
+  "turns": 10,
+  "tool_calls": 9,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

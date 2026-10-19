@@ -1,0 +1,62 @@
+{
+  "seq": 13,
+  "tool": "submit",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 95,
+        "y_cm": 239
+      },
+      {
+        "angle_deg": -24,
+        "id": "to_w1",
+        "kind": "beam",
+        "length_cm": 145,
+        "x_cm": 237,
+        "y_cm": 188
+      },
+      {
+        "angle_deg": 0,
+        "id": "shelfcatch",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 255,
+        "y_cm": 148
+      },
+      {
+        "angle_deg": 35,
+        "id": "return",
+        "kind": "beam",
+        "length_cm": 115,
+        "x_cm": 252,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": 25,
+        "id": "to_basket",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 155,
+        "y_cm": 75
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 14.058334,
+    "steps": 1687,
+    "parts_used": 5,
+    "chain_length": 3,
+    "event_hash": "7c34591b872e55f9",
+    "state_hash": "3a132ff825157ba6",
+    "rules_version": 1
+  },
+  "name": "Return Trip Ramp Chain",
+  "prediction": "The falling steel ball will roll across catch, strike a and w1 in sequence, send the chain toward d, and guide three objects into the basket."
+}

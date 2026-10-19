@@ -1,0 +1,28 @@
+{
+  "seq": 11,
+  "tool": "check",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 105,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": -15,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 290,
+        "y_cm": 95
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam beam2): overlaps bell by 7.8 cm at the start; move it up to y_cm = 102.8"
+  ]
+}

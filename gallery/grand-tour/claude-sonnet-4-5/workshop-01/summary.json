@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "grand-tour",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792381260,
+  "duration_s": 470.4679572,
+  "cost_usd": 0.9674583,
+  "turns": 34,
+  "tool_calls": 33,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

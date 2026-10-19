@@ -1,0 +1,42 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "catch_ramp",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 115,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -12,
+        "id": "mid_ramp",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 225,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": -5,
+        "id": "final_ramp",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 300,
+        "y_cm": 155
+      },
+      {
+        "height_cm": 75,
+        "id": "collector",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 16,
+        "x_cm": 330,
+        "y_cm": 75
+      }
+    ]
+  }
+}

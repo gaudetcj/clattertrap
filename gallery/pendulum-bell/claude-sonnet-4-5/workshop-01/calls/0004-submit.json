@@ -1,0 +1,30 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 60,
+        "id": "p1",
+        "kind": "pendulum",
+        "length_cm": 100,
+        "x_cm": 240,
+        "y_cm": 160
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.25833336,
+    "steps": 31,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "b35611eeba6d6f9e",
+    "state_hash": "930ababc5e5857bd",
+    "rules_version": 1
+  },
+  "name": "Gravity's Bell Ringer",
+  "prediction": "The pendulum swings down from its elevated starting position and strikes the bell with sufficient force to ring it."
+}

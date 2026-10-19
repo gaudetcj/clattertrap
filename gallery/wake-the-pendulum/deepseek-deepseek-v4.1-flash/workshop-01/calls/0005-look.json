@@ -1,0 +1,5 @@
+{
+  "seq": 5,
+  "tool": "look",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"wakeramp\", \"kind\": \"beam\", \"x_cm\": 248, \"y_cm\": 187.5, \"length_cm\": 92, \"angle_deg\": 36.6}, {\"id\": \"wake\", \"kind\": \"ball\", \"x_cm\": 280, \"y_cm\": 222, \"material\": \"steel\"}, {\"id\": \"catch\", \"kind\": \"beam\", \"x_cm\": 50, \"y_cm\": 150, \"length_cm\": 60, \"angle_deg\": -20}, {\"id\": \"postramp\", \"kind\": \"beam\", \"x_cm\": 66.5, \"y_cm\": 75, \"length_cm\": 52, \"angle_deg\": 35}]}"
+}

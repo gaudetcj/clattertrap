@@ -1,0 +1,43 @@
+{
+  "seq": 11,
+  "tool": "run",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 170,
+        "y_cm": 95
+      },
+      {
+        "angle_deg": -25,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 290,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": -10,
+        "id": "springpad1",
+        "kind": "spring_pad",
+        "x_cm": 350,
+        "y_cm": 60
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.2916667,
+    "steps": 275,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "69280f1b0587c4db",
+    "state_hash": "e791d2ada73f765c",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "qwen-qwen3.6-35b-a3b",
+  "level": "bell-drop",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792387501,
+  "duration_s": 223.8877713,
+  "cost_usd": 0.0397313,
+  "turns": 23,
+  "tool_calls": 23,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

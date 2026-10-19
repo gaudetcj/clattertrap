@@ -1,0 +1,16 @@
+{
+  "seq": 10,
+  "tool": "run",
+  "scene": "{\"level\": \"balloon-pin\", \"parts\": [{\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 40, \"y_cm\": 200, \"material\": \"wood\"}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.2916667,
+    "steps": 395,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "c198ad01a0c66390",
+    "state_hash": "35d347cc71d3192d",
+    "rules_version": 1
+  }
+}

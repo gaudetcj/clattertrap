@@ -1,0 +1,60 @@
+{
+  "seq": 10,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 105,
+        "y_cm": 259
+      },
+      {
+        "angle_deg": -20,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 205,
+        "y_cm": 155
+      },
+      {
+        "height_cm": 60,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 18,
+        "x_cm": 235,
+        "y_cm": 55
+      },
+      {
+        "angle_deg": 0,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 90,
+        "x_cm": 255,
+        "y_cm": 25
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 295,
+        "y_cm": 33
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.9583335,
+    "steps": 355,
+    "parts_used": 5,
+    "chain_length": 3,
+    "event_hash": "038843253a463515",
+    "state_hash": "dc461fe361c556bd",
+    "rules_version": 1
+  }
+}

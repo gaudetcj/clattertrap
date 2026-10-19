@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "spring-launch",
+  "arm": "workshop",
+  "status": "timed_out",
+  "started_unix_s": 1792396493,
+  "duration_s": 1200.0172426,
+  "cost_usd": 0.0545600275,
+  "turns": 7,
+  "tool_calls": 7,
+  "foreign_tools": [],
+  "result_subtype": "timed_out",
+  "exit_code": null,
+  "error": "the wall clock ran out"
+}

@@ -1,0 +1,73 @@
+{
+  "seq": 16,
+  "tool": "check",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "height_cm": 30,
+        "id": "catch",
+        "kind": "funnel",
+        "mouth_cm": 40,
+        "throat_cm": 16,
+        "x_cm": 50,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -2,
+        "id": "ramp_to_a",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 85,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_a",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 135,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": -35,
+        "id": "down_to_b",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 175,
+        "y_cm": 150
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_b",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 225,
+        "y_cm": 40
+      },
+      {
+        "angle_deg": 0,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 270,
+        "y_cm": 44
+      },
+      {
+        "id": "projectile",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 230,
+        "y_cm": 52
+      },
+      {
+        "angle_deg": 0,
+        "id": "at_c",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 330,
+        "y_cm": 110
+      }
+    ]
+  }
+}

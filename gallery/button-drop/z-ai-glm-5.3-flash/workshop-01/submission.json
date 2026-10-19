@@ -1,0 +1,47 @@
+{
+  "level": "button-drop",
+  "arm": "workshop",
+  "name": "Ball Ramp Ringer to the Button",
+  "prediction": "The falling steel ball rolls down beam b1, transfers onto steeper beam b2, drops into the funnel above the button, and lands on the cap, pressing it by t=2.55 s.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 140,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": -30,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 260,
+        "y_cm": 130
+      },
+      {
+        "height_cm": 40,
+        "id": "f1",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 14,
+        "x_cm": 330,
+        "y_cm": 62
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.5500002,
+    "steps": 306,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "795f8c10f77126da",
+    "state_hash": "64fd132de9ad0da7",
+    "rules_version": 1
+  }
+}

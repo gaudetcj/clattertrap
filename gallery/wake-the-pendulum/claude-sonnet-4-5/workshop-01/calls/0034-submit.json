@@ -1,0 +1,53 @@
+{
+  "seq": 34,
+  "tool": "submit",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -28,
+        "id": "main_descent",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 235
+      },
+      {
+        "id": "impact_ball",
+        "kind": "ball",
+        "material": "steel",
+        "x_cm": 212,
+        "y_cm": 168
+      },
+      {
+        "angle_deg": -22,
+        "id": "low_guide",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 125,
+        "y_cm": 105
+      },
+      {
+        "angle_deg": -30,
+        "id": "final_ramp",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 65,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 4,
+    "chain_length": 4,
+    "event_hash": "8dbe5abb5f0fa9a3",
+    "state_hash": "df63c49497dd74ec",
+    "rules_version": 1
+  },
+  "name": "Pendulum Cascade",
+  "prediction": "ball0 rolls down the ramp, strikes the impact ball which hits the pendulum, causing it to swing and knock ball1 toward the post and bell."
+}

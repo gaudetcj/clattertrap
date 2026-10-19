@@ -1,0 +1,46 @@
+{
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "name": "Three-Ramp Cascade to the Bell",
+  "prediction": "The steel ball drops 3 cm onto ramp1, rolls down the three stepped -25 degree ramps, and flies off ramp3's end straight into the bell's upper-left rim at 2-4 m/s, ringing it about 3 seconds in.",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 110.77,
+        "y_cm": 249.22
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 200.46,
+        "y_cm": 187.73
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 290.15,
+        "y_cm": 126.24
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 1.5166668,
+    "steps": 182,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "313d291d954abb21",
+    "state_hash": "7331e4ce86902072",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "level": "button-drop",
+  "arm": "workshop",
+  "name": "Cascade to Victory",
+  "prediction": "The steel ball will roll down three cascading ramps, funnel through the collector, and drop precisely onto the button to press it.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "catch_ramp",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 115,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -12,
+        "id": "mid_ramp",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 225,
+        "y_cm": 175
+      },
+      {
+        "angle_deg": -5,
+        "id": "final_ramp",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 300,
+        "y_cm": 155
+      },
+      {
+        "height_cm": 75,
+        "id": "collector",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 16,
+        "x_cm": 330,
+        "y_cm": 75
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.6333334,
+    "steps": 316,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "0fb87ac95ba17ada",
+    "state_hash": "2034f7f72884ed32",
+    "rules_version": 1
+  }
+}

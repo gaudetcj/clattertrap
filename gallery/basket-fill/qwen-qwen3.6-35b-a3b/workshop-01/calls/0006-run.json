@@ -1,0 +1,16 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": "{\"level\": \"basket-fill\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 300, \"y_cm\": 150, \"length_cm\": 150, \"angle_deg\": 30}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.3333335,
+    "steps": 400,
+    "parts_used": 1,
+    "chain_length": 3,
+    "event_hash": "5b44698f9349e6a6",
+    "state_hash": "f4eb342fe4655ffc",
+    "rules_version": 1
+  }
+}

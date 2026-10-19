@@ -1,0 +1,47 @@
+{
+  "level": "button-drop",
+  "arm": "blueprint",
+  "name": "Ramp and Funnel Press",
+  "prediction": "The steel ball falls onto ramp1, rolls down onto ramp2, launches into the funnel, falls through the throat straight onto the button cap at x=330, and stays there pressing it.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 146,
+        "y_cm": 213
+      },
+      {
+        "angle_deg": -23,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 93,
+        "x_cm": 257,
+        "y_cm": 178
+      },
+      {
+        "height_cm": 55,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 20,
+        "x_cm": 330,
+        "y_cm": 75
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 5.8250003,
+    "steps": 699,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "04deabe7aafc23d0",
+    "state_hash": "b099ceed22077eca",
+    "rules_version": 1
+  }
+}

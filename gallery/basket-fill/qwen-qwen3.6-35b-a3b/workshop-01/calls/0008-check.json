@@ -1,0 +1,5 @@
+{
+  "seq": 8,
+  "tool": "check",
+  "scene": "{\"level\": \"basket-fill\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 250, \"y_cm\": 150, \"length_cm\": 120, \"angle_deg\": 15}]}"
+}

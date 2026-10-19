@@ -1,0 +1,5 @@
+{
+  "seq": 7,
+  "tool": "check",
+  "scene": "{\"level\": \"wake-the-pendulum\", \"parts\": [{\"id\": \"redirect_beam1\", \"kind\": \"beam\", \"x_cm\": 60, \"y_cm\": 190, \"length_cm\": 100, \"angle_deg\": -20}]}"
+}

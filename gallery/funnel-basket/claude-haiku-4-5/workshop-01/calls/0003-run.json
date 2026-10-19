@@ -1,0 +1,8 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": "{\n  \"level\": \"funnel-basket\",\n  \"parts\": [\n    {\n      \"id\": \"funnel1\",\n      \"kind\": \"funnel\",\n      \"x_cm\": 200,\n      \"y_cm\": 80,\n      \"mouth_cm\": 150,\n      \"throat_cm\": 50,\n      \"height_cm\": 60\n    ]\n}",
+  "problems": [
+    "parts[0].?: expected `,` or `}` at line 12 column 5; write what the format asks for there"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "seq": 29,
+  "tool": "submit",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 135,
+        "y_cm": 138
+      },
+      {
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 152,
+        "y_cm": 138
+      },
+      {
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 169,
+        "y_cm": 138
+      },
+      {
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 186,
+        "y_cm": 138
+      },
+      {
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 203,
+        "y_cm": 138
+      },
+      {
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 220,
+        "y_cm": 138
+      },
+      {
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 237,
+        "y_cm": 138
+      },
+      {
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 254,
+        "y_cm": 138
+      },
+      {
+        "angle_deg": 0,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 270,
+        "y_cm": 129
+      },
+      {
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 270,
+        "y_cm": 141
+      },
+      {
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 275,
+        "y_cm": 141
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.6000001,
+    "steps": 432,
+    "parts_used": 11,
+    "chain_length": 11,
+    "event_hash": "40c2ecf4ce314e18",
+    "state_hash": "b2b785a6d76cfec5",
+    "rules_version": 1
+  },
+  "name": "Domino Cascade Delivery",
+  "prediction": "The ball rolls down, triggers a chain of 8 dominoes on the shelf which topples 2 dominoes on a short beam platform, sending both off the edge and into the basket below."
+}

@@ -1,0 +1,8 @@
+{
+  "seq": 17,
+  "tool": "run",
+  "scene": "{\n  \"level\": \"f1\", \"kind\": \"funnel\", \"x_cm\": 80, \"y_cm\": 150, \"mouth_cm\": 100, \"throat_cm\": 50, \"height_cm\": 80},\n    {\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 152, \"y_cm\": 129, \"length_cm\": 150, \"angle_deg\": -15},\n    {\"id\": \"b2\", \"kind\": \"beam\", \"x_cm\": 298, \"y_cm\": 71, \"length_cm\": 150, \"angle_deg\": -15}\n  ]\n}",
+  "problems": [
+    "kind: unknown field `kind`, expected `level` or `parts` at line 2 column 23; write what the format asks for there"
+  ]
+}

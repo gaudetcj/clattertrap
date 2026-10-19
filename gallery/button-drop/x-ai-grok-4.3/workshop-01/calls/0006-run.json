@@ -1,0 +1,36 @@
+{
+  "seq": 6,
+  "tool": "run",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 120,
+        "y_cm": 200
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 260,
+        "y_cm": 100
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.9250001,
+    "steps": 231,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "8892fac1af27c0a4",
+    "state_hash": "8d03e0cabd437b2f",
+    "rules_version": 1
+  }
+}

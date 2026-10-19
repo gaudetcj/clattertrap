@@ -1,0 +1,17 @@
+{
+  "seq": 17,
+  "tool": "check",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": 20,
+        "id": "launcher",
+        "kind": "seesaw",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 250
+      }
+    ]
+  }
+}

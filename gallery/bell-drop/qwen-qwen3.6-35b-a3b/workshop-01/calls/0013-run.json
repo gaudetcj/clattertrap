@@ -1,0 +1,16 @@
+{
+  "seq": 13,
+  "tool": "run",
+  "scene": "{\"level\": \"bell-drop\", \"parts\": [{\"id\": \"seesaw1\", \"kind\": \"seesaw\", \"x_cm\": 150, \"y_cm\": 150, \"length_cm\": 100, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "c2c02c654dcfbca4",
+    "state_hash": "7778422ad8f5253b",
+    "rules_version": 1
+  }
+}

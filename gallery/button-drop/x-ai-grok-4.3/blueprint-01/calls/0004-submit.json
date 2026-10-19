@@ -1,0 +1,47 @@
+{
+  "seq": 4,
+  "tool": "submit",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 120,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 240,
+        "y_cm": 150
+      },
+      {
+        "height_cm": 40,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 20,
+        "x_cm": 330,
+        "y_cm": 110
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.7083335,
+    "steps": 325,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "b5fb7b2b50d224bc",
+    "state_hash": "07c1ccf79a338053",
+    "rules_version": 1
+  },
+  "name": "Funnel drop from ramps",
+  "prediction": "The falling steel ball rolls down the two sloping beams into the funnel which drops it straight onto the button cap, pressing it."
+}

@@ -1,0 +1,32 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": -30,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 180,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 280,
+        "y_cm": 50
+      },
+      {
+        "angle_deg": 0,
+        "id": "springpad1",
+        "kind": "spring_pad",
+        "x_cm": 350,
+        "y_cm": 35
+      }
+    ]
+  }
+}

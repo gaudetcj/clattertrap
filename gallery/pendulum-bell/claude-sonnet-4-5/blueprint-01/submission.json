@@ -1,0 +1,30 @@
+{
+  "level": "pendulum-bell",
+  "arm": "blueprint",
+  "name": "Direct Strike Pendulum",
+  "prediction": "The pendulum will swing down in a 100 cm arc, striking the bell at its lowest point with enough force to ring it.",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 50,
+        "id": "swing",
+        "kind": "pendulum",
+        "length_cm": 100,
+        "x_cm": 300,
+        "y_cm": 180
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.47500002,
+    "steps": 57,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "7357b49ac7011ef2",
+    "state_hash": "2803633922471ec5",
+    "rules_version": 1
+  }
+}

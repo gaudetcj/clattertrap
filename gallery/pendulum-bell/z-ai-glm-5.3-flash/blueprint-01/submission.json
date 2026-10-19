@@ -1,0 +1,18 @@
+{
+  "level": "pendulum-bell",
+  "arm": "blueprint",
+  "name": "Hammer Time",
+  "prediction": "The pendulum is released from horizontal 80 cm above the bell, swings down, and its weight strikes the bell at the bottom of the arc with well over the 0.2 m/s needed, ringing it.",
+  "scene": "{\"level\": \"pendulum-bell\", \"parts\": [{\"id\": \"striker\", \"kind\": \"pendulum\", \"x_cm\": 300, \"y_cm\": 160, \"length_cm\": 64, \"angle_deg\": 90}]}",
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.3000002,
+    "steps": 396,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "9b6e230b7b64d678",
+    "state_hash": "cee127cdffaafc7d",
+    "rules_version": 1
+  }
+}

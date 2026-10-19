@@ -1,0 +1,8 @@
+{
+  "seq": 14,
+  "tool": "check",
+  "scene": "{\"level\": \"grand-tour\", \"parts\": [{\"id\": \"b1\", \"kind\": \"beam\", \"x_cm\": 90, \"y_cm\": 230, \"length_cm\": 80, \"angle_deg\": -15}, {\"id\": \"d1\", \"kind\": \"domino\", \"x_cm\": 210, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d2\", \"kind\": \"domino\", \"x_cm\": 230, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d3\", \"kind\": \"domino\", \"x_cm\": 250, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d4\", \"kind\": \"domino\", \"x_cm\": 270, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"d5\", \"kind\": \"domino\", \"x_cm\": 290, \"y_cm\": 195, \"angle_deg\": 0}, {\"id\": \"s1\", \"kind\": \"seesaw\", \"x_cm\": 340, \"y_cm\": 160, \"length_cm\": 100, \"angle_deg\": 0}, {\"id\": \"b2\", \"kind\": \"ball\", \"x_cm\": 375, \"y_cm\": 166, \"material\": \"wood\"}]}",
+  "problems": [
+    "parts[7] (ball b2): overlaps s1 by 2.0 cm at the start; move it up to y_cm = 168.0"
+  ]
+}

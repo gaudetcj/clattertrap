@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "bell-drop",
+  "arm": "workshop",
+  "status": "no_submission",
+  "started_unix_s": 1792383572,
+  "duration_s": 16.082381,
+  "cost_usd": 0.018360599999999998,
+  "turns": 9,
+  "tool_calls": 8,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

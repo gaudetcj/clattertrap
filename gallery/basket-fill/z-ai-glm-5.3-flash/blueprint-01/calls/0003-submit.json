@@ -1,0 +1,46 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 36,
+        "id": "ramp_a",
+        "kind": "beam",
+        "length_cm": 122,
+        "x_cm": 340.5,
+        "y_cm": 225.6
+      },
+      {
+        "angle_deg": 36,
+        "id": "ramp_b",
+        "kind": "beam",
+        "length_cm": 122,
+        "x_cm": 241,
+        "y_cm": 153.3
+      },
+      {
+        "angle_deg": 36,
+        "id": "ramp_c",
+        "kind": "beam",
+        "length_cm": 122,
+        "x_cm": 141.4,
+        "y_cm": 80.9
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.6750002,
+    "steps": 321,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "ed34b4a2ab6653df",
+    "state_hash": "3b8ff0526c32f771",
+    "rules_version": 1
+  },
+  "name": "The Long Chute",
+  "prediction": "All three wood balls land on the 36° ramp just under x=350, roll 3.2 m down its collinear beams, and leave its end just right of the basket rim; they dive into the mouth, ricochet off the left inner wall, and all three come to rest inside the basket."
+}

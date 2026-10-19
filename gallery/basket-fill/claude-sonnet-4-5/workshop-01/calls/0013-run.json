@@ -1,0 +1,52 @@
+{
+  "seq": 13,
+  "tool": "run",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 6,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 345,
+        "y_cm": 257
+      },
+      {
+        "angle_deg": 8,
+        "id": "slide1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 265,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": 10,
+        "id": "slide2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 190,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": 15,
+        "id": "drop",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 120,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": 0,
+        "id": "tipper",
+        "kind": "seesaw",
+        "length_cm": 60,
+        "x_cm": 60,
+        "y_cm": 120
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam catch): overlaps ball1 by 3.6 cm at the start; move it up to y_cm = 260.6"
+  ]
+}

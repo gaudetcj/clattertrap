@@ -1,0 +1,33 @@
+{
+  "seq": 21,
+  "tool": "check",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 300,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": -25,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 170,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 0,
+        "id": "bin",
+        "kind": "seesaw",
+        "length_cm": 90,
+        "x_cm": 60,
+        "y_cm": 50
+      }
+    ]
+  }
+}

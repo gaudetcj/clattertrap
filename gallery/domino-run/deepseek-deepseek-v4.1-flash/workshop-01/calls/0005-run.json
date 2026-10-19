@@ -1,0 +1,98 @@
+{
+  "seq": 5,
+  "tool": "run",
+  "scene": {
+    "level": "domino-run",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "d1",
+        "kind": "domino",
+        "x_cm": 138,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d2",
+        "kind": "domino",
+        "x_cm": 152,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d3",
+        "kind": "domino",
+        "x_cm": 166,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d4",
+        "kind": "domino",
+        "x_cm": 180,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d5",
+        "kind": "domino",
+        "x_cm": 194,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d6",
+        "kind": "domino",
+        "x_cm": 208,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d7",
+        "kind": "domino",
+        "x_cm": 222,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d8",
+        "kind": "domino",
+        "x_cm": 238,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d9",
+        "kind": "domino",
+        "x_cm": 255,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "d10",
+        "kind": "domino",
+        "x_cm": 263,
+        "y_cm": 137.5
+      },
+      {
+        "angle_deg": -80,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 148,
+        "x_cm": 272,
+        "y_cm": 126
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.7333336,
+    "steps": 448,
+    "parts_used": 11,
+    "chain_length": 11,
+    "event_hash": "7ef3e9ff8dc8b1d7",
+    "state_hash": "c6ee4cb2f038147f",
+    "rules_version": 1
+  }
+}

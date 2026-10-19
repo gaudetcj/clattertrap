@@ -1,0 +1,54 @@
+{
+  "seq": 14,
+  "tool": "submit",
+  "scene": {
+    "level": "balloon-pin",
+    "parts": [
+      {
+        "angle_deg": 30,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 90,
+        "y_cm": 85
+      },
+      {
+        "angle_deg": 20,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 180,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": 15,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 260,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": 0,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 320,
+        "y_cm": 255
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 7.2750006,
+    "steps": 873,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "ff84b2575dbbafd1",
+    "state_hash": "8935a15ccee66c8f",
+    "rules_version": 1
+  },
+  "name": "balloon guide ramps",
+  "prediction": "The balloon slides along four angled beams guiding it rightward and upward until it reaches and is popped by the pin."
+}

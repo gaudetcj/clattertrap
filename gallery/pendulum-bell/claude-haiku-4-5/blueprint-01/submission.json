@@ -1,0 +1,30 @@
+{
+  "level": "pendulum-bell",
+  "arm": "blueprint",
+  "name": "Pendulum Bell Ringer",
+  "prediction": "The pendulum swings down from the left, reaches maximum speed at the lowest point, and strikes the bell with approximately 1.6 m/s, ringing it.",
+  "scene": {
+    "level": "pendulum-bell",
+    "parts": [
+      {
+        "angle_deg": 30,
+        "id": "p1",
+        "kind": "pendulum",
+        "length_cm": 110,
+        "x_cm": 315,
+        "y_cm": 180
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 0.55833334,
+    "steps": 67,
+    "parts_used": 1,
+    "chain_length": 2,
+    "event_hash": "3a7bdb6b18e2004b",
+    "state_hash": "09a9d20bc75d7999",
+    "rules_version": 1
+  }
+}

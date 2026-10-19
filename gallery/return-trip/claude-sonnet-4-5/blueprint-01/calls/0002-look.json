@@ -1,0 +1,48 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "return-trip",
+    "parts": [
+      {
+        "angle_deg": -28,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 60,
+        "y_cm": 258
+      },
+      {
+        "angle_deg": -13,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 142,
+        "x_cm": 232,
+        "y_cm": 186
+      },
+      {
+        "angle_deg": 158,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 105,
+        "x_cm": 258,
+        "y_cm": 116
+      },
+      {
+        "angle_deg": 158,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 72,
+        "x_cm": 156,
+        "y_cm": 47
+      },
+      {
+        "id": "crate1",
+        "kind": "crate",
+        "side_cm": 16,
+        "x_cm": 188,
+        "y_cm": 91
+      }
+    ]
+  }
+}

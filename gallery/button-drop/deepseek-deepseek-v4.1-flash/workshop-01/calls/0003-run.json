@@ -1,0 +1,16 @@
+{
+  "seq": 3,
+  "tool": "run",
+  "scene": "{\"level\": \"button-drop\", \"parts\": [{\"id\": \"ramp\", \"kind\": \"beam\", \"x_cm\": 140.5, \"y_cm\": 213, \"length_cm\": 150, \"angle_deg\": -20}, {\"id\": \"funnel\", \"kind\": \"funnel\", \"x_cm\": 330, \"y_cm\": 62, \"mouth_cm\": 150, \"throat_cm\": 18, \"height_cm\": 80}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.125,
+    "steps": 255,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "40b20c9285f9fc7f",
+    "state_hash": "22ea470daee16341",
+    "rules_version": 1
+  }
+}

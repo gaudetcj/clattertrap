@@ -1,0 +1,10 @@
+{
+  "seq": 4,
+  "tool": "check",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"redirect\", \"kind\": \"beam\", \"x_cm\": 50, \"y_cm\": 263.7, \"length_cm\": 40, \"angle_deg\": -60}, {\"id\": \"d1\", \"kind\": \"domino\", \"x_cm\": 150, \"y_cm\": 220, \"angle_deg\": 0}, {\"id\": \"d2\", \"kind\": \"domino\", \"x_cm\": 175, \"y_cm\": 205, \"angle_deg\": 0}, {\"id\": \"d3\", \"kind\": \"domino\", \"x_cm\": 195, \"y_cm\": 185, \"angle_deg\": 0}, {\"id\": \"seesaw\", \"kind\": \"seesaw\", \"x_cm\": 210, \"y_cm\": 32.6, \"length_cm\": 80, \"angle_deg\": -30}, {\"id\": \"ball1\", \"kind\": \"ball\", \"x_cm\": 245, \"y_cm\": 19, \"material\": \"wood\"}]}",
+  "problems": [
+    "parts[0] (beam redirect): overlaps ball0 by 6.9 cm at the start; move it up to y_cm = 270.6",
+    "parts[4] (seesaw seesaw): overlaps b by 4.8 cm at the start; move it up to y_cm = 37.4",
+    "parts[5] (ball ball1): overlaps seesaw by 2.3 cm at the start; move it up to y_cm = 21.3"
+  ]
+}

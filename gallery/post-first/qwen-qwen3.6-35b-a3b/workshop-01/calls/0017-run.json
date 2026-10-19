@@ -1,0 +1,16 @@
+{
+  "seq": 17,
+  "tool": "run",
+  "scene": "{\"level\": \"post-first\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 100, \"y_cm\": 180, \"length_cm\": 70, \"angle_deg\": -30}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 260, \"y_cm\": 100, \"length_cm\": 80, \"angle_deg\": 30}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6000001,
+    "steps": 192,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "8939a680dc05d861",
+    "state_hash": "3c64cbb41911d22e",
+    "rules_version": 1
+  }
+}

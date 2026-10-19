@@ -1,0 +1,44 @@
+{
+  "seq": 15,
+  "tool": "check",
+  "scene": {
+    "level": "post-first",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 105,
+        "y_cm": 220
+      },
+      {
+        "angle_deg": 0,
+        "id": "shelf",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 150,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -25,
+        "id": "bellramp",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 300,
+        "y_cm": 106
+      },
+      {
+        "angle_deg": 0,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 260,
+        "y_cm": 190
+      }
+    ]
+  },
+  "problems": [
+    "parts[2] (beam bellramp): overlaps bell by 1.4 cm at the start; move it up to y_cm = 107.4"
+  ]
+}

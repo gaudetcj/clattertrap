@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "wake-the-pendulum",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792395592,
+  "duration_s": 246.8174661,
+  "cost_usd": 0.056169026999999996,
+  "turns": 7,
+  "tool_calls": 9,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

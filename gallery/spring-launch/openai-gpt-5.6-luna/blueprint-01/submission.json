@@ -1,0 +1,37 @@
+{
+  "level": "spring-launch",
+  "arm": "blueprint",
+  "name": "Runway to the Button",
+  "prediction": "The wood ball rolls off the fixed ramp onto the low runway, reaches the angled spring pad, launches up and right onto the left ledge, then drops through the slot and presses the button.",
+  "scene": {
+    "level": "spring-launch",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "runway",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 190,
+        "y_cm": 80
+      },
+      {
+        "angle_deg": -45,
+        "id": "launcher",
+        "kind": "spring_pad",
+        "x_cm": 260,
+        "y_cm": 70
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.8833334,
+    "steps": 226,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "880bd08eef9c865f",
+    "state_hash": "9fc75e1e078b112b",
+    "rules_version": 1
+  }
+}

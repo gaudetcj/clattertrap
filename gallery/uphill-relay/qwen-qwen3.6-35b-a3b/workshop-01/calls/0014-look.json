@@ -1,0 +1,5 @@
+{
+  "seq": 14,
+  "tool": "look",
+  "scene": "{\"level\": \"uphill-relay\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 60, \"y_cm\": 250, \"length_cm\": 60, \"angle_deg\": -25}, {\"id\": \"beam2\", \"kind\": \"beam\", \"x_cm\": 170, \"y_cm\": 130, \"length_cm\": 150, \"angle_deg\": -60}, {\"id\": \"beam3\", \"kind\": \"beam\", \"x_cm\": 230, \"y_cm\": 45, \"length_cm\": 40, \"angle_deg\": 5}, {\"id\": \"spring_pad\", \"kind\": \"spring_pad\", \"x_cm\": 260, \"y_cm\": 42, \"angle_deg\": -45}, {\"id\": \"beam4\", \"kind\": \"beam\", \"x_cm\": 320, \"y_cm\": 90, \"length_cm\": 30, \"angle_deg\": -20}]}"
+}

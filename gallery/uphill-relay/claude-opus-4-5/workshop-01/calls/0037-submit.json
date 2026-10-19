@@ -1,0 +1,69 @@
+{
+  "seq": 37,
+  "tool": "submit",
+  "scene": {
+    "level": "uphill-relay",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 55,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -50,
+        "id": "ramp_to_b",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 170,
+        "y_cm": 75
+      },
+      {
+        "angle_deg": -15,
+        "id": "seesaw1",
+        "kind": "seesaw",
+        "length_cm": 80,
+        "x_cm": 275,
+        "y_cm": 22
+      },
+      {
+        "id": "ball1",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 243,
+        "y_cm": 42
+      },
+      {
+        "angle_deg": 5,
+        "id": "guide1",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 310,
+        "y_cm": 130
+      },
+      {
+        "angle_deg": -55,
+        "id": "guide2",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 355,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.8083336,
+    "steps": 457,
+    "parts_used": 6,
+    "chain_length": 3,
+    "event_hash": "8ec334907a6329f5",
+    "state_hash": "221a9c426436052a",
+    "rules_version": 1
+  },
+  "name": "Uphill Catapult Relay",
+  "prediction": "Steel ball touches A then B via the steep ramp, lands on the tilted seesaw's lower right end, catapulting the wood ball from the raised left end upward toward C and the bell."
+}

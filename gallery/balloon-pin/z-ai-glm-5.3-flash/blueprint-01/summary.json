@@ -1,0 +1,15 @@
+{
+  "model": "z-ai-glm-5.3-flash",
+  "level": "balloon-pin",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792383650,
+  "duration_s": 368.9422397,
+  "cost_usd": 0.031956752000000005,
+  "turns": 5,
+  "tool_calls": 6,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

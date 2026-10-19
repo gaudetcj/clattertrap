@@ -1,0 +1,62 @@
+{
+  "level": "basket-fill",
+  "arm": "blueprint",
+  "name": "Cascading Ramp Collector",
+  "prediction": "The three falling balls will roll down the cascading ramps and at least two will land in the basket.",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 210,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 290,
+        "y_cm": 236.5
+      },
+      {
+        "angle_deg": 210,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 180,
+        "y_cm": 145
+      },
+      {
+        "angle_deg": 210,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 100,
+        "y_cm": 90
+      },
+      {
+        "angle_deg": 220,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 65,
+        "y_cm": 65
+      },
+      {
+        "angle_deg": 0,
+        "id": "safety",
+        "kind": "seesaw",
+        "length_cm": 50,
+        "x_cm": 60,
+        "y_cm": 86.2
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.0833335,
+    "steps": 250,
+    "parts_used": 5,
+    "chain_length": 3,
+    "event_hash": "9190facd5c664ad3",
+    "state_hash": "6477a7983968a66a",
+    "rules_version": 1
+  }
+}

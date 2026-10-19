@@ -1,0 +1,54 @@
+{
+  "seq": 25,
+  "tool": "submit",
+  "scene": {
+    "level": "basket-fill",
+    "parts": [
+      {
+        "angle_deg": 8,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 300,
+        "y_cm": 230
+      },
+      {
+        "angle_deg": 8,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 200,
+        "y_cm": 165
+      },
+      {
+        "angle_deg": 8,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 110,
+        "y_cm": 105
+      },
+      {
+        "angle_deg": 5,
+        "id": "beam4",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 75,
+        "y_cm": 55
+      },
+      {
+        "angle_deg": 80,
+        "id": "backstop",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 28,
+        "y_cm": 70
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam beam1): overlaps ball2 by 1.1 cm at the start; move it up to y_cm = 231.1"
+  ],
+  "name": "Stairway to Basket",
+  "prediction": "Balls descend the beam staircase, roll off beam4 toward the basket, with the backstop catching any overshoots and bouncing them back into the basket to fill it with 2 balls."
+}

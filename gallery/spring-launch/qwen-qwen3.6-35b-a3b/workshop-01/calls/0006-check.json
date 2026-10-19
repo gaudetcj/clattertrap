@@ -1,0 +1,5 @@
+{
+  "seq": 6,
+  "tool": "check",
+  "scene": "{\"level\": \"spring-launch\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 180, \"y_cm\": 72, \"length_cm\": 50, \"angle_deg\": 0}, {\"id\": \"spring1\", \"kind\": \"spring_pad\", \"x_cm\": 260, \"y_cm\": 85, \"angle_deg\": -35}]}"
+}

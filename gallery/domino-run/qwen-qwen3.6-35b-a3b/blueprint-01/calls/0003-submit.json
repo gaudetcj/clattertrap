@@ -1,0 +1,18 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": "{\"level\": \"domino-run\", \"parts\": [{\"id\": \"dom1\", \"kind\": \"domino\", \"x_cm\": 130, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom2\", \"kind\": \"domino\", \"x_cm\": 145, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom3\", \"kind\": \"domino\", \"x_cm\": 160, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom4\", \"kind\": \"domino\", \"x_cm\": 175, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom5\", \"kind\": \"domino\", \"x_cm\": 190, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom6\", \"kind\": \"domino\", \"x_cm\": 205, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom7\", \"kind\": \"domino\", \"x_cm\": 220, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom8\", \"kind\": \"domino\", \"x_cm\": 235, \"y_cm\": 137, \"angle_deg\": 0}, {\"id\": \"dom9\", \"kind\": \"domino\", \"x_cm\": 250, \"y_cm\": 137, \"angle_deg\": 0}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 3.1166668,
+    "steps": 374,
+    "parts_used": 9,
+    "chain_length": 10,
+    "event_hash": "a6025920b9abeabd",
+    "state_hash": "b56a9b80b9017677",
+    "rules_version": 1
+  },
+  "name": "domino-chain-to-basket",
+  "prediction": "The wood ball rolls down the ramp onto the shelf, triggering a chain of 9 dominoes; the ball continues to the shelf end and falls into the basket along with the last domino that tips off the edge."
+}

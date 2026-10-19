@@ -1,0 +1,34 @@
+{
+  "seq": 4,
+  "tool": "run",
+  "scene": {
+    "level": "grand-tour",
+    "parts": [
+      {
+        "angle_deg": 0,
+        "id": "pad1",
+        "kind": "spring_pad",
+        "x_cm": 150,
+        "y_cm": 50
+      },
+      {
+        "id": "wb",
+        "kind": "ball",
+        "material": "wood",
+        "x_cm": 150,
+        "y_cm": 80
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 2,
+    "chain_length": 2,
+    "event_hash": "4e9d613825bd2934",
+    "state_hash": "65823d9ee9be0ef7",
+    "rules_version": 1
+  }
+}

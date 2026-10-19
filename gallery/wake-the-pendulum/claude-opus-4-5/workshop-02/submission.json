@@ -1,0 +1,38 @@
+{
+  "level": "wake-the-pendulum",
+  "arm": "workshop",
+  "name": "Pendulum Awakening",
+  "prediction": "Ball0 slides down the ramp and hits the pendulum, which swings left to knock ball1 off the ledge; ball1 bounces off the post, rolls down the guide beam, and rings the bell.",
+  "scene": {
+    "level": "wake-the-pendulum",
+    "parts": [
+      {
+        "angle_deg": -18,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 90,
+        "y_cm": 225
+      },
+      {
+        "angle_deg": -10,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 55,
+        "x_cm": 62,
+        "y_cm": 65
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 4.041667,
+    "steps": 485,
+    "parts_used": 2,
+    "chain_length": 4,
+    "event_hash": "f8de31f0e804928c",
+    "state_hash": "85e42db6769eb11b",
+    "rules_version": 1
+  }
+}
