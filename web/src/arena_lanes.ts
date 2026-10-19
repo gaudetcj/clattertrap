@@ -2,9 +2,10 @@
 // an arm, and a run number, in leaderboard order, cut down to a lineup when many models played.
 
 import type { LaneInput } from './conductor';
-import { familyOf, lineup, modelLabel, type Entry } from './gallery';
+import { familyOf, lineup, modelLabel, type Entry, type Miss } from './gallery';
 import type { Fixture } from './levels';
 import { param } from './query';
+import { missStamp } from './stamp';
 
 export const DEFAULT_LEVEL = 'seesaw-launch';
 export const DEFAULT_ARM = 'blueprint';
@@ -79,34 +80,86 @@ export function lineupModels(kind: LineupKind, ranked: string[], present: string
   }
 }
 
+// What a model has on a level and arm: its first entry, or, with none, its first counted run that
+// ended without a submission. A run number narrows both to that run.
+type Played = { entry: Entry; miss?: undefined } | { entry?: undefined; miss: Miss };
+
+function played(entries: Entry[], misses: Miss[], pick: Pick): Map<string, Played> {
+  const out = new Map<string, Played>();
+  for (const e of lineup(entries, pick.level, pick.arm, pick.run)) {
+    out.set(e.model, { entry: e });
+  }
+  const mine = misses
+    .filter((m) => m.level === pick.level && m.arm === pick.arm && (pick.run === undefined || m.run === `${pick.arm}-${pick.run}`))
+    .sort((a, b) => a.run.localeCompare(b.run));
+  for (const m of mine) {
+    if (!out.has(m.model)) {
+      out.set(m.model, { miss: m });
+    }
+  }
+  return out;
+}
+
+// The models with a counted run on the level and arm, a submission or not.
+export function presentModels(entries: Entry[], misses: Miss[], pick: Pick): string[] {
+  return [...played(entries, misses, pick).keys()];
+}
+
 // The models the pick plays, in lane order: a custom list as given, else the named or default
 // lineup over the models present.
-export function pickModels(entries: Entry[], pick: Pick, ranked: string[]): string[] {
-  const present = lineup(entries, pick.level, pick.arm, pick.run).map((e) => e.model);
+export function pickModels(entries: Entry[], misses: Miss[], pick: Pick, ranked: string[]): string[] {
+  const present = presentModels(entries, misses, pick);
   if (pick.models) {
     return pick.models.filter((m) => present.includes(m));
   }
   return lineupModels(pick.lineup ?? defaultLineup(present.length), ranked, present);
 }
 
-export function lanesFor(entries: Entry[], levels: Fixture[], pick: Pick, ranked: string[]): LaneInput[] {
+// Why a counted run has no machine, for the panel's footer; the wording follows docs/format.md.
+function missNote(status: string): string {
+  switch (status) {
+    case 'no_submission':
+      return 'The session ended on its own without a submission.';
+    case 'over_budget':
+      return 'The dollar cap stopped the session before a submission.';
+    case 'timed_out':
+      return 'The wall clock stopped the session before a submission.';
+    default:
+      return `The session ended ${status.replace(/_/g, ' ')} without a submission.`;
+  }
+}
+
+// A lane for a counted run without a submission: the level as the model left it, nothing placed.
+function missLane(m: Miss, level: Fixture): LaneInput {
+  return {
+    chrome: { label: modelLabel(m.model), name: '', prediction: missNote(m.status) },
+    levelJson: level.level,
+    sceneJson: JSON.stringify({ level: level.id, parts: [] }),
+    stored: null,
+    missing: { text: missStamp(m.status), tone: 'failure' },
+  };
+}
+
+export function lanesFor(entries: Entry[], misses: Miss[], levels: Fixture[], pick: Pick, ranked: string[]): LaneInput[] {
   const level = levels.find((f) => f.id === pick.level);
   if (!level) {
     return [];
   }
-  const byModel = new Map(lineup(entries, pick.level, pick.arm, pick.run).map((e) => [e.model, e]));
-  return pickModels(entries, pick, ranked).flatMap((m) => {
-    const e = byModel.get(m);
-    return e
-      ? [
-          {
-            chrome: { label: modelLabel(e.model), name: e.name, prediction: e.prediction },
-            levelJson: level.level,
-            sceneJson: e.sceneJson,
-            stored: e.outcome,
-          },
-        ]
-      : [];
+  const byModel = played(entries, misses, pick);
+  return pickModels(entries, misses, pick, ranked).flatMap((m) => {
+    const p = byModel.get(m);
+    if (p?.entry) {
+      const e = p.entry;
+      return [
+        {
+          chrome: { label: modelLabel(e.model), name: e.name, prediction: e.prediction },
+          levelJson: level.level,
+          sceneJson: e.sceneJson,
+          stored: e.outcome,
+        },
+      ];
+    }
+    return p ? [missLane(p.miss, level)] : [];
   });
 }
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Outcome } from './decode';
-import { stampText } from './stamp';
+import { missStamp, stampText } from './stamp';
 
 function outcome(end: Outcome['end'], time_s: number): Outcome {
   return {
@@ -27,5 +27,13 @@ describe('stampText', () => {
   it('says MISSED at the time limit and CAME TO REST when everything slept', () => {
     expect(stampText('ring', outcome('time_limit', 20))).toBe('MISSED');
     expect(stampText('fill', outcome('all_asleep', 6.1))).toBe('CAME TO REST');
+  });
+});
+
+describe('missStamp', () => {
+  it('names a counted run that ended without a submission', () => {
+    expect(missStamp('no_submission')).toBe('NO SUBMISSION');
+    expect(missStamp('over_budget')).toBe('OVER BUDGET');
+    expect(missStamp('timed_out')).toBe('TIMED OUT');
   });
 });

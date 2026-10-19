@@ -29,3 +29,15 @@ test('the arena grid plays the six Claude machines and shows their stamps', asyn
   await expect(canvas).toHaveJSProperty('width', 1200);
   await expect(canvas).toHaveJSProperty('height', 808);
 });
+
+test('a model with no submission gets a panel stamped from the start', async ({ page }) => {
+  await page.goto('/arena.html?level=seesaw-launch&arm=workshop&models=claude-opus-5-5,claude-haiku-5-5');
+  const status = page.locator('.status');
+  const stamps = status.locator('.stamp');
+  await expect(stamps).toHaveCount(2);
+  await expect(stamps.nth(1)).toHaveAttribute('data-model', 'claude-haiku-5-5');
+  // The miss is stamped before the grid has ended, while the machine beside it still runs.
+  await expect(stamps.nth(1)).toHaveText('NO SUBMISSION');
+  await expect(status).toHaveAttribute('data-ended', 'true', { timeout: 60_000 });
+  await expect(stamps.nth(0)).toHaveText(VERDICT);
+});

@@ -19,3 +19,8 @@ export function stampText(goal: GoalKind, outcome: Outcome): string {
       return 'CAME TO REST';
   }
 }
+
+// The stamp over a counted run that ended without a submission: its status, as the summary says it.
+export function missStamp(status: string): string {
+  return status.replace(/_/g, ' ').toUpperCase();
+}

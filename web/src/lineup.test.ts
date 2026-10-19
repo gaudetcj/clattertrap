@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { defaultLineup, lanesFor, lineupModels, lineupNames, pickFrom } from './arena_lanes';
-import type { Entry } from './gallery';
+import { defaultLineup, lanesFor, lineupModels, lineupNames, pickFrom, presentModels } from './arena_lanes';
+import type { Entry, Miss } from './gallery';
 
 function entry(model: string, level: string, arm: string): Entry {
   return {
@@ -87,9 +87,9 @@ describe('lineups', () => {
     const levels = [{ id: 'bell-drop', level: '{"id":"bell-drop"}', reference: '{}' }];
     const entries = [entry('claude-opus-5-5', 'bell-drop', 'blueprint'), entry('claude-haiku-4-5', 'bell-drop', 'blueprint')];
     const pick = { level: 'bell-drop', arm: 'blueprint', models: ['claude-haiku-4-5', 'x-ai-grok-4.3', 'claude-opus-5-5'] };
-    expect(lanesFor(entries, levels, pick, ranked).map((l) => l.chrome.label)).toEqual(['HAIKU 4.5', 'OPUS 5.5']);
+    expect(lanesFor(entries, [], levels, pick, ranked).map((l) => l.chrome.label)).toEqual(['HAIKU 4.5', 'OPUS 5.5']);
     // Without a list, the lanes follow the leaderboard.
-    expect(lanesFor(entries, levels, { level: 'bell-drop', arm: 'blueprint' }, ranked).map((l) => l.chrome.label)).toEqual(['OPUS 5.5', 'HAIKU 4.5']);
+    expect(lanesFor(entries, [], levels, { level: 'bell-drop', arm: 'blueprint' }, ranked).map((l) => l.chrome.label)).toEqual(['OPUS 5.5', 'HAIKU 4.5']);
   });
 });
 
@@ -102,5 +102,48 @@ describe('lineup names', () => {
       claude: 'Claude (2)',
       open: 'open weights (1)',
     });
+  });
+});
+
+function miss(model: string, level: string, arm: string, status: string, run = `${arm}-01`): Miss {
+  return { key: `${level}/${model}/${run}`, level, model, run, arm, status, cost_usd: 0.1 };
+}
+
+describe('a counted run without a submission', () => {
+  const levels = [{ id: 'bell-drop', level: '{"id":"bell-drop"}', reference: '{}' }];
+  const entries = [entry('claude-opus-5-5', 'bell-drop', 'blueprint')];
+  const pick = { level: 'bell-drop', arm: 'blueprint' };
+
+  it('gets a lane of the untouched level, stamped from the start, with the reason in the footer', () => {
+    const misses = [miss('claude-haiku-5-5', 'bell-drop', 'blueprint', 'no_submission')];
+    const lanes = lanesFor(entries, misses, levels, pick, ranked);
+    expect(lanes.map((l) => l.chrome.label)).toEqual(['OPUS 5.5', 'HAIKU 5.5']);
+    expect(lanes[0]?.missing).toBeUndefined();
+    const lane = lanes[1];
+    expect(lane?.chrome).toEqual({ label: 'HAIKU 5.5', name: '', prediction: 'The session ended on its own without a submission.' });
+    expect(lane?.sceneJson).toBe('{"level":"bell-drop","parts":[]}');
+    expect(lane?.stored).toBeNull();
+    expect(lane?.missing).toEqual({ text: 'NO SUBMISSION', tone: 'failure' });
+    expect(lanesFor(entries, [miss('x-ai-grok-4.3', 'bell-drop', 'blueprint', 'timed_out')], levels, pick, ranked)[1]?.chrome.prediction).toBe(
+      'The wall clock stopped the session before a submission.',
+    );
+    expect(lanesFor(entries, [miss('x-ai-grok-4.3', 'bell-drop', 'blueprint', 'over_budget')], levels, pick, ranked)[1]?.chrome.prediction).toBe(
+      'The dollar cap stopped the session before a submission.',
+    );
+  });
+
+  it('counts toward the models present, but a machine on another run wins over it', () => {
+    const misses = [
+      miss('claude-opus-5-5', 'bell-drop', 'blueprint', 'timed_out', 'blueprint-02'),
+      miss('claude-haiku-5-5', 'bell-drop', 'blueprint', 'timed_out', 'blueprint-02'),
+      miss('claude-haiku-5-5', 'bell-drop', 'blueprint', 'no_submission', 'blueprint-01'),
+      miss('x-ai-grok-4.3', 'bell-drop', 'workshop', 'no_submission'),
+    ];
+    expect(presentModels(entries, misses, pick)).toEqual(['claude-opus-5-5', 'claude-haiku-5-5']);
+    const lanes = lanesFor(entries, misses, levels, pick, ranked);
+    expect(lanes[0]?.missing).toBeUndefined();
+    expect(lanes[1]?.missing?.text).toBe('NO SUBMISSION');
+    // Asking for a run number picks that run's miss.
+    expect(lanesFor(entries, misses, levels, { ...pick, run: '02' }, ranked).map((l) => l.missing?.text)).toEqual(['TIMED OUT', 'TIMED OUT']);
   });
 });

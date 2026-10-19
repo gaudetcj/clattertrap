@@ -19,6 +19,8 @@ export interface LaneInput {
   levelJson: string;
   sceneJson: string;
   stored: Outcome | null;
+  // Set for a counted run that ended without a submission: the lane never steps and wears this.
+  missing?: Stamp;
 }
 
 export type State = 'empty' | 'ready' | 'playing' | 'paused' | 'ended';
@@ -63,7 +65,7 @@ export class Conductor {
       replay: Replay.start(input.levelJson, input.sceneJson),
       stored: input.stored,
       outcome: null,
-      stamp: null,
+      stamp: input.missing ?? null,
     }));
     const first = this.lanes[0]?.replay.setup;
     this.view = new ArenaView(
@@ -162,8 +164,9 @@ export class Conductor {
     return this.playing;
   }
 
+  // A lane has ended once it wears a stamp: its own verdict, or a miss stamped at the start.
   ended(): boolean {
-    return gridEnded(this.lanes.map((l) => l.outcome !== null));
+    return gridEnded(this.lanes.map((l) => l.stamp !== null));
   }
 
   // Each lane's stamp, null while it still runs.
@@ -179,10 +182,10 @@ export class Conductor {
   // Steps every running lane `steps` times and redraws the lanes that moved. Returns whether the
   // grid has ended.
   advance(steps: number): boolean {
-    const counts = plan(steps, this.lanes.map((l) => l.outcome !== null));
+    const counts = plan(steps, this.lanes.map((l) => l.stamp !== null));
     const moved = this.lanes.map((lane, i) => {
       const n = counts[i] ?? 0;
-      for (let k = 0; k < n && lane.outcome === null; k += 1) {
+      for (let k = 0; k < n && lane.stamp === null; k += 1) {
         this.step(lane);
       }
       return n > 0;
