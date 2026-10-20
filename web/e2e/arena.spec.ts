@@ -58,3 +58,18 @@ test('a phone fits the grid to its width alone, one panel per row', async ({ pag
   await expect(canvas).toHaveJSProperty('width', 400);
   expect((await canvas.boundingBox())?.width).toBe(box?.width);
 });
+
+test('a laptop gives the grid the height down to the status line, not the footer', async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.goto('/arena.html?level=seesaw-launch&arm=blueprint&lineup=claude');
+  const canvas = page.locator('canvas');
+  await expect(canvas).toHaveJSProperty('width', 1200);
+  const box = await canvas.boundingBox();
+  if (!box) {
+    throw new Error('no canvas box');
+  }
+  // The grid takes most of the room under its top edge and still ends above the status line.
+  expect(box.height).toBeGreaterThan(0.85 * (768 - box.y));
+  const status = await page.locator('.status').boundingBox();
+  expect(status?.y).toBeGreaterThanOrEqual(box.y + box.height);
+});

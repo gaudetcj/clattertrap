@@ -52,12 +52,15 @@ describe('panel layout', () => {
     expect(footerRect(rect)).toEqual({ x: 800, y: 764, w: 400, h: 44 });
   });
 
-  it('upscales by a whole number that fits the page', () => {
+  it('upscales by a whole number when that keeps most of the room, else by the fraction that fits', () => {
     const six = { w: 1200, h: 808 };
     expect(fitScale(1280, 900, six)).toBe(1);
     expect(fitScale(2560, 1700, six)).toBe(2);
     expect(fitScale(2560, 900, six)).toBe(1);
     expect(fitScale(860, 900, { w: 400, h: 404 })).toBe(2);
+    // A laptop gives one panel room for 1.4 times its size; crisp 1x would waste a third of it.
+    expect(fitScale(912, 570, { w: 400, h: 404 })).toBeCloseTo(570 / 404, 6);
+    expect(fitScale(1248, 1000, six)).toBe(1);
     // Below one, the canvas shrinks to fit instead of overflowing the screen.
     expect(fitScale(800, 700, six)).toBeCloseTo(800 / 1200, 6);
     expect(fitScale(1300, 400, six)).toBeCloseTo(400 / 808, 6);

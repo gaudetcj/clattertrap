@@ -10,8 +10,8 @@ function px(value: string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-// The height everything after `canvas` in its container takes: the siblings with their margins,
-// the gaps between them, the container's bottom padding, and a little room.
+// The height the lines under `canvas` take: its later siblings up to the page footer, with their
+// margins and the gaps between them, and a little room. The footer may scroll off the screen.
 function heightBelow(canvas: HTMLElement): number {
   const parent = canvas.parentElement;
   if (!parent) {
@@ -19,11 +19,13 @@ function heightBelow(canvas: HTMLElement): number {
   }
   const style = getComputedStyle(parent);
   const gap = px(style.rowGap);
-  let total = px(style.paddingBottom) + px(getComputedStyle(canvas).marginBottom) + 12;
+  let total = px(getComputedStyle(canvas).marginBottom) + 12;
   let after = false;
   for (const child of Array.from(parent.children)) {
     if (child === canvas) {
       after = true;
+    } else if (after && child.tagName === 'FOOTER') {
+      break;
     } else if (after) {
       const cs = getComputedStyle(child);
       total += child.getBoundingClientRect().height + px(cs.marginTop) + px(cs.marginBottom) + gap;

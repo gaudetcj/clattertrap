@@ -91,11 +91,11 @@ const frame = {
 };
 
 describe('ArenaView', () => {
-  it('sizes the canvas to the grid and the element to a whole-number multiple', () => {
+  it('sizes the canvas to the grid and the element to the scale that fits', () => {
     const canvas = new FakeCanvas();
     const view = new ArenaView(canvas, [panel('OPUS 5.5'), panel('HAIKU 5.5')], 400, 300);
     expect(view.grid).toEqual({ w: 800, h: 404 });
-    expect(view.resize(1280, 900)).toBe(1);
+    expect(view.resize(880, 600)).toBe(1);
     expect([canvas.width, canvas.height]).toEqual([800, 404]);
     expect(canvas.style).toEqual({ width: '800px', height: '404px', imageRendering: 'pixelated' });
     expect(view.resize(2560, 1300)).toBe(3);
