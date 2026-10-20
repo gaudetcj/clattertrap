@@ -1,6 +1,6 @@
 // The leaderboard: levels solved per model and arm over the gallery, ranked the way
-// `clattertrap leaderboard` ranks them: full coverage first, then blueprint levels solved,
-// workshop levels solved, mean cost, and id. A level counts once however many runs solved it.
+// `clattertrap leaderboard` ranks them: blueprint levels solved, then workshop levels solved, mean
+// cost, and id. A level counts once however many runs solved it. The page can sort by any column.
 
 import type { Entry, Miss } from './gallery';
 
@@ -23,6 +23,9 @@ export interface Row {
   // Whether the model attempted every level under both arms.
   full: boolean;
 }
+
+// A column the page can sort by.
+export type SortKey = 'model' | 'blueprint' | 'workshop' | 'hardBlueprint' | 'hardWorkshop' | 'meanUsd' | 'runs';
 
 interface Counted {
   model: string;
@@ -52,6 +55,11 @@ function mean(values: number[]): number {
   return values.length === 0 ? 0 : values.reduce((a, b) => a + b, 0) / values.length;
 }
 
+// The ranking: more blueprint levels solved, then more workshop levels, then cheaper, then by id.
+function rank(a: Row, b: Row): number {
+  return b.blueprint.solved - a.blueprint.solved || b.workshop.solved - a.workshop.solved || a.meanUsd - b.meanUsd || a.model.localeCompare(b.model);
+}
+
 export function leaderboardRows(entries: Entry[], misses: Miss[], tiers: Map<string, number>): Row[] {
   const runs = counted(entries, misses);
   const total = tiers.size;
@@ -68,12 +76,39 @@ export function leaderboardRows(entries: Entry[], misses: Miss[], tiers: Map<str
       full: blueprint.attempted === total && workshop.attempted === total,
     };
   });
-  return rows.sort(
-    (a, b) =>
-      Number(b.full) - Number(a.full) ||
-      b.blueprint.solved - a.blueprint.solved ||
-      b.workshop.solved - a.workshop.solved ||
-      a.meanUsd - b.meanUsd ||
-      a.model.localeCompare(b.model),
-  );
+  return rows.sort(rank);
+}
+
+// Columns whose natural order puts the largest first; cost and id read upward.
+const LARGEST_FIRST: ReadonlySet<SortKey> = new Set(['blueprint', 'workshop', 'hardBlueprint', 'hardWorkshop', 'runs']);
+
+function valueOf(r: Row, key: SortKey): number | string {
+  switch (key) {
+    case 'model':
+      return r.model;
+    case 'blueprint':
+      return r.blueprint.solved;
+    case 'workshop':
+      return r.workshop.solved;
+    case 'hardBlueprint':
+      return r.blueprint.hardSolved;
+    case 'hardWorkshop':
+      return r.workshop.hardSolved;
+    case 'meanUsd':
+      return r.meanUsd;
+    case 'runs':
+      return r.runs;
+  }
+}
+
+// The rows ordered by one column in its natural direction, ties broken by the ranking; `flipped`
+// reverses the whole order.
+export function sortRows(rows: Row[], key: SortKey, flipped: boolean): Row[] {
+  const order = (a: Row, b: Row): number => {
+    const x = valueOf(a, key);
+    const y = valueOf(b, key);
+    const cmp = typeof x === 'string' && typeof y === 'string' ? x.localeCompare(y) : Number(x) - Number(y);
+    return (LARGEST_FIRST.has(key) ? -cmp : cmp) || rank(a, b);
+  };
+  return [...rows].sort((a, b) => (flipped ? -order(a, b) : order(a, b)));
 }

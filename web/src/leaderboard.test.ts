@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Entry, Miss } from './gallery';
-import { leaderboardRows } from './leaderboard';
+import { leaderboardRows, sortRows } from './leaderboard';
 
 function entry(model: string, level: string, arm: string, run: string, goal_met: boolean, cost: number | null): Entry {
   return {
@@ -57,7 +57,7 @@ describe('leaderboard rows', () => {
     expect(row?.full).toBe(false);
   });
 
-  it('rank full coverage first, then blueprint solved, workshop solved, and mean cost', () => {
+  it('rank by blueprint solved, then workshop solved, then mean cost, whatever the coverage', () => {
     const full = (model: string, cost: number): Entry[] =>
       [...tiers.keys()].flatMap((level) => [
         entry(model, level, 'blueprint', '01', level === 'bell-drop', cost),
@@ -73,8 +73,31 @@ describe('leaderboard rows', () => {
       [],
       tiers,
     );
-    expect(rows.map((r) => r.model)).toEqual(['cheap', 'pricey', 'partial']);
-    expect(rows[0]?.full).toBe(true);
-    expect(rows[2]?.blueprint.solved).toBe(2);
+    expect(rows.map((r) => r.model)).toEqual(['partial', 'cheap', 'pricey']);
+    expect(rows[0]?.full).toBe(false);
+    expect(rows[1]?.full).toBe(true);
+  });
+
+  it('sort by any column, descending for scores and ascending for cost and name, and flip on request', () => {
+    const rows = leaderboardRows(
+      [
+        entry('a', 'bell-drop', 'blueprint', '01', true, 1),
+        entry('a', 'post-first', 'workshop', '01', false, 1),
+        entry('b', 'bell-drop', 'workshop', '01', true, 3),
+        entry('b', 'seesaw-launch', 'workshop', '01', true, 3),
+        entry('c', 'seesaw-launch', 'blueprint', '01', true, 0.5),
+      ],
+      [],
+      tiers,
+    );
+    const names = (sorted: typeof rows): string[] => sorted.map((r) => r.model);
+    expect(names(rows)).toEqual(['c', 'a', 'b']);
+    expect(names(sortRows(rows, 'workshop', false))).toEqual(['b', 'c', 'a']);
+    expect(names(sortRows(rows, 'hardBlueprint', false))).toEqual(['c', 'a', 'b']);
+    expect(names(sortRows(rows, 'meanUsd', false))).toEqual(['c', 'a', 'b']);
+    expect(names(sortRows(rows, 'model', false))).toEqual(['a', 'b', 'c']);
+    expect(names(sortRows(rows, 'runs', false))).toEqual(['a', 'b', 'c']);
+    expect(names(sortRows(rows, 'model', true))).toEqual(['c', 'b', 'a']);
+    expect(names(sortRows(rows, 'blueprint', true))).toEqual(['b', 'a', 'c']);
   });
 });

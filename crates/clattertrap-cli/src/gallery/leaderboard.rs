@@ -57,14 +57,6 @@ pub struct Row {
     pub runs: usize,
 }
 
-impl Row {
-    /// Whether the model attempted every one of `total` levels under both arms.
-    #[must_use]
-    pub fn full(&self, total: usize) -> bool {
-        self.blueprint.attempted == total && self.workshop.attempted == total
-    }
-}
-
 /// Prints the leaderboard.
 ///
 /// # Errors
@@ -90,8 +82,8 @@ pub fn run(opts: &Options) -> Result<()> {
     Ok(())
 }
 
-/// One row per model with a counted run, ranked: full coverage first, then blueprint levels
-/// solved, workshop levels solved, mean cost, and id.
+/// One row per model with a counted run, ranked: blueprint levels solved, then workshop levels
+/// solved, mean cost, and id.
 #[must_use]
 pub fn rows(runs: &[Run], tiers: &[(String, u8)]) -> Vec<Row> {
     let counted: Vec<&Run> = runs.iter().filter(|r| r.counts()).collect();
@@ -113,11 +105,10 @@ pub fn rows(runs: &[Run], tiers: &[(String, u8)]) -> Vec<Row> {
             }
         })
         .collect();
-    let total = tiers.len();
     rows.sort_by(|a, b| {
-        b.full(total)
-            .cmp(&a.full(total))
-            .then(b.blueprint.solved.cmp(&a.blueprint.solved))
+        b.blueprint
+            .solved
+            .cmp(&a.blueprint.solved)
             .then(b.workshop.solved.cmp(&a.workshop.solved))
             .then(a.mean_usd.total_cmp(&b.mean_usd))
             .then(a.model.cmp(&b.model))
@@ -244,7 +235,7 @@ mod tests {
     }
 
     #[test]
-    fn full_coverage_ranks_above_a_stronger_partial_row_and_cost_breaks_ties() {
+    fn blueprint_solved_ranks_first_whatever_the_coverage_and_cost_breaks_ties() {
         let mut runs = full_model("full-pricey", 1, 2.0);
         runs.extend(full_model("full-cheap", 1, 0.5));
         runs.push(run(
@@ -265,12 +256,11 @@ mod tests {
         ));
         let rows = rows(&runs, &tiers());
         let order: Vec<&str> = rows.iter().map(|r| r.model.as_str()).collect();
-        assert_eq!(order, ["full-cheap", "full-pricey", "partial"]);
-        let partial: &Row = &rows[2];
+        assert_eq!(order, ["partial", "full-cheap", "full-pricey"]);
+        let partial: &Row = &rows[0];
         assert_eq!(partial.blueprint.solved, 2);
         assert_eq!(partial.blueprint.hard_solved, 2);
         assert_eq!(partial.workshop.attempted, 0);
-        assert!(!partial.full(15));
     }
 
     #[test]
