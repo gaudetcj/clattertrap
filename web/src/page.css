@@ -126,8 +126,8 @@ table {
 }
 th, td { text-align: left; padding: 5px 12px; border-bottom: 2px dotted var(--panel); vertical-align: top; }
 th { font: 9px/1.4 var(--pixel); color: var(--brass); background: var(--panel); }
-th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: left; }
-th button:hover, th.sorted button { color: var(--brass-light); text-decoration: underline; }
+th button, th button:hover, th button:active { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; box-shadow: none; cursor: pointer; text-align: left; }
+th button:hover, th.sorted button { color: var(--brass-light); }
 th.sorted[data-order='natural'] button::after { content: ' v'; }
 th.sorted[data-order='flipped'] button::after { content: ' ^'; }
 tr:nth-child(even) td { background: #1f2739; }
