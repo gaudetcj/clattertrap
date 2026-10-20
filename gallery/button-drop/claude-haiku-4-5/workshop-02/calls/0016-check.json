@@ -1,0 +1,35 @@
+{
+  "seq": 16,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -38,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 127.3,
+        "y_cm": 222.3
+      },
+      {
+        "angle_deg": -28.1,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 148,
+        "x_cm": 265,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 330,
+        "y_cm": 60
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam beam1): overlaps ball0 by 0.7 cm at the start; move it up to y_cm = 223.0"
+  ]
+}

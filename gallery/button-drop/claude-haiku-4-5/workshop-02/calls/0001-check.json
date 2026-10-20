@@ -1,0 +1,37 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 143.5,
+        "y_cm": 220.5
+      },
+      {
+        "angle_deg": -35,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 264.5,
+        "y_cm": 151
+      },
+      {
+        "angle_deg": -83.6,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 71,
+        "x_cm": 326,
+        "y_cm": 75.5
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam beam1): overlaps ball0 by 6.0 cm at the start; move it up to y_cm = 226.5",
+    "parts[2] (beam beam3): overlaps button by 3.0 cm at the start; move it up to y_cm = 78.5"
+  ]
+}

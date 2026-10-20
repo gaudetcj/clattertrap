@@ -1,0 +1,43 @@
+{
+  "seq": 19,
+  "tool": "run",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -38,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 127.3,
+        "y_cm": 223
+      },
+      {
+        "angle_deg": -28.1,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 148,
+        "x_cm": 265,
+        "y_cm": 115
+      },
+      {
+        "angle_deg": 0,
+        "id": "domino1",
+        "kind": "domino",
+        "x_cm": 330,
+        "y_cm": 60
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.5583334,
+    "steps": 187,
+    "parts_used": 3,
+    "chain_length": 3,
+    "event_hash": "ec8e42031aa690ee",
+    "state_hash": "2e7353d370ac3fb8",
+    "rules_version": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-deepseek-v4.1-flash",
+  "level": "grand-tour",
+  "arm": "blueprint",
+  "status": "no_submission",
+  "started_unix_s": 1792466686,
+  "duration_s": 653.504389,
+  "cost_usd": 0.12569740399999998,
+  "turns": 2,
+  "tool_calls": 2,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

@@ -1,0 +1,46 @@
+{
+  "level": "button-drop",
+  "arm": "workshop",
+  "name": "Three-Beam Chute to Button",
+  "prediction": "The steel ball falls and slides down three descending beams that guide it toward the button at the bottom right, pressing it downward by 3cm.",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -50,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 143.35,
+        "y_cm": 181.85
+      },
+      {
+        "angle_deg": -39,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 195,
+        "y_cm": 127
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 270.6,
+        "y_cm": 79.7
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.5583334,
+    "steps": 187,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "4835ba9799d838b1",
+    "state_hash": "3f8ac5882ba46e6f",
+    "rules_version": 1
+  }
+}

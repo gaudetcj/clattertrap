@@ -1,0 +1,28 @@
+{
+  "seq": 33,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -50,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 143.35,
+        "y_cm": 181.85
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 270.6,
+        "y_cm": 75
+      }
+    ]
+  },
+  "problems": [
+    "parts[1] (beam beam2): overlaps button by 4.7 cm at the start; move it up to y_cm = 79.7"
+  ]
+}

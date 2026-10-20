@@ -1,0 +1,33 @@
+{
+  "seq": 4,
+  "tool": "look",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 143.5,
+        "y_cm": 229
+      },
+      {
+        "angle_deg": -35,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 264.5,
+        "y_cm": 151
+      },
+      {
+        "angle_deg": -83.6,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 71,
+        "x_cm": 326,
+        "y_cm": 78.5
+      }
+    ]
+  }
+}

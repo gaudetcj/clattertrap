@@ -1,0 +1,45 @@
+{
+  "seq": 31,
+  "tool": "run",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "height_cm": 80,
+        "id": "funnel1",
+        "kind": "funnel",
+        "mouth_cm": 100,
+        "throat_cm": 30,
+        "x_cm": 80,
+        "y_cm": 180
+      },
+      {
+        "angle_deg": -45,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 120,
+        "y_cm": 140
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 220,
+        "y_cm": 95
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.1500001,
+    "steps": 138,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "409d7fcc3c7f5332",
+    "state_hash": "368aad4ea8bc39ee",
+    "rules_version": 1
+  }
+}

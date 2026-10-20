@@ -1,0 +1,44 @@
+{
+  "seq": 13,
+  "tool": "run",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -35,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 110,
+        "y_cm": 238.6
+      },
+      {
+        "angle_deg": -25,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 205,
+        "y_cm": 176
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 70,
+        "x_cm": 294.5,
+        "y_cm": 131.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.5583334,
+    "steps": 187,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "c467dfd76f17490e",
+    "state_hash": "ac0c501754636664",
+    "rules_version": 1
+  }
+}

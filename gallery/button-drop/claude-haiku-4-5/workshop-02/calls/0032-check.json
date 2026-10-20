@@ -1,0 +1,36 @@
+{
+  "seq": 32,
+  "tool": "check",
+  "scene": {
+    "level": "button-drop",
+    "parts": [
+      {
+        "angle_deg": -50,
+        "id": "beam1",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 143.35,
+        "y_cm": 181.85
+      },
+      {
+        "angle_deg": -30,
+        "id": "beam2",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 270.6,
+        "y_cm": 75
+      },
+      {
+        "angle_deg": -90,
+        "id": "beam3",
+        "kind": "beam",
+        "length_cm": 20,
+        "x_cm": 330,
+        "y_cm": 50
+      }
+    ]
+  },
+  "problems": [
+    "parts[2] (beam beam3): centre (330, 50) is outside every build zone; move it inside x 20..380, y 60..300"
+  ]
+}
