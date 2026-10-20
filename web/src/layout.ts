@@ -76,10 +76,11 @@ export function bestColumns(n: number, css_w: number, css_h: number, panel: Size
   return best;
 }
 
-// The upscale that fits a grid into a box: a whole number when one fits, else the fraction that
-// does, so the grid never overflows the screen.
 // A whole-number upscale keeps every pixel the same size; it is worth up to this much of the room.
 const CRISP_SHARE = 0.85;
+
+// The scale that fits a grid into a box: a whole number when one keeps most of the room, else the
+// fraction that fits, so the grid never overflows the screen.
 
 export function fitScale(css_w: number, css_h: number, grid: Size): number {
   const fraction = Math.min(css_w / grid.w, css_h / grid.h);
