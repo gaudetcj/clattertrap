@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-4-5",
+  "level": "bell-drop",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792467425,
+  "duration_s": 261.3265423,
+  "cost_usd": 0.44348699999999996,
+  "turns": 10,
+  "tool_calls": 9,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

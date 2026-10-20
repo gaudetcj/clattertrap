@@ -1,0 +1,44 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "bell-drop",
+    "parts": [
+      {
+        "angle_deg": -8,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 90,
+        "y_cm": 270
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 170,
+        "y_cm": 250
+      },
+      {
+        "angle_deg": -22,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 110,
+        "x_cm": 260,
+        "y_cm": 215
+      },
+      {
+        "angle_deg": -30,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 330,
+        "y_cm": 170
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam ramp1): overlaps ball0 by 0.9 cm at the start; move it up to y_cm = 270.9"
+  ]
+}
