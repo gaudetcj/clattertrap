@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Entry, Miss } from './gallery';
-import { leaderboardRows, sortRows } from './leaderboard';
+import { countLine, leaderboardRows, sortRows } from './leaderboard';
 
 function entry(model: string, level: string, arm: string, run: string, goal_met: boolean, cost: number | null): Entry {
   return {
@@ -99,5 +99,14 @@ describe('leaderboard rows', () => {
     expect(names(sortRows(rows, 'runs', false))).toEqual(['a', 'b', 'c']);
     expect(names(sortRows(rows, 'model', true))).toEqual(['c', 'b', 'a']);
     expect(names(sortRows(rows, 'blueprint', true))).toEqual(['b', 'a', 'c']);
+  });
+});
+
+describe('count line', () => {
+  it('ties the counted runs to the machines built and the runs without a submission', () => {
+    expect(countLine(339, 316, 11, 1, 15)).toBe(
+      '339 counted runs by 11 models on rules version 1, 316 of them with a machine and 23 without a submission. ' +
+        'A level counts once however many runs solved it, over the levels the model attempted in that arm, of 15; hard levels are tiers 4 and 5.',
+    );
   });
 });

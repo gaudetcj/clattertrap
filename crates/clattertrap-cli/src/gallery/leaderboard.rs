@@ -55,6 +55,8 @@ pub struct Row {
     pub mean_usd: f64,
     /// Counted runs.
     pub runs: usize,
+    /// Counted runs that ended with a submission, each a machine in the gallery.
+    pub machines: usize,
 }
 
 /// Prints the leaderboard.
@@ -102,6 +104,7 @@ pub fn rows(runs: &[Run], tiers: &[(String, u8)]) -> Vec<Row> {
                 workshop: arm_count(&mine, Arm::Workshop, tiers),
                 mean_usd: mean(mine.iter().filter_map(|r| r.summary.cost_usd)),
                 runs: mine.len(),
+                machines: mine.iter().filter(|r| r.submission.is_some()).count(),
             }
         })
         .collect();
@@ -175,10 +178,12 @@ pub fn markdown(rows: &[Row], total: usize) -> String {
         );
     }
     let runs: usize = rows.iter().map(|r| r.runs).sum();
+    let machines: usize = rows.iter().map(|r| r.machines).sum();
     let _ = write!(
         out,
-        "\n{runs} counted runs by {} models on rules version {RULES_VERSION}. A level counts once however many runs solved it, over the levels the model attempted in that arm, of {total}; hard levels are tiers 4 and 5.\n",
-        rows.len()
+        "\n{runs} counted runs by {} models on rules version {RULES_VERSION}, {machines} of them with a machine and {} without a submission. A level counts once however many runs solved it, over the levels the model attempted in that arm, of {total}; hard levels are tiers 4 and 5.\n",
+        rows.len(),
+        runs - machines
     );
     out
 }

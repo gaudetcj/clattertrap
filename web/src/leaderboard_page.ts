@@ -6,7 +6,7 @@ import { band, footer, navLinks, siteCounts } from './chrome';
 import { el } from './dom';
 import { galleryEntries, gallerySummaries, misses, modelLabel } from './gallery';
 import { fixtures, rulesVersionOf, tierOf } from './levels';
-import { HARD_TIER, leaderboardRows, sortRows, type ArmCount, type Row, type SortKey } from './leaderboard';
+import { countLine, leaderboardRows, sortRows, type ArmCount, type Row, type SortKey } from './leaderboard';
 
 const COLUMNS: [string, SortKey][] = [
   ['model', 'model'],
@@ -112,9 +112,8 @@ function page(app: HTMLElement): void {
   const version = levels[0] === undefined ? 0 : rulesVersionOf(levels[0].level);
   const rules = el(
     'p',
-    `${runs} counted runs by ${rows.length} models on rules version ${version}. ` +
-      `A level counts once however many runs solved it, over the levels the model attempted in that arm, of ${tiers.size}; ` +
-      `hard levels are tiers ${HARD_TIER} and 5. Click a heading to sort by it, and again to turn the order round. ` +
+    `${countLine(runs, entries.length, rows.length, version, tiers.size)} ` +
+      `Click a heading to sort by it, and again to turn the order round. ` +
       `Every row rests on stored outcomes that clattertrap verify re-simulates.`,
   );
   app.replaceChildren(band('Clattertrap leaderboard', nav, counts), t, rules, footer(counts));

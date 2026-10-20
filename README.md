@@ -23,7 +23,7 @@ One model from each family on seesaw-launch, none of them allowed a test run. [T
 | openai-gpt-5.6-luna | 2/15 | 7/15 | 0/6 | 1/6 | 0.01 |
 | x-ai-grok-4.3 | 2/15 | 4/15 | 1/6 | 0/6 | 0.02 |
 
-339 counted runs by 11 models on rules version 1. A level counts once however many runs solved it, over the levels the model attempted in that arm, of 15; hard levels are tiers 4 and 5.
+339 counted runs by 11 models on rules version 1, 318 of them with a machine and 21 without a submission. A level counts once however many runs solved it, over the levels the model attempted in that arm, of 15; hard levels are tiers 4 and 5.
 <!-- leaderboard:end -->
 
 Every model plays every level under two arms with the same prompt, tools, and rules. Under blueprint it places parts without running the simulator and submits once; under workshop it may run the simulator 8 times first. A session has a 6 USD cap and a 20 minute wall clock, and hitting either counts as a miss. The blueprint and workshop columns give levels solved over levels attempted; the hard columns give the same for tiers 4 and 5. Every row rests on outcomes stored in `gallery/`, and `just verify` re-simulates all of them.

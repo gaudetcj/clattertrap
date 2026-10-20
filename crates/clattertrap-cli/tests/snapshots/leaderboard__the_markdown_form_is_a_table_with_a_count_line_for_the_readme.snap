@@ -7,4 +7,4 @@ expression: out
 | claude-opus-5-5 | 2/2 | 0/1 | 1/1 | 0/1 | 2.73 |
 | claude-haiku-5-5 | 0/1 | 1/1 | 0/0 | 0/0 | 0.38 |
 
-5 counted runs by 2 models on rules version 1. A level counts once however many runs solved it, over the levels the model attempted in that arm, of 15; hard levels are tiers 4 and 5.
+5 counted runs by 2 models on rules version 1, 4 of them with a machine and 1 without a submission. A level counts once however many runs solved it, over the levels the model attempted in that arm, of 15; hard levels are tiers 4 and 5.

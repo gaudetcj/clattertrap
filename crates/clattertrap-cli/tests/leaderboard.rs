@@ -38,8 +38,12 @@ fn the_markdown_form_is_a_table_with_a_count_line_for_the_readme() {
         out.contains("| claude-opus-5-5 | 2/2 | 0/1 | 1/1 | 0/1 | 2.73 |"),
         "{out}"
     );
-    assert!(out.contains("5 counted runs by 2 models"), "{out}");
-    assert!(out.contains("rules version 1"), "{out}");
+    assert!(
+        out.contains(
+            "5 counted runs by 2 models on rules version 1, 4 of them with a machine and 1 without a submission."
+        ),
+        "{out}"
+    );
     insta::assert_snapshot!(out);
 }
 

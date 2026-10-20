@@ -112,3 +112,11 @@ export function sortRows(rows: Row[], key: SortKey, flipped: boolean): Row[] {
   };
   return [...rows].sort((a, b) => (flipped ? -order(a, b) : order(a, b)));
 }
+
+// The line under the table, as `clattertrap leaderboard --markdown` writes it for the README.
+export function countLine(runs: number, machines: number, models: number, version: number, total: number): string {
+  return (
+    `${runs} counted runs by ${models} models on rules version ${version}, ${machines} of them with a machine and ${runs - machines} without a submission. ` +
+    `A level counts once however many runs solved it, over the levels the model attempted in that arm, of ${total}; hard levels are tiers ${HARD_TIER} and 5.`
+  );
+}
