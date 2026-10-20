@@ -75,7 +75,7 @@ pub fn rules_text(rules: &Rules) -> String {
         format!("| basket | open box with {} cm walls | counts objects that come to rest inside it |", cm(rules.basket_wall_m)),
         String::new(),
         "Goals".to_owned(),
-        "ring, press, fill (count objects at rest inside the basket), or pop. A goal may list via: part ids that must be touched in that order before the goal counts. The waypoints and the goal must be the work of one chain of parts that have touched each other since the start; a part that moves on its own and never meets that chain does not count, and neither do objects it leaves in the basket.".to_owned(),
+        "ring, press, fill (count objects at rest inside the basket), or pop. A goal may list via: part ids that must be touched in that order before the goal counts. The waypoints and the goal must be the work of one chain of parts that have touched each other since the start; a part that moves on its own and never meets that chain does not count, and neither do objects it leaves in the basket. When the level has moving fixtures, such as its ball, the chain that meets the goal must include one of them.".to_owned(),
         String::new(),
         "Placement rules".to_owned(),
         "- Every placed part's centre must lie inside a build zone. Fixed objects are exempt.".to_owned(),

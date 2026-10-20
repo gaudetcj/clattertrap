@@ -12,18 +12,18 @@ One model from each family on seesaw-launch, none of them allowed a test run. [T
 | model | blueprint | workshop | hard blueprint | hard workshop | mean USD |
 |---|---|---|---|---|---|
 | claude-opus-5-5 | 12/15 | 15/15 | 5/6 | 6/6 | 0.29 |
-| deepseek-deepseek-v4.1-flash | 11/15 | 14/15 | 3/6 | 5/6 | 0.07 |
 | claude-haiku-5-5 | 8/15 | 11/15 | 1/6 | 3/6 | 0.05 |
 | z-ai-glm-5.3-flash | 7/15 | 9/15 | 1/6 | 0/6 | 0.02 |
 | claude-opus-4-5 | 6/15 | 10/15 | 1/6 | 2/6 | 1.21 |
 | claude-sonnet-5-5 | 5/15 | 13/15 | 0/6 | 4/6 | 0.11 |
 | qwen-qwen3.6-35b-a3b | 3/15 | 6/15 | 0/6 | 2/6 | 0.06 |
-| claude-haiku-4-5 | 3/15 | 5/15 | 0/6 | 0/6 | 0.17 |
 | openai-gpt-5.6-luna | 2/15 | 7/15 | 0/6 | 1/6 | 0.01 |
 | x-ai-grok-4.3 | 2/15 | 4/15 | 1/6 | 0/6 | 0.02 |
+| deepseek-deepseek-v4.1-flash | 10/14 | 14/15 | 2/5 | 5/6 | 0.07 |
 | claude-sonnet-4-5 | 3/14 | 6/15 | 0/6 | 1/6 | 0.46 |
+| claude-haiku-4-5 | 3/15 | 4/14 | 0/6 | 0/6 | 0.17 |
 
-338 counted runs by 11 models on rules version 1. A level counts once however many runs solved it, over the levels the model attempted in that arm, of 15; hard levels are tiers 4 and 5.
+336 counted runs by 11 models on rules version 1. A level counts once however many runs solved it, over the levels the model attempted in that arm, of 15; hard levels are tiers 4 and 5.
 <!-- leaderboard:end -->
 
 Every model plays every level under two arms with the same prompt, tools, and rules. Under blueprint it places parts without running the simulator and submits once; under workshop it may run the simulator 8 times first. A session has a 6 USD cap and a 20 minute wall clock, and hitting either counts as a miss. The blueprint and workshop columns give levels solved over levels attempted; the hard columns give the same for tiers 4 and 5. Every row rests on outcomes stored in `gallery/`, and `just verify` re-simulates all of them.

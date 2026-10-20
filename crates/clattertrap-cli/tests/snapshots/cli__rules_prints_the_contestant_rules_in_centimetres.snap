@@ -40,7 +40,7 @@ Goal objects, which only a level places
 | basket | open box with 2 cm walls | counts objects that come to rest inside it |
 
 Goals
-ring, press, fill (count objects at rest inside the basket), or pop. A goal may list via: part ids that must be touched in that order before the goal counts. The waypoints and the goal must be the work of one chain of parts that have touched each other since the start; a part that moves on its own and never meets that chain does not count, and neither do objects it leaves in the basket.
+ring, press, fill (count objects at rest inside the basket), or pop. A goal may list via: part ids that must be touched in that order before the goal counts. The waypoints and the goal must be the work of one chain of parts that have touched each other since the start; a part that moves on its own and never meets that chain does not count, and neither do objects it leaves in the basket. When the level has moving fixtures, such as its ball, the chain that meets the goal must include one of them.
 
 Placement rules
 - Every placed part's centre must lie inside a build zone. Fixed objects are exempt.

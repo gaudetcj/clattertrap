@@ -452,3 +452,77 @@ fn a_parked_object_does_not_fill_a_basket_before_its_chain_is_done() {
     assert!(k_rest, "the ball came to rest");
     assert!(!r.outcome.goal_met, "the parked domino must not count");
 }
+
+fn button_at(x_cm: f32, y_cm: f32) -> clattertrap_core::scene::Placed {
+    placed(
+        "btn",
+        PartSpec::Button {
+            x_cm,
+            y_cm,
+            travel_cm: 3.0,
+        },
+    )
+}
+
+fn press() -> Goal {
+    Goal::Press {
+        target: "btn".to_owned(),
+        via: vec![],
+    }
+}
+
+#[test]
+fn a_crate_the_level_ball_never_met_does_not_press_the_button() {
+    // The level's ball falls to the floor far from the button; the crate alone sits on the cap.
+    let lv = level_with_goal(
+        vec![
+            ball("ball0", 80.0, 250.0, Material::Steel),
+            button_at(330.0, 40.0),
+        ],
+        press(),
+    );
+    let r = finished(&lv, &scene(vec![crate_box("c", 330.0, 60.0, 20.0)]));
+    assert!(
+        !r.outcome.goal_met,
+        "a crate placed on the cap pressed it at {} s",
+        r.outcome.time_s
+    );
+}
+
+#[test]
+fn a_crate_the_level_ball_lands_on_presses_the_button() {
+    let lv = level_with_goal(
+        vec![
+            ball("ball0", 330.0, 200.0, Material::Steel),
+            button_at(330.0, 40.0),
+        ],
+        press(),
+    );
+    let r = finished(&lv, &scene(vec![crate_box("c", 330.0, 60.0, 20.0)]));
+    assert!(
+        r.outcome.goal_met,
+        "the ball landing on the crate did not count"
+    );
+    assert!(
+        r.outcome.time_s > 0.3,
+        "pressed at {} s, before the ball arrived",
+        r.outcome.time_s
+    );
+}
+
+#[test]
+fn a_placed_ball_the_level_ball_never_met_does_not_ring_the_bell() {
+    let lv = level_with_goal(
+        vec![
+            ball("ball0", 50.0, 250.0, Material::Steel),
+            bell_at(200.0, 100.0),
+        ],
+        ring(&[]),
+    );
+    let r = finished(&lv, &scene(vec![ball("k", 200.0, 200.0, Material::Steel)]));
+    assert!(
+        !r.outcome.goal_met,
+        "a placed ball rang the bell on its own at {} s",
+        r.outcome.time_s
+    );
+}

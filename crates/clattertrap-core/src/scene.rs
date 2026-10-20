@@ -233,6 +233,20 @@ impl PartSpec {
         )
     }
 
+    /// Whether the part has a body that moves: a ball, domino, crate, seesaw, pendulum, or balloon.
+    #[must_use]
+    pub const fn is_dynamic(&self) -> bool {
+        matches!(
+            self,
+            Self::Ball { .. }
+                | Self::Domino { .. }
+                | Self::Crate { .. }
+                | Self::Seesaw { .. }
+                | Self::Pendulum { .. }
+                | Self::Balloon { .. }
+        )
+    }
+
     /// The part's centre in centimetres, or `None` for a rope.
     #[must_use]
     pub const fn centre_cm(&self) -> Option<[f32; 2]> {

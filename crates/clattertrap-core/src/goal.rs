@@ -81,6 +81,7 @@ pub(crate) struct Tracker {
     kind: Kind,
     target: PartId,
     via: Vec<PartId>,
+    actors: Vec<PartId>,
     floor: PartId,
     chains: Chains,
 }
@@ -96,6 +97,13 @@ impl Tracker {
             .via()
             .iter()
             .filter_map(|n| scene.part_id(n))
+            .collect();
+        // The level's moving fixtures other than the goal object; the goal must be their chain's work.
+        let actors = level
+            .fixed
+            .iter()
+            .filter(|p| p.spec.is_dynamic() && p.id != level.goal.target())
+            .filter_map(|p| scene.part_id(&p.id))
             .collect();
         let spec = scene.placed().get(usize::from(target.0)).map(|p| &p.spec);
         let kind = match (&level.goal, spec) {
@@ -144,6 +152,7 @@ impl Tracker {
             kind,
             target,
             via,
+            actors,
             floor,
             chains,
         }
@@ -198,6 +207,7 @@ impl Tracker {
                 travel_m,
             } => {
                 self.complete(t)
+                    && self.with_actor(t)
                     && world.pose(t).is_some_and(|p| {
                         rest_y_m - (p.y_m - cap_half_h_m) >= travel_m - PRESS_SLACK_M
                     })
@@ -213,20 +223,27 @@ impl Tracker {
                         && s.speed_m_s < rules.rest_speed_m_s
                         && inside
                         && self.complete(s.part)
+                        && self.with_actor(s.part)
                     {
                         resting += 1;
                     }
                 }
                 resting >= count
             }
-            Kind::Pop => step.popped.contains(&t) && self.complete(t),
+            Kind::Pop => step.popped.contains(&t) && self.complete(t) && self.with_actor(t),
         }
     }
 
     /// Whether a part can ring the bell: a dynamic part whose chain is complete. A static part never
     /// does, since the push the solver puts on a beam resting against the bell is not a blow.
     fn rings(&mut self, world: &World, part: PartId) -> bool {
-        world.is_dynamic(part) && self.complete(part)
+        world.is_dynamic(part) && self.complete(part) && self.with_actor(part)
+    }
+
+    /// Whether a part's chain includes one of the level's moving fixtures, or the level has none.
+    fn with_actor(&mut self, part: PartId) -> bool {
+        let root = self.chains.root(part);
+        self.actors.is_empty() || self.actors.iter().any(|&a| self.chains.root(a) == root)
     }
 
     /// Whether a part's chain has touched every waypoint.
