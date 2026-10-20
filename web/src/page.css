@@ -186,6 +186,8 @@ tr:nth-child(even) td { background: #1f2739; }
   .status { font-size: 8px; }
   .status .stamp { display: block; margin: 0; }
   .foot { justify-content: center; }
+  .badges { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
+  .badge { width: auto; height: auto; min-height: 31px; }
 }
 
 /* The home page: a teaser banner, then the write-up beside a sidebar of boxes. */
