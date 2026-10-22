@@ -1,0 +1,5 @@
+{
+  "seq": 12,
+  "tool": "check",
+  "scene": "{\"level\": \"portal-jump\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 105.0, \"y_cm\": 164.0, \"length_cm\": 90.0, \"angle_deg\": 0}]}"
+}

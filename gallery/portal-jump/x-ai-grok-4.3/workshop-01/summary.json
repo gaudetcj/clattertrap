@@ -1,0 +1,15 @@
+{
+  "model": "x-ai-grok-4.3",
+  "level": "portal-jump",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792682632,
+  "duration_s": 82.3633687,
+  "cost_usd": 0.0317635,
+  "turns": 12,
+  "tool_calls": 11,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

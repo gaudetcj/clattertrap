@@ -1,0 +1,55 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -10,
+        "id": "chute",
+        "kind": "beam",
+        "length_cm": 128,
+        "x_cm": 85,
+        "y_cm": 173.1
+      },
+      {
+        "height_cm": 80,
+        "id": "catcher",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 20,
+        "x_cm": 275,
+        "y_cm": 12
+      },
+      {
+        "angle_deg": -10,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 122,
+        "x_cm": 112,
+        "y_cm": 253.4
+      },
+      {
+        "angle_deg": -10,
+        "id": "rampB",
+        "kind": "beam",
+        "length_cm": 126,
+        "x_cm": 236,
+        "y_cm": 230.6
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "8d98c3b96878bed6",
+    "state_hash": "552a2475009d52c8",
+    "rules_version": 1
+  },
+  "name": "Chute, Funnel, Portal, Skyway",
+  "prediction": "The steel ball drops onto the chute, rolls across the post, falls into the funnel and the orange portal end, shoots out of the blue end onto the high ramp, and rolls down it into the box to ring the bell."
+}

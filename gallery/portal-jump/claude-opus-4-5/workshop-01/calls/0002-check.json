@@ -1,0 +1,36 @@
+{
+  "seq": 2,
+  "tool": "check",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "b1",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 75,
+        "y_cm": 262
+      },
+      {
+        "angle_deg": -35,
+        "id": "b2",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 150,
+        "y_cm": 190
+      },
+      {
+        "angle_deg": -50,
+        "id": "b3",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 230,
+        "y_cm": 80
+      }
+    ]
+  },
+  "problems": [
+    "parts[0] (beam b1): overlaps ball0 by 3.1 cm at the start; move it up to y_cm = 265.1"
+  ]
+}

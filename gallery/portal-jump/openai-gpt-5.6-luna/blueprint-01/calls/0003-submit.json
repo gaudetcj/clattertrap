@@ -1,0 +1,38 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "drop_ramp",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 100,
+        "y_cm": 185
+      },
+      {
+        "angle_deg": -50,
+        "id": "portal_ramp",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 230,
+        "y_cm": 105
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 0.95000005,
+    "steps": 114,
+    "parts_used": 2,
+    "chain_length": 1,
+    "event_hash": "53f6ff3f90312f6a",
+    "state_hash": "2c155984d093b883",
+    "rules_version": 1
+  },
+  "name": "Post Portal Bell Runner",
+  "prediction": "The falling steel ball rolls down the first ramp into the post, transfers onto the descending second ramp into the orange portal, exits right from the blue portal, and strikes the bell inside the box."
+}

@@ -1,0 +1,55 @@
+{
+  "seq": 18,
+  "tool": "submit",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 95,
+        "y_cm": 202
+      },
+      {
+        "angle_deg": -53.5,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 119,
+        "x_cm": 239.5,
+        "y_cm": 118
+      },
+      {
+        "height_cm": 40,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 14,
+        "x_cm": 275,
+        "y_cm": 15
+      },
+      {
+        "angle_deg": -17.8,
+        "id": "exit_ramp",
+        "kind": "beam",
+        "length_cm": 147,
+        "x_cm": 220,
+        "y_cm": 237.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "ca0daf99d5e50b25",
+    "state_hash": "9f13a9f1824a1b11",
+    "rules_version": 1
+  },
+  "name": "Portal Funnel Loop",
+  "prediction": "The steel ball rolls down the first ramp onto the post, descends the second ramp into the funnel and orange portal, then exits toward the box to strike the bell."
+}

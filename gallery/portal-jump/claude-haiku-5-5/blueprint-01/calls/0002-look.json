@@ -1,0 +1,17 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 75,
+        "y_cm": 240
+      }
+    ]
+  }
+}

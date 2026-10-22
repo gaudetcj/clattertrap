@@ -1,0 +1,55 @@
+{
+  "level": "portal-jump",
+  "arm": "blueprint",
+  "name": "Funnel Post Portal Bell Run",
+  "prediction": "The steel ball falls onto a ramp, rolls across the post, drops through a funnel into the floor portal, pops out of the wall portal, then flies and rolls down a long ramp through the box's open side to ring the bell.",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -35.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 147.6,
+        "x_cm": 88,
+        "y_cm": 207
+      },
+      {
+        "angle_deg": -8.79,
+        "id": "ra",
+        "kind": "beam",
+        "length_cm": 111.3,
+        "x_cm": 135,
+        "y_cm": 243.5
+      },
+      {
+        "angle_deg": -8.79,
+        "id": "rb",
+        "kind": "beam",
+        "length_cm": 111.3,
+        "x_cm": 245,
+        "y_cm": 226.5
+      },
+      {
+        "height_cm": 80,
+        "id": "fn",
+        "kind": "funnel",
+        "mouth_cm": 48,
+        "throat_cm": 16,
+        "x_cm": 275,
+        "y_cm": 25
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 13.933334,
+    "steps": 1672,
+    "parts_used": 4,
+    "chain_length": 2,
+    "event_hash": "8b72067eaac8ffcf",
+    "state_hash": "89888cb8c34d1c05",
+    "rules_version": 1
+  }
+}

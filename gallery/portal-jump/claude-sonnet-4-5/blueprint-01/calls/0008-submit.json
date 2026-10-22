@@ -1,0 +1,69 @@
+{
+  "seq": 8,
+  "tool": "submit",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -35,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 115,
+        "y_cm": 210
+      },
+      {
+        "angle_deg": -32,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 222,
+        "y_cm": 82
+      },
+      {
+        "angle_deg": -8,
+        "id": "ramp3",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 80,
+        "y_cm": 283
+      },
+      {
+        "angle_deg": -12,
+        "id": "ramp4",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 180,
+        "y_cm": 265
+      },
+      {
+        "angle_deg": -15,
+        "id": "ramp5",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 245,
+        "y_cm": 245
+      },
+      {
+        "angle_deg": -105,
+        "id": "spring1",
+        "kind": "spring_pad",
+        "x_cm": 280,
+        "y_cm": 235
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 1.6166668,
+    "steps": 194,
+    "parts_used": 6,
+    "chain_length": 1,
+    "event_hash": "033845da6c635060",
+    "state_hash": "40e5187e7e956f11",
+    "rules_version": 1
+  },
+  "name": "Portal Ramp Cascade",
+  "prediction": "The steel ball falls down ramps to touch the post, drops through the floor portal, exits from the wall portal, and is spring-launched into the bell."
+}

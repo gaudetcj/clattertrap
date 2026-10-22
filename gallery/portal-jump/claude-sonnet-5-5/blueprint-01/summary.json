@@ -1,0 +1,15 @@
+{
+  "model": "claude-sonnet-5-5",
+  "level": "portal-jump",
+  "arm": "blueprint",
+  "status": "submitted",
+  "started_unix_s": 1792682618,
+  "duration_s": 150.7477259,
+  "cost_usd": 0.2612457,
+  "turns": 6,
+  "tool_calls": 5,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

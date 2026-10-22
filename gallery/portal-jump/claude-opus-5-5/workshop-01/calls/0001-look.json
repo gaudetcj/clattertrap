@@ -1,0 +1,42 @@
+{
+  "seq": 1,
+  "tool": "look",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -14.8,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 125.2,
+        "x_cm": 85.5,
+        "y_cm": 180
+      },
+      {
+        "height_cm": 80,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 20,
+        "x_cm": 275,
+        "y_cm": 14
+      },
+      {
+        "angle_deg": -10.15,
+        "id": "u1",
+        "kind": "beam",
+        "length_cm": 121,
+        "x_cm": 114.5,
+        "y_cm": 249.2
+      },
+      {
+        "angle_deg": -10.15,
+        "id": "u2",
+        "kind": "beam",
+        "length_cm": 121,
+        "x_cm": 235.5,
+        "y_cm": 227.5
+      }
+    ]
+  }
+}

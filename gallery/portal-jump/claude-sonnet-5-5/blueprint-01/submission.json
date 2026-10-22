@@ -1,0 +1,47 @@
+{
+  "level": "portal-jump",
+  "arm": "blueprint",
+  "name": "Ramp, funnel, kicker",
+  "prediction": "The ball rolls down the ramp onto the post and drops into the funnel and then the orange portal. It exits the blue end, lands on the kicker beam and is lifted into the box to ring the bell, though the speeds are untested and it may miss.",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -39,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 148,
+        "x_cm": 88,
+        "y_cm": 217
+      },
+      {
+        "angle_deg": 10,
+        "id": "kick",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 230,
+        "y_cm": 195
+      },
+      {
+        "height_cm": 60,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 110,
+        "throat_cm": 24,
+        "x_cm": 270,
+        "y_cm": 40
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "d37d3f1867efd13f",
+    "state_hash": "3443fbdacb77569c",
+    "rules_version": 1
+  }
+}

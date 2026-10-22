@@ -1,0 +1,18 @@
+{
+  "level": "portal-jump",
+  "arm": "workshop",
+  "name": "portal-jump-machine",
+  "prediction": "Steel ball falls, rolls down a beam onto the post, exits and falls through the portal to exit the blue portal heading right, then travels across to ring the bell in the box.",
+  "scene": "{\"level\": \"portal-jump\", \"parts\": [{\"id\": \"beam1\", \"kind\": \"beam\", \"x_cm\": 95.0, \"y_cm\": 185.0, \"length_cm\": 120.0, \"angle_deg\": -15}]}",
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.6833334,
+    "steps": 322,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "91fc7e81cf566d78",
+    "state_hash": "3355c8c7eecd2708",
+    "rules_version": 1
+  }
+}

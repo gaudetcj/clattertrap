@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-5",
+  "level": "portal-jump",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792683825,
+  "duration_s": 883.660506,
+  "cost_usd": 3.1603119999999993,
+  "turns": 51,
+  "tool_calls": 50,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": 0,
+  "error": null
+}

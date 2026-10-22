@@ -1,0 +1,15 @@
+{
+  "model": "qwen-qwen3.6-35b-a3b",
+  "level": "portal-jump",
+  "arm": "workshop",
+  "status": "submitted",
+  "started_unix_s": 1792683141,
+  "duration_s": 514.6877326,
+  "cost_usd": 0.057628650000000003,
+  "turns": 23,
+  "tool_calls": 22,
+  "foreign_tools": [],
+  "result_subtype": "success",
+  "exit_code": null,
+  "error": null
+}

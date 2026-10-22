@@ -1,0 +1,49 @@
+{
+  "seq": 2,
+  "tool": "look",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -35.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 147.6,
+        "x_cm": 88,
+        "y_cm": 207
+      },
+      {
+        "angle_deg": -10.05,
+        "id": "ra",
+        "kind": "beam",
+        "length_cm": 111.7,
+        "x_cm": 135,
+        "y_cm": 247.25
+      },
+      {
+        "angle_deg": -10.05,
+        "id": "rb",
+        "kind": "beam",
+        "length_cm": 111.7,
+        "x_cm": 245,
+        "y_cm": 227.75
+      },
+      {
+        "angle_deg": -58.0,
+        "id": "r3a",
+        "kind": "beam",
+        "length_cm": 94.3,
+        "x_cm": 217,
+        "y_cm": 118
+      },
+      {
+        "angle_deg": -65.44,
+        "id": "r3b",
+        "kind": "beam",
+        "length_cm": 77.0,
+        "x_cm": 258,
+        "y_cm": 43
+      }
+    ]
+  }
+}

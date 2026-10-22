@@ -1,0 +1,45 @@
+{
+  "seq": 5,
+  "tool": "run",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -30.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 128,
+        "x_cm": 85,
+        "y_cm": 237.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "bm2",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 270,
+        "y_cm": 218
+      },
+      {
+        "height_cm": 80,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 90,
+        "throat_cm": 20,
+        "x_cm": 275,
+        "y_cm": 22
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "539cafad2ed6bc70",
+    "state_hash": "1501ce60ca9aa27f",
+    "rules_version": 1
+  }
+}

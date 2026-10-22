@@ -1,0 +1,30 @@
+{
+  "seq": 3,
+  "tool": "submit",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -15,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 75,
+        "y_cm": 240
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 5.1833334,
+    "steps": 622,
+    "parts_used": 1,
+    "chain_length": 1,
+    "event_hash": "222e75619a806597",
+    "state_hash": "4ac759521db083fa",
+    "rules_version": 1
+  },
+  "name": "Ramp to post, portal, bell",
+  "prediction": "Ball0 lands on a 15-degree beam, rolls off its low end onto the post top, drops into the orange end and exits blue toward the bell, though I expect the post bounce and the portal exit speed to miss the bell's box."
+}

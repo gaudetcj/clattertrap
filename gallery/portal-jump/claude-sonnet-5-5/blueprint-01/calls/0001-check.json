@@ -1,0 +1,34 @@
+{
+  "seq": 1,
+  "tool": "check",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -39,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 148,
+        "x_cm": 88,
+        "y_cm": 217
+      },
+      {
+        "angle_deg": 10,
+        "id": "kick",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 230,
+        "y_cm": 195
+      },
+      {
+        "height_cm": 60,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 110,
+        "throat_cm": 24,
+        "x_cm": 270,
+        "y_cm": 40
+      }
+    ]
+  }
+}

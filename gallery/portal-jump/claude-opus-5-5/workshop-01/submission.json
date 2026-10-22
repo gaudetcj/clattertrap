@@ -1,0 +1,63 @@
+{
+  "level": "portal-jump",
+  "arm": "workshop",
+  "name": "Post, Plunge, and Skyway",
+  "prediction": "The steel ball rolls down the ramp across the post, drops through the narrow funnel into the orange portal, shoots out the blue end onto the upper ramps, and rolls into the box to ring the bell at about 3.2 s.",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -14.8,
+        "id": "rampA",
+        "kind": "beam",
+        "length_cm": 125.2,
+        "x_cm": 85.5,
+        "y_cm": 180
+      },
+      {
+        "height_cm": 70,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 20,
+        "x_cm": 275,
+        "y_cm": 14
+      },
+      {
+        "angle_deg": 90,
+        "id": "wall",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 294,
+        "y_cm": 135
+      },
+      {
+        "angle_deg": -10.15,
+        "id": "u1",
+        "kind": "beam",
+        "length_cm": 121,
+        "x_cm": 114.5,
+        "y_cm": 249.2
+      },
+      {
+        "angle_deg": -10.15,
+        "id": "u2",
+        "kind": "beam",
+        "length_cm": 121,
+        "x_cm": 235.5,
+        "y_cm": 227.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 3.2000003,
+    "steps": 384,
+    "parts_used": 5,
+    "chain_length": 2,
+    "event_hash": "f467aae74294557a",
+    "state_hash": "7ff6ae8fb4e28191",
+    "rules_version": 1
+  }
+}

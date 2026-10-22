@@ -1,0 +1,52 @@
+{
+  "seq": 7,
+  "tool": "run",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 70,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": -22,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 130,
+        "x_cm": 200,
+        "y_cm": 100
+      },
+      {
+        "angle_deg": -5,
+        "id": "exit1",
+        "kind": "beam",
+        "length_cm": 140,
+        "x_cm": 120,
+        "y_cm": 268
+      },
+      {
+        "angle_deg": -6,
+        "id": "exit2",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 250,
+        "y_cm": 242
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.766667,
+    "steps": 332,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "b375649e08994677",
+    "state_hash": "7c6684062915ccc6",
+    "rules_version": 1
+  }
+}

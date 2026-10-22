@@ -1,0 +1,58 @@
+{
+  "seq": 20,
+  "tool": "check",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -12,
+        "id": "catch",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 70,
+        "y_cm": 235
+      },
+      {
+        "angle_deg": -5,
+        "id": "to_post",
+        "kind": "beam",
+        "length_cm": 90,
+        "x_cm": 165,
+        "y_cm": 155
+      },
+      {
+        "angle_deg": -20,
+        "id": "guide",
+        "kind": "beam",
+        "length_cm": 120,
+        "x_cm": 230,
+        "y_cm": 80
+      },
+      {
+        "height_cm": 50,
+        "id": "funnel_in",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 16,
+        "x_cm": 275,
+        "y_cm": 12
+      },
+      {
+        "angle_deg": -6,
+        "id": "exit_path",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 160,
+        "y_cm": 260
+      },
+      {
+        "angle_deg": -3,
+        "id": "to_bell",
+        "kind": "beam",
+        "length_cm": 60,
+        "x_cm": 280,
+        "y_cm": 230
+      }
+    ]
+  }
+}

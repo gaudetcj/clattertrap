@@ -1,0 +1,42 @@
+{
+  "seq": 9,
+  "tool": "check",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -35.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 147.6,
+        "x_cm": 88,
+        "y_cm": 207
+      },
+      {
+        "angle_deg": -8.79,
+        "id": "ra",
+        "kind": "beam",
+        "length_cm": 111.3,
+        "x_cm": 135,
+        "y_cm": 243.5
+      },
+      {
+        "angle_deg": -8.79,
+        "id": "rb",
+        "kind": "beam",
+        "length_cm": 111.3,
+        "x_cm": 245,
+        "y_cm": 226.5
+      },
+      {
+        "height_cm": 80,
+        "id": "fn",
+        "kind": "funnel",
+        "mouth_cm": 48,
+        "throat_cm": 16,
+        "x_cm": 275,
+        "y_cm": 25
+      }
+    ]
+  }
+}

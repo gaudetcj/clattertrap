@@ -1,0 +1,47 @@
+{
+  "seq": 14,
+  "tool": "submit",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -30.6,
+        "id": "r1",
+        "kind": "beam",
+        "length_cm": 128,
+        "x_cm": 85,
+        "y_cm": 237.5
+      },
+      {
+        "angle_deg": 0,
+        "id": "bm2",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 205,
+        "y_cm": 218
+      },
+      {
+        "height_cm": 80,
+        "id": "fun",
+        "kind": "funnel",
+        "mouth_cm": 150,
+        "throat_cm": 30,
+        "x_cm": 275,
+        "y_cm": 22
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "time_limit",
+    "time_s": 20.000002,
+    "steps": 2400,
+    "parts_used": 3,
+    "chain_length": 1,
+    "event_hash": "fef60261f1ebec31",
+    "state_hash": "b37ad8873afeda9e",
+    "rules_version": 1
+  },
+  "name": "Ramp, post, funnel, portal loop",
+  "prediction": "Ball0 rolls down the ramp, touches the post at about 1.0 s, drops into the funnel and through the orange portal at about 1.9 s, then loops between the blue exit, the ramp, the post and the funnel without ever reaching the bell, so the ring goal will not be met."
+}

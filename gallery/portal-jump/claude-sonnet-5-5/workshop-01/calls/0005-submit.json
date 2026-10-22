@@ -1,0 +1,47 @@
+{
+  "seq": 5,
+  "tool": "submit",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -20,
+        "id": "r",
+        "kind": "beam",
+        "length_cm": 80,
+        "x_cm": 70,
+        "y_cm": 250
+      },
+      {
+        "height_cm": 80,
+        "id": "f",
+        "kind": "funnel",
+        "mouth_cm": 60,
+        "throat_cm": 16,
+        "x_cm": 275,
+        "y_cm": 60
+      },
+      {
+        "angle_deg": 6,
+        "id": "k",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 250,
+        "y_cm": 215
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": true,
+    "end": "goal_met",
+    "time_s": 2.4166667,
+    "steps": 290,
+    "parts_used": 3,
+    "chain_length": 2,
+    "event_hash": "5d43c3a19cfd1472",
+    "state_hash": "5b983f9b5a04f85b",
+    "rules_version": 1
+  },
+  "name": "Ramp, Funnel, Skim",
+  "prediction": "The ball rolls down a ramp onto the post, drops through a steep funnel into the floor portal, exits the wall portal, skims a slightly tilted beam that lifts it, and rings the bell at about 2.4 s."
+}

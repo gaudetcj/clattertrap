@@ -1,0 +1,41 @@
+{
+  "seq": 5,
+  "tool": "check",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -25,
+        "id": "ramp",
+        "kind": "beam",
+        "length_cm": 100,
+        "x_cm": 90,
+        "y_cm": 240
+      },
+      {
+        "angle_deg": 0,
+        "id": "post_hit",
+        "kind": "beam",
+        "length_cm": 30,
+        "x_cm": 170,
+        "y_cm": 170
+      },
+      {
+        "angle_deg": 60,
+        "id": "drop",
+        "kind": "beam",
+        "length_cm": 50,
+        "x_cm": 240,
+        "y_cm": 120
+      },
+      {
+        "angle_deg": 85,
+        "id": "portal_guide",
+        "kind": "beam",
+        "length_cm": 40,
+        "x_cm": 270,
+        "y_cm": 40
+      }
+    ]
+  }
+}

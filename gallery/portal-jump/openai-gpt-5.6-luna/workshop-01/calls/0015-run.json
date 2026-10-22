@@ -1,0 +1,53 @@
+{
+  "seq": 15,
+  "tool": "run",
+  "scene": {
+    "level": "portal-jump",
+    "parts": [
+      {
+        "angle_deg": -22,
+        "id": "ramp1",
+        "kind": "beam",
+        "length_cm": 150,
+        "x_cm": 95,
+        "y_cm": 202
+      },
+      {
+        "angle_deg": -53.5,
+        "id": "ramp2",
+        "kind": "beam",
+        "length_cm": 119,
+        "x_cm": 239.5,
+        "y_cm": 118
+      },
+      {
+        "height_cm": 40,
+        "id": "funnel",
+        "kind": "funnel",
+        "mouth_cm": 80,
+        "throat_cm": 14,
+        "x_cm": 275,
+        "y_cm": 25
+      },
+      {
+        "angle_deg": -17.8,
+        "id": "exit_ramp",
+        "kind": "beam",
+        "length_cm": 147,
+        "x_cm": 220,
+        "y_cm": 237.5
+      }
+    ]
+  },
+  "outcome": {
+    "goal_met": false,
+    "end": "all_asleep",
+    "time_s": 2.8750002,
+    "steps": 345,
+    "parts_used": 4,
+    "chain_length": 1,
+    "event_hash": "3c8b6a0165eb55ae",
+    "state_hash": "28813701669001a9",
+    "rules_version": 1
+  }
+}
