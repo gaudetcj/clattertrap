@@ -1,0 +1,24 @@
+{
+  "id": "portal-jump",
+  "title": "Through the portal",
+  "tier": 5,
+  "description": "A steel ball hangs in the air at (40, 280), top left, and falls from the start. A portal has two ends: an orange end set in the floor at (275, 3), facing up, and a blue end set in the left wall at (10, 280), facing right. A ball that enters either end comes out of the other at the same speed, heading out the way that end faces: a ball dropping into the orange end leaves the blue end moving right, and its sideways speed on arrival becomes rise or fall on the way out. A short fixed beam, the post, runs level from x = 150 to x = 190 with its top at y = 162. A bell hangs at (340, 220), high on the right, inside a fixed box that is open only on its left side: a roof from x = 300 to x = 370 at y = 250, a shelf at y = 190, and a wall at x = 370 between them. The bell's bracket is 20 cm above it. The build zone covers x from 20 to 300 at every height. The ball has to touch the post, then pass through the portal, and then come in through the open side of the box and ring the bell. Chain length is scored too.",
+  "rules_version": 1,
+  "world": { "width_cm": 400, "height_cm": 300 },
+  "time_limit_s": 20,
+  "fixed": [
+    { "id": "ball0", "kind": "ball", "material": "steel", "x_cm": 40, "y_cm": 280 },
+    { "id": "portal", "kind": "portal", "x_cm": 275, "y_cm": 3, "angle_deg": 90, "blue_x_cm": 10, "blue_y_cm": 280, "blue_angle_deg": 0 },
+    { "id": "post", "kind": "beam", "x_cm": 170, "y_cm": 160, "length_cm": 40, "angle_deg": 0 },
+    { "id": "roof", "kind": "beam", "x_cm": 335, "y_cm": 250, "length_cm": 70, "angle_deg": 0 },
+    { "id": "shelf", "kind": "beam", "x_cm": 335, "y_cm": 190, "length_cm": 70, "angle_deg": 0 },
+    { "id": "back", "kind": "beam", "x_cm": 370, "y_cm": 220, "length_cm": 60, "angle_deg": 90 },
+    { "id": "bell", "kind": "bell", "x_cm": 340, "y_cm": 220, "rope_cm": 20 }
+  ],
+  "zones": [
+    { "x_cm": 20, "y_cm": 10, "width_cm": 280, "height_cm": 280 }
+  ],
+  "inventory": { "beam": 6, "seesaw": 1, "domino": 4, "ball": 1, "spring_pad": 1, "crate": 1, "funnel": 1 },
+  "goal": { "kind": "ring", "target": "bell", "via": ["post", "portal"] },
+  "showcase": true
+}

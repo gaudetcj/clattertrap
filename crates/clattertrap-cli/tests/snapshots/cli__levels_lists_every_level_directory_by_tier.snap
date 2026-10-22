@@ -14,6 +14,7 @@ rope-swing        3  ring   Swing on a rope
 seesaw-launch     4  ring   Launch to the bell
 spring-launch     4  press  Spring to the button
 grand-tour        5  ring   The grand tour
+portal-jump       5  ring   Through the portal
 return-trip       5  fill   The return trip
 uphill-relay      5  ring   Uphill relay
 wake-the-pendulum 5  ring   Wake the pendulum

@@ -27,7 +27,7 @@ macro_rules! fixture {
 }
 
 /// Every level. A directory added under `levels/` is added here too; a test checks the two agree.
-pub const ALL: [Fixture; 15] = [
+pub const ALL: [Fixture; 16] = [
     fixture!("bell-drop"),
     fixture!("balloon-pin"),
     fixture!("basket-fill"),
@@ -36,6 +36,7 @@ pub const ALL: [Fixture; 15] = [
     fixture!("funnel-basket"),
     fixture!("grand-tour"),
     fixture!("pendulum-bell"),
+    fixture!("portal-jump"),
     fixture!("post-first"),
     fixture!("rope-swing"),
     fixture!("seesaw-launch"),

@@ -19,15 +19,15 @@ fn runs() -> String {
 fn the_report_counts_solved_levels_per_model_and_arm_and_excludes_aborted_and_flagged_runs() {
     let out = stdout(&["report", &runs()]);
     // Haiku: blueprint missed bell-drop, workshop solved it; the aborted seesaw run is excluded.
-    assert!(out.contains("claude-haiku-5-5  blueprint   0/15"), "{out}");
-    assert!(out.contains("claude-haiku-5-5  workshop    1/15"), "{out}");
+    assert!(out.contains("claude-haiku-5-5  blueprint   0/16"), "{out}");
+    assert!(out.contains("claude-haiku-5-5  workshop    1/16"), "{out}");
     // Opus: two blueprint submissions solved two levels, one of them hard.
     assert!(
-        out.contains("claude-opus-5-5   blueprint   2/15   1/6"),
+        out.contains("claude-opus-5-5   blueprint   2/16   1/7"),
         "{out}"
     );
     // Opus workshop: the flagged run is excluded, the no-submission run counts as a miss.
-    assert!(out.contains("claude-opus-5-5   workshop    0/15"), "{out}");
+    assert!(out.contains("claude-opus-5-5   workshop    0/16"), "{out}");
     assert!(out.contains("excluded"), "{out}");
     assert!(out.contains("called Bash"), "{out}");
     assert!(out.contains("529 overloaded"), "{out}");
@@ -120,9 +120,9 @@ fn the_report_reads_the_level_first_gallery_layout_too() {
     let dir = level_first_tree();
     let path = dir.path().to_str().unwrap();
     let out = stdout(&["report", path]);
-    assert!(out.contains("claude-haiku-5-5  workshop    1/15"), "{out}");
+    assert!(out.contains("claude-haiku-5-5  workshop    1/16"), "{out}");
     assert!(
-        out.contains("claude-opus-5-5   blueprint   1/15   1/6"),
+        out.contains("claude-opus-5-5   blueprint   1/16   1/7"),
         "{out}"
     );
     let csv = stdout(&["report", path, "--csv"]);

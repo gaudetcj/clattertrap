@@ -1,3 +1,4 @@
+| portal-jump | 5, showcase | ring, via post, portal | beam 6, seesaw 1, domino 4, ball 1, spring_pad 1, crate 1, funnel 1 | the ball touches a post, drops into a portal end in the floor, shoots out of the other end high on the left wall, and has to fly into a boxed bell on the right; the speed it enters with is the speed it leaves with, so the post and the drop set the flight |
 # Levels
 
 Fifteen levels live under `levels/`, one directory each with `level.json` and a hidden `reference.json`. Every reference solution meets its goal and every empty scene misses; both are golden-hash tests that run on Windows, Linux, and wasm32. `clattertrap levels` lists them and `clattertrap level <id>` prints one in words and JSON.

@@ -1,0 +1,6 @@
+{
+  "level": "portal-jump",
+  "parts": [
+    { "id": "b1", "kind": "beam", "x_cm": 92, "y_cm": 186, "length_cm": 110, "angle_deg": -10 }
+  ]
+}
