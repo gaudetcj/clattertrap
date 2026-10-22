@@ -13,7 +13,11 @@ pub const FPS: u32 = 30;
 /// Frames per second of the GIF, a subset of the recorded frames.
 const GIF_FPS: u32 = 12;
 
-/// The environment the recorder reads: the level, the arm, the lineup, and where to write.
+/// Machine time the GIF keeps before it stamps the lanes still running: long enough for the slowest
+/// ring on the hero level, which lands at 13.9 s.
+const GIF_WINDOW_S: u32 = 15;
+
+/// The environment the recorder reads: the level, the arm, the lineup, where to write, and the GIF window.
 #[must_use]
 pub fn hero_env(level: &str, arm: &str, lineup: &str, out: &Path) -> Vec<(String, String)> {
     vec![
@@ -21,6 +25,7 @@ pub fn hero_env(level: &str, arm: &str, lineup: &str, out: &Path) -> Vec<(String
         ("HERO_ARM".to_owned(), arm.to_owned()),
         ("HERO_LINEUP".to_owned(), lineup.to_owned()),
         ("HERO_OUT".to_owned(), out.display().to_string()),
+        ("HERO_WINDOW_S".to_owned(), GIF_WINDOW_S.to_string()),
     ]
 }
 
@@ -160,6 +165,7 @@ mod tests {
                     "HERO_OUT".to_owned(),
                     Path::new("target/hero").display().to_string()
                 ),
+                ("HERO_WINDOW_S".to_owned(), "15".to_owned()),
             ]
         );
     }

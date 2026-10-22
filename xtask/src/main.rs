@@ -25,7 +25,7 @@ fn main() -> Result<()> {
         ["site", base] => site::build(&root, base),
         ["readme"] => readme::run(&root, false),
         ["readme", "--check"] => readme::run(&root, true),
-        ["hero"] => hero::record(&root, "seesaw-launch", "blueprint", "families"),
+        ["hero"] => hero::record(&root, "portal-jump", "blueprint", "families"),
         ["hero", level, arm] => hero::record(&root, level, arm, "families"),
         ["hero", level, arm, lineup] => hero::record(&root, level, arm, lineup),
         _ => bail!(
