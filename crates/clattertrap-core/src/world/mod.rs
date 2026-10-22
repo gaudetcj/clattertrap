@@ -239,6 +239,15 @@ impl World {
         }
     }
 
+    /// Moves a part's first body to `at_m` with velocity `vel_m_s`, keeping its spin, for a portal.
+    pub(crate) fn teleport(&mut self, part: PartId, at_m: [f32; 2], vel_m_s: [f32; 2]) {
+        let handle = self.metas.iter().find(|m| m.part == part).map(|m| m.handle);
+        if let Some(body) = handle.and_then(|h| self.pw.bodies.get_mut(h)) {
+            body.set_translation(Vector::new(at_m[0], at_m[1]), true);
+            body.set_linvel(Vector::new(vel_m_s[0], vel_m_s[1]), true);
+        }
+    }
+
     /// Removes every body of a part, with its colliders and joints. Its metas stay so ids keep their order.
     pub(crate) fn remove_part(&mut self, part: PartId) {
         for i in 0..self.metas.len() {

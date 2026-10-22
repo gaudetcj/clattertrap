@@ -3,7 +3,7 @@
 
 import type { GoalKind, Look, ReplayEvent } from './decode';
 
-export type Timbre = 'knock' | 'ping' | 'thud' | 'tick' | 'pop' | 'bell' | 'click' | 'thump';
+export type Timbre = 'knock' | 'ping' | 'thud' | 'tick' | 'pop' | 'bell' | 'click' | 'thump' | 'warp';
 
 export interface Voice {
   timbre: Timbre;
@@ -43,6 +43,9 @@ export function voiceFor(
       const pair = [a, b];
       if (pair.includes('pin') && pair.includes('balloon')) {
         return { timbre: 'pop', gain: 1 };
+      }
+      if (pair.includes('orange') || pair.includes('blue')) {
+        return { timbre: 'warp', gain: 1 };
       }
       const gain = Math.min(1, Math.max(MIN_GAIN, speed_m_s / FULL_SPEED_M_S));
       return { timbre: contactTimbre(a, b), gain };
@@ -124,6 +127,10 @@ export class Soundtrack {
         this.burst(at_s, voice.gain, 1200, 0.08, 'bandpass');
         this.burst(at_s, voice.gain * 0.7, 300, 0.12, 'lowpass');
         break;
+      case 'warp':
+        this.sweep(at_s, voice.gain * 0.5, 1400, 180, 0.22);
+        this.burst(at_s, voice.gain * 0.3, 900, 0.1, 'bandpass');
+        break;
       case 'bell':
         for (const [ratio, level, decay_s] of BELL_PARTIALS) {
           this.tone(at_s, voice.gain * level * 0.5, 880 * ratio, decay_s, 'sine');
@@ -136,6 +143,18 @@ export class Soundtrack {
     const osc = this.ctx.createOscillator();
     osc.type = type;
     osc.frequency.value = hz;
+    const env = this.envelope(at_s, gain, decay_s);
+    osc.connect(env);
+    osc.start(at_s);
+    osc.stop(at_s + decay_s + 0.05);
+  }
+
+  // A sine that slides from one pitch to another over the decay, for a portal.
+  private sweep(at_s: number, gain: number, from_hz: number, to_hz: number, decay_s: number): void {
+    const osc = this.ctx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(from_hz, at_s);
+    osc.frequency.exponentialRampToValueAtTime(to_hz, at_s + decay_s);
     const env = this.envelope(at_s, gain, decay_s);
     osc.connect(env);
     osc.start(at_s);

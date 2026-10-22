@@ -124,6 +124,16 @@ fn describe_rest(spec: &PartSpec) -> String {
             b,
             max_length_cm,
         } => format!("rope from {a} to {b}, up to {max_length_cm} cm"),
+        PartSpec::Portal {
+            x_cm,
+            y_cm,
+            angle_deg,
+            blue_x_cm,
+            blue_y_cm,
+            blue_angle_deg,
+        } => format!(
+            "portal: orange end at ({x_cm}, {y_cm}) facing {angle_deg} deg, blue end at ({blue_x_cm}, {blue_y_cm}) facing {blue_angle_deg} deg"
+        ),
         PartSpec::Bell {
             x_cm,
             y_cm,

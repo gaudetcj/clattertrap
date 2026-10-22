@@ -170,6 +170,21 @@ pub enum PartSpec {
         /// Longest the rope can stretch.
         max_length_cm: f32,
     },
+    /// A pair of portals a ball passes between, placed only by a level.
+    Portal {
+        /// Orange end centre x.
+        x_cm: f32,
+        /// Orange end centre y.
+        y_cm: f32,
+        /// Direction the orange end faces, out into the room.
+        angle_deg: f32,
+        /// Blue end centre x.
+        blue_x_cm: f32,
+        /// Blue end centre y.
+        blue_y_cm: f32,
+        /// Direction the blue end faces, out into the room.
+        blue_angle_deg: f32,
+    },
     /// Goal object: brass bell hanging from a bracket.
     Bell {
         /// Bell centre x.
@@ -218,19 +233,26 @@ impl PartSpec {
             Self::Balloon { .. } => "balloon",
             Self::Pin { .. } => "pin",
             Self::Rope { .. } => "rope",
+            Self::Portal { .. } => "portal",
             Self::Bell { .. } => "bell",
             Self::Button { .. } => "button",
             Self::Basket { .. } => "basket",
         }
     }
 
-    /// Whether only a level may place this kind.
+    /// Whether this is a goal object: a bell, button, or basket.
     #[must_use]
     pub const fn is_goal_object(&self) -> bool {
         matches!(
             self,
             Self::Bell { .. } | Self::Button { .. } | Self::Basket { .. }
         )
+    }
+
+    /// Whether only a level may place this kind: the goal objects and portals.
+    #[must_use]
+    pub const fn is_level_only(&self) -> bool {
+        self.is_goal_object() || matches!(self, Self::Portal { .. })
     }
 
     /// Whether the part has a body that moves: a ball, domino, crate, seesaw, pendulum, or balloon.
@@ -262,6 +284,7 @@ impl PartSpec {
             | Self::Bucket { x_cm, y_cm, .. }
             | Self::Balloon { x_cm, y_cm }
             | Self::Pin { x_cm, y_cm, .. }
+            | Self::Portal { x_cm, y_cm, .. }
             | Self::Bell { x_cm, y_cm, .. }
             | Self::Button { x_cm, y_cm, .. }
             | Self::Basket { x_cm, y_cm, .. } => Some([*x_cm, *y_cm]),

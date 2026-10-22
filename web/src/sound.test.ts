@@ -51,3 +51,11 @@ describe('masterFor', () => {
     expect(masterFor(0)).toBe(MASTER_GAIN);
   });
 });
+
+describe('portal voice', () => {
+  it('warps at full volume when a ball meets either portal end', () => {
+    const looks = (part: number): Look | null => (['steel', 'orange', 'blue'] as const)[part] ?? null;
+    expect(voiceFor(contact(0, 1), looks, 0.3, 'ring')).toEqual({ timbre: 'warp', gain: 1 });
+    expect(voiceFor(contact(2, 0), looks, 0.3, 'ring')).toEqual({ timbre: 'warp', gain: 1 });
+  });
+});

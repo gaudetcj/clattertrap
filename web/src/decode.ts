@@ -1,7 +1,7 @@
 // Types and decoders for what the wasm Replay hands out: setup JSON, event triples, frames, and the outcome.
 // Every decoder checks the shape it was given and throws on anything unexpected.
 
-export const LOOKS = ['wood', 'steel', 'rubber', 'domino', 'balloon', 'pad', 'pin', 'brass', 'wicker'] as const;
+export const LOOKS = ['wood', 'steel', 'rubber', 'domino', 'balloon', 'pad', 'pin', 'brass', 'wicker', 'orange', 'blue'] as const;
 export type Look = (typeof LOOKS)[number];
 
 export type Visual =

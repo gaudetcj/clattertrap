@@ -118,12 +118,31 @@ pub(super) fn ranges(level: &Level, scene: &Scene, rules: &Rules, out: &mut Vec<
                     out,
                 );
             }
-            PartSpec::Domino { angle_deg, .. }
-            | PartSpec::SpringPad { angle_deg, .. }
-            | PartSpec::Pin { angle_deg, .. } => {
-                check_finite(&path, "angle_deg", *angle_deg, out);
-            }
-            PartSpec::Ball { .. } | PartSpec::Balloon { .. } => {}
+            _ => angles(&path, &p.spec, out),
         }
+    }
+}
+
+/// The finiteness checks of the kinds with only an angle, and a portal's second end.
+fn angles(path: &str, spec: &PartSpec, out: &mut Vec<Problem>) {
+    match spec {
+        PartSpec::Portal {
+            angle_deg,
+            blue_x_cm,
+            blue_y_cm,
+            blue_angle_deg,
+            ..
+        } => {
+            check_finite(path, "angle_deg", *angle_deg, out);
+            check_finite(path, "blue_x_cm", *blue_x_cm, out);
+            check_finite(path, "blue_y_cm", *blue_y_cm, out);
+            check_finite(path, "blue_angle_deg", *blue_angle_deg, out);
+        }
+        PartSpec::Domino { angle_deg, .. }
+        | PartSpec::SpringPad { angle_deg, .. }
+        | PartSpec::Pin { angle_deg, .. } => {
+            check_finite(path, "angle_deg", *angle_deg, out);
+        }
+        _ => {}
     }
 }

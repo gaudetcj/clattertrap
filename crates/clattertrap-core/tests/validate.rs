@@ -407,3 +407,18 @@ fn a_preview_without_problems_is_the_validated_scene() {
     assert!(p.problems.is_empty());
     assert_eq!(p.scene, validate(&lv, &sc, &Rules::V1).unwrap());
 }
+
+#[test]
+fn a_portal_in_a_scene_is_rejected_as_a_fixture_only_the_level_places() {
+    let lv = common::level(vec![]);
+    let sc = common::scene(vec![common::portal(
+        "p",
+        [200.0, 3.0, 90.0],
+        [10.0, 200.0, 0.0],
+    )]);
+    let msg = only(&lv, &sc);
+    assert!(
+        msg.starts_with("parts[0] (portal p): ") && msg.contains("only the level"),
+        "{msg}"
+    );
+}

@@ -48,7 +48,7 @@ Each part has a unique `id`, a `kind`, and the fields of that kind. Positions ar
 | `pin` | `x_cm`, `y_cm` (the base), `angle_deg` (default -90, pointing down) |
 | `rope` | `a`, `b` (ids of two solid parts), `max_length_cm` (10 to 200) |
 
-The goal objects `bell` (`rope_cm`, 10 to 100), `button` (`travel_cm`, 1 to 10), and `basket` (`inner_width_cm`, `inner_height_cm`, 15 to 60) use the same shape but only a level may place them. A bell's `y_cm` is its centre, a button's the centre of its cap's resting underside, a basket's the centre of its floor's underside.
+The goal objects `bell` (`rope_cm`, 10 to 100), `button` (`travel_cm`, 1 to 10), and `basket` (`inner_width_cm`, `inner_height_cm`, 15 to 60) use the same shape but only a level may place them. So does `portal` (`x_cm`, `y_cm`, `angle_deg` for its orange end, `blue_x_cm`, `blue_y_cm`, `blue_angle_deg` for its blue end, each angle the direction the end faces), a pair a ball passes between; see docs/physics.md#portal. A bell's `y_cm` is its centre, a button's the centre of its cap's resting underside, a basket's the centre of its floor's underside.
 
 The parser is stricter than the schema in one respect: a part with a field its kind does not have is rejected, while the schema lists each kind's own fields beside `id` and does not forbid extras.
 

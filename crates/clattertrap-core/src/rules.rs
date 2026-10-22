@@ -115,6 +115,10 @@ pub struct Rules {
     pub chain_move_speed_m_s: f32,
     /// Distance past the level rectangle at which a body has left the world.
     pub leave_margin_m: f32,
+    /// Width across a portal end's face and the depth of its sensor box.
+    pub portal_size_m: [f32; 2],
+    /// Gap between a portal's face and a ball it has just let out, past the ball's radius.
+    pub portal_exit_gap_m: f32,
 }
 
 impl Rules {
@@ -203,6 +207,8 @@ impl Rules {
         rest_speed_m_s: 0.02,
         chain_move_speed_m_s: 0.05,
         leave_margin_m: 0.5,
+        portal_size_m: [0.30, 0.12],
+        portal_exit_gap_m: 0.01,
     };
 
     /// Properties of a ball material.

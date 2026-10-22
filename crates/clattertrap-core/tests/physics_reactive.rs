@@ -13,7 +13,8 @@ use clattertrap_core::events::EventKind;
 use clattertrap_core::rules::Rules;
 use clattertrap_core::scene::Material;
 use common::{
-    ball, balloon, bucket, close, funnel, level, part, pin, scene, sim, spring_pad, step_for,
+    ball, balloon, bucket, close, domino, funnel, level, part, pin, portal, scene, sim, spring_pad,
+    step_for,
 };
 
 #[test]
@@ -134,5 +135,63 @@ fn a_bucket_catches_a_ball_and_stays_upright() {
         bucket_at.angle_rad.abs() < 0.1,
         "bucket tipped {} rad",
         bucket_at.angle_rad
+    );
+}
+
+#[test]
+fn a_ball_dropped_into_a_floor_portal_leaves_the_wall_portal_at_the_same_speed() {
+    // Orange end in the floor under the ball, blue end low on the left wall facing right.
+    let lv = level(vec![
+        ball("k", 200.0, 150.0, Material::Steel),
+        portal("p", [200.0, 3.0, 90.0], [10.0, 200.0, 0.0]),
+    ]);
+    let mut s = sim(&lv, &scene(vec![]));
+    let k = part(&s, "k");
+    let mut entry_speed = 0.0f32;
+    let mut exit: Option<([f32; 2], [f32; 2])> = None;
+    while s.time_s() < 2.0 && s.finished().is_none() {
+        s.step();
+        let (Some(p), Some(v)) = (s.pose(k), s.velocity(k)) else {
+            break;
+        };
+        if exit.is_none() && p.x_m > 1.0 {
+            entry_speed = libm::sqrtf(v[0] * v[0] + v[1] * v[1]);
+        } else if exit.is_none() {
+            exit = Some(([p.x_m, p.y_m], v));
+        }
+    }
+    let (at, v) = exit.expect("the ball never came out of the blue end");
+    assert!(
+        at[0] < 0.3 && close(at[1], 2.0, 0.05),
+        "came out at ({}, {}) m",
+        at[0],
+        at[1]
+    );
+    assert!(entry_speed > 4.0, "entered at only {entry_speed} m/s");
+    let exit_speed = libm::sqrtf(v[0] * v[0] + v[1] * v[1]);
+    assert!(
+        close(exit_speed, entry_speed, 0.05 * entry_speed),
+        "left at {exit_speed} m/s after entering at {entry_speed} m/s"
+    );
+    assert!(
+        v[0] > 0.95 * exit_speed,
+        "left heading ({}, {}) instead of out along the blue end's facing",
+        v[0],
+        v[1]
+    );
+}
+
+#[test]
+fn a_domino_falls_through_a_portal_as_if_it_were_not_there() {
+    let lv = level(vec![portal("p", [200.0, 3.0, 90.0], [10.0, 200.0, 0.0])]);
+    let mut s = sim(&lv, &scene(vec![domino("d", 200.0, 40.0)]));
+    let d = part(&s, "d");
+    step_for(&mut s, 1.5);
+    let p = s.pose(d).expect("the domino is still there");
+    assert!(
+        close(p.x_m, 2.0, 0.05) && p.y_m < 0.15,
+        "the domino ended at ({}, {}) m",
+        p.x_m,
+        p.y_m
     );
 }

@@ -4,7 +4,7 @@
 use crate::events::{Event, EventKind, PartId, StepEvents};
 use crate::goal::{StepInputs, Tracker};
 use crate::level::Level;
-use crate::parts::{m, spring_pad};
+use crate::parts::{m, portal, spring_pad};
 use crate::rules::Rules;
 use crate::scene::PartSpec;
 use crate::score::{Closing, End, Outcome, Recorder};
@@ -107,11 +107,17 @@ impl Simulator {
         self.events.events()
     }
 
-    /// Spring pads launch what touches them; pins pop balloons.
+    /// Spring pads launch what touches them, pins pop balloons, and portals pass balls through.
     fn react(&mut self) {
         for i in 0..self.contacts.len() {
             let (a, b) = self.contacts[i];
             for (x, y) in [(a, b), (b, a)] {
+                if let Some((_, ends)) = self.reactive.portals.iter().find(|(p, _)| *p == x)
+                    && self.reactive.balls.contains(&y)
+                {
+                    let ends = *ends;
+                    self.pass(y, &ends);
+                }
                 if let Some((_, n)) = self.reactive.pads.iter().find(|(p, _)| *p == x)
                     && self.world.is_dynamic(y)
                 {
@@ -124,6 +130,22 @@ impl Simulator {
                 }
             }
         }
+    }
+
+    /// Moves a ball that entered one end of a portal out of the other.
+    fn pass(&mut self, ball: PartId, ends: &[portal::End; 2]) {
+        let (Some(p), Some(v)) = (self.world.pose(ball), self.world.velocity(ball)) else {
+            return;
+        };
+        let entry = portal::nearer(ends, [p.x_m, p.y_m]);
+        let (at, vel) = portal::passage(
+            &ends[entry],
+            &ends[1 - entry],
+            v,
+            self.rules.ball_radius_m,
+            &self.rules,
+        );
+        self.world.teleport(ball, at, vel);
     }
 
     /// Removes bodies that left the world, notes which parts moved, and reports parts that fell asleep.
@@ -248,6 +270,10 @@ struct Reactive {
     pads: Vec<(PartId, [f32; 2])>,
     pins: Vec<PartId>,
     balloons: Vec<PartId>,
+    /// Portals with their two ends.
+    portals: Vec<(PartId, [portal::End; 2])>,
+    /// Balls, the only parts a portal passes.
+    balls: Vec<PartId>,
 }
 
 impl Reactive {
@@ -257,6 +283,8 @@ impl Reactive {
             pads: Vec::new(),
             pins: Vec::new(),
             balloons: Vec::new(),
+            portals: Vec::new(),
+            balls: Vec::new(),
         };
         for (i, placed) in scene.placed().iter().enumerate() {
             // validate caps the part count at u16::MAX.
@@ -267,6 +295,12 @@ impl Reactive {
                 }
                 PartSpec::Pin { .. } => r.pins.push(id),
                 PartSpec::Balloon { .. } => r.balloons.push(id),
+                PartSpec::Ball { .. } => r.balls.push(id),
+                PartSpec::Portal { .. } => {
+                    if let Some(ends) = portal::ends(&placed.spec) {
+                        r.portals.push((id, ends));
+                    }
+                }
                 _ => {}
             }
         }

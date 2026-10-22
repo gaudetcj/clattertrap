@@ -259,3 +259,18 @@ pub fn on_plank(x_cm: f32, y_cm: f32, angle_deg: f32, along_cm: f32, radius_m: f
         y_cm + along_cm * sin + lift * cos,
     ]
 }
+
+/// A portal pair: the orange end at the first point facing `angle_deg`, the blue end at the second.
+pub fn portal(id: &str, orange: [f32; 3], blue: [f32; 3]) -> Placed {
+    placed(
+        id,
+        PartSpec::Portal {
+            x_cm: orange[0],
+            y_cm: orange[1],
+            angle_deg: orange[2],
+            blue_x_cm: blue[0],
+            blue_y_cm: blue[1],
+            blue_angle_deg: blue[2],
+        },
+    )
+}

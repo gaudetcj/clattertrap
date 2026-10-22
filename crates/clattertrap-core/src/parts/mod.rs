@@ -13,6 +13,7 @@ mod domino;
 mod funnel;
 mod pendulum;
 mod pin;
+pub(crate) mod portal;
 mod rope;
 mod seesaw;
 pub(crate) mod spring_pad;
@@ -36,6 +37,7 @@ pub const SUPPORTED: &[&str] = &[
     "balloon",
     "pin",
     "rope",
+    "portal",
     "bell",
     "button",
     "basket",
@@ -63,6 +65,10 @@ pub enum Look {
     Brass,
     /// Woven basket.
     Wicker,
+    /// The orange end of a portal.
+    Orange,
+    /// The blue end of a portal.
+    Blue,
 }
 
 /// What one body looks like, in metres, relative to its pose.
@@ -186,6 +192,7 @@ pub(crate) fn build(spec: &PartSpec, id: PartId, b: &mut Builder<'_>) {
             b: other,
             max_length_cm,
         } => rope::build(a, other, *max_length_cm, b),
+        PartSpec::Portal { .. } => portal::build(id, spec, b),
         PartSpec::Bell {
             x_cm,
             y_cm,

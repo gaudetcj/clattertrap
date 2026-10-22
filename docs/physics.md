@@ -1,3 +1,4 @@
+| portal | two fixed sensor boxes, 30 cm across and 12 cm deep, one orange and one blue, each facing along its `angle_deg` | passes balls, see below |
 # Physics model, rules v1
 
 This describes what `clattertrap-core` simulates today. Every number lives in `rules.rs` as `Rules::V1`; this page explains them. The engine is `rapier2d` 0.36.1 with the `enhanced-determinism` feature, no `simd8`, no `parallel`.
@@ -63,6 +64,10 @@ When a dynamic body starts touching a pad, it receives an impulse of 0.6 N·s al
 ### Balloon
 
 A balloon has density 1 kg/m², a gravity scale of -0.5 so it rises, and linear damping 3.3, which caps its rise at about 1.5 m/s. It slides along the underside of anything above it toward the higher end. Touching a pin removes it. A balloon that drifts out of the world is removed too, but that is not a pop.
+
+### Portal
+
+Each end is a sensor: it reports what enters it and stops nothing. When a ball enters one end, the simulator moves it to just outside the other end, a radius plus 1 cm clear of the face, and keeps its speed and spin. The direction turns by the difference between the two facings plus a half turn, so a ball moving into one face comes out along the other face's normal, and the part of its motion that ran along the entry face runs along the exit face: a ball dropping straight into an end set in the floor leaves an end set in a wall moving sideways, and any sideways speed it had on the way in becomes rise or fall on the way out. Only balls pass; a domino or crate falls through an end as if it were not there. The contact that starts the passage is logged like any other, which is how a portal serves as a via waypoint.
 
 ### Bell
 

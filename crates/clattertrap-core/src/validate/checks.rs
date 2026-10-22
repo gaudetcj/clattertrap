@@ -64,11 +64,16 @@ pub(super) fn names(level: &Level, scene: &Scene, out: &mut Vec<Problem>) -> Vec
             ));
         }
         names.push(p.id.clone());
-        if path.starts_with("parts") && p.spec.is_goal_object() {
+        if path.starts_with("parts") && p.spec.is_level_only() {
+            let what = if p.spec.is_goal_object() {
+                "a goal object"
+            } else {
+                "a fixture"
+            };
             out.push(Problem::new(
                 &path,
                 format!(
-                    "{} is a goal object only the level may place; remove it",
+                    "{} is {what} only the level may place; remove it",
                     p.spec.kind()
                 ),
             ));
@@ -93,7 +98,7 @@ pub(super) fn names(level: &Level, scene: &Scene, out: &mut Vec<Problem>) -> Vec
 pub(super) fn inventory(level: &Level, scene: &Scene, out: &mut Vec<Problem>) {
     let mut seen: Vec<(&str, u8)> = Vec::new();
     for (i, p) in scene.parts.iter().enumerate() {
-        if p.spec.is_goal_object() {
+        if p.spec.is_level_only() {
             continue;
         }
         let kind = p.spec.kind();

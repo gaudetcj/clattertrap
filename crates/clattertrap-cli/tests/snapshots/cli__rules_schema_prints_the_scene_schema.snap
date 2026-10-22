@@ -427,6 +427,55 @@ expression: out
           "type": "object"
         },
         {
+          "description": "A pair of portals a ball passes between, placed only by a level.",
+          "properties": {
+            "angle_deg": {
+              "description": "Direction the orange end faces, out into the room.",
+              "format": "float",
+              "type": "number"
+            },
+            "blue_angle_deg": {
+              "description": "Direction the blue end faces, out into the room.",
+              "format": "float",
+              "type": "number"
+            },
+            "blue_x_cm": {
+              "description": "Blue end centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "blue_y_cm": {
+              "description": "Blue end centre y.",
+              "format": "float",
+              "type": "number"
+            },
+            "kind": {
+              "const": "portal",
+              "type": "string"
+            },
+            "x_cm": {
+              "description": "Orange end centre x.",
+              "format": "float",
+              "type": "number"
+            },
+            "y_cm": {
+              "description": "Orange end centre y.",
+              "format": "float",
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "x_cm",
+            "y_cm",
+            "angle_deg",
+            "blue_x_cm",
+            "blue_y_cm",
+            "blue_angle_deg"
+          ],
+          "type": "object"
+        },
+        {
           "description": "Goal object: brass bell hanging from a bracket.",
           "properties": {
             "kind": {

@@ -52,6 +52,8 @@ const FINISH: Record<Look, Finish> = {
   pin: { fill: '#d8dde3', edge: '#3a3f46', detail: '#8a9099' },
   brass: { fill: '#e2b53c', edge: '#6b4f0a', detail: '#fff0b8' },
   wicker: { fill: '#c9a46a', edge: '#6e4e22', detail: '#8f6a35' },
+  orange: { fill: '#f28c28', edge: '#7a3d05', detail: '#ffd9a8' },
+  blue: { fill: '#3a8df5', edge: '#0d3f7a', detail: '#bfe0ff' },
 };
 
 export class PartPainter {
@@ -164,6 +166,10 @@ export class PartPainter {
       this.needle(ctx, w, h, f);
       return;
     }
+    if (look === 'orange' || look === 'blue') {
+      this.portal(ctx, w, h, f);
+      return;
+    }
     if (look === 'pad') {
       this.spring(ctx, w, h, f);
     }
@@ -188,6 +194,22 @@ export class PartPainter {
       default:
         break;
     }
+  }
+
+  // A portal end: a dark oval the width of the face with a bright rim and a thin inner glow.
+  private portal(ctx: Ctx2D, w: number, h: number, f: Finish): void {
+    ctx.beginPath();
+    ctx.ellipse(0, 0, w / 2, h / 2, 0, 0, Math.PI * 2);
+    ctx.fillStyle = f.edge;
+    ctx.fill();
+    ctx.strokeStyle = f.fill;
+    ctx.lineWidth = LINE_M * 2;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.ellipse(0, 0, w / 2 - LINE_M * 3, h / 2 - LINE_M * 3, 0, 0, Math.PI * 2);
+    ctx.strokeStyle = f.detail;
+    ctx.lineWidth = LINE_M / 2;
+    ctx.stroke();
   }
 
   // Two lines along the long axis, inset a quarter of the thickness.

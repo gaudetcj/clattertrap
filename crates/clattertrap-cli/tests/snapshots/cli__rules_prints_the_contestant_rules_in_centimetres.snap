@@ -34,10 +34,11 @@ The level's inventory says how many of each kind. Kinds it does not list are not
 | pin | x_cm, y_cm (the base), angle_deg (default -90, pointing down) | 1 by 16 cm | fixed needle |
 | rope | a, b, max_length_cm (10..200) | no body | ties the centres of parts a and b; slack until taut, then keeps them within that length |
 
-Goal objects, which only a level places
+Goal objects and fixtures only a level places
 | bell | brass disc of radius 10 cm hung below its anchor | rings when hit hard enough: a wood ball at 1.4 m/s or a steel ball at 0.2 m/s; only a moving part rings it, never a beam or another fixed part |
 | button | 12 by 3 cm cap on a spring | pressed when pushed down its full travel and held there |
 | basket | open box with 2 cm walls | counts objects that come to rest inside it |
+| portal | two ends, orange and blue, each 30 cm across, facing the way its angle_deg points | a ball that enters either end comes out of the other at the same speed, heading out the way that end faces, so a ball dropping into an end set in the floor leaves an end set in a wall sideways; nothing but a ball passes; a portal can be a via waypoint |
 
 Goals
 ring, press, fill (count objects at rest inside the basket), or pop. A goal may list via: part ids that must be touched in that order before the goal counts. The waypoints and the goal must be the work of one chain of parts that have touched each other since the start; a part that moves on its own and never meets that chain does not count, and neither do objects it leaves in the basket. When the level has moving fixtures, such as its ball, the chain that meets the goal must include one of them.

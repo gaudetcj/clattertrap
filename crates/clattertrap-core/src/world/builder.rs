@@ -117,6 +117,27 @@ impl<'a> Builder<'a> {
         self.insert(part, false, body, collider, visual)
     }
 
+    /// A fixed box that reports what enters it and stops nothing, for a portal end.
+    pub(crate) fn sensor_box(
+        &mut self,
+        part: PartId,
+        centre_m: [f32; 2],
+        half_m: [f32; 2],
+        angle_rad: f32,
+        look: Look,
+    ) -> RigidBodyHandle {
+        let body = RigidBodyBuilder::fixed()
+            .translation(Vector::new(centre_m[0], centre_m[1]))
+            .rotation(angle_rad);
+        let collider = ColliderBuilder::cuboid(half_m[0], half_m[1]).sensor(true);
+        let visual = Visual::Box {
+            w_m: 2.0 * half_m[0],
+            h_m: 2.0 * half_m[1],
+            look,
+        };
+        self.insert(part, false, body, collider, visual)
+    }
+
     /// A fixed body with no collider, for pivots and pins.
     pub(crate) fn fixed_anchor(&mut self, part: PartId, point_m: [f32; 2]) -> RigidBodyHandle {
         let body = RigidBodyBuilder::fixed().translation(Vector::new(point_m[0], point_m[1]));
